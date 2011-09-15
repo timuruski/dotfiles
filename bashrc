@@ -30,8 +30,8 @@ parse_git_branch () {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/::\1/' -e '/::master/d'
 }
 alias git=hub
+alias g=git
 alias revspec="run-command-on-git-revisions origin/master master 'rspec spec'"
-
 
 # ----------------------------------------------------------------------
 # TODO
