@@ -15,6 +15,23 @@ task :add_submodules do
   exec(cmd.join('|'))
 end
 
+desc "Manually generate a .gitmodules file"
+task :generate_submodules do
+  cmd = ["find vim/bundle -name config | grep .git" ]
+  cmd << "while read d; do echo $(grep 'url = ' $d | awk '{print $3}') $(echo $d | sed -e 's/\\.git\\/config//'); done"
+  submodules = ""
+  `#{cmd.join('|')}`.lines do |line|
+    url, path = line.split(' ')
+    submodules << <<-EOS
+[submodule "#{path.chomp('/')}"]
+  path = #{path}
+  url = #{url}
+EOS
+  end
+
+  print submodules
+end
+
 task :default => :install
 
 module Dotfiles
