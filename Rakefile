@@ -1,8 +1,11 @@
 desc "Symlink all dotfiles."
 task :install, :path do |t, args|
-  default_path = File.expand_path('~')
-  args.with_defaults(:path => default_path)
-  Dotfiles.collect(args[:path]).each { |dotfile| dotfile.symlink! }
+  Dotfiles.collect.each { |dotfile| dotfile.symlink! }
+end
+
+desc "List files"
+task :list do
+  Dotfiles.collect.each { |dotfile| puts dotfile.target_path }
 end
 
 desc "Add vim plugins as submodules."
@@ -16,7 +19,7 @@ task :default => :install
 
 module Dotfiles
   class << self
-    def collect(base_path)
+    def collect(base_path = '~')
       dotfiles = Dir.entries('.').grep(/^[^.]/)
       dotfiles.delete(File.basename(__FILE__))
       dotfiles = dotfiles.map { |p| Dotfile.new(p, base_path) }
@@ -26,11 +29,11 @@ module Dotfiles
 end
 
 class Dotfile
-  attr_reader :full_path, :target_path
+  attr_reader :path, :full_path, :target_path
 
   def initialize(path, base_path)
     @path = path
-    @full_path = File.expand_path(path, __FILE__)
+    @full_path = File.expand_path(path, File.dirname(__FILE__))
     @target_path = File.expand_path(".#{path}", base_path)
   end
 
