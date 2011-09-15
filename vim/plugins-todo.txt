@@ -1,0 +1,5 @@
+https://github.com/sjl/gundo.vim/
+Gundo is a plugin to make browsing this ridiculously powerful undo tree less painful.
+
+https://github.com/scrooloose/syntastic/
+Syntax checking hacks for vim, supports Ruby, Python and many others.
