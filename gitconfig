@@ -26,3 +26,5 @@
     pom = push origin master
 [format]
 	pretty=format:%C(yellow)%h%Creset -%C(red)%d%Creset %s %Cgreen(%ar) %C(bold blue) <%an>%Creset
+[core]
+	excludesfile = /Users/timuruski/.gitignore_global
