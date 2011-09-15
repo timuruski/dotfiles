@@ -35,10 +35,11 @@ end
 task :default => :install
 
 module Dotfiles
+  IGNORE = [File.basename(__FILE__), 'tmp']
   class << self
     def collect(base_path = '~')
       dotfiles = Dir.entries('.').grep(/^[^.]/)
-      dotfiles.delete(File.basename(__FILE__))
+      dotfiles.reject! { |name| IGNORE.include?(name) }
       dotfiles = dotfiles.map { |p| Dotfile.new(p, base_path) }
     end
     
