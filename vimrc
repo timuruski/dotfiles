@@ -141,10 +141,11 @@ hi User1 term=inverse,bold cterm=inverse,bold ctermfg=red
 nnoremap <CR> :nohlsearch<cr>
 
 " GRB: set the color scheme
-" let g:solarized_termcolors=256
 set t_Co=256 " 256 colors
 set background=dark
-color mustang
+" let g:solarized_termcolors=256
+" colorscheme solarized
+colorscheme mustang
 
 "Invisible character colors
 highlight NonText guifg=#4a4a59
