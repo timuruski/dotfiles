@@ -1,30 +1,30 @@
 [user]
-	name = Tim Uruski
-	email = timuruski@gmail.com
+  name = Tim Uruski
+  email = timuruski@gmail.com
 [github]
-	user = timuruski
+  user = timuruski
   token = !security 2>&1 >/dev/null find-generic-password -gs github.token | ruby -e 'print $1 if STDIN.gets =~ /^password: \\\"(.*)\\\"$/'
 [color]
-	ui = auto
+  ui = auto
 [alias]
-	st = status
-	hard-reset = reset --hard HEAD
-	aa = add --all
-    ap = add --patch
-    cp = checkout --path
-    rp = reset --patch
-	amend = commit --amend
-	cd = diff --cached
-	l = log --graph --abbrev-commit --date=relative
-	la = !git l --all
-	lt = !git l --since=yesterday
-	r = !git --no-pager l -20
-	ra = !git r --all
-    diffc = diff --cached
-	pullff = pull --ff-only
-	pullrb = pull --rebase
-    pom = push origin master
+  st = status
+  hard-reset = reset --hard HEAD
+  aa = add --all
+  p = add --patch
+  cp = checkout --patch
+  rp = reset --patch
+  amend = commit --amend
+  dc = diff --cached
+  l = log --graph --abbrev-commit --date=relative
+  la = !git l --all
+  lt = !git l --since=yesterday
+  r = !git --no-pager l -20
+  ra = !git r --all
+  diffc = diff --cached
+  pullff = pull --ff-only
+  pullrb = pull --rebase
+  pom = push origin master
 [format]
-	pretty=format:%C(yellow)%h%Creset -%C(red)%d%Creset %s %Cgreen(%ar) %C(bold blue) <%an>%Creset
+  pretty=format:%C(yellow)%h%Creset -%C(red)%d%Creset %s %Cgreen(%ar) %C(bold blue) <%an>%Creset
 [core]
-	excludesfile = /Users/timuruski/.gitignore_global
+  excludesfile = /Users/timuruski/.gitignore_global
