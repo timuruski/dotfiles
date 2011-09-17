@@ -43,14 +43,14 @@ alias i="python ~/vendor/t/t.py --task-dir ~/Dropbox/tasks --list ideas"
 # ----------------------------------------------------------------------
 # PROMPT
 # ----------------------------------------------------------------------
-job_count () {
-  jobs | wc -l | sed -e "s/ *//" -e "s/.*/j& /" -e "/j0/d"
+job_marker () {
+  jobs | wc -l | awk '{ if($1 != "0") print "* " }'
 }
 todo_count () {
-  t | wc -l | sed -e "s/ *//" -e "s/.*/t& /" -e "/t0/d"
+  t | wc -l | awk '{ if($1 != "0") print $1 " " }'
 }
 
-export PS1="\$(todo_count)\$(job_count)\e[0m\W\$(parse_git_branch) \$ "
+export PS1="\$(todo_count)\$(job_marker)\e[0m\W\$(parse_git_branch) \$ "
 
 # growl() { echo -e $'\e]9;'${1}'\007' ; return  ; }
 
