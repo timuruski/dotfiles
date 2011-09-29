@@ -53,7 +53,7 @@ todo_count () {
   t | wc -l | awk '{ if($1 != "0") print "\033[4m" $1 "\033[0m " }'
 }
 
-export PS1="\$(job_marker)\$(todo_count)\e[0m\W\$(parse_git_branch) \$ "
+PS1="\$(job_marker)\$(todo_count)\e[0m\W\$(parse_git_branch) \$ "
 
 # growl() { echo -e $'\e]9;'${1}'\007' ; return  ; }
 alias ls="ls -lh"
