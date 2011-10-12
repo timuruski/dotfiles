@@ -6,6 +6,8 @@ test -d "$HOME/.bin" && PATH="$HOME/.bin:$PATH"
 test -d "$HOME/bin" && PATH="$HOME/bin:$PATH"
 # export NODE_PATH="/usr/local/lib/node:/usr/local/lib/node_modules"
 
+# TOOLS
+export GREP_OPTIONS="--color"
 
 # ----------------------------------------------------------------------
 # EDITOR
