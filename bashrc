@@ -63,7 +63,7 @@ alias ls="ls -lh"
 # ----------------------------------------------------------------------
 # RUBY & RVM
 # ----------------------------------------------------------------------
-export RUBYOPT="rubygems"
+# export RUBYOPT="rubygems"
 export RACK_ENV='development'
 
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
