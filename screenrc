@@ -1,3 +1,22 @@
 hardstatus on
 hardstatus alwayslastline "%{=b}%{G} Screen(s): %{b}%w"
 defscrollback 5000
+term screen-256color
+altscreen on
+
+# Remove some stupid / dangerous key bindings
+bind k
+bind W
+bind ^k
+bind .
+bind ^\
+bind \\
+bind ^h
+bind h
+
+# Make them better
+bind 'K' kill
+# #bind 'I' login on
+# #bind 'O' login off
+# #bind '}' history
+bind 'W' windowlist
