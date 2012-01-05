@@ -35,6 +35,8 @@ alias git=hub
 alias g=git
 alias gp="git add --all --patch"
 alias gst="git status"
+alias s="git status -sb $argv"
+alias d="git diff -M $argv"
 alias gh="git help"
 alias revspec="run-command-on-git-revisions origin/master master 'rspec spec'"
 
