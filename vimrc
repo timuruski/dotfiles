@@ -78,7 +78,7 @@ set incsearch
 set wrap
 set linebreak
 set number
-set relativenumber
+" set relativenumber
 set textwidth=79
 set colorcolumn=85
 
