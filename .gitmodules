@@ -34,9 +34,6 @@
 [submodule "vim/bundle/vim-unimpaired"]
 	path = vim/bundle/vim-unimpaired
 	url = git://github.com/tpope/vim-unimpaired.git
-[submodule "vim/bundle/vim-yankring"]
-	path = vim/bundle/vim-yankring
-	url = git://github.com/chrismetcalf/vim-yankring.git
 [submodule "vim/bundle/molokai.vim"]
 	path = vim/bundle/molokai.vim
 	url = git://github.com/cschlueter/vim-molokai.git
