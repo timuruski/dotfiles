@@ -12,7 +12,7 @@ PATH="$HOME/.rbenv/bin:$PATH"
 
 # Editors
 export EDITOR="vim"
-export GIT_EDITOR="vim"
+export GIT_EDITOR="vim -c 'startinsert'"
 
 
 # Define functions and aliases
@@ -24,12 +24,16 @@ alias git=hub
 alias s="git status -sb $argv; return 0"
 alias d="git diff -M"
 alias ga="git add"
+alias gaa="git add --all"
 alias gco="git checkout"
+alias gci="git commit"
 alias gdc="git diff --cached -m"
 alias gap="git add --all --patch"
 alias gfo="git fetch origin"
 alias gpff="git pull --ff-only"
+alias gprb="git pull --rebase"
 alias gpom="git push origin master"
+alias gl="git log"
 alias gld="git log --simplify-by-decoration"
 
 
