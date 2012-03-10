@@ -36,7 +36,7 @@ set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
-" Enable plugins for filtypes
+" Enable plugins for filetypes
 filetype plugin on
 
 " map Shift + Return to Esc in Insert mode
@@ -47,12 +47,12 @@ noremap <S-CR> <Esc>
 inoremap <S-CR> <Esc>
 
 if has("vms")
-  set nobackup		" do not keep a backup file, use versions instead
+  set nobackup  " do not keep a backup file, use versions instead
 else
-  set backup		" keep a backup file
+  set backup  " keep a backup file
 endif
-set ruler		" show the cursor position all the time
-set showcmd		" display incomplete commands
+set ruler  " show the cursor position all the time
+set showcmd  " display incomplete commands
 set list
 set listchars=tab:▸\ ,eol:¬
 
@@ -61,8 +61,6 @@ set listchars=tab:▸\ ,eol:¬
 if &t_Co > 2 || has("gui_running")
   syntax on
   set hlsearch
-  " set guifont=Monaco:h14
-  " set guifont=Inconsolata-dz:h14
 endif
 
 set expandtab
@@ -79,8 +77,8 @@ set wrap
 set linebreak
 set number
 " set relativenumber
-set textwidth=79
-set colorcolumn=85
+set textwidth=72
+set colorcolumn=80
 
 " Highlight search
 set hls
@@ -185,50 +183,4 @@ nnoremap <silent> <expr> 0 ScreenMovement("0")
 nnoremap <silent> <expr> ^ ScreenMovement("^")
 nnoremap <silent> <expr> $ ScreenMovement("$")
 
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Running tests
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" vim-makegreen binds itself to ,t unless something else is bound to its
-" function.
-" map <leader>\dontstealmymapsmakegreen :w\|:call MakeGreen('spec')<cr>
-
-function! RunTests(filename)
-    " Write the file and run tests for the given filename
-    :w
-    :silent !echo;echo;echo;echo;echo
-    if filereadable("script/test")
-        exec ":!script/test " . a:filename
-    else
-        exec ":!bundle exec rspec " . a:filename
-    end
-endfunction
-
-function! SetTestFile()
-    " Set the spec file that tests will be run for.
-    let t:grb_test_file=@%
-endfunction
-
-function! RunTestFile(...)
-    if a:0
-        let command_suffix = a:1
-    else
-        let command_suffix = ""
-    endif
-
-    " Run the tests for the previously-marked file.
-    let in_spec_file = match(expand("%"), '_spec.rb$') != -1
-    if in_spec_file
-        call SetTestFile()
-    elseif !exists("t:grb_test_file")
-        return
-    end
-    call RunTests(t:grb_test_file . command_suffix)
-endfunction
-
-function! RunNearestTest()
-    let spec_line_number = line('.')
-    call RunTestFile(":" . spec_line_number)
-endfunction
 
