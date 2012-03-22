@@ -86,6 +86,7 @@ set hls
 " GRB: use emacs-style tab completion when selecting files, etc
 set wildmode=longest,list
 
+" Shortcut to directory of current file
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 
 " Remap leader and other TextMate-like shortcuts
@@ -112,17 +113,55 @@ command! W :w
 " Make <leader>' switch between ' and "
 nnoremap <leader>' ""yls<c-r>={'"': "'", "'": '"'}[@"]<cr><esc>
 
+" Open files in directory of the current file
+map <leader>e :edit %%
+map <leader>v :view %%
+"
+" Command-T mappings
+function! ShowRoutes()
+  " Requires 'scratch' plugin
+  :topleft 100 :split __Routes__
+  " Make sure Vim doesn't write __Routes__ as a file
+  :set buftype=nofile
+  " Put routes output into buffer
+  :0r! rake -s routes
+  " Size window to number of lines (output length + 1)
+  :exec ":normal " . line("$") . "^W_"
+  " Move cursor to the bottom
+  :normal 1GG
+  "Delete empty trailing line
+  :normal dd
+endfunction
+
 map <leader>gv :CommandTFlush<cr>\|:CommandT app/views<cr>
 map <leader>gc :CommandTFlush<cr>\|:CommandT app/controllers<cr>
 map <leader>gm :CommandTFlush<cr>\|:CommandT app/models<cr>
 map <leader>gh :CommandTFlush<cr>\|:CommandT app/helpers<cr>
 map <leader>gl :CommandTFlush<cr>\|:CommandT lib<cr>
-" map <leader>gp :CommandTFlush<cr>\|:CommandT public<cr>
-" map <leader>gs :CommandTFlush<cr>\|:CommandT public/stylesheets/sass<cr>
-" map <leader>gf :CommandTFlush<cr>\|:CommandT features<cr>
+map <leader>gp :CommandTFlush<cr>\|:CommandT public<cr>
+map <leader>gs :CommandTFlush<cr>\|:CommandT public/stylesheets/sass<cr>
+map <leader>gf :CommandTFlush<cr>\|:CommandT features<cr>
 map <leader>gg :topleft 100 :split Gemfile<cr>
-map <leader>t :CommandTFlush<cr>\|:CommandT<cr>
-map <leader>T :CommandTFlush<cr>\|:CommandT %%<cr>
+map <leader>gt :CommandTFlush<cr>\|:CommandTTag<cr>
+map <leader>gr :topleft :split config/routes.rb<cr>
+map <leader>gR :call ShowRoutes()<cr>
+map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
+map <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
+
+
+" Smart tab key
+" Indents at start of line, otherwise completes
+" As stolen from GRB.vimrc
+function!  InsertTabWrapper()
+  let col = col('.') - 1
+  if !col || getline('.')[col - 1] !~ '\k'
+    return "\<tab>"
+  else
+   return "\<c-p>"
+  endif
+endfunction
+inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+inoremap <s-tab> <c-n>
 
 " highlight current line
 set cursorline
