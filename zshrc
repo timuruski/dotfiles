@@ -17,6 +17,7 @@ export GIT_EDITOR="vim -c 'startinsert'"
 
 # Define functions and aliases
 alias ls="ls -lh"
+alias r="rails"
 function mkcd() { mkdir -p $1 && cd $1 }
 function fcd() { cd *$1* }
 # Git aliases
@@ -25,6 +26,7 @@ alias s="git status -sb $argv; return 0"
 alias d="git diff -M"
 alias ga="git add"
 alias gaa="git add --all"
+alias gs="git status"
 alias gco="git checkout"
 alias gci="git commit"
 alias gdc="git diff --cached -m"
@@ -42,8 +44,26 @@ local cmd_status="%(?,%{$reset_color%}$%{$reset_color%},%{$fg[red]%}$%{$reset_co
 parse_git_branch () {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/::\1/' -e '/::master/d'
 }
+
+
+# export RUBY_MANAGER=detect_ruby_manager()
+# function detect-ruby-manager() {
+#   ruby-manager=''
+#   if [[ -d ~/.rvm ]]; then
+#     ruby-manager='rvm'
+#   elif [[ -d ~/.rbenv ]]; then 
+#     ruby-manager='rbenv'
+#   fi
+
+#   echo $ruby-manager
+# }
+
 function ruby-version() {
-  echo "$(rbenv version-name)"
+  if [[ -d ~/.rbenv ]]; then 
+    echo "$(rbenv version-name)"
+  elif [[ -d ~/.rvm ]]; then
+    echo "$(~/.rvm/bin/rvm-prompt)"
+  fi
 }
 
 PROMPT='%1~ ${cmd_status} '
@@ -51,6 +71,9 @@ RPROMPT='%{$fg[white]%} $(ruby-version) $(~/bin/git-cwd-info.rb)%{$reset_color%}
 
 # Tmux
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
-# Initialize rbenv, cos RVM is busted
-eval "$(rbenv init -)"
 
+if [[ -d ~/.rbenv ]]; then 
+  eval "$(rbenv init -)"
+elif [[ -d ~/.rvm ]]; then
+  [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+fi
