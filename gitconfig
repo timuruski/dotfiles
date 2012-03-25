@@ -7,23 +7,29 @@
 [color]
   ui = auto
 [alias]
+  s = status
   st = status
-  hard-reset = reset --hard HEAD
   aa = add --all
   p = add --patch
+  ap = add --patch
   cp = checkout --patch
   rp = reset --patch
+  hard-reset = reset --hard HEAD
+  ci = commit
+  co = checkout
   amend = commit --amend
-  dc = diff --cached
-  l = log --graph --abbrev-commit --date=relative
-  la = !git l --all
-  lt = !git l --since=yesterday
-  r = !git --no-pager l -20
-  ra = !git r --all
-  diffc = diff --cached
   pullff = pull --ff-only
   pullrb = pull --rebase
   pom = push origin master
+  ff = merge --ff
+  noff = merge --no-ff
+  l = log --graph --abbrev-commit --date=relative
+  la = !git l --all
+  lt = !git l --since=yesterday
+  r = !git --no-pager l -15
+  ra = !git r --all
+  dc = diff --cached
+  diffc = diff --cached
 [format]
   pretty=format:%C(yellow)%h%Creset -%C(red)%d%Creset %s %Cgreen(%ar) %C(bold blue) <%an>%Creset
 [core]
