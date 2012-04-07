@@ -67,7 +67,7 @@ function ruby-version() {
 }
 
 PROMPT='%1~ ${cmd_status} '
-RPROMPT='%{$fg[white]%} $(ruby-version) $(~/bin/git-cwd-info.rb)%{$reset_color%}'
+RPROMPT='%{$fg[brblack]%} $(ruby-version) $(~/bin/git-cwd-info.rb)%{$reset_color%}'
 
 # Tmux
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
