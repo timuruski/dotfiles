@@ -148,6 +148,12 @@ map <leader>gR :call ShowRoutes()<cr>
 map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
 map <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
 
+" Map <esc> to close Command-T window
+let g:CommandTCancelMap=['<C-c>', '<esc>']
+"
+" Configure Command-t
+set wildignore=vendor/bundle/**
+
 
 " Smart tab key
 " Indents at start of line, otherwise completes
