@@ -1,5 +1,11 @@
 # ~timuruski
 
+## Installation
+Files are symlinked into the user home directory with `.` prefix.
+
+`rake install`
+
+
 ## Interesting plugins
 * [CtrlP](https://github.com/kien/ctrlp.vim) - Fuzzy file finder written in VimScript
 * [Source](https://github.com/suderman/source.vim) - Alternative to
