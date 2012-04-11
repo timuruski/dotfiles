@@ -142,6 +142,7 @@ map <leader>gm :CommandTFlush<cr>\|:CommandT app/models<cr>
 map <leader>gh :CommandTFlush<cr>\|:CommandT app/helpers<cr>
 map <leader>gd :CommandTFlush<cr>\|:CommandT app/decorators<cr>
 map <leader>gs :CommandTFlush<cr>\|:CommandT app/services<cr>
+map <leader>gM :topleft 100 :sview db/schema.rb<cr>
 map <leader>gl :CommandTFlush<cr>\|:CommandT lib<cr>
 map <leader>gp :CommandTFlush<cr>\|:CommandT public<cr>
 map <leader>gS :CommandTFlush<cr>\|:CommandT public/stylesheets<cr>
