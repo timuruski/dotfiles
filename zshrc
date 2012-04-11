@@ -12,7 +12,8 @@ PATH="$HOME/.rbenv/bin:$PATH"
 
 # Editors
 export EDITOR="vim"
-export GIT_EDITOR="vim -c 'startinsert'"
+# export GIT_EDITOR="vim -c 'startinsert'"
+GIT_EDITOR="vim"
 
 
 # Define functions and aliases
