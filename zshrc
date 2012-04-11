@@ -23,7 +23,7 @@ function mkcd() { mkdir -p $1 && cd $1 }
 function fcd() { cd *$1* }
 # Git aliases
 alias git=hub
-alias s="git status -sb $argv; return 0"
+alias s="git status -sb"
 alias d="git diff -M"
 alias ga="git add"
 alias gaa="git add --all"
@@ -67,7 +67,7 @@ function ruby-version() {
   fi
 }
 
-PROMPT='%1~ ${cmd_status} '
+PROMPT='%U%1~%u ${cmd_status} '
 RPROMPT='%{$fg[brblack]%} $(ruby-version) $(~/bin/git-cwd-info.rb)%{$reset_color%}'
 
 # Tmux
