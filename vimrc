@@ -216,7 +216,11 @@ function! RunTests(filename)
     :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
     :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
     if match(a:filename, '\.feature$') != -1
+      if filereadable("script/features")
         exec ":!script/features " . a:filename
+      else
+        exec ":!cucumber " . a:filename
+      end
     else
         if filereadable("script/test")
             exec ":!script/test " . a:filename
