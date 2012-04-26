@@ -13,3 +13,6 @@ Files are symlinked into the user home directory with `.` prefix.
 * [simplenote.vim](https://github.com/mrtazz/simplenote.vim) - Simplenote web service
 * [vim-pasta](https://github.com/sickill/vim-pasta) - context-aware pasting
 * [vim-smartinput](https://github.com/kana/vim-smartinput) - smarter punctuation pairs
+
+## Interesting ideas
+* [OS X defaults](https://github.com/mathiasbynens/dotfiles/blob/master/.osx)
