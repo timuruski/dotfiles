@@ -21,6 +21,13 @@ alias ls="ls -lh"
 alias r="rails"
 function mkcd() { mkdir -p $1 && cd $1 }
 function fcd() { cd *$1* }
+
+# Workspace shortcut and completion
+function ws() { cd ~/workspace/$1; }
+function _ws() { _files -W ~/workspace -/; }
+compdef _ws ws
+alias dot="cd ~/workspace/dotfiles"
+
 # Git aliases
 alias git=hub
 alias s="git status -sb"
