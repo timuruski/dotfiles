@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Log output:
+# 
+# * 238b2a       (10 days)    <Tim Uruski>     did some work
+#
+# Stolen from Gary Bernhardt
+# https://github.com/garybernhardt/dotfiles/blob/master/.githelpers
+# https://www.destroyallsoftware.com/screencasts/catalog/pretty-git-logs
+
+HASH="%C(yellow)%hi%C(reset)"
+RELATIVE_TIME="%C(green)(%ar)%C(reset)"
+AUTHOR="%C(bold blue)<%an>%C(reset)"
+REFS="%C(red)%d%C(reset)"
+SUBJECT="%s"
+
+FORMAT="$HASH}$RELATIVE_TIME}$AUTHOR}$REFS $SUBJECT"
+
+pretty_git_log() {
+  git log --graph --abbrev-commit --date=relative --pretty="tformat:${FORMAT}" $* | 
+      # Replace (2 years ago) with (2 years)
+      sed -Ee 's/(^[^<]*) ago)/\1)/' |
+      # Replace (2 years, 5 months) wiht (2 years)
+      sed -Ee 's/(^[^>]*), [[:digit:]]+ .*months?)/\1)/' |
+      # Columnate based on } delimiter
+      column -s '}' -t |
+      # Page with colors, only when necessary, leave it on the screen
+      less -FSXR
+}

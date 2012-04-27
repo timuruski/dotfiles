@@ -23,14 +23,12 @@
   pom = push origin master
   ff = merge --ff
   noff = merge --no-ff
-  l = log --graph --abbrev-commit --date=relative
+  l = "!source ~/.githelpers && pretty_git_log"
   la = !git l --all
   lt = !git l --since=yesterday
   r = !git --no-pager l -15
   ra = !git r --all
   dc = diff --cached
   diffc = diff --cached
-[format]
-  pretty=format:%C(yellow)%h%Creset -%C(red)%d%Creset %s %Cgreen(%ar) %C(bold blue) <%an>%Creset
 [core]
   excludesfile = /Users/timuruski/.gitignore_global
