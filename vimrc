@@ -107,6 +107,11 @@ inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 
+" <space> is useless
+nmap <space> zz
+nmap n nzz
+nmap N Nzz
+
 " Don't use Ex mode, use Q for formatting
 map Q gq
 
