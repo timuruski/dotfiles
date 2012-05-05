@@ -31,20 +31,8 @@ alias dot="cd ~/workspace/dotfiles"
 # Git aliases
 alias git=hub
 alias s="git status -sb"
-alias d="git diff -M"
-alias ga="git add"
-alias gaa="git add --all"
-alias gs="git status"
-alias gco="git checkout"
-alias gci="git commit"
-alias gdc="git diff --cached -m"
-alias gap="git add --all --patch"
-alias gfo="git fetch origin"
-alias gpff="git pull --ff-only"
-alias gprb="git pull --rebase"
-alias gpom="git push origin master"
-alias gl="git log"
-alias gld="git log --simplify-by-decoration"
+alias d="git d"
+alias gap="git p"
 
 
 # Customize prompt

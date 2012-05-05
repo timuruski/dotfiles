@@ -7,7 +7,7 @@
 [color]
   ui = auto
 [alias]
-  s = status
+  s = status -sb
   st = status
   aa = add --all
   p = add --patch
@@ -23,11 +23,16 @@
   pom = push origin master
   ff = merge --ff
   noff = merge --no-ff
+  head = !git l -1
+  h = !git head
+  hp = "!source ~/.githelpers/&& show_git_head"
   l = "!source ~/.githelpers && pretty_git_log"
   la = !git l --all
   lt = !git l --since=yesterday
+  ld = !git l --simplify-by-decoration
   r = !git --no-pager l -15
   ra = !git r --all
+  d = diff -M
   dc = diff --cached
   diffc = diff --cached
 [core]
