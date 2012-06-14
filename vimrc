@@ -174,7 +174,7 @@ map <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
 let g:CommandTCancelMap=['<C-c>', '<esc>']
 "
 " Configure Command-t
-set wildignore=vendor/bundle/**,vendor/ruby/**
+set wildignore=vendor/bundle/**,vendor/ruby/**,tmp/**
 
 
 " Smart tab key
