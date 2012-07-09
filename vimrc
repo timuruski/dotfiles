@@ -101,6 +101,8 @@ vnoremap <tab> %
 nnoremap ; :
 " re-hardwrap paragraphs of text, like TextMate Ctrl + q
 nnoremap <leader>q gqip
+" shortcut to map ,r to whatever
+nnoremap <leader>r :nnoremap <leader>r :w \\| 
 
 " Help is already easy to get via :h
 inoremap <F1> <ESC>
@@ -117,9 +119,6 @@ map Q gq
 
 " Seriously, guys. It's not like :W is bound to anything anyway.
 command! W :w
-
-" Make <leader>' switch between ' and "
-nnoremap <leader>' ""yls<c-r>={'"': "'", "'": '"'}[@"]<cr><esc>
 
 " Open files in directory of the current file
 map <leader>e :edit %%
