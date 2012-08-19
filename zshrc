@@ -34,6 +34,11 @@ alias s="git status -sb"
 alias d="git d"
 alias gap="git p"
 
+# Deep history
+export HISTSIZE=100000
+export HISTFILE="$HOME/.history"
+export SAVEHIST=$HISTSIZE
+
 
 # Customize prompt
 local cmd_status="%(?,%{$reset_color%}$%{$reset_color%},%{$fg[red]%}$%{$reset_color%})"
@@ -62,7 +67,7 @@ function ruby-version() {
   fi
 }
 
-PROMPT='%U%1~%u ${cmd_status} '
+PROMPT='%{$fg[yellow]%}%m%{$reset_color%}:%U%1~%u ${cmd_status} '
 RPROMPT='%{$fg[brblack]%} $(ruby-version) $(~/bin/git-cwd-info.rb)%{$reset_color%}'
 
 # Tmux
