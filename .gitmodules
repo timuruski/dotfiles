@@ -16,9 +16,6 @@
 [submodule "vim/bundle/vim-unimpaired"]
 	path = vim/bundle/vim-unimpaired
 	url = git://github.com/tpope/vim-unimpaired.git
-[submodule "vim/bundle/vim-statline"]
-	path = vim/bundle/vim-statline
-	url = git://github.com/millermedeiros/vim-statline.git
 [submodule "vim/bundle/vim-ragtag"]
 	path = vim/bundle/vim-ragtag
 	url = git://github.com/tpope/vim-ragtag.git
@@ -34,3 +31,9 @@
 [submodule "vim/bundle/vim-commentary"]
 	path = vim/bundle/vim-commentary
 	url = git://github.com/tpope/vim-commentary.git
+[submodule "vim/bundle/vitality.vim"]
+	path = vim/bundle/vitality.vim
+	url = git://github.com/sjl/vitality.vim.git
+[submodule "vim/bundle/powerline"]
+	path = vim/bundle/powerline
+	url = git://github.com/Lokaltog/vim-powerline.git
