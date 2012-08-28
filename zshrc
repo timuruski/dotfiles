@@ -38,6 +38,7 @@ alias gap="git p"
 export HISTSIZE=100000
 export HISTFILE="$HOME/.history"
 export SAVEHIST=$HISTSIZE
+setopt HIST_IGNORE_DUPS
 
 
 # Customize prompt
