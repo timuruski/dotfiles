@@ -66,6 +66,9 @@ if &t_Co > 2 || has("gui_running")
   set hlsearch
 endif
 
+abbreviate emd end
+abbreviate enf end
+
 set expandtab
 set tabstop=2
 set shiftwidth=2
@@ -78,8 +81,8 @@ set showmatch
 set incsearch
 set wrap
 set linebreak
-set number
-" set relativenumber
+" set number
+set relativenumber
 set textwidth=72
 set colorcolumn=80
 
@@ -98,7 +101,7 @@ nnoremap <leader><leader> <c-^>
 imap <c-l> <space>=><space>
 nnoremap <tab> %
 vnoremap <tab> %
-nnoremap ; :
+" nnoremap ; :
 " re-hardwrap paragraphs of text, like TextMate Ctrl + q
 nnoremap <leader>q gqip
 " shortcut to map ,r to whatever
@@ -339,3 +342,5 @@ nnoremap <silent> <expr> ^ ScreenMovement("^")
 nnoremap <silent> <expr> $ ScreenMovement("$")
 
 
+" Powerline config
+let g:Powerline_symbols = 'fancy'
