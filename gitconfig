@@ -4,6 +4,7 @@
 [github]
   user = timuruski
   token = !security 2>&1 >/dev/null find-generic-password -gs github.token | ruby -e 'print $1 if STDIN.gets =~ /^password: \\\"(.*)\\\"$/'
+  password = !security 2>&1 >/dev/null find-generic-password -gs github.password | ruby -e 'print $1 if STDIN.gets =~ /^password: \\\"(.*)\\\"$/'
 [color]
   ui = auto
 [alias]
@@ -21,6 +22,7 @@
   pullff = pull --ff-only
   pullrb = pull --rebase
   pom = push origin master
+  pod = push origin develop
   ff = merge --ff
   noff = merge --no-ff
   head = !git l -1
@@ -30,7 +32,7 @@
   la = !git l --all
   lt = !git l --since=yesterday
   ld = !git l --simplify-by-decoration
-  r = !git --no-pager l -15
+  r = !git --no-pager l -20
   ra = !git r --all
   d = diff -M
   dc = diff --cached
