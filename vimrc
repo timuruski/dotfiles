@@ -57,7 +57,7 @@ endif
 set ruler  " show the cursor position all the time
 set showcmd  " display incomplete commands
 set list
-set listchars=tab:▸\ ,eol:¬
+set listchars=tab:▸\ ,eol:¬,trail:·
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
@@ -286,6 +286,14 @@ map <leader>w :w\|:!script/features --profile wip<cr>
 
 " highlight current line
 set cursorline
+
+" Powerline
+let g:Powerline_symbols = 'fancy'
+let g:Powerline_mode_n = ' N '
+let g:Powerline_mode_i = ' I '
+let g:Powerline_mode_v = ' V '
+let g:Powerline_mode_V = ' VL '
+let g:Powerline_mode_cv = ' VB '
 
 " Don't show scroll bars in the GUI
 set guioptions-=L
