@@ -63,11 +63,15 @@ PS1="\$(job_marker)\$(todo_count)\e[0m\W\$(parse_git_branch) \$ "
 alias ls="ls -lh"
 
 # ----------------------------------------------------------------------
-# RUBY & RVM
+# RUBY
 # ----------------------------------------------------------------------
 # export RUBYOPT="rubygems"
 export RACK_ENV='development'
 
-[[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
+if [[ -d ~/.rbenv ]]; then 
+  eval "$(rbenv init -)"
+elif [[ -d ~/.rvm ]]; then
+  [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+fi
 
 #EOF .bashrc
