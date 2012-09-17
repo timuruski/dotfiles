@@ -5,10 +5,10 @@ setopt prompt_subst
 
 
 # Setup paths
-PATH="$PATH:~/bin"
 PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 PATH="$HOME/.cabal/bin:$PATH"
 PATH="$HOME/.rbenv/bin:$PATH"
+PATH="$HOME/bin:$PATH"
 
 
 # Editors
