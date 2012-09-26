@@ -72,6 +72,7 @@ endif
 
 abbreviate emd end
 abbreviate enf end
+abbreviate edn end
 
 set expandtab
 set tabstop=2
@@ -167,7 +168,8 @@ map <leader>gs :CommandTFlush<cr>\|:CommandT app/services<cr>
 map <leader>gM :topleft 100 :sview db/schema.rb<cr>
 map <leader>gl :CommandTFlush<cr>\|:CommandT lib<cr>
 map <leader>gp :CommandTFlush<cr>\|:CommandT public<cr>
-map <leader>gS :CommandTFlush<cr>\|:CommandT public/stylesheets<cr>
+map <leader>gS :CommandTFlush<cr>\|:CommandT app/assets/stylesheets<cr>
+map <leader>gJ :CommandTFlush<cr>\|:CommandT app/assets/javascripts<cr>
 map <leader>gf :CommandTFlush<cr>\|:CommandT features<cr>
 map <leader>gg :topleft 100 :split Gemfile<cr>
 map <leader>gt :CommandTFlush<cr>\|:CommandTTag<cr>

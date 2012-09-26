@@ -11,6 +11,7 @@
   s = status -sb
   st = status
   aa = add --all
+  au = add --update
   p = add --patch
   ap = add --patch
   cp = checkout --patch
