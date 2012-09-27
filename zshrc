@@ -69,6 +69,14 @@ function ruby-version() {
   fi
 }
 
+function h() {
+  if [[ -s $1 ]]; then
+    runhaskell $1
+  else
+    ghci
+  fi
+}
+
 PROMPT='%{$fg[yellow]%}%m%{$reset_color%}:%U%1~%u ${cmd_status} '
 RPROMPT='%{$fg[brblack]%} $(ruby-version) $(~/bin/git-cwd-info.rb)%{$reset_color%}'
 
