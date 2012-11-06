@@ -324,8 +324,7 @@ nnoremap <CR> :nohlsearch<cr>
 :set t_Co=256 " 256 colors
 :let g:solarized_termcolors=16
 :set background=dark
-" :color solarized
-colorscheme tomorrow-night
+:colorscheme timuruski-dark
 
 "Invisible character colors
 highlight NonText guifg=#4a4a59
