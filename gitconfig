@@ -20,6 +20,7 @@
   ci = commit
   co = checkout
   amend = commit --amend
+  discard = checkout --patch
   pullff = pull --ff-only
   pullrb = pull --rebase
   pom = push origin master
