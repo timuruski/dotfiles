@@ -1,1 +1,4 @@
+--ignore-dir=log
+--ignore-dir=misc
+--ignore-dir=tmp
 --ignore-dir=vendor
