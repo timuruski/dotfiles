@@ -182,7 +182,7 @@ map <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
 let g:CommandTCancelMap=['<C-c>', '<esc>']
 "
 " Configure Command-t
-set wildignore=vendor/**,tmp/**
+set wildignore=vendor/**,tmp/**,bin/**
 
 
 " Smart tab key
