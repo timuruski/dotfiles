@@ -17,7 +17,7 @@
   cp = checkout --patch
   rp = reset --patch
   hard-reset = reset --hard HEAD
-  ci = commit
+  c = commit
   co = checkout
   amend = commit --amend
   discard = checkout --patch
@@ -41,3 +41,5 @@
   diffc = diff --cached
 [core]
   excludesfile = /Users/timuruski/.gitignore_global
+[push]
+	default = simple
