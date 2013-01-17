@@ -1,0 +1,72 @@
+#!/usr/bin/env ruby
+
+# This displays the layout for the various levels of minimak keyboard,
+# with the modified keys colorized.
+#
+# http://www.minimak.org/
+
+class Keyboard
+  def initialize(layout, base_layout = nil)
+    @layout = layout.split('')
+    @base_layout = base_layout || self
+  end
+
+  def [](index)
+    @layout[index]
+  end
+
+  def to_s
+    @layout
+      .map.with_index.map { |c, i| @base_layout[i] == c ? c : highlight(c) }
+      .join('')
+  end
+
+  def highlight(c)
+    "\e[1;33m" << c << reset
+  end
+
+  def reset
+    "\e[0m"
+  end
+end
+
+
+QWERTY = Keyboard.new(<<-EOS)
+  Q W E R T Y U I O P [ ] \ 
+   A S D F G H J K L ; '
+    Z X C V B N M , . /
+EOS
+
+MINIMAK_4 = Keyboard.new(<<-EOS, QWERTY)
+  Q W D R K Y U I O P [ ] \ 
+   A S T F G H J E L ; '
+    Z X C V B N M , . /
+EOS
+
+MINIMAK_8 = Keyboard.new(<<-EOS, QWERTY)
+  Q W D R K Y U I L P [ ] \ 
+   A S T F G H N E O ; '
+    Z X C V B J M , . /
+EOS
+
+MINIMAK_12 = Keyboard.new(<<-EOS, QWERTY)
+  Q W D F K Y U I L ; [ ] \ 
+   A S T R G H N E O P '
+    Z X C V B J M , . /
+EOS
+
+MINIMAK_LAYOUTS = {
+  'qwerty' => QWERTY,
+  '4' => MINIMAK_4,
+  '8' => MINIMAK_8,
+  '12' => MINIMAK_12
+}
+
+INVALID_LAYOUT = "Specify layout: #{MINIMAK_LAYOUTS.keys.join(' ')}"
+
+
+# Output the layout.
+layout_id = ARGV.first || '4'
+layout = MINIMAK_LAYOUTS.fetch(layout_id, INVALID_LAYOUT)
+
+puts ['',layout, '']
