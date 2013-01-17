@@ -32,8 +32,6 @@ EOS
   print submodules
 end
 
-task :default => :install
-
 module Dotfiles
   IGNORE = [File.basename(__FILE__), 'tmp']
   class << self
