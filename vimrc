@@ -67,7 +67,8 @@ if &t_Co > 2 || has("gui_running")
 endif
 
 if has("autocmd")
-  autocmd bufwritepost .vimrc source $MYVIMRC
+  " This causes Vim to hang when saving .vimrc, disabling for now.
+  " autocmd bufwritepost .vimrc source $MYVIMRC
 endif
 
 abbreviate emd end
@@ -137,6 +138,7 @@ function! RenameFile()
     if new_name != '' && new_name != old_name
         exec ':saveas ' . new_name
         exec ':silent !rm ' . old_name
+        exec ':bdelete ' . old_name
         redraw!
     endif
 endfunction
