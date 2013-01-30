@@ -8,6 +8,7 @@ setopt prompt_subst
 PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 PATH="$HOME/.cabal/bin:$PATH"
 PATH="$HOME/.rbenv/bin:$PATH"
+PATH="/usr/local/share/python:$PATH"
 PATH="$HOME/bin:$PATH"
 
 
