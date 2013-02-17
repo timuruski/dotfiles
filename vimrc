@@ -111,7 +111,9 @@ vnoremap <tab> %
 " re-hardwrap paragraphs of text, like TextMate Ctrl + q
 nnoremap <leader>q gqip
 " shortcut to map ,r to whatever
-nnoremap <leader>r :nnoremap <leader>r :w \\| 
+nnoremap <leader>r :nnoremap <leader>r :w\\|
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
 
 " Help is already easy to get via :h
 inoremap <F1> <ESC>
