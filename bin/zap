@@ -1,0 +1,10 @@
+#!/bin/bash
+
+set -e
+
+echo "Remove entire directory $0? [Yn]"
+read answer
+
+if [ $answer = "Y" ]; then
+  echo "Removing $0"
+fi

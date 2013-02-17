@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+puts "weather information"
+# curl "http://weather.yahooapis.com/forecastrss?w=8775"
+# http://www.germane-software.com/software/rexml/docs/tutorial.html
+# http://developer.yahoo.com/weather/
+#
+# .weatherrc
+#   city
+#   units
+#   cache location

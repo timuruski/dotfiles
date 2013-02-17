@@ -1,0 +1,11 @@
+#! /usr/bin/env ruby
+
+path = File.expand_path('~/workspace/gitolite-admin/conf/gitolite.conf')
+conf = File.read(path)
+  .lines
+  .reject { |s| /^\s*(#|$)/  =~ s }
+  .map(&:chomp)
+
+
+
+puts conf.join("\n")

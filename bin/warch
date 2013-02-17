@@ -1,0 +1,18 @@
+#! /usr/bin/env ruby
+
+require 'uri'
+
+url = URI.parse(ARGV[0])
+args = %W[
+  --recursive
+  --no-parent
+  --domains #{url.hostname}
+  --page-requisites
+  --html-extension
+  --convert-links
+  --no-clobber
+  #{url}
+]
+
+
+exec 'wget', *args
