@@ -2,8 +2,9 @@
 
 ## Installation
 Files are symlinked into the user home directory with `.` prefix.
+The installer script defines a list of paths to ignore, etc.
 
-`rake install`
+`./install.rb`
 
 
 ## Interesting plugins
