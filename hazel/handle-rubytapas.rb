@@ -14,6 +14,11 @@ original_name = File.basename(original_path, '.mp4')
 pattern = /(?:RubyTapas)?(\d+)-(.+)/
 match = pattern.match(original_name)
 
+if match.nil?
+  warn "Filename #{original_name} did not match pattern #{pattern.inspect}"
+  exit 1
+end
+
 das_dir = File.expand_path('~/Movies/Ruby Tapas')
 new_name = sprintf('%02d %s.mp4', match[1].to_i, titleize(match[2]))
 new_path = "#{das_dir}/#{new_name}"
