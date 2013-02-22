@@ -49,6 +49,10 @@ inoremap kj <Esc>
 noremap <S-CR> <Esc>
 inoremap <S-CR> <Esc>
 
+" Configure netrw
+let g:netrw_liststyle = 3
+let g:netrw_altv = 1
+
 if has("vms")
   set nobackup  " do not keep a backup file, use versions instead
 else
