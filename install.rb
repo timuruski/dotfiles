@@ -7,6 +7,6 @@ require 'lib/dotfiles'
 # Execute installer.
 Dotfiles.exec do |installer|
   installer.dotfile '*'
-  installer.ignore %w[ lib/ Rakefile README.md tmp/ ]
+  installer.ignore %w[ Gemfile* lib/ Rakefile README.md tmp/ ]
   installer.symlink_only %w[ bin ]
 end
