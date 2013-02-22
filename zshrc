@@ -5,18 +5,20 @@ setopt prompt_subst
 
 
 # Setup paths
-PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+PATH="/usr/local/bin:/usr/local/sbin:$HOME/bin:$PATH"
 PATH="$HOME/.cabal/bin:$PATH"
 PATH="$HOME/.rbenv/bin:$PATH"
 PATH="/usr/local/share/python:$PATH"
-PATH="$HOME/bin:$PATH"
 
 
 # Editors
-export EDITOR="vim"
-# export GIT_EDITOR="vim -c 'startinsert'"
-GIT_EDITOR="vim"
+export EDITOR="vi"
+GIT_EDITOR="vi"
+set -o emacs
 
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '\C-x\C-e' edit-command-line
 
 # Define functions and aliases
 alias ls="ls -lh"
@@ -32,9 +34,11 @@ alias dot="cd ~/workspace/dotfiles"
 
 # Git aliases
 alias git=hub
+alias g="git"
 alias s="git status -sb"
 alias d="git d"
-alias gap="git p"
+alias gh='git help'
+alias gp='git p'
 
 # Deep history
 export HISTSIZE=100000
