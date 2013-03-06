@@ -346,11 +346,5 @@ set winheight=5
 set winminheight=5
 set winheight=999
 
-" Shortcuts for moving between windows
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-h> <c-w>h
-nnoremap <c-l> <c-w>l
-
 " Powerline config
 let g:Powerline_symbols = 'fancy'
