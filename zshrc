@@ -85,6 +85,12 @@ function h() {
 PROMPT='%{$fg[yellow]%}%m%{$reset_color%}:%U%1~%u ${cmd_status} '
 RPROMPT='%{$fg[brblack]%} $(ruby-version) $(~/bin/git-cwd-info.rb)%{$reset_color%}'
 
+# Z
+[[ -f `brew --prefix`/etc/profile.d/z.sh ]] && . `brew --prefix`/etc/profile.d/z.sh
+
+# Heroku toolbelt
+[[ -d /usr/local/heroku ]] && export PATH="/usr/local/heroku/bin:$PATH"
+
 # Tmux
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
 
