@@ -1,3 +1,3 @@
 #! /bin/bash
 
-find ~/workspace -depth 2 -iname .rbenv-version | while read f; do v=`cat $f`; echo $v $f; done | sed s/\\/\.rbenv-version// | sort -k2
+find ~/workspace ~/vendor -depth 2 -iname .rbenv-version | while read f; do v=`cat $f`; echo $v $f; done | sed s/\\/\.rbenv-version// | sort -k2
