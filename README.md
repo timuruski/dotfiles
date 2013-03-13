@@ -19,3 +19,4 @@ The installer script defines a list of paths to ignore, etc.
 
 ## Interesting ideas
 * [OS X defaults](https://github.com/mathiasbynens/dotfiles/blob/master/.osx)
+* [Autoenv](https://github.com/kennethreitz/autoenv)
