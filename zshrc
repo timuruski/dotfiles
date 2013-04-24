@@ -15,6 +15,7 @@ PATH="/usr/local/share/python:$PATH"
 export EDITOR="vi"
 GIT_EDITOR="vi"
 set -o emacs
+alias barevim="vi -Nu ~/.barevim"
 
 autoload -U edit-command-line
 zle -N edit-command-line
@@ -23,6 +24,7 @@ bindkey '\C-x\C-e' edit-command-line
 # Define functions and aliases
 alias ls="ls -lh"
 alias r="rails"
+alias e="vi"
 function mkcd() { mkdir -p $1 && cd $1 }
 function fcd() { cd *$1* }
 
