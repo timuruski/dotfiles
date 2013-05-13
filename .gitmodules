@@ -40,3 +40,9 @@
 [submodule "vim/bundle/vitality"]
 	path = vim/bundle/vitality
 	url = git://github.com/sjl/vitality.vim.git
+[submodule "vim/bundle/vim-abolish"]
+	path = vim/bundle/vim-abolish
+	url = git://github.com/tpope/vim-abolish
+[submodule "vim/bundle/vim-repeat"]
+	path = vim/bundle/vim-repeat
+	url = git://github.com/tpope/vim-repeat
