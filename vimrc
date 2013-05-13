@@ -10,7 +10,7 @@ execute pathogen#helptags()
 
 
 " Sensible leader shortcut
-let mapleader="<space>"
+let mapleader="\<space\>"
 " let mapleader=","
 
 " Quick access to vim config
@@ -83,7 +83,6 @@ cnoremap %% <C-R>=expand('%:h').'/'<cr>
 " Open file in same directory as current file
 map <leader>e :edit %%
 nnoremap <leader><leader> <C-^>
-nnoremap <space><space> <C-^>
 
 " Clear search highlighting
 nnoremap <C-l> :nohlsearch<cr>
