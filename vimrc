@@ -10,7 +10,8 @@ execute pathogen#helptags()
 
 
 " Sensible leader shortcut
-let mapleader=","
+let mapleader="<space>"
+" let mapleader=","
 
 " Quick access to vim config
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
@@ -25,6 +26,7 @@ set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 
 " Big bucket of settings.
+set autoread
 set backspace=indent,eol,start
 set hidden
 set history=1000
@@ -80,6 +82,8 @@ cnoremap %% <C-R>=expand('%:h').'/'<cr>
 
 " Open file in same directory as current file
 map <leader>e :edit %%
+nnoremap <leader><leader> <C-^>
+nnoremap <space><space> <C-^>
 
 " Clear search highlighting
 nnoremap <C-l> :nohlsearch<cr>
@@ -100,8 +104,10 @@ function!  InsertTabWrapper()
 endfunction
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 inoremap <s-tab> <c-n>
-nnoremap <tab> %
-vnoremap <tab> %
+" *noremap here doesn't work because % is an expression
+" These interfere with <C-i> and jumps.
+" nmap <tab> %
+" vmap <tab> %
 
 " Rename current file from @garybernhardt
 function! RenameFile()
@@ -226,6 +232,12 @@ map <leader>a :call RunTests('')<cr>
 
 " CONFIGURATION
 " ================================
+
+" Matchit functionality
+" Load matchit.vim, but only if the user hasn't installed a newer version.
+if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
+  runtime! macros/matchit.vim
+endif
 
 " Netrw
 let g:netrw_liststyle = 3
