@@ -10,8 +10,10 @@ execute pathogen#helptags()
 
 
 " Sensible leader shortcut
-let mapleader="\<space\>"
-" let mapleader=","
+" let mapleader="\<space\>"
+" let g:mapleader="\<space\>"
+let mapleader=","
+let g:mapleader=","
 
 " Quick access to vim config
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
@@ -24,6 +26,9 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 " Store temporary files in a central spot
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+
+" For some reason rbenv's doesn't work without this
+set shell=/bin/sh
 
 " Big bucket of settings.
 set autoread
@@ -86,7 +91,7 @@ nnoremap <leader><leader> <C-^>
 
 " Clear search highlighting
 nnoremap <C-l> :nohlsearch<cr>
-nnoremap <CR> :nohlsearch<cr>
+" nnoremap <CR> :nohlsearch<cr>
 
 " Hashrocket expansion =>
 inoremap <c-l> <space>=><space>
@@ -226,7 +231,7 @@ endfunction
 
 map <leader>t :call RunTestFile()<cr>
 map <leader>T :call RunNearestTest()<cr>
-map <leader>a :call RunTests('')<cr>
+" map <leader>a :call RunTests('')<cr>
 
 
 " CONFIGURATION
@@ -275,3 +280,16 @@ map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
 map <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
 " Map <esc> to close Command-T window
 let g:CommandTCancelMap=['<C-c>', '<esc>']
+
+
+" Visual search
+xnoremap * :<C-u>call <SID>VSetSearch()<CR>/<C-R>=@/<CR><CR>
+xnoremap # :<C-u>call <SID>VSetSearch()<CR>?<C-R>=@/<CR><CR>
+
+function! s:VSetSearch()
+  let temp = @s
+  norm! gv"sy
+  let @/ = '\V' . substitute(escape(@s, '/\'), '\n', '\\n', 'g')
+  let @s = temp
+endfunction
+
