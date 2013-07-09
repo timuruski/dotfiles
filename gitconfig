@@ -16,6 +16,7 @@
   co = checkout
   d = diff -M
   dc = diff --cached
+  ds = diff --stat
   diffc = diff --cached
   discard = checkout --patch
   ff = merge --ff-only
@@ -28,6 +29,7 @@
   lt = !git l --since=yesterday
   noff = merge --no-ff
   p = add --patch
+  po = push origin
   pod = push origin develop
   pom = push origin master
   r = !git --no-pager l -20
@@ -37,5 +39,3 @@
   unstage = reset --patch
 [core]
   excludesfile = /Users/timuruski/.gitignore_global
-[push]
-	default = simple
