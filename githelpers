@@ -32,3 +32,28 @@ pretty_git_log() {
       # Page with colors, only when necessary, leave it on the screen
       less -FSXR
 }
+
+deploy_git_log() {
+  ref='master'
+  if [ $# -gt 0 ]; then ref=$1; fi
+
+  git log --pretty="tformat:  - %s [%an]" origin/$ref..$ref | 
+  sed -Ee 's/\[([a-zA-Z]).+ ([a-zA-Z]).+\]$/[\1\2]/'
+}
+
+current_branch() {
+  # The --short was introduced in 1.7.9, this might be more portable.
+  # git symbolic-ref -q HEAD | sed -e 's|^refs/heads/||'
+  git symbolic-ref --short --quiet HEAD
+}
+
+ffwd() {
+  if [ $# -gt 0 ]; then
+    ref=$1
+  else
+    # ref=`git branch | grep \* | sed -Ee "s/^\* +//"`
+    ref=`current_branch`
+  fi
+
+  git merge --ff-only origin/$ref
+}

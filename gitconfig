@@ -19,10 +19,12 @@
   ds = diff --stat
   diffc = diff --cached
   discard = checkout --patch
-  ff = merge --ff-only
+  deploy-msg = "!source ~/.githelpers && deploy_git_log"
+  ff = "!source ~/.githelpers && ffwd"
+  ffx = merge --ff-only
   h = !git head
   head = !git l -1
-  hp = "!source ~/.githelpers/&& show_git_head"
+  hp = "!source ~/.githelpers && show_git_head"
   l = "!source ~/.githelpers && pretty_git_log"
   la = !git l --all
   ld = !git l --simplify-by-decoration
