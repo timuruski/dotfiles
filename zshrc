@@ -5,10 +5,16 @@ setopt prompt_subst
 
 
 # Setup paths
-PATH="/usr/local/bin:/usr/local/sbin:$HOME/bin:$PATH"
+PATH="$HOME/bin:$PATH"
+PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 PATH="$HOME/.cabal/bin:$PATH"
-PATH="$HOME/.rbenv/bin:$PATH"
+# PATH="./bin:$PATH"
+# PATH="$HOME/.rbenv/bin:$PATH"
 PATH="/usr/local/share/python:$PATH"
+PATH="/usr/local/share/npm/bin:$PATH"
+export RBENV_ROOT="/usr/local/var/rbenv"
+export PYTHONPATH="/usr/local/share/python"
+# export NODE_PATH="/usr/local/share/npm/bin"
 
 
 # Editors
@@ -69,7 +75,8 @@ parse_git_branch () {
 # }
 
 function ruby-version() {
-  if [[ -d ~/.rbenv ]]; then 
+  # if [[ -d ~/.rbenv ]]; then
+  if which rbenv > /dev/null; then
     echo "$(rbenv version-name)"
   elif [[ -d ~/.rvm ]]; then
     echo "$(~/.rvm/bin/rvm-prompt)"
@@ -96,7 +103,8 @@ RPROMPT='%{$fg[brblack]%} $(ruby-version) $(~/bin/git-cwd-info.rb)%{$reset_color
 # Tmux
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
 
-if [[ -d ~/.rbenv ]]; then 
+# if [[ -n RBENV_ROOT ]] || [[ -d ~/.rbenv ]]; then
+if which rbenv > /dev/null; then
   eval "$(rbenv init -)"
 elif [[ -d ~/.rvm ]]; then
   [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
