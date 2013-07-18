@@ -37,7 +37,6 @@ alias dot="cd ~/workspace/dotfiles"
 
 # Git aliases
 alias git=hub
-alias g="git"
 alias s="git status -sb"
 alias d="git d"
 alias gh='git help'
