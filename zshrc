@@ -28,8 +28,7 @@ zle -N edit-command-line
 bindkey '\C-x\C-e' edit-command-line
 
 # Define functions and aliases
-alias ls="ls -lh"
-alias r="rails"
+alias ls="ls -lhG"
 alias e="vim"
 alias rc="rails console"
 function mkcd() { mkdir -p $1 && cd $1 }
@@ -44,9 +43,7 @@ alias dot="cd ~/workspace/dotfiles"
 # Git aliases
 alias git=hub
 alias s="git status -sb"
-alias d="git d"
-alias gh='git help'
-alias gp='git p'
+alias d="git diff -M"
 
 # Deep history
 export HISTSIZE=100000
