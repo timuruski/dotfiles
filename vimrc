@@ -78,6 +78,14 @@ set winminheight=5
 set winheight=999
 
 
+" AUTOCOMMANDS
+" ================================
+
+" Disable backups when editing a temp file, usually because it's a
+" crontab file, and cron gets upset when a backup is written.
+autocmd BufRead /tmp/*		set nowritebackup
+
+
 
 " MAPPINGS AND FUNCTIONS
 " ================================
