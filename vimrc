@@ -158,6 +158,20 @@ let g:Powerline_mode_s = ' S '
 let g:Powerline_mode_S = 'SL '
 let g:Powerline_mode_cs = ' SB '
 
+" Airline
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+let g:airline_theme = 'luna'
+let g:airline_mode_map = {
+  \ 'n'  : 'N',
+  \ 'i'  : 'I',
+  \ 'R'  : 'R',
+  \ 'v'  : 'V',
+  \ 'V'  : 'VL',
+  \ '' : 'VB',
+  \ 'c'  : 'C' }
+
+
 " Command-T
 set wildignore=vendor/**,tmp/**,bin/**
 map <leader>gv :CommandTFlush<cr>\|:CommandT app/views<cr>
