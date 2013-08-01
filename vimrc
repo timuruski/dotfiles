@@ -196,6 +196,51 @@ map <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
 let g:CommandTCancelMap=['<C-c>', '<esc>']
 
 
+" Unite
+let g:unite_enable_start_insert=1
+
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+call unite#filters#sorter_default#use(['sorter_rank'])
+call unite#set_profile('files', 'smartcase', 1)
+
+function! UniteCommandT(dir)
+  :Unite -toggle -auto-resize -buffer-name=a:dir -input=a:dir file_rec/async
+endfunction
+
+nmap <space> [unite]
+nnoremap [unite] <nop>
+nnoremap <silent> [unite]f :<C-u>Unite -toggle -auto-resize -buffer-name=files file_rec/async<cr><c-u>
+nnoremap <silent> [unite]b :<C-u>Unite -auto-resize -buffer-name=buffers buffer<cr>
+nnoremap <silent> [unite]gv :<C-u>Unite -toggle -auto-resize -buffer-name=files file_rec/async<cr><c-u>
+" nnoremap <silent> [unite]gm :call UniteCommandT('app/models')<cr><c-u>
+" nnoremap <silent> [unite]gc :call UniteCommandT('app/controllers')<cr><c-u>
+" nnoremap <silent> [unite]gh :call UniteCommandT('app/helpers')<cr><c-u>
+" nnoremap <silent> [unite]gv :call UniteCommandT('app/views')<cr><c-u>
+nnoremap <silent> [unite]gm :<C-u>Unite -toggle -auto-resize -input=app/models -buffer-name=files file_rec/async<cr><c-u>
+nnoremap <silent> [unite]gc :<C-u>Unite -toggle -auto-resize -input=app/controllers -buffer-name=files file_rec/async<cr><c-u>
+nnoremap <silent> [unite]gh :<C-u>Unite -toggle -auto-resize -input=app/helpers -buffer-name=files file_rec/async<cr><c-u>
+nnoremap <silent> [unite]gv :<C-u>Unite -toggle -auto-resize -input=app/views -buffer-name=files file_rec/async<cr><c-u>
+
+
+autocmd FileType unite call s:unite_my_settings()
+function! s:unite_my_settings()"{{{
+  " Overwrite settings.
+  nmap <buffer> <ESC>      <Plug>(unite_exit)
+  imap <buffer> <TAB>   <Plug>(unite_select_next_line)
+  imap <buffer> <S-TAB>   <Plug>(unite_select_previous_line)
+  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
+  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
+
+  nmap <buffer> <C-z>     <Plug>(unite_toggle_transpose_window)
+  imap <buffer> <C-z>     <Plug>(unite_toggle_transpose_window)
+  imap <buffer> <C-y>     <Plug>(unite_narrowing_path)
+  nmap <buffer> <C-y>     <Plug>(unite_narrowing_path)
+  nmap <buffer> <C-j>     <Plug>(unite_toggle_auto_preview)
+  " nmap <buffer> <C-r>     <Plug>(unite_narrowing_input_history)
+  " imap <buffer> <C-r>     <Plug>(unite_narrowing_input_history)
+endfunction
+
+
 " QuickFix to args
 command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()
 function! QuickfixFilenames()
