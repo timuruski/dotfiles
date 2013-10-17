@@ -99,6 +99,12 @@ autocmd BufRead /tmp/*		set nowritebackup
 " MAPPINGS AND FUNCTIONS
 " ================================
 
+" Disable ex mode until you know how to use it.
+nmap Q <Nop>
+
+" Disable weird effect when Ctrl-Space is pressed in Insert mode.
+imap <Nul> <Space>
+
 " Shortcut to directory of current file
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 
