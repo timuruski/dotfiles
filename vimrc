@@ -8,6 +8,9 @@ set nocompatible
 execute pathogen#infect()
 execute pathogen#helptags()
 
+" Semi-universal <ESC> alternatives
+inoremap jk <ESC>
+inoremap kj <ESC>
 
 " Sensible leader shortcut
 " let mapleader="\<space\>"
