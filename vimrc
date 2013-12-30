@@ -12,21 +12,30 @@ execute pathogen#helptags()
 inoremap jk <ESC>
 inoremap kj <ESC>
 
+
+" Some setups need this, not sure which though.
+" set shell=/bin/sh
+
 " Sensible leader shortcut
-" let mapleader="\<space\>"
-" let g:mapleader="\<space\>"
 let mapleader=","
+let maplocalleader=","
 let g:mapleader=","
+let g:maplocalleader=","
 
 " Quick access to vim config
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
+
+" Enable project specific vimrc files
+set exrc
+set secure
 
 " TCSH style commandline editing
 cnoremap <C-A> <Home>
 cnoremap <C-E> <End>
 cnoremap <C-F> <Right>
 cnoremap <C-B> <Left>
+cnoremap <C-D> <Del>
 cnoremap <Esc>b <S-Left>
 cnoremap <Esc>f <S-Right>
 cnoremap <C-X> <C-F>
@@ -191,7 +200,9 @@ let g:airline_mode_map = {
 
 
 " Command-T
-set wildignore=vendor/**,tmp/**,bin/**
+set wildignore=vendor/**,tmp/**,bin/**,app/assets/**,public/static/**
+
+" Shortcuts
 map <leader>gv :CommandTFlush<cr>\|:CommandT app/views<cr>
 map <leader>gc :CommandTFlush<cr>\|:CommandT app/controllers<cr>
 map <leader>gm :CommandTFlush<cr>\|:CommandT app/models<cr>
