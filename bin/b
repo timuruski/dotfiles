@@ -3,6 +3,10 @@
 require 'optparse'
 
 class Battery
+  RED = "\e[31m"
+  GREEN = "\e[32m"
+  RESET = "\e[0m"
+
   def initialize
     @data = {}
     parse_data
@@ -10,8 +14,8 @@ class Battery
 
   def parse_data
     raw_data = `ioreg -rc AppleSmartBattery`
-    raw_data.scan(/"([^"]+)" = (.+)$/) { |key, value|
-      # puts "#{key}: #{value}"
+    raw_data.scan(/"(.+?)" = (.+)$/) { |key, value|
+      puts "#{key}: #{value}" if ENV['DEBUG']
       @data[key] = value
     }
   end
@@ -32,11 +36,24 @@ class Battery
     @data['TimeRemaining'].to_f.divmod 60.00
   end
 
-  def status
-    c = "%2d%%" % charge
-    t = "%1d:%2d remaining" % time_remaining
+  def connected?
+    @data['ExternalConnected'] == 'Yes'
+  end
 
-    "#{c} #{t}"
+  def charging?
+    connected? && charge < 100.0
+  end
+
+  def reset
+    RESET
+  end
+
+  def status
+    color = charging? ? GREEN : RED
+    percent = format('%2d%%', charge)
+    time = format('%1d:%02d remaining', *time_remaining)
+
+    "#{color}#{percent}#{reset} #{time}"
   end
 
 end
@@ -86,5 +103,3 @@ __END__
       "PostChargeWaitSeconds" = 120
       "ExternalConnected" = No
     }
-    
-
