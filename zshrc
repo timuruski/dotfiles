@@ -71,6 +71,24 @@ parse_git_branch () {
 #   echo $ruby-manager
 # }
 
+# Controlling Pow
+function start_pow() {
+  launchctl load ~/Library/LaunchAgents/cx.pow.powd.plist
+}
+
+function stop_pow() {
+  launchctl unload ~/Library/LaunchAgents/cx.pow.powd.plist
+}
+
+# Controlling PostgreSQL
+function start_psql() {
+  launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
+}
+
+function stop_psql() {
+  launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
+}
+
 function ruby-version() {
   # if [[ -d ~/.rbenv ]]; then
   if which rbenv > /dev/null; then
