@@ -34,6 +34,7 @@
   po = push origin
   pod = push origin develop
   pom = push origin master
+  phm = push heroku master
   r = !git --no-pager l -20
   ra = !git r --all
   s = status -sb
