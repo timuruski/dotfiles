@@ -71,8 +71,8 @@ set wildmode=longest,list
 
 " Visual style
 set t_Co=256
-set background=dark
-colorscheme timuruski-dark
+set background=light
+colorscheme timuruski-light
 set colorcolumn=80
 set cursorline
 set hlsearch
@@ -188,7 +188,7 @@ let g:Powerline_mode_cs = ' SB '
 " Airline
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
-let g:airline_theme = 'luna'
+let g:airline_theme = 'light'
 let g:airline_mode_map = {
   \ 'n'  : 'N',
   \ 'i'  : 'I',
@@ -292,3 +292,4 @@ function! s:VSetSearch()
   let @s = temp
 endfunction
 
+command! -nargs=0 RunRuby nnoremap <leader>r :w \| !ruby %<cr>
