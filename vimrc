@@ -63,6 +63,7 @@ set list
 set listchars=tab:▸\ ,eol:¬,trail:·
 set modelines=0
 set relativenumber
+set number
 set ruler
 set showmatch
 set smartcase
@@ -70,10 +71,10 @@ set wildmenu
 set wildmode=longest,list
 
 " Visual style
-set t_Co=256
 set background=light
-colorscheme timuruski-light
-set colorcolumn=80
+set t_Co=256
+colorscheme base16
+set colorcolumn=72
 set cursorline
 set hlsearch
 
@@ -174,21 +175,10 @@ endif
 let g:netrw_liststyle = 3
 let g:netrw_altv = 1
 
-" Powerline
-let g:Powerline_symbols = 'fancy'
-let g:Powerline_mode_n = ' N '
-let g:Powerline_mode_i = ' I '
-let g:Powerline_mode_v = ' V '
-let g:Powerline_mode_V = ' VL '
-let g:Powerline_mode_cv = ' VB '
-let g:Powerline_mode_s = ' S '
-let g:Powerline_mode_S = 'SL '
-let g:Powerline_mode_cs = ' SB '
-
 " Airline
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
-let g:airline_theme = 'light'
+let g:airline_theme = 'base16'
 let g:airline_mode_map = {
   \ 'n'  : 'N',
   \ 'i'  : 'I',
@@ -197,77 +187,6 @@ let g:airline_mode_map = {
   \ 'V'  : 'VL',
   \ '' : 'VB',
   \ 'c'  : 'C' }
-
-
-" Command-T
-set wildignore=vendor/**,tmp/**,bin/**,app/assets/**,public/static/**
-
-" Shortcuts
-map <leader>gv :CommandTFlush<cr>\|:CommandT app/views<cr>
-map <leader>gc :CommandTFlush<cr>\|:CommandT app/controllers<cr>
-map <leader>gm :CommandTFlush<cr>\|:CommandT app/models<cr>
-map <leader>gh :CommandTFlush<cr>\|:CommandT app/helpers<cr>
-map <leader>gd :CommandTFlush<cr>\|:CommandT app/decorators<cr>
-map <leader>gs :CommandTFlush<cr>\|:CommandT app/services<cr>
-map <leader>gM :topleft 100 :sview db/schema.rb<cr>
-map <leader>gl :CommandTFlush<cr>\|:CommandT lib<cr>
-map <leader>gp :CommandTFlush<cr>\|:CommandT public<cr>
-map <leader>gS :CommandTFlush<cr>\|:CommandT app/assets/stylesheets<cr>
-map <leader>gJ :CommandTFlush<cr>\|:CommandT app/assets/javascripts<cr>
-map <leader>gf :CommandTFlush<cr>\|:CommandT features<cr>
-map <leader>gg :topleft 100 :split Gemfile<cr>
-map <leader>gt :CommandTFlush<cr>\|:CommandTTag<cr>
-map <leader>gr :topleft :split config/routes.rb<cr>
-map <leader>gR :call ShowRoutes()<cr>
-map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
-map <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
-" Map <esc> to close Command-T window
-let g:CommandTCancelMap=['<C-c>', '<esc>']
-
-
-" Unite
-let g:unite_enable_start_insert=1
-
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-call unite#filters#sorter_default#use(['sorter_rank'])
-call unite#set_profile('files', 'smartcase', 1)
-
-function! UniteCommandT(dir)
-  :Unite -toggle -auto-resize -buffer-name=a:dir -input=a:dir file_rec/async
-endfunction
-
-nmap <space> [unite]
-nnoremap [unite] <nop>
-nnoremap <silent> [unite]f :<C-u>Unite -toggle -auto-resize -buffer-name=files file_rec/async<cr><c-u>
-nnoremap <silent> [unite]b :<C-u>Unite -auto-resize -buffer-name=buffers buffer<cr>
-nnoremap <silent> [unite]gv :<C-u>Unite -toggle -auto-resize -buffer-name=files file_rec/async<cr><c-u>
-" nnoremap <silent> [unite]gm :call UniteCommandT('app/models')<cr><c-u>
-" nnoremap <silent> [unite]gc :call UniteCommandT('app/controllers')<cr><c-u>
-" nnoremap <silent> [unite]gh :call UniteCommandT('app/helpers')<cr><c-u>
-" nnoremap <silent> [unite]gv :call UniteCommandT('app/views')<cr><c-u>
-nnoremap <silent> [unite]gm :<C-u>Unite -toggle -auto-resize -input=app/models -buffer-name=files file_rec/async<cr><c-u>
-nnoremap <silent> [unite]gc :<C-u>Unite -toggle -auto-resize -input=app/controllers -buffer-name=files file_rec/async<cr><c-u>
-nnoremap <silent> [unite]gh :<C-u>Unite -toggle -auto-resize -input=app/helpers -buffer-name=files file_rec/async<cr><c-u>
-nnoremap <silent> [unite]gv :<C-u>Unite -toggle -auto-resize -input=app/views -buffer-name=files file_rec/async<cr><c-u>
-
-
-autocmd FileType unite call s:unite_my_settings()
-function! s:unite_my_settings()"{{{
-  " Overwrite settings.
-  nmap <buffer> <ESC>      <Plug>(unite_exit)
-  imap <buffer> <TAB>   <Plug>(unite_select_next_line)
-  imap <buffer> <S-TAB>   <Plug>(unite_select_previous_line)
-  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
-  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
-
-  nmap <buffer> <C-z>     <Plug>(unite_toggle_transpose_window)
-  imap <buffer> <C-z>     <Plug>(unite_toggle_transpose_window)
-  imap <buffer> <C-y>     <Plug>(unite_narrowing_path)
-  nmap <buffer> <C-y>     <Plug>(unite_narrowing_path)
-  nmap <buffer> <C-j>     <Plug>(unite_toggle_auto_preview)
-  " nmap <buffer> <C-r>     <Plug>(unite_narrowing_input_history)
-  " imap <buffer> <C-r>     <Plug>(unite_narrowing_input_history)
-endfunction
 
 
 " QuickFix to args
