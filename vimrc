@@ -14,7 +14,7 @@ inoremap kj <ESC>
 
 
 " Some setups need this, not sure which though.
-" set shell=/bin/sh
+set shell=/bin/sh
 
 " Sensible leader shortcut
 let mapleader=","
@@ -47,9 +47,6 @@ cnoremap <C-X> <C-F>
 " Store temporary files in a central spot
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-
-" For some reason rbenv's doesn't work without this
-set shell=/bin/sh
 
 " Big bucket of settings.
 set autoread
