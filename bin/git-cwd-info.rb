@@ -1,4 +1,5 @@
-#!/usr/bin/env ruby
+#!/usr/bin/ruby
+# Uses /bin/ruby because rbenv is sloooow.
 # -*- coding: utf-8 -*-
 
 # Emits Git metadata for use in a Zsh prompt.

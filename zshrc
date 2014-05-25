@@ -16,11 +16,6 @@ export RBENV_ROOT="/usr/local/var/rbenv"
 export PYTHONPATH="/usr/local/share/python"
 # export NODE_PATH="/usr/local/share/npm/bin"
 
-# Base16 Shell
-BASE16_SCHEME="default"
-BASE16_SHELL="$HOME/.config/base16-shell/base16-$BASE16_SCHEME"
-[[ -s $BASE16_SHELL ]] && . $BASE16_SHELL
-
 # Editors
 export EDITOR="vim"
 export GIT_EDITOR="vim"

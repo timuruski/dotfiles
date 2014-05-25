@@ -67,14 +67,6 @@ set smartcase
 set wildmenu
 set wildmode=longest,list
 
-" Visual style
-set background=light
-set t_Co=256
-colorscheme base16
-set colorcolumn=72
-set cursorline
-set hlsearch
-
 " Text formatting
 syntax on
 filetype on
@@ -209,3 +201,11 @@ function! s:VSetSearch()
 endfunction
 
 command! -nargs=0 RunRuby nnoremap <leader>r :w \| !ruby %<cr>
+
+" Visual style
+" set t_Co=256
+set colorcolumn=72
+set hlsearch
+set background=light
+colorscheme base16
+

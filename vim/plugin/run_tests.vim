@@ -35,8 +35,9 @@ nnoremap <leader>. :call OpenTestAlternate()<cr>
 
 function! RunTests(filename)
     " Write the file and run tests for the given filename
-    :w
-    :silent !echo "\e[2J"
+    write
+    call ClearScreen()
+    " silent !echo "\e[2J"
     if match(a:filename, '\.feature$') != -1
       if filereadable("script/features")
         exec ":!script/features " . a:filename
@@ -46,6 +47,8 @@ function! RunTests(filename)
     else
         if filereadable("script/test")
             exec ":!script/test " . a:filename
+        elsif executable("bin/rspec")
+            exec ":!bin/rspec " . a:filename
         elseif filereadable("Gemfile")
             exec ":!bundle exec rspec --color " . a:filename
         else
@@ -57,6 +60,16 @@ endfunction
 function! SetTestFile()
     " Set the spec file that tests will be run for.
     let t:grb_test_file=@%
+endfunction
+
+function! ClearScreen()
+    " Print enough lines to clear the screen
+    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
+    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
+    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
+    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
+    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
+    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
 endfunction
 
 function! RunTestFile(...)

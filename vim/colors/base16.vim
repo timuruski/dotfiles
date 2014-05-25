@@ -112,7 +112,7 @@ call <sid>hi("VertSplit",      s:cterm02, s:cterm02, "none")
 call <sid>hi("ColorColumn",    "", s:cterm01, "none")
 call <sid>hi("CursorColumn",   "", s:cterm01, "none")
 call <sid>hi("CursorLine",     "", s:cterm01, "none")
-call <sid>hi("CursorLineNr",   s:cterm03, s:cterm01, "")
+call <sid>hi("CursorLineNr",   s:cterm00, s:cterm04, "")
 call <sid>hi("PMenu",          s:cterm04, s:cterm01, "none")
 call <sid>hi("PMenuSel",       s:cterm01, s:cterm04, "")
 call <sid>hi("TabLine",        s:cterm03, s:cterm01, "none")
@@ -210,7 +210,7 @@ call <sid>hi("markdownHeadingDelimiter",   s:cterm0D, "", "")
 " Git highlighting
 call <sid>hi("gitCommitOverflow",   s:cterm08, "", "")
 call <sid>hi("gitCommitSummary",    s:cterm0B, "", "")
-  
+
 " GitGutter highlighting
 call <sid>hi("GitGutterAdd",      s:cterm0B, s:cterm01, "")
 call <sid>hi("GitGutterChange",   s:cterm0D, s:cterm01, "")
