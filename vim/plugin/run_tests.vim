@@ -10,7 +10,7 @@ function! AlternateForCurrentFile()
   let new_file = current_file
   let in_spec = match(current_file, '^spec/') != -1
   let going_to_spec = !in_spec
-  let in_app = match(current_file, '\<\(controllers\|models\|views\|helpers\|decorators\|services\)\>') != -1 
+  let in_app = match(current_file, '\<\(controllers\|models\|views\|helpers\|decorators\|presenters\|services\|serializers\|jobs\)\>') != -1
   let in_lib = match(current_file, '\<\lib\>') != -1
   if going_to_spec
     if in_app
@@ -33,11 +33,20 @@ endfunction
 
 nnoremap <leader>. :call OpenTestAlternate()<cr>
 
+function! ClearScreen()
+    " Print enough lines to clear the screen
+    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
+    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
+    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
+    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
+    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
+    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
+endfunction
+
 function! RunTests(filename)
     " Write the file and run tests for the given filename
     write
     call ClearScreen()
-    " silent !echo "\e[2J"
     if match(a:filename, '\.feature$') != -1
       if filereadable("script/features")
         exec ":!script/features " . a:filename

@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+
+require 'uri'
+
+lines = ARGV.any? ? ARGV : STDIN
+lines.each do |line|
+  puts URI.decode(line)
+end

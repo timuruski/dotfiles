@@ -1,0 +1,47 @@
+#!/usr/bin/env ruby
+
+require 'delegate'
+require 'json'
+require 'stringio'
+
+class IOTee
+  def initialize(input = ARGF)
+    @input = input
+    @read = StringIO.new('')
+  end
+
+  def to_io
+    self
+  end
+
+  def read
+    @input.read.tap { |out| @read.puts(out) }
+  end
+
+  def read_read
+    @read.rewind
+    @read.read
+  end
+
+  def method_missing(symbol, *args, &block)
+    @input.send(symbol, *args, &block)
+  end
+
+  def respond_to_missing?(symbol, include_all)
+    @input.respond_to?(symbol, include_all)
+  end
+end
+
+
+begin
+  input = IOTee.new(ARGF)
+  input = ARGF
+  puts JSON.pretty_generate JSON.load(input)
+rescue JSON::GeneratorError, JSON::ParserError => error
+  puts error
+  # puts input.read_read
+  warn "--- Not parseable JSON."
+  exit(1)
+rescue Errno::EPIPE
+  exit(74)
+end

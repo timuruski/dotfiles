@@ -80,7 +80,7 @@ set tabstop=2
 set textwidth=72
 
 " Window sizing rules from @garybernhardt
-set winwidth=84
+" set winwidth=84
 " We have to have a winheight bigger than we want to set winminheight. But if
 " we set winheight to be huge before winminheight, the winminheight set will
 " fail.
@@ -88,6 +88,11 @@ set winheight=5
 set winminheight=5
 set winheight=999
 
+" Window sizing with vim-eighties
+" let g:eighties_enabled = 1
+" let g:eighties_minimum_width = 80
+" let g:eighties_extra_width = 0 " Increase this if you want some extra room
+" let g:eighties_compute = 1 " Disable this if you just want the minimum + extra
 
 " AUTOCOMMANDS
 " ================================
@@ -176,7 +181,6 @@ let g:airline_mode_map = {
   \ 'V'  : 'VL',
   \ '' : 'VB',
   \ 'c'  : 'C' }
-
 
 " QuickFix to args
 command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()

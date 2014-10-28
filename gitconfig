@@ -1,6 +1,6 @@
 [user]
   name = Tim Uruski
-  email = github@login.timuruski.name
+	email = tim@petrofeed.com
 [github]
   user = timuruski
   token = !security 2>&1 >/dev/null find-generic-password -gs github.token | ruby -e 'print $1 if STDIN.gets =~ /^password: \\\"(.*)\\\"$/'
@@ -42,3 +42,6 @@
   unstage = reset --patch
 [core]
   excludesfile = /Users/timuruski/.gitignore_global
+  excludesfile = /opt/boxen/config/git/gitignore
+[hub]
+  protocol = https
