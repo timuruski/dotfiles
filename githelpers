@@ -51,3 +51,13 @@ ffwd() {
   ref=${1:-`current_branch`}
   git merge --ff-only origin/$ref
 }
+
+# Assumes input date is formatted as YYYY-MM-DD
+sred_log() {
+  sred_date="${1:-$(date +"%Y-%m-%d")}"
+  until=$(date -v "+1d" -jf "%Y-%m-%d" "${sred_date}")
+  since=$(date -v "-6d" -jf "%Y-%m-%d" "${sred_date}")
+  author=$(git config --get user.email)
+
+  git log --reverse --author "${author}" --since "${since}" --until "${until}"
+}

@@ -38,10 +38,10 @@
   r = !git --no-pager l -20
   ra = !git r --all
   s = status -sb
+  sred = "!source ~/.githelpers && sred_log"
   st = status
   unstage = reset --patch
 [core]
   excludesfile = /Users/timuruski/.gitignore_global
-  excludesfile = /opt/boxen/config/git/gitignore
 [hub]
   protocol = https
