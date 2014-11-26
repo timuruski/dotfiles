@@ -52,12 +52,16 @@ ffwd() {
   git merge --ff-only origin/$ref
 }
 
-# Assumes input date is formatted as YYYY-MM-DD
+# Assumes input date is formatted as YYYY-MM-DD,
+# passes additional arguments to git-log.
 sred_log() {
-  sred_date="${1:-$(date +"%Y-%m-%d")}"
-  until=$(date -v "+1d" -jf "%Y-%m-%d" "${sred_date}")
-  since=$(date -v "-6d" -jf "%Y-%m-%d" "${sred_date}")
+  date_format='%Y-%m-%d'
+  sred_date="${1:-$(date +"$date_format")}"
+  shift
+
+  until=$(date -v "+1d" -jf "$date_format" "${sred_date}")
+  since=$(date -v "-6d" -jf "$date_format" "${sred_date}")
   author=$(git config --get user.email)
 
-  git log --reverse --author "${author}" --since "${since}" --until "${until}"
+  git log --reverse --author "${author}" --since "${since}" --until "${until}" ${@}
 }
