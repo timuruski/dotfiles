@@ -7,14 +7,6 @@ setopt prompt_subst
 # Setup paths
 PATH="$HOME/bin:$PATH"
 PATH="/usr/local/bin:/usr/local/sbin:$PATH"
-PATH="$HOME/.cabal/bin:$PATH"
-# PATH="./bin:$PATH"
-# PATH="$HOME/.rbenv/bin:$PATH"
-PATH="/usr/local/share/python:$PATH"
-PATH="/usr/local/share/npm/bin:$PATH"
-export RBENV_ROOT="/usr/local/var/rbenv"
-export PYTHONPATH="/usr/local/share/python"
-# export NODE_PATH="/usr/local/share/npm/bin"
 
 # Editors
 export EDITOR="vim"
@@ -39,11 +31,11 @@ function _ws() { _files -W ~/workspace -/; }
 compdef _ws ws
 alias dot="cd ~/workspace/dotfiles"
 
-# Deep history
+# History config
 export HISTSIZE=100000
 export HISTFILE="$HOME/.history"
 export SAVEHIST=$HISTSIZE
-setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_DUPS HIST_IGNORE_SPACE
 
 
 # Customize prompt
@@ -51,19 +43,6 @@ local cmd_status="%(?,%{$reset_color%}$%{$reset_color%},%{$fg[red]%}$%{$reset_co
 parse_git_branch () {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/::\1/' -e '/::master/d'
 }
-
-
-# export RUBY_MANAGER=detect_ruby_manager()
-# function detect-ruby-manager() {
-#   ruby-manager=''
-#   if [[ -d ~/.rvm ]]; then
-#     ruby-manager='rvm'
-#   elif [[ -d ~/.rbenv ]]; then 
-#     ruby-manager='rbenv'
-#   fi
-
-#   echo $ruby-manager
-# }
 
 # Controlling Pow
 function start_pow() {
@@ -84,37 +63,26 @@ function stop_psql() {
 }
 
 function ruby-version() {
-  # if [[ -d ~/.rbenv ]]; then
-  if which rbenv > /dev/null; then
-    echo "$(rbenv version-name)"
-  elif [[ -d ~/.rvm ]]; then
-    echo "$(~/.rvm/bin/rvm-prompt)"
-  fi
+  /usr/bin/env ruby -v | cut -d ' ' -f 2
 }
 
-function h() {
-  if [[ -s $1 ]]; then
-    runhaskell $1
-  else
-    ghci
-  fi
+function host_color() {
+  [[ -n "$TMUX" ]] && printf 'blue' || printf 'green'
 }
 
-PROMPT='%{$fg[yellow]%}%m%{$reset_color%}:%U%1~%u ${cmd_status} '
-RPROMPT='%{$fg[brblack]%} $(ruby-version) $(~/bin/git-cwd-info.rb)%{$reset_color%}'
+function tmux_info() {
+  [[ -z "$TMUX" ]] && return
+
+  info=$(tmux list-windows -F '#{?window_active,[#{window_index}/#{session_windows}],}' | awk '!/^$/')
+  printf "$info "
+}
+
+# PROMPT='%{$fg[green]%}%m%{$reset_color%}:%U%1~%u ${cmd_status} '
+PROMPT='$(tmux_info)%{$fg[$(host_color)]%}%m%{$reset_color%}:%U%1~%u ${cmd_status} '
+RPROMPT='%{$fg[brblack]%} $(~/bin/git-cwd-info.rb)%{$reset_color%}'
 
 # Z
 [[ -f `brew --prefix`/etc/profile.d/z.sh ]] && . `brew --prefix`/etc/profile.d/z.sh
 
 # Heroku toolbelt
 [[ -d /usr/local/heroku ]] && export PATH="/usr/local/heroku/bin:$PATH"
-
-# Tmux
-[[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
-
-# if [[ -n RBENV_ROOT ]] || [[ -d ~/.rbenv ]]; then
-if which rbenv > /dev/null; then
-  eval "$(rbenv init -)"
-elif [[ -d ~/.rvm ]]; then
-  [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-fi
