@@ -18,5 +18,7 @@ map <leader>gt :CtrlPClearCache<cr>\|:CtrlPTag<cr>
 map <leader>gr :topleft :split config/routes.rb<cr>
 map <leader>gR :call ShowRoutes()<cr>
 map <leader>b :CtrlPClearCache<cr>\|:CtrlPBuffer<cr>
-map <leader>f :CtrlPClearCache<cr>\|:CtrlP<cr>
+" map <leader>f :CtrlPClearCache<cr>\|:CtrlP<cr>
 map <leader>F :CtrlPClearCache<cr>\|:CtrlP %%<cr>
+
+let g:ctrlp_map = '<leader>f'
