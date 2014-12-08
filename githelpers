@@ -51,3 +51,10 @@ ffwd() {
   ref=${1:-`current_branch`}
   git merge --ff-only origin/$ref
 }
+
+# push origin branch
+push_origin() {
+  branch=${1:-$(current_branch)}
+  echo "push origin ${branch}"
+  git push origin ${branch}
+}

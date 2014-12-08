@@ -32,7 +32,7 @@
   noff = merge --no-ff
   p = add --patch
   po = push origin
-  pod = push origin develop
+  pob = !source ~/.githelpers && push_origin
   pom = push origin master
   phm = push heroku master
   r = !git --no-pager l -20
