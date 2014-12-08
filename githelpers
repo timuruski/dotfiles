@@ -55,6 +55,6 @@ ffwd() {
 # push origin branch
 push_origin() {
   branch=${1:-$(current_branch)}
-  echo "push origin ${branch}"
+  echo "git push origin ${branch}"
   git push origin ${branch}
 }
