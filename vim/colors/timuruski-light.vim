@@ -1,7 +1,7 @@
 " Extends
 runtime colors/base16-tomorrow.vim
 
-set background=light
+" set background=light
 let g:colors_name = "timuruski-light"
 
 " Underline search terms to lower craziness levels.

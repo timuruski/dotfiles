@@ -77,8 +77,15 @@ function tmux_info() {
   printf "$info "
 }
 
+function tmux_info2() {
+  [[ -z "$TMUX" ]] && return
+
+  info=$(tmux list-windows -F '#{?window_active,#,.}' | awk '{ printf $1 }')
+  printf "$info "
+}
+
 # PROMPT='%{$fg[green]%}%m%{$reset_color%}:%U%1~%u ${cmd_status} '
-PROMPT='$(tmux_info)%{$fg[$(host_color)]%}%m%{$reset_color%}:%U%1~%u ${cmd_status} '
+PROMPT='$(tmux_info2)%{$fg[$(host_color)]%}%m%{$reset_color%}:%U%1~%u ${cmd_status} '
 RPROMPT='%{$fg[brblack]%} $(~/bin/git-cwd-info.rb)%{$reset_color%}'
 
 # Z

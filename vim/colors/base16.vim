@@ -33,7 +33,7 @@ endif
 " Theme setup
 hi clear
 syntax reset
-let g:colors_name = "base16-default"
+let g:colors_name = "base16"
 
 " Highlighting function
 fun <sid>hi(group, ctermfg, ctermbg, attr)

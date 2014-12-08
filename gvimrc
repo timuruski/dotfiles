@@ -8,16 +8,11 @@ if has("gui_macvim")
   imap <D-t> <Esc>:CommandT<CR>
 
   " Command-Shift-F for Ack
-  map <D-F> :Ack<space>
-
-  map <D-/> <plug>NERDCommenterToggle<CR>
-  imap <D-/> <Esc><plug>NERDCommenterToggle<CR>i
-
+  map <D-F> :Ag<space>
 endif
 
 " Don't beep
 set visualbell
-
 
 " Start without the toolbar
 set guioptions-=T
@@ -25,3 +20,6 @@ set guioptions-=T
 " Don't show scroll bars in the GUI
 set guioptions-=L
 set guioptions-=r
+
+set guifont="Menlo Regular"
+colorscheme base16-default

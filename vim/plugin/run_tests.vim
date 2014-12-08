@@ -10,15 +10,14 @@ function! AlternateForCurrentFile()
   let new_file = current_file
   let in_spec = match(current_file, '^spec/') != -1
   let going_to_spec = !in_spec
-  let in_app = match(current_file, '\<\(controllers\|models\|views\|helpers\|decorators\|services\)\>') != -1 
-  let in_lib = match(current_file, '\<\lib\>') != -1
+  " let in_app = match(current_file, '\<\(controllers\|models\|views\|helpers\|decorators\|services\)\>') != -1 
+  let in_app = match(current_file, '\<\(controllers\|views\|helpers\|decorators\|services\)\>') != -1 
   if going_to_spec
     if in_app
       let new_file = substitute(new_file, '^app/', '', '')
-    end
-    if in_lib
+    else
       let new_file = substitute(new_file, '^lib/', '', '')
-    end
+    endif
     let new_file = substitute(new_file, '\.rb$', '_spec.rb', '')
     let new_file = 'spec/' . new_file
   else
@@ -26,6 +25,8 @@ function! AlternateForCurrentFile()
     let new_file = substitute(new_file, '^spec/', '', '')
     if in_app
       let new_file = 'app/' . new_file
+    else
+      let new_file = 'lib/' . new_file
     end
   endif
   return new_file
@@ -96,6 +97,6 @@ endfunction
 
 map <leader>t :call RunTestFile()<cr>
 map <leader>T :call RunNearestTest()<cr>
-" map <leader>a :call RunTests('')<cr>
+map <leader>a :call RunTests('')<cr>
 
 

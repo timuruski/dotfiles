@@ -14,7 +14,7 @@ inoremap kj <ESC>
 
 
 " Some setups need this, not sure which though.
-set shell=/bin/sh
+set shell=/bin/zsh
 
 " Sensible leader shortcut
 let mapleader=","
@@ -77,10 +77,10 @@ set expandtab
 set shiftwidth=2
 set softtabstop=2
 set tabstop=2
-set textwidth=72
+set textwidth=80
 
 " Window sizing rules from @garybernhardt
-set winwidth=84
+" set winwidth=84
 " We have to have a winheight bigger than we want to set winminheight. But if
 " we set winheight to be huge before winminheight, the winminheight set will
 " fail.
@@ -177,6 +177,10 @@ let g:airline_mode_map = {
   \ '' : 'VB',
   \ 'c'  : 'C' }
 
+" Vimroom
+let g:vimroom_background = 'white'
+let g:vimroom_sidebar_height = 0
+
 
 " QuickFix to args
 command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()
@@ -204,7 +208,7 @@ command! -nargs=0 RunRuby nnoremap <leader>r :w \| !ruby %<cr>
 
 " Visual style
 " set t_Co=256
-set colorcolumn=72
+set colorcolumn=80
 set hlsearch
 set background=light
 colorscheme base16
