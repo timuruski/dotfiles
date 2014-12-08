@@ -3,14 +3,10 @@ autoload -U compinit && compinit
 autoload -U colors && colors
 setopt prompt_subst
 
-
 # Setup paths
 PATH="$HOME/bin:$PATH"
 PATH="/usr/local/bin:/usr/local/sbin:$PATH"
-PATH="/usr/local/share/python:$PATH"
 PATH="/usr/local/share/npm/bin:$PATH"
-export RBENV_ROOT="/usr/local/var/rbenv"
-export PYTHONPATH="/usr/local/share/python"
 # export NODE_PATH="/usr/local/share/npm/bin"
 
 export EDITOR="vim"
@@ -39,6 +35,16 @@ function _ws() { _files -W ~/workspace -/; }
 compdef _ws ws
 alias dot="cd ~/workspace/dotfiles"
 
+# Controlling PostgreSQL
+function start_psql() {
+  launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
+}
+
+function stop_psql() {
+  launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
+}
+
+
 # Deep history
 export HISTSIZE=100000
 export HISTFILE="$HOME/.history"
@@ -52,32 +58,17 @@ parse_git_branch () {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/::\1/' -e '/::master/d'
 }
 
-# Controlling PostgreSQL
-function start_psql() {
-  launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
-}
-
-function stop_psql() {
-  launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
-}
-
-function ruby-version() {
-  # if [[ -d ~/.rbenv ]]; then
-  if which rbenv > /dev/null; then
-    echo "$(rbenv version-name)"
-  elif [[ -d ~/.rvm ]]; then
-    echo "$(~/.rvm/bin/rvm-prompt)"
-  fi
-}
-
 PROMPT='%{$fg[blue]%}%m%{$reset_color%}:%U%1~%u ${cmd_status} '
-RPROMPT='%{$fg[brblack]%} $(ruby-version) $(~/bin/git-cwd-info.rb)%{$reset_color%}'
+RPROMPT='%{$fg[brblack]%}$(~/bin/git-cwd-info.rb)%{$reset_color%}'
 
-# Use boxen
-source /opt/boxen/env.sh
 
-# Heroku toolbelt
-[[ -d /usr/local/heroku ]] && export PATH="/usr/local/heroku/bin:$PATH"
+# chruby
+source /usr/local/opt/chruby/share/chruby/chruby.sh
+source /usr/local/opt/chruby/share/chruby/auto.sh
+chruby ruby-2.0.0-p247
 
 # Z
 [[ -f `brew --prefix`/etc/profile.d/z.sh ]] && . `brew --prefix`/etc/profile.d/z.sh
+
+# Heroku toolbelt
+[[ -d /usr/local/heroku ]] && export PATH="/usr/local/heroku/bin:$PATH"

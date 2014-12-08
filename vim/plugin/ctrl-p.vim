@@ -1,5 +1,5 @@
 " Ctrl-P
-set wildignore=vendor/**,tmp/**
+set wildignore=.gem/**,vendor/**,tmp/**
 
 map <leader>gm :CtrlPClearCache<cr>\|:CtrlP app/models<cr>
 map <leader>gv :CtrlPClearCache<cr>\|:CtrlP app/views<cr>
@@ -18,5 +18,7 @@ map <leader>gt :CtrlPClearCache<cr>\|:CtrlPTag<cr>
 map <leader>gr :topleft :split config/routes.rb<cr>
 map <leader>gR :call ShowRoutes()<cr>
 map <leader>b :CtrlPClearCache<cr>\|:CtrlPBuffer<cr>
-map <leader>f :CtrlPClearCache<cr>\|:CtrlP<cr>
+" map <leader>f :CtrlPClearCache<cr>\|:CtrlP<cr>
 map <leader>F :CtrlPClearCache<cr>\|:CtrlP %%<cr>
+
+let g:ctrlp_map = '<leader>f'

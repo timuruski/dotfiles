@@ -89,10 +89,10 @@ set winminheight=5
 set winheight=999
 
 " Window sizing with vim-eighties
-" let g:eighties_enabled = 1
-" let g:eighties_minimum_width = 80
-" let g:eighties_extra_width = 0 " Increase this if you want some extra room
-" let g:eighties_compute = 1 " Disable this if you just want the minimum + extra
+let g:eighties_enabled = 1
+let g:eighties_minimum_width = 80
+let g:eighties_extra_width = 0 " Increase this if you want some extra room
+let g:eighties_compute = 1 " Disable this if you just want the minimum + extra
 
 " AUTOCOMMANDS
 " ================================
@@ -158,6 +158,9 @@ map <leader>n :call RenameFile()<cr>
 
 " CONFIGURATION
 " ================================
+
+" Ctrl-P fuzzy finder
+set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 " Matchit functionality
 " Load matchit.vim, but only if the user hasn't installed a newer version.
