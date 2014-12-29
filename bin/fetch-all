@@ -1,0 +1,13 @@
+#! /bin/bash
+
+set -e
+
+PROJECTS=(platform-apis PetroFeedApp PetroFeedApp-Android data-acquisition crawlers nom-nom)
+for project in "${PROJECTS[@]}"; do
+  echo "Fetching $project"
+
+  project_path="${HOME}/workspace/$project"
+  cd $project_path
+
+  git fetch origin
+done
