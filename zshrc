@@ -26,8 +26,10 @@ function mkcd() { mkdir -p $1 && cd $1 }
 function fcd() { cd *$1* }
 
 # PetroFeed application environments
-alias preprod='HEROKU_APP=preprod-api-petrofeed heroku'
-alias prod='HEROKU_APP=petrofeed-api heroku'
+alias on_prod="HEROKU_APP=petrofeed-api heroku"
+alias on_preprod="HEROKU_APP=preprod-api-petrofeed heroku"
+alias on_data="HEROKU_APP=acquisition-petrofeed heroku"
+alias on_preprod_data="HEROKU_APP=acquisition-petrofeed-preprod heroku"
 
 # Workspace shortcut and completion
 function ws() { cd ~/workspace/$1; }
@@ -60,12 +62,6 @@ parse_git_branch () {
 
 PROMPT='%{$fg[blue]%}%m%{$reset_color%}:%U%1~%u ${cmd_status} '
 RPROMPT='%{$fg[brblack]%}$(~/bin/git-cwd-info.rb)%{$reset_color%}'
-
-
-# chruby
-source /usr/local/opt/chruby/share/chruby/chruby.sh
-source /usr/local/opt/chruby/share/chruby/auto.sh
-chruby ruby-2.0.0-p247
 
 # Z
 [[ -f `brew --prefix`/etc/profile.d/z.sh ]] && . `brew --prefix`/etc/profile.d/z.sh
