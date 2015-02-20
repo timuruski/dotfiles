@@ -2,7 +2,13 @@
 
 set -e
 
-PROJECTS=(platform-apis PetroFeedApp PetroFeedApp-Android data-acquisition crawlers nom-nom)
+PROJECTS=(
+  platform-apis
+  data-acquisition
+  PetroFeedApp
+  PetroFeedApp-Android
+  crawlers
+  nom-nom)
 for project in "${PROJECTS[@]}"; do
   echo "Fetching $project"
 

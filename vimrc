@@ -66,6 +66,7 @@ set showmatch
 set smartcase
 set wildmenu
 set wildmode=longest,list
+set wildignore=.gem/**,vendor/**,tmp/**,**/node_modules/**
 
 " Text formatting
 syntax on

@@ -26,10 +26,12 @@ function mkcd() { mkdir -p $1 && cd $1 }
 function fcd() { cd *$1* }
 
 # PetroFeed application environments
-alias on_prod="HEROKU_APP=petrofeed-api heroku"
-alias on_preprod="HEROKU_APP=preprod-api-petrofeed heroku"
-alias on_data="HEROKU_APP=acquisition-petrofeed heroku"
-alias on_preprod_data="HEROKU_APP=acquisition-petrofeed-preprod heroku"
+alias on_api="HEROKU_APP=petrofeed-api heroku"
+alias on_api_preprod="HEROKU_APP=preprod-api-petrofeed heroku"
+alias on_docs="HEROKU_APP=acquisition-petrofeed heroku"
+alias on_docs_preprod="HEROKU_APP=acquisition-petrofeed-preprod heroku"
+# alias on_prod="HEROKU_APP=petrofeed-api heroku"
+# alias on_preprod="HEROKU_APP=preprod-api-petrofeed heroku"
 
 # Workspace shortcut and completion
 function ws() { cd ~/workspace/$1; }
@@ -55,12 +57,12 @@ setopt HIST_IGNORE_DUPS
 
 
 # Customize prompt
-local cmd_status="%(?,%{$reset_color%}$%{$reset_color%},%{$fg[red]%}$%{$reset_color%})"
+local cmd_status="%(?,%{$reset_color%},%{$fg[red]%})♥%{$reset_color%}"
 parse_git_branch () {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/::\1/' -e '/::master/d'
 }
 
-PROMPT='%{$fg[blue]%}%m%{$reset_color%}:%U%1~%u ${cmd_status} '
+PROMPT=' ${cmd_status} %{$fg[blue]%}%m%{$reset_color%}:%U%1~%u '
 RPROMPT='%{$fg[brblack]%}$(~/bin/git-cwd-info.rb)%{$reset_color%}'
 
 # Z
