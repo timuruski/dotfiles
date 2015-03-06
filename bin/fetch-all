@@ -7,8 +7,7 @@ PROJECTS=(
   data-acquisition
   PetroFeedApp
   PetroFeedApp-Android
-  crawlers
-  nom-nom)
+  crawlers)
 for project in "${PROJECTS[@]}"; do
   echo "Fetching $project"
 

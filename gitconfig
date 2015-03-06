@@ -45,3 +45,5 @@
   excludesfile = /Users/timuruski/.gitignore_global
 [hub]
   protocol = https
+[push]
+	default = simple
