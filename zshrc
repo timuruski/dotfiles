@@ -4,10 +4,12 @@ autoload -U colors && colors
 setopt prompt_subst
 
 # Setup paths
-PATH="$HOME/bin:$PATH"
 PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 PATH="/usr/local/share/npm/bin:$PATH"
-# export NODE_PATH="/usr/local/share/npm/bin"
+[[ -d /usr/local/heroku ]] && export PATH="/usr/local/heroku/bin:$PATH"
+PATH="$HOME/bin:$PATH"
+
+export PATH
 
 export EDITOR="vim"
 export GIT_EDITOR="vim"
@@ -67,6 +69,3 @@ RPROMPT='%{$fg[brblack]%}$(~/bin/git-cwd-info.rb)%{$reset_color%}'
 
 # Z
 [[ -f `brew --prefix`/etc/profile.d/z.sh ]] && . `brew --prefix`/etc/profile.d/z.sh
-
-# Heroku toolbelt
-[[ -d /usr/local/heroku ]] && export PATH="/usr/local/heroku/bin:$PATH"
