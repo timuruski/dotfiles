@@ -5,9 +5,11 @@ set -e
 PROJECTS=(
   platform-apis
   data-acquisition
+  crawlers
   PetroFeedApp
   PetroFeedApp-Android
-  crawlers)
+  petrofeed-connect-server
+  petrofeed-connect-client)
 for project in "${PROJECTS[@]}"; do
   echo "Fetching $project"
 
