@@ -30,10 +30,14 @@ function fcd() { cd *$1* }
 # PetroFeed application environments
 alias on_api="HEROKU_APP=petrofeed-api heroku"
 alias on_api_preprod="HEROKU_APP=preprod-api-petrofeed heroku"
+alias on_api_dev="HEROKU_APP=dev-api-petrofeed heroku"
 alias on_docs="HEROKU_APP=acquisition-petrofeed heroku"
 alias on_docs_preprod="HEROKU_APP=acquisition-petrofeed-preprod heroku"
-# alias on_prod="HEROKU_APP=petrofeed-api heroku"
-# alias on_preprod="HEROKU_APP=preprod-api-petrofeed heroku"
+alias on_docs_dev="HEROKU_APP=acquisition-petrofeed-dev heroku"
+
+# Local application workspaces
+alias start-api="startup platform-apis"
+alias start-docs="startup ingestion"
 
 # Workspace shortcut and completion
 function ws() { cd ~/workspace/$1; }

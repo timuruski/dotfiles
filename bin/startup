@@ -1,0 +1,27 @@
+#! /bin/bash
+
+if [[ -z "$1" ]]; then
+  cat >&2 <<EOS
+USAGE: startup <teamocil_project>
+EOS
+  exit 1
+fi
+
+# ---
+
+set -e
+
+tmux_sessions () {
+  tmux ls -F "#S" 2>/dev/null
+}
+
+SESSION_NAME="$1"
+
+# exit if already running
+for session in $(tmux_sessions); do
+  [[ $session = $SESSION_NAME ]] && exit;
+done
+
+# start tmux session
+tmux new-session -d -s $SESSION_NAME -n $SESSION_NAME
+tmux send -t $SESSION_NAME "teamocil --here $SESSION_NAME"
