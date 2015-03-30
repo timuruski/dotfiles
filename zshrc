@@ -36,8 +36,10 @@ alias on_docs_preprod="HEROKU_APP=acquisition-petrofeed-preprod heroku"
 alias on_docs_dev="HEROKU_APP=acquisition-petrofeed-dev heroku"
 
 # Local application workspaces
-alias start-api="startup platform-apis"
-alias start-docs="startup ingestion"
+alias start-api="workspace-up platform-apis"
+alias kill-api="workspace-down platform-apis"
+alias start-docs="workspace-up ingestion"
+alias kill-docs="workspace-down ingestion"
 
 # Workspace shortcut and completion
 function ws() { cd ~/workspace/$1; }

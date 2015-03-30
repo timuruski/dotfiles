@@ -1,0 +1,33 @@
+#! /bin/bash
+
+if [[ -z "$1" ]]; then
+  cat >&2 <<EOS
+USAGE: shutdown <teamocil_project>
+EOS
+  exit 1
+fi
+
+# ---
+
+set -e
+
+tmux_sessions () {
+  tmux ls -F "#S" 2>/dev/null
+}
+
+tmux_windows () {
+  tmux lsw -F "#W" -t "$1" 2>/dev/null
+}
+
+SESSION_NAME="$1"
+
+# exit if not already running
+for session in $(tmux_sessions); do
+  [[ $session = $SESSION_NAME ]] || exit;
+done
+
+# start tmux session
+for window in $(tmux_windows $SESSION_NAME); do
+  # TODO Maybe send QUIT signals to window first?
+  tmux kill-window -t "$window"
+done
