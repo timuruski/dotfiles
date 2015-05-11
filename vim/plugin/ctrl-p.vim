@@ -1,6 +1,4 @@
 " Ctrl-P
-set wildignore=.gem/**,vendor/**,tmp/**
-
 map <leader>gm :CtrlPClearCache<cr>\|:CtrlP app/models<cr>
 map <leader>gv :CtrlPClearCache<cr>\|:CtrlP app/views<cr>
 map <leader>gc :CtrlPClearCache<cr>\|:CtrlP app/controllers<cr>

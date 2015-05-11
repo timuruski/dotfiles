@@ -32,8 +32,6 @@ function! AlternateForCurrentFile()
   return new_file
 endfunction
 
-nnoremap <leader>. :call OpenTestAlternate()<cr>
-
 function! RunTests(filename)
     " Write the file and run tests for the given filename
     write
@@ -95,8 +93,7 @@ function! RunNearestTest()
     call RunTestFile(":" . spec_line_number . " -b")
 endfunction
 
-map <leader>t :call RunTestFile()<cr>
-map <leader>T :call RunNearestTest()<cr>
-map <leader>a :call RunTests('')<cr>
-
-
+nnoremap <leader>a :call OpenTestAlternate()<cr>
+nnoremap <leader>t :call RunTestFile()<cr>
+nnoremap <leader>T :call RunNearestTest()<cr>
+" nnoremap <leader>a :call RunTests('')<cr>

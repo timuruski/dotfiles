@@ -12,15 +12,14 @@ execute pathogen#helptags()
 inoremap jk <ESC>
 inoremap kj <ESC>
 
-
 " Some setups need this, not sure which though.
 set shell=/bin/zsh
 
 " Sensible leader shortcut
-let mapleader=","
-let maplocalleader=","
-let g:mapleader=","
-let g:maplocalleader=","
+" let mapleader=","
+" let maplocalleader=","
+" let g:mapleader=","
+" let g:maplocalleader=","
 
 " Quick access to vim config
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
@@ -39,6 +38,12 @@ cnoremap <C-D> <Del>
 cnoremap <Esc>b <S-Left>
 cnoremap <Esc>f <S-Right>
 cnoremap <C-X> <C-F>
+
+" Matchit functionality
+" Load matchit.vim, but only if the user hasn't installed a newer version.
+if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
+  runtime! macros/matchit.vim
+endif
 
 
 " SETTINGS
@@ -66,6 +71,8 @@ set showmatch
 set smartcase
 set wildmenu
 set wildmode=longest,list
+set wildignore=*.otf,*.eot*.woff,*.ttf,.gem/**,vendor/**,tmp/**
+
 
 " Text formatting
 syntax on
@@ -153,12 +160,6 @@ map <leader>n :call RenameFile()<cr>
 
 " CONFIGURATION
 " ================================
-
-" Matchit functionality
-" Load matchit.vim, but only if the user hasn't installed a newer version.
-if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
-  runtime! macros/matchit.vim
-endif
 
 " Netrw
 let g:netrw_liststyle = 3
