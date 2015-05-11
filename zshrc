@@ -5,8 +5,12 @@ setopt prompt_subst
 
 
 # Setup paths
+export GOPATH="$HOME/go"
+PATH="$GOPATH/bin:$PATH"
+
 PATH="$HOME/bin:$PATH"
 PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+export PATH
 
 # Editors
 export EDITOR="vim"
@@ -54,11 +58,11 @@ function stop_pow() {
 }
 
 # Controlling PostgreSQL
-function start_psql() {
+function start_postgres() {
   launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
 }
 
-function stop_psql() {
+function stop_postgres() {
   launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
 }
 
