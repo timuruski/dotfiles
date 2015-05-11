@@ -42,3 +42,6 @@
   unstage = reset --patch
 [core]
   excludesfile = /Users/timuruski/.gitignore_global
+[diff]
+[push]
+	default = simple
