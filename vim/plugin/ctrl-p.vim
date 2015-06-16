@@ -1,4 +1,9 @@
 " Ctrl-P
+let g:ctrlp_map = '<leader>f'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/](www)',
+  \ }
+
 map <leader>gm :CtrlPClearCache<cr>\|:CtrlP app/models<cr>
 map <leader>gv :CtrlPClearCache<cr>\|:CtrlP app/views<cr>
 map <leader>gc :CtrlPClearCache<cr>\|:CtrlP app/controllers<cr>
@@ -18,5 +23,3 @@ map <leader>gR :call ShowRoutes()<cr>
 map <leader>b :CtrlPClearCache<cr>\|:CtrlPBuffer<cr>
 " map <leader>f :CtrlPClearCache<cr>\|:CtrlP<cr>
 map <leader>F :CtrlPClearCache<cr>\|:CtrlP %%<cr>
-
-let g:ctrlp_map = '<leader>f'

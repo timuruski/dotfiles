@@ -17,10 +17,10 @@ inoremap kj <ESC>
 set shell=/bin/sh
 
 " Sensible leader shortcut
-let mapleader=","
-let maplocalleader=","
-let g:mapleader=","
-let g:maplocalleader=","
+" let mapleader=","
+" let maplocalleader=","
+" let g:mapleader=","
+" let g:maplocalleader=","
 
 " Quick access to vim config
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
@@ -66,7 +66,7 @@ set showmatch
 set smartcase
 set wildmenu
 set wildmode=longest,list
-set wildignore=.gem/**,vendor/**,tmp/**,**/node_modules/**
+set wildignore=*/.git/*,*/.hg/*,*/.svn/*,*/.gem/*,*/vendor/*,*/tmp/*,*/node_modules/*
 
 " Text formatting
 syntax on
@@ -212,7 +212,7 @@ command! -nargs=0 RunRuby nnoremap <leader>r :w \| !ruby %<cr>
 
 " Visual style
 " set t_Co=256
-set colorcolumn=72
+set colorcolumn=120
 set hlsearch
 set background=light
 colorscheme base16
