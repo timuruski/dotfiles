@@ -20,3 +20,4 @@ map <leader>b :CtrlPClearCache<cr>\|:CtrlPBuffer<cr>
 map <leader>F :CtrlPClearCache<cr>\|:CtrlP %%<cr>
 
 let g:ctrlp_map = '<leader>f'
+let g:ctrlp_custom_ignore = '\v[\/](\.gem|node_modules|vendor)[\/]'
