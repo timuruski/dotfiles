@@ -22,6 +22,7 @@
   deploy-msg = "!source ~/.githelpers && deploy_git_log"
   ff = "!source ~/.githelpers && ffwd"
   ffx = merge --ff-only
+  git = !git
   h = !git head
   head = !git l -1
   hp = "!source ~/.githelpers && show_git_head"
