@@ -71,7 +71,7 @@ set showmatch
 set smartcase
 set wildmenu
 set wildmode=longest,list
-set wildignore=*.otf,*.eot*.woff,*.ttf,.gem/**,vendor/**,tmp/**
+set wildignore=*.otf,*.eot*.woff,*.ttf,*/.gem/*,*/vendor/*,*/tmp/*
 
 
 " Text formatting
