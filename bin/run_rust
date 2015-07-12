@@ -1,0 +1,23 @@
+#! /bin/bash
+
+# Usage instructions
+if [[ -z $1 ]]; then
+  echo 1>&2 "Usage: run_rust <main.rs>"
+  exit 1
+fi
+
+# Requires Rust compiler
+if ! [[ -x $(which rustc) ]]; then
+  echo 1>&2 "Requires rustc"
+  exit 1
+fi
+
+set -e
+
+SOURCE="$1"
+TARGET="$(basename $SOURCE .rs)"
+
+rustc -o $TARGET $SOURCE && ./$TARGET
+rm $TARGET
+
+unset SOURCE TARGET
