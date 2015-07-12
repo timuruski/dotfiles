@@ -17,7 +17,11 @@ set -e
 SOURCE="$1"
 TARGET="$(basename $SOURCE .rs)"
 
-rustc -o $TARGET $SOURCE && ./$TARGET
-rm $TARGET
+rustc -o $TARGET $SOURCE
+
+if [[ -x $TARGET ]]; then
+  ./$TARGET
+  rm $TARGET
+fi
 
 unset SOURCE TARGET
