@@ -48,21 +48,12 @@ parse_git_branch () {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/::\1/' -e '/::master/d'
 }
 
-# Controlling Pow
-function start_pow() {
-  launchctl load ~/Library/LaunchAgents/cx.pow.powd.plist
-}
-
-function stop_pow() {
-  launchctl unload ~/Library/LaunchAgents/cx.pow.powd.plist
-}
-
 # Controlling PostgreSQL
-function start_postgres() {
+function start-postgres() {
   launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
 }
 
-function stop_postgres() {
+function stop-postgres() {
   launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
 }
 
