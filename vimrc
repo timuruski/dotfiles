@@ -206,6 +206,7 @@ function! s:VSetSearch()
 endfunction
 
 command! -nargs=0 RunRuby nnoremap <leader>r :w \| !ruby %<cr>
+command! -nargs=1 RunCmd nnoremap <leader>r :w \| !clear; <args> % <CR>
 
 " Visual style
 " set t_Co=256
