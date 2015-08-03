@@ -5,7 +5,7 @@ end
 
 desc "List files"
 task :list do
-  Dotfiles.collect.each { |dotfile| puts dotfile.target_path }
+  Dotfiles.collect.each { |dotfile| puts dotfile.desc }
 end
 
 desc "Add vim plugins as submodules."
@@ -36,11 +36,10 @@ module Dotfiles
   IGNORE = [File.basename(__FILE__), 'tmp']
   class << self
     def collect(base_path = '~')
-      dotfiles = Dir.entries('.').grep(/^[^.]/)
+      dotfiles = Dir.entries('.').grep(/^[^.].+[^~]$/)
       dotfiles.reject! { |name| IGNORE.include?(name) }
       dotfiles = dotfiles.map { |p| Dotfile.new(p, base_path) }
     end
-    
   end
 end
 
@@ -53,15 +52,34 @@ class Dotfile
     @target_path = File.expand_path(".#{path}", base_path)
   end
 
+  def desc
+    "#{status} #{path} => #{short_target_path}"
+  end
+
   def exists?
-    File.exists?(target_path) || File.symlink?(target_path)
+    File.exists?(target_path)
+  end
+
+  def symlinked?
+    File.symlink?(target_path)
   end
 
   def symlink!
-    unless exists?
+    unless symlinked? || exists?
       puts "Linking: #{full_path} -> #{target_path}"
       File.symlink(full_path, target_path) 
     end
   end
 
+  def short_target_path
+    target_path.sub(File.expand_path('~'), '~')
+  end
+
+  def status
+    case
+    when symlinked? then '*'
+    when exists? then '#'
+    else ' '
+    end
+  end
 end
