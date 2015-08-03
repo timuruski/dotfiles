@@ -41,20 +41,16 @@ export HISTFILE="$HOME/.history"
 export SAVEHIST=$HISTSIZE
 setopt HIST_IGNORE_DUPS HIST_IGNORE_SPACE
 
+# Datastore services
+source $HOME/.zsh/postgres.sh
+source $HOME/.zsh/mongo.sh
+source $HOME/.zsh/redis.sh
+
 
 # Customize prompt
 local cmd_status="%(?,%{$reset_color%}$%{$reset_color%},%{$fg[red]%}$%{$reset_color%})"
 parse_git_branch () {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/::\1/' -e '/::master/d'
-}
-
-# Controlling PostgreSQL
-function start-postgres() {
-  launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
-}
-
-function stop-postgres() {
-  launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
 }
 
 function ruby-version() {
