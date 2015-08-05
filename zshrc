@@ -77,3 +77,8 @@ RPROMPT='%{$fg[brblack]%}$(~/bin/git-cwd-info.rb)%{$reset_color%}'
 
 # Z
 [[ -f `brew --prefix`/etc/profile.d/z.sh ]] && . `brew --prefix`/etc/profile.d/z.sh
+
+# Plugins
+for plugin in ~/.zsh/plugins/*.sh; do
+  source "$plugin"
+done
