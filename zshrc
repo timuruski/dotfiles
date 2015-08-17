@@ -40,24 +40,13 @@ alias start-api="workspace-start platform-apis"
 alias stop-api="workspace-stop platform-apis"
 alias start-docs="workspace-start ingestion"
 alias stop-docs="workspace-stop ingestion"
-alias start-connect="workspace-start connect"
-alias stop-connect="workspace-stop connect"
-
-# Workspace shortcut and completion
-function ws() { cd ~/workspace/$1; }
-function _ws() { _files -W ~/workspace -/; }
-compdef _ws ws
-alias dot="cd ~/workspace/dotfiles"
+# alias start-connect="workspace-start connect"
+# alias stop-connect="workspace-stop connect"
 
 # Controlling PostgreSQL
-function start_psql() {
-  launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
-}
-
-function stop_psql() {
-  launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
-}
-
+source ~/.zsh/postgres.sh
+source ~/.zsh/mongo.sh
+source ~/.zsh/redis.sh
 
 # Deep history
 export HISTSIZE=100000
