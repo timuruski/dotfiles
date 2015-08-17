@@ -20,6 +20,10 @@ autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '\C-x\C-e' edit-command-line
 
+# Base-16 Shell
+BASE16_SHELL="$HOME/.zsh/base16-shell/base16-ashes.light.sh"
+[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+
 # Define functions and aliases
 alias ls="ls -lhG"
 alias ql='qlmanage -p "$@" &> /dev/null'

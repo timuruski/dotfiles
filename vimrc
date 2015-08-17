@@ -215,5 +215,6 @@ command! -nargs=0 RunRuby nnoremap <leader>r :w \| !ruby %<cr>
 set colorcolumn=120
 set hlsearch
 set background=light
-colorscheme base16
+let base16colorspace=256
+colorscheme base16-ocean
 
