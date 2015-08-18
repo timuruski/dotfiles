@@ -21,8 +21,8 @@ zle -N edit-command-line
 bindkey '\C-x\C-e' edit-command-line
 
 # Base-16 Shell
-COLORSCHEME="$HOME/.zsh/base16-shell/base16-ocean.light.sh"
 source ~/.zsh/colorscheme.sh
+colorscheme "$HOME/.zsh/base16-shell/base16-ocean.light.sh"
 
 # Define functions and aliases
 alias ls="ls -lhG"
