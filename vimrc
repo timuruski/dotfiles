@@ -15,12 +15,6 @@ inoremap kj <ESC>
 " Some setups need this, not sure which though.
 set shell=/bin/zsh
 
-" Sensible leader shortcut
-" let mapleader=","
-" let maplocalleader=","
-" let g:mapleader=","
-" let g:maplocalleader=","
-
 " Quick access to vim config
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
@@ -63,6 +57,7 @@ set ignorecase
 set laststatus=2
 set list
 set listchars=tab:▸\ ,eol:¬,trail:·
+set matchtime=2
 set modelines=0
 set relativenumber
 set number
@@ -124,9 +119,6 @@ nnoremap <leader><leader> <C-^>
 " Clear search highlighting
 nnoremap <C-l> :nohlsearch<cr>
 " nnoremap <CR> :nohlsearch<cr>
-
-" Hashrocket expansion =>
-inoremap <c-l> <space>=><space>
 
 " Smarter tab behavior from @garybernhardt
 " Indents at start of line, otherwise completes, or matches parens
