@@ -7,9 +7,10 @@ setopt prompt_subst
 # Setup paths
 export GOPATH="$HOME/go"
 PATH="$GOPATH/bin:$PATH"
-
-PATH="$HOME/bin:$PATH"
 PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+PATH="$HOME/bin:$PATH"
+[[ -d /usr/local/heroku ]] && PATH="/usr/local/heroku/bin:$PATH"
+
 export PATH
 
 # Editors
@@ -22,10 +23,14 @@ autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '\C-x\C-e' edit-command-line
 
+# Base-16 Shell
+source ~/.zsh/colorscheme.sh
+colorscheme "$HOME/.zsh/base16-shell/base16-ocean.light.sh"
+
 # Define functions and aliases
 alias ls="ls -lhG"
-alias e="vim"
-alias be="bundle exec"
+alias ql='qlmanage -p "$@" &> /dev/null'
+alias be='bundle exec'
 function mkcd() { mkdir -p $1 && cd $1 }
 function fcd() { cd *$1* }
 
@@ -33,7 +38,6 @@ function fcd() { cd *$1* }
 function ws() { cd ~/workspace/$1; }
 function _ws() { _files -W ~/workspace -/; }
 compdef _ws ws
-alias dot="cd ~/workspace/dotfiles"
 
 # History config
 export HISTSIZE=100000
@@ -48,39 +52,18 @@ source $HOME/.zsh/redis.sh
 
 
 # Customize prompt
-local cmd_status="%(?,%{$reset_color%}$%{$reset_color%},%{$fg[red]%}$%{$reset_color%})"
+local cmd_status="%(?,%{$reset_color%},%{$fg[red]%})♥%{$reset_color%}"
 parse_git_branch () {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/::\1/' -e '/::master/d'
 }
 
-function ruby-version() {
-  /usr/bin/env ruby -v | cut -d ' ' -f 2
-}
-
-function host_color() {
-  [[ -n "$TMUX" ]] && printf 'blue' || printf 'green'
-}
-
-function tmux_info() {
-  [[ -z "$TMUX" ]] && return
-
-  info=$(tmux list-windows -F '#{?window_active,[#{window_index}/#{session_windows}],}' | awk '!/^$/')
-  printf "$info "
-}
-
-function tmux_info2() {
-  [[ -z "$TMUX" ]] && return
-
-  info=$(tmux list-windows -F '#{?window_active,#,.}' | awk '{ printf $1 }')
-  printf "$info "
-}
-
-# PROMPT='%{$fg[green]%}%m%{$reset_color%}:%U%1~%u ${cmd_status} '
-PROMPT='$(tmux_info2)%{$fg[$(host_color)]%}%m%{$reset_color%}:%U%1~%u ${cmd_status} '
-RPROMPT='%{$fg[brblack]%} $(~/bin/git-cwd-info.rb)%{$reset_color%}'
+PROMPT=' ${cmd_status} %{$fg[blue]%}%m%{$reset_color%}:%U%1~%u '
+RPROMPT='%{$fg[brblack]%}$(~/bin/git-cwd-info.rb)%{$reset_color%}'
 
 # Z
 [[ -f `brew --prefix`/etc/profile.d/z.sh ]] && . `brew --prefix`/etc/profile.d/z.sh
 
-# Heroku toolbelt
-[[ -d /usr/local/heroku ]] && export PATH="/usr/local/heroku/bin:$PATH"
+# Plugins
+for plugin in ~/.zsh/plugins/*.sh; do
+  source "$plugin"
+done
