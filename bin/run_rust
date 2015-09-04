@@ -1,27 +1,53 @@
 #! /bin/bash
 
-# Usage instructions
-if [[ -z $1 ]]; then
-  echo 1>&2 "Usage: run_rust <main.rs>"
-  exit 1
-fi
-
 # Requires Rust compiler
 if ! [[ -x $(which rustc) ]]; then
   echo 1>&2 "Requires rustc"
   exit 1
 fi
 
+# Usage instructions
+function usage()
+{
+  echo 1>&2 "Usage: run_rust [--test|-t] <main.rs>"
+  exit 1
+}
+
+function run_rust()
+{
+  local run_test
+  case "$1" in
+    -h|--help)
+      usage
+      ;;
+    -t|--test)
+      run_test=true
+      shift
+      ;;
+    -*|--*)
+      # Ignore
+      shift
+      ;;
+  esac
+
+  SOURCE="$1"
+  TARGET="$(basename $SOURCE .rs)"
+
+  if [ "$run_test" = true ]; then
+    rustc --test -o $TARGET $SOURCE
+  else
+    rustc -o $TARGET $SOURCE
+  fi
+
+  if [[ -x $TARGET ]]; then
+    ./$TARGET
+    rm $TARGET
+  fi
+}
+
 set -e
 
-SOURCE="$1"
-TARGET="$(basename $SOURCE .rs)"
-
-rustc -o $TARGET $SOURCE
-
-if [[ -x $TARGET ]]; then
-  ./$TARGET
-  rm $TARGET
-fi
+[[ $# -lt 1 ]] && usage
+run_rust $@
 
 unset SOURCE TARGET
