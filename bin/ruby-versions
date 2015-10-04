@@ -1,17 +1,8 @@
-#! /bin/bash
+#! /usr/bin/env bash
 
-# Print out all ruby version files
-pattern=".*(ruby|rbenv)-version"
-
-function ruby-version () {
-  file=$1
-  version=`cat $file`
-  echo "$version	$file"
-}
-
-find -E ~/workspace ~/vendor -d 2 -regex $pattern |
-  while read file; do
-    ruby-version $file
-  done |
-sed "s/\\/\.(ruby|rebenv)-version//" |
-sort -k2
+find $@ -depth 2 -iname .ruby-version -or -iname .rbenv-version |\
+while read file; do
+  version=$(cat $file)
+  project=$(dirname $file)
+  echo $version $project
+done
