@@ -5,8 +5,10 @@ set -e
 PROJECTS=(
   platform-apis
   platform-api-client
-  petrofeed-connect-server
-  petrofeed-connect-client
+  tether-api
+  tether-client
+  petrofeed-connect-dashboard
+  petrofeed-ops
   data-acquisition
   crawlers
   tech-blog
