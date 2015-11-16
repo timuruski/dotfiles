@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+find ~/workspace -depth 2 -iname .ruby-version |\
+while read file; do
+  version=$(cat $file)
+  echo $version ${file/\\/.ruby-version/}
+done |\
+sort -k2
