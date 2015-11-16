@@ -203,8 +203,8 @@ command! -nargs=1 RunCmd nnoremap <leader>r :w \| !clear; <args> % <CR>
 
 " Visual style
 " set t_Co=256
-let base16colorspace=256
 set colorcolumn=80
 set hlsearch
-set background=light
+let base16colorspace=256
+let &background=substitute(expand("$COLORSCHEME"), '\v.*(light|dark).*', '\1', '')
 colorscheme base16
