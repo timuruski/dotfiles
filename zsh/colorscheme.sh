@@ -15,9 +15,12 @@ function base16 {
 }
 
 function colorscheme {
-  COLORSCHEME="$1"
-  [[ -s $COLORSCHEME ]] && source $COLORSCHEME
-  export COLORSCHEME
+  if [[ -s "$1" ]]; then
+    export COLORSCHEME="$1"
+    source $COLORSCHEME
+  else
+    echo $COLORSCHEME
+  fi
 }
 
 function invert-colors {
@@ -29,9 +32,6 @@ function invert-colors {
     *dark.sh  )
       FROM_COLOR="dark"
       TO_COLOR="light"
-      ;;
-    * )
-      exit
       ;;
   esac
 

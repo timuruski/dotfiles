@@ -208,3 +208,6 @@ set hlsearch
 let base16colorspace=256
 let &background=substitute(expand("$COLORSCHEME"), '\v.*(light|dark).*', '\1', '')
 colorscheme base16
+
+" Toggle background
+nmap <F2> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
