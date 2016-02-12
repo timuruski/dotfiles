@@ -1,7 +1,7 @@
 " Ctrl-P
 let g:ctrlp_map = '<leader>f'
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](www)',
+  \ 'dir':  '\v[\/](www|public|themes)',
   \ }
 
 map <leader>gm :CtrlPClearCache<cr>\|:CtrlP app/models<cr>

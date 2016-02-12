@@ -62,6 +62,9 @@ RPROMPT='%{$fg[brblack]%}$(~/bin/git-cwd-info.rb)%{$reset_color%}'
 # Z
 [[ -f `brew --prefix`/etc/profile.d/z.sh ]] && . `brew --prefix`/etc/profile.d/z.sh
 
+# DIRENV
+eval "$(direnv hook zsh)"
+
 # Controlling data stores
 source ~/.zsh/postgres.sh
 source ~/.zsh/mongo.sh
@@ -71,3 +74,6 @@ source ~/.zsh/redis.sh
 for plugin in ~/.zsh/plugins/*.sh; do
   source "$plugin"
 done
+
+# Greeting
+archey -c

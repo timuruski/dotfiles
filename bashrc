@@ -33,11 +33,6 @@ parse_git_branch () {
 }
 alias revspec="run-command-on-git-revisions origin/master master 'rspec spec'"
 
-# ----------------------------------------------------------------------
-# TODO
-# ----------------------------------------------------------------------
-alias t="python ~/vendor/t/t.py --task-dir ~/Dropbox/tasks --list todo"
-alias i="python ~/vendor/t/t.py --task-dir ~/Dropbox/tasks --list ideas"
 
 # ----------------------------------------------------------------------
 # PROMPT, ETC.

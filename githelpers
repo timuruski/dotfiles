@@ -65,3 +65,8 @@ sred_log() {
 
   git log --reverse --author "${author}" --since "${since}" --until "${until}" ${@}
 }
+
+git_wip() {
+  git add --update
+  git commit --no-verify --message "WIP $1"
+}

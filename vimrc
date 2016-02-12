@@ -66,7 +66,7 @@ set showmatch
 set smartcase
 set wildmenu
 set wildmode=longest,list
-set wildignore=*/.git/*,*/.hg/*,*/.svn/*,*/.gem/*,*/vendor/*,*/tmp/*,*/node_modules/*
+set wildignore=*/.git/*,*/.hg/*,*/.svn/*,*/.gem/*,*/vendor/*,*/tmp/*,*/node_modules/*,*/node_modules-*/*
 
 " Text formatting
 syntax on
@@ -123,9 +123,6 @@ nnoremap <leader><leader> <C-^>
 " Clear search highlighting
 nnoremap <C-l> :nohlsearch<cr>
 " nnoremap <CR> :nohlsearch<cr>
-
-" Hashrocket expansion =>
-inoremap <c-l> <space>=><space>
 
 " Smarter tab behavior from @garybernhardt
 " Indents at start of line, otherwise completes, or matches parens
@@ -209,12 +206,15 @@ function! s:VSetSearch()
 endfunction
 
 command! -nargs=0 RunRuby nnoremap <leader>r :w \| !ruby %<cr>
+command! -nargs=1 RunCmd nnoremap <leader>r :w \| !clear; <args> % <CR>
 
 " Visual style
 " set t_Co=256
 set colorcolumn=120
 set hlsearch
-set background=light
 let base16colorspace=256
-colorscheme base16-ocean
+let &background=substitute(expand("$COLORSCHEME"), '\v.*(light|dark).*', '\1', '')
+colorscheme base16-default
 
+" Toggle background
+nmap <F2> :let &background = ( &background == "dark"? "light" : "dark" )<CR>

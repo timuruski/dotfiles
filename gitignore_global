@@ -1,7 +1,10 @@
-/.bundle
-/.gem
-doc/tags
 .DS_Store
-/tmp
-/.vagrant
-/vendor/bundle
+.bundle/
+.envrc
+.gem/
+.vagrant/
+doc/tags
+node_modules-*/
+node_modules/
+tmp/
+vendor/bundle/

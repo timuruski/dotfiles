@@ -1,0 +1,9 @@
+#!/bin/bash
+
+SCRIPT='tell application "Caffeine" to turn on'
+
+if [[ $# -gt 0 ]]; then
+  SCRIPT="${SCRIPT} for $(($1 * 10))"
+fi
+
+exec osascript -e "$SCRIPT"

@@ -43,9 +43,14 @@
   sred = "!source ~/.githelpers && sred_log"
   st = status
   unstage = reset --patch
+  wip = "!source ~/.githelpers && git_wip"
 [core]
   excludesfile = /Users/timuruski/.gitignore_global
 [hub]
   protocol = https
 [push]
 	default = simple
+[filter "lfs"]
+	clean = git lfs clean %f
+	smudge = git lfs smudge %f
+	required = true
