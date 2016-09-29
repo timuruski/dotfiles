@@ -1,0 +1,46 @@
+#! /usr/bin/env ruby
+
+# rubocop:disable all
+
+require 'find'
+
+# implementation or test
+# find implementation path
+# find test path
+
+ROOT_DIR = File.expand_path File.dirname __FILE__
+SRC_DIRS = ['app'].map { |dir| File.join(ROOT_DIR, dir) }
+TEST_DIRS = ['spec'].map { |dir| File.join(ROOT_DIR, dir) }
+
+def find_match(filename, search_dirs)
+  Find.find(*search_dirs) do |path|
+    return path if File.basename(path) == filename
+  end
+end
+
+def to_src(path)
+  src_name = File.basename(path).gsub(/_spec.rb$/, '.rb')
+  find_match(src_name, SRC_DIRS)
+end
+
+def to_test(path)
+  test_name = File.basename(path, '.rb') + '_spec.rb'
+  find_match(test_name, TEST_DIRS)
+end
+
+def test?(path)
+  File.basename(path, '.rb').end_with?('_spec')
+end
+
+# ---
+
+if ARGV.empty?
+  warn "Usage: #{$0} <PATH>"
+  exit 1
+end
+
+CURRENT = ARGV.first
+alt = test?(CURRENT) ? to_src(CURRENT) : to_test(CURRENT)
+if alt then puts alt else exit 1 end
+
+# rubocop:enable all

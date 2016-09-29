@@ -5,22 +5,18 @@ set -e
 bold=$(tput bold)
 normal=$(tput sgr0)
 
+WORKSPACE="${HOME}/workspace"
 PROJECTS=(
-  tether-webapp
-  tether-ios
-  tether-android
-  tether-www
   tether-api
-  tether-client
-  tether-admin
-  petrofeed-ops
-  tech-blog
+  tether-ios
+  tether-web-client
   dotfiles
-  platform-apis)
+)
+
 for project in "${PROJECTS[@]}"; do
   echo "Fetching ${bold}${project}${normal}"
 
-  project_path="${HOME}/workspace/$project"
+  project_path="${WORKSPACE}/${project}"
   cd $project_path
 
   git fetch --prune origin

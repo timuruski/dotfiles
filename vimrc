@@ -78,7 +78,7 @@ set expandtab
 set shiftwidth=2
 set softtabstop=2
 set tabstop=2
-set textwidth=72
+set textwidth=116
 
 " Window sizing rules from @garybernhardt
 " set winwidth=84

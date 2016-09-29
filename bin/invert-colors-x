@@ -1,0 +1,26 @@
+#! /usr/bin/env zsh
+
+set -e
+
+echo $BASE16_SHELL
+
+# Base-16 Shell
+case "${BASE16_SHELL}" in
+  *light.sh )
+    FROM_COLOR="light"
+    TO_COLOR="dark"
+    ;;
+  *dark.sh  )
+    FROM_COLOR="dark"
+    TO_COLOR="light"
+    ;;
+  * )
+    exit
+    ;;
+esac
+
+# BASE16_SHELL="$HOME/.zsh/base16-shell/base16-ocean.light.sh" ;;
+BASE16_SHELL="$(echo $BASE16_SHELL | sed -e "s/${FROM_COLOR}/${TO_COLOR}/")"
+echo $BASE16_SHELL
+[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+export BASE16_SHELL

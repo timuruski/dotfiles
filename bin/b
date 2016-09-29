@@ -1,7 +1,5 @@
 #!/usr/bin/env ruby -w
 
-require 'optparse'
-
 class Battery
   RED = "\e[31m"
   GREEN = "\e[32m"

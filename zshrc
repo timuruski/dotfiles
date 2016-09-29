@@ -7,7 +7,7 @@ setopt prompt_subst
 PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 PATH="/usr/local/share/npm/bin:$PATH"
 PATH=$PATH:/usr/local/opt/go/libexec/bin
-[[ -d /usr/local/heroku ]] && export PATH="/usr/local/heroku/bin:$PATH"
+# [[ -d /usr/local/heroku ]] && export PATH="/usr/local/heroku/bin:$PATH"
 PATH="$HOME/bin:$PATH"
 
 if which nodenv > /dev/null; then eval "$(nodenv init -)"; fi
@@ -26,15 +26,14 @@ zle -N edit-command-line
 bindkey '\C-x\C-e' edit-command-line
 
 # Base-16 Shell
-source ~/.zsh/colorscheme.sh
-[[ -n "$COLORSCHEME" ]] || colorscheme "$HOME/.zsh/base16-shell/base16-eighties.light.sh"
+# source ~/.zsh/colorscheme.sh
+# [[ -n "$COLORSCHEME" ]] || colorscheme "$HOME/.zsh/base16-shell/base16-eighties.light.sh"
 
 # Define functions and aliases
 alias ls="ls -lhG"
-alias ql='qlmanage -p "$@" &> /dev/null'
 alias be='bundle exec'
 alias ne='PATH=./node_modules/.bin:$PATH'
-alias npmw='./npmw'
+alias g="fg"
 function mkcd() { mkdir -p $1 && cd $1 }
 function fcd() { cd *$1* }
 
@@ -67,6 +66,7 @@ eval "$(direnv hook zsh)"
 
 # Controlling data stores
 source ~/.zsh/postgres.sh
+source ~/.zsh/elasticsearch.sh
 source ~/.zsh/mongo.sh
 source ~/.zsh/redis.sh
 
@@ -77,3 +77,5 @@ done
 
 # Greeting
 archey -c
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
