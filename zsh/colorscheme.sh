@@ -14,6 +14,16 @@ function base16 {
   fi
 }
 
+function _base16 {
+  base16_dir="$HOME/.zsh/base16-shell"
+  themes=$(find $base16_dir -name "base16-*.light.sh" | sed -E "s/.*base16-([^.]*).*\.sh/\1/")
+  for name in $themes; do
+    compadd $name
+  done
+}
+
+compdef _base16 base16
+
 function colorscheme {
   if [[ -s "$1" ]]; then
     export COLORSCHEME="$1"

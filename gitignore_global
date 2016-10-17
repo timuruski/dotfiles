@@ -1,6 +1,7 @@
-/.bundle
-doc/tags
 .DS_Store
-/tmp
-/.vagrant
-/vendor/bundle
+.bundle/
+.envrc
+.vagrant/
+doc/tags
+tmp/
+vendor/bundle/

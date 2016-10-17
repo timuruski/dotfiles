@@ -17,7 +17,7 @@ export PATH
 export EDITOR="vim"
 export GIT_EDITOR="vim"
 set -o emacs
-alias barevim="/usr/binvi -Nu ~/.barevim"
+alias learnvim="/usr/bin/env vim -Nu ~/.learnvimrc"
 
 autoload -U edit-command-line
 zle -N edit-command-line
@@ -31,6 +31,7 @@ colorscheme "$HOME/.zsh/base16-shell/base16-ocean.light.sh"
 alias ls="ls -lhG"
 alias ql='qlmanage -p "$@" &> /dev/null'
 alias be='bundle exec'
+alias g='fg'
 function mkcd() { mkdir -p $1 && cd $1 }
 function fcd() { cd *$1* }
 

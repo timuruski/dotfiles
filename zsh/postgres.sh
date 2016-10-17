@@ -1,5 +1,5 @@
 # Controlling PostgreSQL
-function start-postgres() {
+function start-psql() {
   case "$1" in
     --daemon|-d)
       launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
@@ -10,6 +10,6 @@ function start-postgres() {
   esac
 }
 
-function stop-postgres() {
+function stop-psql() {
   launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
 }
