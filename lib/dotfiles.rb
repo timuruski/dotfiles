@@ -8,6 +8,7 @@ module Dotfiles
     options = Options.parse!(args)
 
     no_install = options.fetch(:no_install)
+    force = options.fetch(:force)
     source_dir = options.fetch(:source_dir)
     target_dir = args.shift || ENV['HOME']
 
@@ -15,7 +16,7 @@ module Dotfiles
     installer = Installer.new(source_dir)
     yield installer if block_given?
 
-    installer.install(target_dir) unless no_install
+    installer.install(target_dir, force: force) unless no_install
     installer.list(target_dir)
 
     installer
@@ -26,14 +27,16 @@ module Dotfiles
     def initialize(source_dir)
       @source_dir = source_dir
 
-      @ignore_list = [$0]
+      install_script = $0
+
+      @ignore_list = [install_script]
       @dotfile_list = []
       @symlink_list = []
     end
 
     attr_reader :source_dir
 
-    def ignore(*patterns)
+    def ignore(patterns)
       Array(patterns).each do |p|
         @ignore_list << p
       end
@@ -52,12 +55,14 @@ module Dotfiles
     end
 
     def install(target_dir, options = {})
-      dry_run = options.fetch(:dry_run, false)
+      force = options.fetch(:force, false)
 
       Dir.chdir(source_dir) do
         install_table(target_dir).each do |source, target|
-          # puts "  #{source} -> #{target} : #{File.exist?(target)}"
-          File.symlink(source, target) unless installed?(target) || dry_run
+	  # puts "  #{source} -> #{target} : #{File.exist?(source)} #{File.exist?(target)}"
+	  File.unlink(target) if force && installed?(target)
+	  next if installed?(target)
+          File.symlink(source, target)
         end
       end
     end
@@ -110,6 +115,7 @@ module Dotfiles
     def self.parse!(args)
       options = {}
       options[:no_install] = false
+      options[:force] = false
       options[:source_dir] = File.dirname( File.expand_path($0) )
 
       parser = OptionParser.new do |opts|
@@ -121,6 +127,10 @@ module Dotfiles
         opts.on '-l', '--list', 'Only list files installed' do |v|
           options[:no_install] = v
         end
+
+	opts.on '-f', '--force', 'Overwrite existing symlinks' do |v|
+          options[:force] = v
+	end
 
         opts.on '-s', '--source [DIR]', String,
                 "Default: #{options[:source_dir]}" do |path|
