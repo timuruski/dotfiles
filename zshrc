@@ -26,8 +26,10 @@ bindkey '\C-x\C-e' edit-command-line
 # Base-16 Shell
 source ~/.zsh/colorscheme.sh
 colorscheme "$HOME/.zsh/base16-shell/base16-ocean.light.sh"
+# colorscheme "$HOME/.zsh/base16-shell/scripts/base16-tomorrow.sh"
 
 # Define functions and aliases
+alias vi="vim"
 alias ls="ls -lhG"
 alias ql='qlmanage -p "$@" &> /dev/null'
 alias be='bundle exec'
@@ -71,3 +73,5 @@ eval "$(direnv hook zsh)"
 for plugin in ~/.zsh/plugins/*.sh; do
   source "$plugin"
 done
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
