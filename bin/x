@@ -1,0 +1,35 @@
+#!/usr/bin/env ruby
+#
+# Usage: x [path_a, path_b, ...]
+# Will add or remove -x as a suffix to paths, eg.
+#   path/to/foo.rb -> path/to/foo-x.rb
+#   path/to/foo-x.rb -> path/to/foo.rb
+#
+# NOTE: Suffix is appended to basename to preserve file-type.
+
+require 'pathname'
+
+at_exit do
+  ARGV.each do |path|
+    x Pathname.new(File.expand_path(path))
+  end
+end
+
+def x (path)
+  basename = path.basename('.*').to_s.chomp('-x')
+  basename_with_x = basename + '-x'
+
+  f_path = Pathname.new File.join(path.dirname, basename + path.extname)
+  x_path = Pathname.new File.join(path.dirname, basename_with_x + path.extname)
+
+  if f_path.exist? && x_path.exist?
+    warn "Warning: #{f_path} and #{basename_with_x} both exist, skipping..."
+    return
+  elsif x_path.exist?
+    puts "mv #{x_path} #{f_path}"
+    File.rename(x_path, f_path)
+  else
+    puts "mv #{f_path} #{x_path}"
+    File.rename(f_path, x_path)
+  end
+end
