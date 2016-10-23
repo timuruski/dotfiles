@@ -4,9 +4,30 @@
 " Don't worry about compatibility with original Vi
 set nocompatible
 
-" Pathogen plugins
-execute pathogen#infect()
-execute pathogen#helptags()
+" Vimplug
+call plug#begin('~/.vim/plugged')
+
+" Plug 'scrooloose/syntastic'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'janko-m/vim-test'
+Plug 'junegunn/goyo.vim'
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-ragtag'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-vinegar'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
+Plug 'vim-scripts/ag.vim'
+
+call plug#end()
 
 " Semi-universal <ESC> alternatives
 inoremap jk <ESC>
