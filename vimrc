@@ -33,9 +33,6 @@ call plug#end()
 inoremap jk <ESC>
 inoremap kj <ESC>
 
-" Some setups need this, not sure which though.
-set shell=/bin/zsh
-
 " Quick access to vim config
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
