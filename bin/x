@@ -26,10 +26,10 @@ def x (path)
     warn "Warning: #{f_path} and #{basename_with_x} both exist, skipping..."
     return
   elsif x_path.exist?
-    puts "mv #{x_path} #{f_path}"
+    # puts "mv #{x_path} #{f_path}"
     File.rename(x_path, f_path)
   else
-    puts "mv #{f_path} #{x_path}"
+    # puts "mv #{f_path} #{x_path}"
     File.rename(f_path, x_path)
   end
 end
