@@ -8,6 +8,7 @@ set nocompatible
 call plug#begin('~/.vim/plugged')
 
 " Plug 'scrooloose/syntastic'
+Plug 'csexton/trailertrash.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'janko-m/vim-test'
 Plug 'junegunn/goyo.vim'

@@ -4,6 +4,7 @@ $:.unshift File.dirname(__FILE__)
 require 'lib/dotfiles'
 
 IGNORE = %w[
+  Brewfile
   Gemfile*
   brewed
   README.md
