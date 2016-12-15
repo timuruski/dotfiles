@@ -71,3 +71,5 @@ eval "$(direnv hook zsh)"
 for plugin in ~/.zsh/plugins/*.sh; do
   source "$plugin"
 done
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
