@@ -48,8 +48,8 @@ current_branch() {
 }
 
 ffwd() {
-  ref=${1:-`current_branch`}
-  git merge --ff-only origin/$ref
+  ref="${1:-origin}/$(current_branch)"
+  git merge --ff-only $ref
 }
 
 # push origin branch
