@@ -1,0 +1,22 @@
+#!/usr/bin/env ruby
+
+at_exit do
+  counts = Hash.new(0)
+  pattern = parse_pattern
+
+  begin
+    ARGF.each do |line|
+      key = pattern ? line[pattern] : line
+      counts[key] += 1
+    end
+  rescue Errno::EPIPE
+    exit(74)
+  end
+
+  puts counts.map { |key, value| "#{key.chomp} #{value}" }
+end
+
+def parse_pattern(args = ARGV)
+  return if args.empty?
+  Regexp.compile(args.shift) unless File.exist?(args.first)
+end
