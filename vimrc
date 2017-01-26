@@ -230,3 +230,7 @@ colorscheme base16
 
 " Toggle background
 nmap <F2> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
+
+" Disable bracketed paste mode
+" https://groups.google.com/forum/#!searchin/vim_dev/%3CPasteStart%3E%7Csort:relevance/vim_dev/eP3GUBqzgGA/zpj0r4ztCgAJ
+set t_BD=false
