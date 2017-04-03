@@ -3,9 +3,11 @@ map <leader>gm :CtrlPClearCache<cr>\|:CtrlP app/models<cr>
 map <leader>gv :CtrlPClearCache<cr>\|:CtrlP app/views<cr>
 map <leader>gc :CtrlPClearCache<cr>\|:CtrlP app/controllers<cr>
 map <leader>gh :CtrlPClearCache<cr>\|:CtrlP app/helpers<cr>
-map <leader>gs :CtrlPClearCache<cr>\|:CtrlP app/serializers<cr>
+" map <leader>gs :CtrlPClearCache<cr>\|:CtrlP app/serializers<cr>
+map <leader>gs :CtrlPClearCache<cr>\|:CtrlP spec/<cr>
 map <leader>gp :CtrlPClearCache<cr>\|:CtrlP app/presenters<cr>
 map <leader>gS :CtrlPClearCache<cr>\|:CtrlP app/services<cr>
+map <leader>ga :CtrlPClearCache<cr>\|:CtrlP app<cr>
 map <leader>gl :CtrlPClearCache<cr>\|:CtrlP lib<cr>
 map <leader>gC :CtrlPClearCache<cr>\|:CtrlP app/assets/stylesheets<cr>
 map <leader>gJ :CtrlPClearCache<cr>\|:CtrlP app/assets/javascripts<cr>

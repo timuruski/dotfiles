@@ -13,6 +13,7 @@
   au = add --update
   b = branch
   c = commit
+  ci = "!source ~/.githelpers && fuzzy_checkout"
   co = checkout
   d = diff -M
   dc = diff --cached
@@ -26,7 +27,6 @@
   h = !git head
   head = !git l -1
   hp = "!source ~/.githelpers && show_git_head"
-  ico = "!source ~/.githelpers && fuzzy_checkout"
   l = "!source ~/.githelpers && pretty_git_log"
   la = !git l --all
   ld = !git l --simplify-by-decoration

@@ -13,11 +13,14 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'janko-m/vim-test'
 Plug 'junegunn/goyo.vim'
 Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-bundler', { 'for': 'ruby' }
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-ragtag'
+Plug 'tpope/vim-rake', { 'for': 'ruby' }
+Plug 'tpope/vim-rails', { 'for': 'ruby' }
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
@@ -98,7 +101,7 @@ set expandtab
 set shiftwidth=2
 set softtabstop=2
 set tabstop=2
-set textwidth=80
+set textwidth=110
 
 " Window sizing rules from @garybernhardt
 " set winwidth=84
@@ -222,7 +225,7 @@ command! -nargs=1 RunCmd nnoremap <leader>r :w \| !clear; <args> % <CR>
 
 " Visual style
 " set t_Co=256
-set colorcolumn=80
+set colorcolumn=110
 set hlsearch
 let base16colorspace=256
 let &background=substitute(expand("$COLORSCHEME"), '\v.*(light|dark).*', '\1', '')
@@ -231,6 +234,9 @@ colorscheme base16
 " Toggle background
 nmap <F2> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 
+" Examine path
+command! Path :echo join(split(&path, ","), "\n")
+
 " Disable bracketed paste mode
 " https://groups.google.com/forum/#!searchin/vim_dev/%3CPasteStart%3E%7Csort:relevance/vim_dev/eP3GUBqzgGA/zpj0r4ztCgAJ
-set t_BD=false
+" set t_BD=false
