@@ -9,9 +9,11 @@ call plug#begin('~/.vim/plugged')
 
 " Plug 'scrooloose/syntastic'
 Plug 'csexton/trailertrash.vim'
+Plug 'chriskempson/base16-vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'janko-m/vim-test'
 Plug 'junegunn/goyo.vim'
+Plug 'rhysd/vim-crystal'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-bundler', { 'for': 'ruby' }
 Plug 'tpope/vim-commentary'
@@ -29,6 +31,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 Plug 'vim-scripts/ag.vim'
+Plug 'vim-utils/vim-man'
 
 call plug#end()
 
@@ -100,7 +103,7 @@ set expandtab
 set shiftwidth=2
 set softtabstop=2
 set tabstop=2
-set textwidth=80
+set textwidth=96
 
 " Window sizing rules from @garybernhardt
 " set winwidth=84
@@ -218,13 +221,14 @@ function! s:VSetSearch()
   let @s = temp
 endfunction
 
-command! -nargs=0 RunMake nnoremap <leader>r :w \| !clear; make<cr>
-command! -nargs=0 RunRuby nnoremap <leader>r :w \| !clear; ruby %<cr>
-command! -nargs=1 RunCmd nnoremap <leader>r :w \| !clear; <args> % <CR>
+command! -nargs=+ RunCmd nnoremap <enter> :w \| !clear; <args> % <CR>
+command! -nargs=0 RunRuby nnoremap <enter> :w \| !clear; ruby %<cr>
+command! -nargs=0 RunMake nnoremap <enter> :w \|  make!<cr>
+command! -nargs=* RunMake nnoremap <enter> :w \|  make! <args><cr>
 
 " Visual style
 " set t_Co=256
-set colorcolumn=80
+set colorcolumn=96
 set hlsearch
 let base16colorspace=256
 let &background=substitute(expand("$COLORSCHEME"), '\v.*(light|dark).*', '\1', '')
