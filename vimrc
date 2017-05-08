@@ -221,10 +221,10 @@ function! s:VSetSearch()
   let @s = temp
 endfunction
 
-command! -nargs=+ RunCmd nnoremap <enter> :w \| !clear; <args> % <CR>
-command! -nargs=0 RunRuby nnoremap <enter> :w \| !clear; ruby %<cr>
-command! -nargs=0 RunMake nnoremap <enter> :w \|  make!<cr>
-command! -nargs=* RunMake nnoremap <enter> :w \|  make! <args><cr>
+command! -nargs=+ RunCmd nnoremap <buffer> <enter> :w \| !clear; <args> % <CR>
+command! -nargs=0 RunRuby nnoremap <buffer> <enter> :w \| !clear; ruby %<cr>
+command! -nargs=0 RunMake nnoremap <buffer> <enter> :w \|  make!<cr>
+command! -nargs=* RunMake nnoremap <buffer> <enter> :w \|  make! <args><cr>
 
 " Visual style
 " set t_Co=256
