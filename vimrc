@@ -30,6 +30,8 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 Plug 'vim-scripts/ag.vim'
+Plug 'vim-utils/vim-man'
+Plug 'leafgarland/typescript-vim'
 
 call plug#end()
 
@@ -219,9 +221,25 @@ function! s:VSetSearch()
   let @s = temp
 endfunction
 
-command! -nargs=0 RunMake nnoremap <leader>r :w \| !clear; make<cr>
-command! -nargs=0 RunRuby nnoremap <leader>r :w \| !clear; ruby %<cr>
-command! -nargs=1 RunCmd nnoremap <leader>r :w \| !clear; <args> % <CR>
+command! -nargs=1 RunCmd nnoremap <buffer> <enter> :w \| !clear; <args> % <CR>
+command! -nargs=+ RunCmd nnoremap <buffer> <enter> :w \| !clear; <args> <CR>
+command! -nargs=0 RunRuby nnoremap <buffer> <enter> :w \| !clear; ruby % <CR>
+command! -nargs=0 RunMake nnoremap <buffer> <enter> :w \| make! <CR>
+command! -nargs=* RunMake nnoremap <buffer> <enter> :w \| make! <args> <CR>
+
+command! RunTest nnoremap <buffer> <enter> call RunCmd() <CR>
+
+
+function! s:RunCmd()
+  " Command name
+  " Command args
+  " Buffer reference?
+  " - write
+  " - clear terminal
+  " - execute command
+  " - maybe press <enter>
+  echom "RunCmd"
+endfunction
 
 " Visual style
 " set t_Co=256
