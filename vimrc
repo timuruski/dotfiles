@@ -10,8 +10,9 @@ call plug#begin('~/.vim/plugged')
 " Plug 'scrooloose/syntastic'
 Plug 'csexton/trailertrash.vim'
 Plug 'chriskempson/base16-vim'
-Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'ctrlpvim/ctrlp.vim'
 Plug 'janko-m/vim-test'
+Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'rhysd/vim-crystal'
 Plug 'tpope/vim-abolish'
@@ -221,10 +222,25 @@ function! s:VSetSearch()
   let @s = temp
 endfunction
 
-command! -nargs=+ RunCmd nnoremap <buffer> <enter> :w \| !clear; <args> % <CR>
-command! -nargs=0 RunRuby nnoremap <buffer> <enter> :w \| !clear; ruby %<cr>
-command! -nargs=0 RunMake nnoremap <buffer> <enter> :w \|  make!<cr>
-command! -nargs=* RunMake nnoremap <buffer> <enter> :w \|  make! <args><cr>
+command! -nargs=1 RunCmd nnoremap <buffer> <enter> :w \| !clear; <args> % <CR>
+command! -nargs=+ RunCmd nnoremap <buffer> <enter> :w \| !clear; <args> <CR>
+command! -nargs=0 RunRuby nnoremap <buffer> <enter> :w \| !clear; ruby % <CR>
+command! -nargs=0 RunMake nnoremap <buffer> <enter> :w \| make! <CR>
+command! -nargs=* RunMake nnoremap <buffer> <enter> :w \| make! <args> <CR>
+
+command! RunTest nnoremap <buffer> <enter> call RunCmd() <CR>
+
+
+function! s:RunCmd()
+  " Command name
+  " Command args
+  " Buffer reference?
+  " - write
+  " - clear terminal
+  " - execute command
+  " - maybe press <enter>
+  echom "RunCmd"
+endfunction
 
 " Visual style
 " set t_Co=256
