@@ -23,5 +23,5 @@ map <leader>F :CtrlPClearCache<cr>\|:CtrlP %%<cr>
 
 let g:ctrlp_map = '<leader>f'
 let g:ctrlp_custom_ignore = {
-      \ 'dir': '\v[\/](build|\.gem|db/migrate|node_modules|vendor)$',
+      \ 'dir': '\v[\/](\.gem|build|coverage/assets|db/migrate|node_modules|vendor)$',
       \ }
