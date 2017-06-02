@@ -1,4 +1,4 @@
-" Ctrl-P
+" https://github.com/junegunn/fzf.vim
 map <leader>gm :Files app/models<cr>
 map <leader>gv :Files app/views<cr>
 map <leader>gc :Files app/controllers<cr>
@@ -23,3 +23,18 @@ let g:ctrlp_map = '<leader>f'
 let g:ctrlp_custom_ignore = {
       \ 'dir': '\v[\/](\.gem|node_modules|vendor|build)$',
       \ }
+
+" Customize fzf colors to match your color scheme
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
