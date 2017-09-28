@@ -1,6 +1,6 @@
 # Setup chruby
 source /usr/local/share/chruby/chruby.sh
-source /usr/local/share/chruby/auto.sh
+# source /usr/local/share/chruby/auto.sh
 chruby 2.4
 
 # Setup gem_home

@@ -19,6 +19,10 @@ export GIT_EDITOR="vim"
 set -o emacs
 alias learnvim="/usr/bin/env vim -Nu ~/.learnvimrc"
 
+# FZF
+export FZF_DEFAULT_COMMAND='ag -g ""'
+alias edit="vim \$(fzf)"
+
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '\C-x\C-e' edit-command-line
@@ -34,6 +38,9 @@ alias ls="ls -lhG"
 alias ql='qlmanage -p "$@" &> /dev/null'
 alias be='bundle exec'
 alias g='fg'
+alias obs='jobs'
+alias i='vi'
+alias aag='ag --ignore spec --ignore test'
 function mkcd() { mkdir -p $1 && cd $1 }
 function fcd() { cd *$1* }
 
@@ -68,6 +75,9 @@ RPROMPT='%{$fg[brblack]%}$(~/bin/git-cwd-info.rb)%{$reset_color%}'
 
 # Direnv
 eval "$(direnv hook zsh)"
+
+# TheFuck
+eval $(thefuck --alias ugh)
 
 # Plugins
 for plugin in ~/.zsh/plugins/*.sh; do

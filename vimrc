@@ -40,7 +40,7 @@ inoremap jk <ESC>
 inoremap kj <ESC>
 
 " Quick access to vim config
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>ev :edit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
 " Enable project specific vimrc files
@@ -226,8 +226,11 @@ command! -nargs=+ RunCmd nnoremap <buffer> <enter> :w \| !clear; <args> <CR>
 command! -nargs=0 RunRuby nnoremap <buffer> <enter> :w \| !clear; ruby % <CR>
 command! -nargs=0 RunMake nnoremap <buffer> <enter> :w \| make! <CR>
 command! -nargs=* RunMake nnoremap <buffer> <enter> :w \| make! <args> <CR>
+command! -nargs=0 WriteCmd nnoremap <buffer> <enter> :w <args> <CR>
 
-command! RunTest nnoremap <buffer> <enter> call RunCmd() <CR>
+command! -nargs=0 RunTest nnoremap <buffer> <enter> :w \| :TestFile <CR>
+" command! -nargs=0 RunTest! nnoremap <enter> :w \| :TestFile <CR>
+" command! RunTest nnoremap <buffer> <enter> call RunCmd() <CR>
 
 
 function! s:RunCmd()
@@ -241,6 +244,21 @@ function! s:RunCmd()
   echom "RunCmd"
 endfunction
 
+" FZF
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
 " Visual style
 " set t_Co=256
 set colorcolumn=110
@@ -249,11 +267,47 @@ let base16colorspace=256
 let &background=substitute(expand("$COLORSCHEME"), '\v.*(light|dark).*', '\1', '')
 colorscheme base16
 
+map <leader>gm :Files app/models<cr>
+map <leader>gv :Files app/views<cr>
+map <leader>gc :Files app/controllers<cr>
+map <leader>gh :Files app/helpers<cr>
+map <leader>gs :Files spec<cr>
+map <leader>gp :Files app/presenters<cr>
+map <leader>gS :Files app/services<cr>
+map <leader>gl :Files lib<cr>
+map <leader>gC :Files app/assets/stylesheets<cr>
+map <leader>gJ :Files app/assets/javascripts<cr>
+
+map <leader>gM :topleft 100 :sview db/schema.rb<cr>
+map <leader>gg :topleft 100 :split Gemfile<cr>
+" map <leader>gt :CtrlPClearCache<cr>\|:CtrlPTag<cr>
+map <leader>gr :topleft :split config/routes.rb<cr>
+map <leader>gR :call ShowRoutes()<cr>
+map <leader>b :Buffers<cr>
+map <leader>f :Files<cr>
+map <leader>F :Files %%<cr>
+
+let g:ctrlp_map = '<leader>f'
+let g:ctrlp_custom_ignore = {
+      \ 'dir': '\v[\/](\.gem|node_modules|vendor|build)$',
+      \ }
+
 " Toggle background
 nmap <F2> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 
 " Examine path
 command! Path :echo join(split(&path, ","), "\n")
+
+" GitHub Path command
+command! Gurl :echo !(echo "https://github.com/Clio/") . expand("%")
+
+" Direnv integration
+" https://github.com/direnv/direnv/wiki/Vim
+if exists("$EXTRA_VIM")
+  for path in split($EXTRA_VIM, ':')
+    exec "source ".path
+  endfor
+endif
 
 " Disable bracketed paste mode
 " https://groups.google.com/forum/#!searchin/vim_dev/%3CPasteStart%3E%7Csort:relevance/vim_dev/eP3GUBqzgGA/zpj0r4ztCgAJ

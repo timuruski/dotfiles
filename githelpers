@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Log output:
-# 
+#
 # * 238b2a       (10 days)    <Tim Uruski>     did some work
 #
 # Stolen from Gary Bernhardt
@@ -22,7 +22,7 @@ show_git_head() {
 }
 
 pretty_git_log() {
-  git log --graph --abbrev-commit --date=relative --pretty="tformat:${FORMAT}" $* | 
+  git log --graph --abbrev-commit --date=relative --pretty="tformat:${FORMAT}" $* |
       # Replace (2 years ago) with (2 years)
       sed -Ee 's/(^[^<]*) ago)/\1)/' |
       # Replace (2 years, 5 months) wiht (2 years)
@@ -37,7 +37,7 @@ deploy_git_log() {
   ref=${1:-'master'}
 
   date +"%d %b %Y"
-  git log --pretty="tformat:  - %s [%an]" origin/$ref..$ref | 
+  git log --pretty="tformat:  - %s [%an]" origin/$ref..$ref |
   sed -Ee 's/\[([a-zA-Z]).+ ([a-zA-Z]).+\]$/[\1\2]/'
 }
 

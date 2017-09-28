@@ -1,0 +1,83 @@
+#!/usr/bin/env ruby
+
+# USAGE:
+#
+# $ snapshot -i2 2017-02-03
+#
+# This is a convenience wrapper to connect a mysql client to the snapshot server.
+# It assumes you are storing your credentials in ~/.snapshot.mylogin.cnf, in the form:
+#
+# [client]
+# user=themis_snapshots
+# password=<PASSWORD>
+
+require 'optparse'
+require 'date'
+
+at_exit do
+  config = parse_config
+
+  defaults_file = File.expand_path('~/.snapshot.mylogin.cnf')
+
+  date = parse_date(ARGV.shift)
+  database = "#{date}_04000#{config[:db_iteration]}_#{config[:db_name]}"
+
+  cmd = [
+    'mysql',
+    "--defaults-file=#{defaults_file}",
+    "--host=#{config[:host]}",
+    "--port=#{config[:port]}",
+    '--no-auto-rehash',
+    '--prompt=SNAPSHOT> ',
+    database
+  ]
+
+  # Setup SSH port forwarding, suppress warnings if SSH tunnel is running.
+  # FIXME This doesn't forward the port argument properly because it's in ~/.ssh/config
+  system('ssh', '-fN', config[:ssh_name]) unless system('lsof', "-i:#{config[:port]}", out: '/dev/null')
+
+  puts cmd.join(' ')
+  exec *cmd
+end
+
+def parse_date(date_str)
+  date = case date_str
+  when 'yesterday'
+    Date.today - 1 # Day
+  else
+    (Date.parse(date) rescue Date.today)
+  end
+
+  date.strftime('%Y%m%d')
+end
+
+def parse_config(args = ARGV)
+  {
+    host: '127.0.0.1',
+    port: '3307',
+    db_name: 'themis_production',
+    db_iteration: '1',
+    ssh_name: 'snapshot',
+  }.tap do |config|
+    parser = OptionParser.new do |opts|
+      opts.on('-h=HOST', '--host=HOST', "Host, default: #{config[:host]}") do |value|
+        config[:host] = value.to_s
+      end
+
+      opts.on('-p=PORT', '--port=PORT', "Port, default: #{config[:port]}") do |value|
+        config[:port] = value.to_i
+      end
+
+      opts.on('-i=INT', '--iteration=INT', "Iteration, default: #{config[:iteration]}") do |value|
+        config[:db_iteration] = value
+      end
+
+      opts.on('-e', '--eu', "Connect to EU snapshot") do |value|
+        config[:db_name] = 'themis_production_eu'
+        config[:ssh_name] = 'snapshot-eu'
+      end
+    end
+
+    parser.parse!(args)
+  end
+end

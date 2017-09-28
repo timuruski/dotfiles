@@ -1,3 +1,4 @@
+## PROMPT
 status () {
   if [[ $? -gt 0 ]]; then
     printf "\e[31m$\e[0m"
@@ -16,3 +17,13 @@ dirname_ () {
 
 # PS1="\e[2K\$(hostname_):\$(dirname_) \$(status) "
 PS1="\e[2K\e[33m\h\e[0m:\e[4m\W\e[0m \$(status) "
+
+# CHRUBY
+source /usr/local/share/chruby/chruby.sh
+source /usr/local/share/chruby/auto.sh
+
+# Bootstrap chruby for shell scripts and git-hooks.
+chruby_auto
+
+## DIRENV
+# eval "$(direnv hook bash)"

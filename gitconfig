@@ -1,12 +1,14 @@
 [user]
-  name = Tim Uruski
-  email = tim.uruski@clio.com
+	name = Tim Uruski
+	email = tim.uruski@clio.com
 [github]
   user = timuruski
   token = !security 2>&1 >/dev/null find-generic-password -gs github.token | ruby -e 'print $1 if STDIN.gets =~ /^password: \\\"(.*)\\\"$/'
   password = !security 2>&1 >/dev/null find-generic-password -gs github.password | ruby -e 'print $1 if STDIN.gets =~ /^password: \\\"(.*)\\\"$/'
 [color]
   ui = auto
+[color "diff"]
+  whitespace = red reverse
 [alias]
   aa = add --all
   amend = commit --amend
@@ -23,6 +25,7 @@
   deploy-msg = "!source ~/.githelpers && deploy_git_log"
   ff = "!source ~/.githelpers && ffwd"
   ffx = merge --ff-only
+  fix = commit --fixup head
   git = !git
   h = !git head
   head = !git l -1
