@@ -7,17 +7,22 @@ set nocompatible
 " Vimplug
 call plug#begin('~/.vim/plugged')
 
-" Plug 'scrooloose/syntastic'
+Plug 'AndrewRadev/splitjoin.vim'
 Plug 'csexton/trailertrash.vim'
 Plug 'chriskempson/base16-vim'
 " Plug 'ctrlpvim/ctrlp.vim'
+Plug 'ElmCast/elm-vim', { 'for': 'elm' }
 Plug 'janko-m/vim-test'
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
+Plug 'jakwings/vim-pony', { 'for': 'pony' }
+Plug 'jeroenbourgois/vim-actionscript'
 Plug 'junegunn/goyo.vim'
 Plug 'rhysd/vim-crystal'
+" Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-bundler', { 'for': 'ruby' }
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
@@ -33,6 +38,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 Plug 'vim-scripts/ag.vim'
 Plug 'vim-utils/vim-man'
+" Plug 'w0rp/ale'
+Plug 'zah/nim.vim'
 
 call plug#end()
 
@@ -41,7 +48,7 @@ inoremap jk <ESC>
 inoremap kj <ESC>
 
 " Quick access to vim config
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>ev :edit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
 " Enable project specific vimrc files
@@ -224,12 +231,12 @@ endfunction
 
 command! -nargs=1 RunCmd nnoremap <buffer> <enter> :w \| !clear; <args> % <CR>
 command! -nargs=+ RunCmd nnoremap <buffer> <enter> :w \| !clear; <args> <CR>
+command! -nargs=+ RunRuby nnoremap <buffer> <enter> :w \| !clear; ruby <args> <CR>
 command! -nargs=0 RunRuby nnoremap <buffer> <enter> :w \| !clear; ruby % <CR>
 command! -nargs=0 RunMake nnoremap <buffer> <enter> :w \| make! <CR>
 command! -nargs=* RunMake nnoremap <buffer> <enter> :w \| make! <args> <CR>
-
-command! RunTest nnoremap <buffer> <enter> call RunCmd() <CR>
-
+command! -nargs=0 RunTest nnoremap <enter> :w \| :TestFile <CR>
+command! -nargs=0 RunNone nunmap <enter>
 
 function! s:RunCmd()
   " Command name
@@ -239,6 +246,7 @@ function! s:RunCmd()
   " - clear terminal
   " - execute command
   " - maybe press <enter>
+  " - Leading colon, vim command?
   echom "RunCmd"
 endfunction
 
@@ -246,12 +254,14 @@ endfunction
 " set t_Co=256
 set colorcolumn=96
 set hlsearch
-let base16colorspace=256
-let &background=substitute(expand("$COLORSCHEME"), '\v.*(light|dark).*', '\1', '')
-colorscheme base16
 
 " Toggle background
 nmap <F2> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
+
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
 
 " Examine path
 command! Path :echo join(split(&path, ","), "\n")
