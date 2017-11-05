@@ -1,3 +1,25 @@
+#!/usr/bin/env ruby
+
+at_exit do
+  IGNORE = %w[
+    Gemfile*
+    README.md
+    Rakefile
+    brewed
+    nvim/
+    tmp/
+  ]
+
+  # Execute installer.
+  Dotfiles.exec do |installer|
+    installer.dotfile '*'
+    installer.ignore IGNORE
+    installer.symlink_only %w[ bin ]
+  end
+end
+
+# ---
+
 require 'pathname'
 require 'optparse'
 
