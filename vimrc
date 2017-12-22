@@ -7,10 +7,11 @@ set nocompatible
 " Vimplug
 call plug#begin('~/.vim/plugged')
 
-" Plug 'scrooloose/syntastic'
+Plug 'chriskempson/base16-vim'
 Plug 'csexton/trailertrash.vim'
-Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'ctrlpvim/ctrlp.vim'
 Plug 'janko-m/vim-test'
+Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-bundler', { 'for': 'ruby' }
@@ -30,7 +31,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 Plug 'vim-scripts/ag.vim'
-Plug 'vim-utils/vim-man'
+" Plug 'vim-utils/vim-man'
 Plug 'leafgarland/typescript-vim'
 
 call plug#end()
@@ -267,16 +268,18 @@ let base16colorspace=256
 let &background=substitute(expand("$COLORSCHEME"), '\v.*(light|dark).*', '\1', '')
 colorscheme base16
 
-map <leader>gm :Files app/models<cr>
-map <leader>gv :Files app/views<cr>
-map <leader>gc :Files app/controllers<cr>
-map <leader>gh :Files app/helpers<cr>
-map <leader>gs :Files spec<cr>
-map <leader>gp :Files app/presenters<cr>
-map <leader>gS :Files app/services<cr>
-map <leader>gl :Files lib<cr>
+" map <leader>ga :Files app/client-src/apollo-app<cr>
 map <leader>gC :Files app/assets/stylesheets<cr>
 map <leader>gJ :Files app/assets/javascripts<cr>
+map <leader>gS :Files app/services<cr>
+map <leader>gc :Files app/controllers<cr>
+map <leader>gh :Files app/helpers<cr>
+map <leader>gl :Files lib<cr>
+map <leader>ge :Files extras<cr>
+map <leader>gm :Files app/models<cr>
+map <leader>gp :Files app/presenters<cr>
+map <leader>gs :Files spec<cr>
+map <leader>gv :Files app/views<cr>
 
 map <leader>gM :topleft 100 :sview db/schema.rb<cr>
 map <leader>gg :topleft 100 :split Gemfile<cr>

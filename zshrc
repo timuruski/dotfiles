@@ -21,7 +21,6 @@ alias learnvim="/usr/bin/env vim -Nu ~/.learnvimrc"
 
 # FZF
 export FZF_DEFAULT_COMMAND='ag -g ""'
-alias edit="vim \$(fzf)"
 
 autoload -U edit-command-line
 zle -N edit-command-line
