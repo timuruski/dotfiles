@@ -13,11 +13,14 @@ PATH="$HOME/bin:$PATH"
 
 export PATH
 
+export CDPATH="$CDPATH:$HOME/workspace"
+
 # Editors
 export EDITOR="vim"
 export GIT_EDITOR="vim"
 set -o emacs
 alias learnvim="/usr/bin/env vim -Nu ~/.learnvimrc"
+alias barevim="/usr/bin/env vim -Nu ~/.dotfiles/.minimal-vimrc"
 
 # FZF
 export FZF_DEFAULT_COMMAND='ag -g ""'
@@ -61,7 +64,7 @@ source $HOME/.zsh/redis.sh
 
 
 # Customize prompt
-local cmd_status="%(?,%{$reset_color%},%{$fg[red]%})♥%{$reset_color%}"
+local cmd_status="%(?,%{$reset_color%},%{$fg[red]%})ℵ%{$reset_color%}"
 parse_git_branch () {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/::\1/' -e '/::master/d'
 }
@@ -74,9 +77,6 @@ RPROMPT='%{$fg[brblack]%}$(~/bin/git-cwd-info.rb)%{$reset_color%}'
 
 # Direnv
 eval "$(direnv hook zsh)"
-
-# TheFuck
-eval $(thefuck --alias ugh)
 
 # Plugins
 for plugin in ~/.zsh/plugins/*.sh; do

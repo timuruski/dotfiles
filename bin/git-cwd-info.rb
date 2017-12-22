@@ -24,7 +24,7 @@ def in_git_repo
 end
 
 def git_parse_branch
-  @git_parse_branch ||= `git-current-branch`.chomp
+  `git rev-parse --abbrev-ref HEAD`.chomp
 end
 
 def git_head_commit_id
@@ -46,5 +46,6 @@ def rebasing_etc
 end
 
 if in_git_repo
-  print " %{\e[0m%}#{git_parse_branch} %{\e[0m%}#{git_head_commit_id}%{\e[37m%}#{rebasing_etc}#{git_cwd_dirty}"
+  # print " %{\e[0m%}#{git_parse_branch} %{\e[0m%}#{git_head_commit_id}%{\e[37m%}#{rebasing_etc}#{git_cwd_dirty}"
+  print " %{\e[0m%}#{git_parse_branch} %{\e[0m%}#{git_head_commit_id}%{\e[37m%}#{rebasing_etc}"
 end
