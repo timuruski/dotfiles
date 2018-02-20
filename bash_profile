@@ -7,23 +7,25 @@ status () {
   fi
 }
 
-hostname_ () {
-  printf "\e[33m`hostname -s`\e[0m"
-}
-
-dirname_ () {
-  printf "\e[4m`pwd | xargs basename`\e[0m"
-}
-
-# PS1="\e[2K\$(hostname_):\$(dirname_) \$(status) "
 PS1="\e[2K\e[33m\h\e[0m:\e[4m\W\e[0m \$(status) "
 
 # CHRUBY
 source /usr/local/share/chruby/chruby.sh
-source /usr/local/share/chruby/auto.sh
-
-# Bootstrap chruby for shell scripts and git-hooks.
-chruby_auto
+# source /usr/local/share/chruby/auto.sh
+# chruby 2.4
 
 ## DIRENV
-# eval "$(direnv hook bash)"
+eval "$(direnv hook bash)"
+
+# HACK to fix direnv integration with bash --login
+# bash --login <(echo 'which bundle')
+# /Users/timuruski/workspace/themis/.direnv/bin
+# /Users/timuruski/workspace/themis/.direnv/ruby/bin
+# /Users/timuruski/.rubies/ruby-2.3.5/bin
+# /Users/timuruski/.gem/ruby/2.3.5/bin
+# /Users/timuruski/.rubies/ruby-2.3.5/lib/ruby/gems/2.3.0/bin
+# /Users/timuruski/.rubies/ruby-2.3.5/bin
+if [[ $(pwd) = "$HOME/workspace/themis" ]]; then
+  # chruby $(cat .ruby-version)
+  export PATH="$HOME/workspace/themis/.direnv/bin:$HOME/workspace/themis/.direnv/ruby/bin:$PATH"
+fi

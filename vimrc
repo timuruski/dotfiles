@@ -14,14 +14,14 @@ Plug 'janko-m/vim-test'
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'tpope/vim-abolish'
-Plug 'tpope/vim-bundler', { 'for': 'ruby' }
+" Plug 'tpope/vim-bundler', { 'for': 'ruby' }
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-ragtag'
-Plug 'tpope/vim-rake', { 'for': 'ruby' }
-Plug 'tpope/vim-rails', { 'for': 'ruby' }
+" Plug 'tpope/vim-rake', { 'for': 'ruby' }
+" Plug 'tpope/vim-rails', { 'for': 'ruby' }
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
@@ -29,7 +29,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
+" Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 Plug 'vim-scripts/ag.vim'
 " Plug 'vim-utils/vim-man'
 Plug 'leafgarland/typescript-vim'
@@ -84,7 +84,7 @@ set list
 set listchars=tab:▸\ ,eol:¬,trail:·
 set matchtime=2
 set modelines=0
-set relativenumber
+set relativenumber " May be causing slowdown...
 set number
 set ruler
 set showmatch
@@ -122,7 +122,7 @@ set winheight=999
 " Disable backups when editing a temp file, usually because it's a
 " crontab file, and cron gets upset when a backup is written.
 autocmd BufRead /tmp/*		set nowritebackup
-
+autocmd FileType ruby setlocal norelativenumber nocursorline regexpengine=1
 
 
 " MAPPINGS AND FUNCTIONS
@@ -142,8 +142,11 @@ map <leader>e :edit %%
 nnoremap <leader><leader> <C-^>
 
 " Clear search highlighting
-nnoremap <C-l> :nohlsearch<cr>
+nnoremap <C-l> :nohlsearch<CR>
 " nnoremap <CR> :nohlsearch<cr>
+
+" Toggle relative line numbers
+nnoremap <F1> :set relativenumber!<CR>
 
 " Smarter tab behavior from @garybernhardt
 " Indents at start of line, otherwise completes, or matches parens

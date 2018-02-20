@@ -84,3 +84,4 @@ for plugin in ~/.zsh/plugins/*.sh; do
 done
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+export PATH="/usr/local/opt/percona-server@5.6/bin:$PATH"
