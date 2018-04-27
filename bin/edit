@@ -1,3 +1,8 @@
 #!/bin/bash
 set -euf -o pipefail
-exec fzf --select-1 --query $1 | xargs -o vim
+
+if [[ $# -gt 0 ]]; then
+  exec fzf --select-1 --query $1 | xargs -o vim
+else
+  exec fzf --select-1 | xargs -o vim
+fi
