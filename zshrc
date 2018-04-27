@@ -13,6 +13,8 @@ PATH="$HOME/bin:$PATH"
 
 export PATH
 
+export CDPATH="$CDPATH:$HOME/workspace"
+
 # Editors
 export EDITOR="vim"
 export GIT_EDITOR="vim"

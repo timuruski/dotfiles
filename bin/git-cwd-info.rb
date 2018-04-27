@@ -24,7 +24,7 @@ def in_git_repo
 end
 
 def git_parse_branch
-  `git rev-parse --abbrev-ref HEAD`.chomp
+  `git rev-parse --abbrev-ref HEAD 2>/dev/null`.chomp
 end
 
 def git_head_commit_id
