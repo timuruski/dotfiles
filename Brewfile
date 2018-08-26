@@ -40,6 +40,8 @@ brew "xvid"
 brew "ffmpeg"
 brew "flac"
 brew "fzf"
+# brew install --HEAD https://raw.github.com/postmodern/gem_home/master/homebrew/gem_home.rb
+brew "https://raw.github.com/postmodern/gem_home/master/homebrew/gem_home.rb", args: ["HEAD"]
 brew "gettext"
 brew "git"
 brew "gnu-typist"

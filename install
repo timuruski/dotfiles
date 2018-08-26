@@ -2,12 +2,15 @@
 
 at_exit do
   IGNORE = %w[
+    Brewfile
+    direnvrc
     Gemfile*
     README.md
     Rakefile
-    brewed
     nvim/
     tmp/
+    walk.sh
+    zlogin
   ]
 
   # Execute installer.
@@ -81,9 +84,9 @@ module Dotfiles
 
       Dir.chdir(source_dir) do
         install_table(target_dir).each do |source, target|
-	  # puts "  #{source} -> #{target} : #{File.exist?(source)} #{File.exist?(target)}"
-	  File.unlink(target) if force && installed?(target)
-	  next if installed?(target)
+        # puts "  #{source} -> #{target} : #{File.exist?(source)} #{File.exist?(target)}"
+        File.unlink(target) if force && installed?(target)
+        next if installed?(target)
           File.symlink(source, target)
         end
       end
@@ -150,9 +153,9 @@ module Dotfiles
           options[:no_install] = v
         end
 
-	opts.on '-f', '--force', 'Overwrite existing symlinks' do |v|
+        opts.on '-f', '--force', 'Overwrite existing symlinks' do |v|
           options[:force] = v
-	end
+        end
 
         opts.on '-s', '--source [DIR]', String,
                 "Default: #{options[:source_dir]}" do |path|
