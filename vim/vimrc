@@ -45,8 +45,8 @@ Plug 'zah/nim.vim'
 call plug#end()
 
 " Semi-universal <ESC> alternatives
-inoremap jk <ESC>
-inoremap kj <ESC>
+" inoremap jk <ESC>
+" inoremap kj <ESC>
 
 " Quick access to vim config
 nnoremap <leader>ev :edit $MYVIMRC<cr>
@@ -169,6 +169,8 @@ inoremap <s-tab> <c-n>
 " These interfere with <C-i> and jumps.
 " nmap <tab> %
 " vmap <tab> %
+
+inoremap <C-l> <Nop>
 
 " Rename current file from @garybernhardt
 function! RenameFile()

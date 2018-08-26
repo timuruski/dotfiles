@@ -5,11 +5,10 @@ setopt prompt_subst
 
 
 # Setup paths
-export GOPATH="$HOME/go"
-PATH="$GOPATH/bin:$PATH"
-PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 PATH="$HOME/bin:$PATH"
-[[ -d /usr/local/heroku ]] && PATH="/usr/local/heroku/bin:$PATH"
+
+# export GOPATH="$HOME/go"
+# PATH="$GOPATH/bin:$PATH"
 
 export PATH
 
@@ -22,7 +21,8 @@ set -o emacs
 alias learnvim="/usr/bin/env vim -Nu ~/.learnvimrc"
 
 # fzf
-export FZF_DEFAULT_COMMAND='ag -g ""'
+export FZF_DEFAULT_COMMAND='fd --type file --hidden --follow --exclude .git --color=always'
+export FZF_DEFAULT_OPTS="--ansi"
 
 autoload -U edit-command-line
 zle -N edit-command-line
@@ -53,7 +53,7 @@ alias ag='ag --path-to-ignore ~/.ignore'
 alias ql='qlmanage -p "$@" &> /dev/null'
 alias be='bundle exec'
 alias g='fg'
-function mkcd() { mkdir -p $1 && cd $1 }
+alias j='jobs'
 function fcd() { cd *$1* }
 
 # Workspace shortcut and completion
@@ -66,12 +66,6 @@ export HISTSIZE=100000
 export HISTFILE="$HOME/.history"
 export SAVEHIST=$HISTSIZE
 setopt HIST_IGNORE_DUPS HIST_IGNORE_SPACE
-
-# Datastore services
-source $HOME/.zsh/postgres.sh
-source $HOME/.zsh/mongo.sh
-source $HOME/.zsh/redis.sh
-
 
 # Customize prompt
 local cmd_status="%(?,%{$reset_color%},%{$fg[red]%})♥%{$reset_color%}"

@@ -35,7 +35,6 @@
   po = push origin
   pob = !source ~/.githelpers && push_origin
   pom = push origin master
-  phm = push heroku master
   r = !git --no-pager l -20
   ra = !git r --all
   s = status -sb

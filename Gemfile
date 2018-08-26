@@ -1,5 +1,5 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
-gem 'pry'
-gem 'rake'
-gem 'rspec'
+gem "pry"
+gem "rake"
+gem "rspec"
