@@ -1,5 +1,5 @@
-source /usr/local/share/chruby/chruby.sh
-source /usr/local/share/gem_home/gem_home.sh
+source /usr/local/opt/chruby/share/chruby/chruby.sh
+source /usr/local/opt/gem_home/share/gem_home/gem_home.sh
 
 # use ruby [version]
 use_ruby() {
@@ -15,5 +15,22 @@ use_ruby() {
   fi
 
   chruby $ver
-  gem_home .
+}
+
+use_rails() {
+  gem_home ~/.config/gemsets/rails
+}
+
+use_gemset_x() {
+  gem_home "$HOME/.config/gemsets/$1"
+}
+
+use_gemset() {
+  local dir="$HOME/.config/gemsets/$1"
+  if [[ -d $dir ]]; then
+    gem_home $dir
+  else
+    echo "Unknown gemset $1"
+    exit 1
+  fi
 }
