@@ -59,10 +59,20 @@ push_origin() {
   git push origin ${branch}
 }
 
+show_remote() {
+  git config "branch.$(current_branch).remote"
+}
+
 fuzzy_checkout() {
   if [[ $# -gt 0 ]]; then
     git branch | fzf --exact --select-1 --query $1 | xargs git checkout
   else
     git branch | fzf | xargs git checkout
   fi
+}
+
+pull_request() {
+  git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD) && git log --format=%B -n 1 HEAD |
+  hub pull-request -b clio:master -F - |
+  xargs open
 }

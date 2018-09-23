@@ -5,13 +5,11 @@ setopt prompt_subst
 
 
 # Setup paths
-export GOPATH="$HOME/go"
-PATH="$GOPATH/bin:$PATH"
-PATH="/usr/local/bin:/usr/local/sbin:$PATH"
-PATH="$HOME/bin:$PATH"
+export GOPATH="$HOME/workspace/go"
+export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+export PATH="$GOPATH/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
 [[ -d /usr/local/heroku ]] && PATH="/usr/local/heroku/bin:$PATH"
-
-export PATH
 
 export CDPATH="$CDPATH:$HOME/workspace"
 
@@ -38,11 +36,12 @@ colorscheme "$HOME/.zsh/base16-shell/base16-ocean.light.sh"
 alias vi="vim"
 alias ls="ls -lhG"
 alias ql='qlmanage -p "$@" &> /dev/null'
-alias be='bundle exec'
+alias b='bundle exec'
 alias g='fg'
 alias obs='jobs'
 alias i='vi'
 alias aag='ag --ignore spec --ignore test'
+alias show_path="ruby -e \"puts ENV['PATH'].split(':')\""
 function mkcd() { mkdir -p $1 && cd $1 }
 function fcd() { cd *$1* }
 
@@ -61,16 +60,6 @@ setopt HIST_IGNORE_DUPS HIST_IGNORE_SPACE
 source $HOME/.zsh/postgres.sh
 source $HOME/.zsh/mongo.sh
 source $HOME/.zsh/redis.sh
-
-
-# Customize prompt
-local cmd_status="%(?,%{$reset_color%},%{$fg[red]%})ℵ%{$reset_color%}"
-parse_git_branch () {
-  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/::\1/' -e '/::master/d'
-}
-
-PROMPT=' ${cmd_status} %{$fg[blue]%}%m%{$reset_color%}:%U%1~%u '
-RPROMPT='%{$fg[brblack]%}$(~/bin/git-cwd-info.rb)%{$reset_color%}'
 
 # Z
 [[ -f `brew --prefix`/etc/profile.d/z.sh ]] && . `brew --prefix`/etc/profile.d/z.sh

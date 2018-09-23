@@ -17,6 +17,7 @@
   c = commit
   ci = "!source ~/.githelpers && fuzzy_checkout"
   co = checkout
+  conflicts = diff --name-only --diff-filter=U
   d = diff -M
   dc = diff --cached
   ds = diff --stat
@@ -34,19 +35,25 @@
   la = !git l --all
   ld = !git l --simplify-by-decoration
   lt = !git l --since=yesterday
-  noff = merge --no-ff
+  new-branch = checkout -b
   p = add --patch
   po = push origin
   pob = !source ~/.githelpers && push_origin
   pom = push origin master
   phm = push heroku master
   r = !git --no-pager l -20
+  ; r = !git --no-pager log --decorate --oneline --graph --max-count=20
   ra = !git r --all
   s = status -sb
-  st = status
+  show-upstream = "rev-parse --abbrev-ref --symbolic-full-name @{u}"
+  update = pull --ff-only
   unstage = reset --patch
 [core]
   excludesfile = /Users/timuruski/.gitignore_global
 [diff]
 [push]
 	default = simple
+[pull]
+	ff = only
+[credential]
+	helper = osxkeychain
