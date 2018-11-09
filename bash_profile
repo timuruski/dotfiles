@@ -26,6 +26,6 @@ eval "$(direnv hook bash)"
 # /Users/timuruski/.rubies/ruby-2.3.5/lib/ruby/gems/2.3.0/bin
 # /Users/timuruski/.rubies/ruby-2.3.5/bin
 if [[ $(pwd) = "$HOME/workspace/themis" ]]; then
-  # chruby $(cat .ruby-version)
-  export PATH="$HOME/workspace/themis/.direnv/bin:$HOME/workspace/themis/.direnv/ruby/bin:$PATH"
+  chruby $(cat .ruby-version)
+  # export PATH="$HOME/workspace/themis/.direnv/bin:$HOME/workspace/themis/.direnv/ruby/bin:$PATH"
 fi

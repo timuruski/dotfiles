@@ -10,39 +10,47 @@ add_extra_vimrc() {
   fi
 }
 
-# use ruby [version]
-use_ruby() {
-  local ver=$1
+# Collection of utilities for using Ruby and Bundler without the need
+# to "bundle exec" every command in existence.
+#
+# Best results so far...
+# use local_ruby
+# use local_gems vendor
+#
+# $ bundle install --system
 
-  if [[ -z $ver ]] && [[ -f .ruby-version ]]; then
+# use local_ruby [ruby-version]
+# Load Ruby version from .ruby-version file
+use_local_ruby() {
+  local ver
+
+  if [[ -f .ruby-version ]]; then
     ver=$(cat .ruby-version)
   fi
 
   if [[ -z $ver ]]; then
-    echo "Unknown ruby version $ver"
+    log_error "No local ruby defined in .ruby-version"
     exit 1
   fi
 
   chruby $ver
 }
 
-# use gemset
+# use gemset <name>
+# Add gemset to environment
 use_gemset() {
   local dir="$HOME/.config/gemsets/$1"
   if [[ -d $dir ]]; then
     gem_home $dir
   else
-    echo "Unknown gemset $1"
+    log_error "Unknown gemset $1"
     exit 1
   fi
 }
 
-###
-# Simplified gem_home implementation for working with local gems.
-###
-
-function use_local_gems()
-{
+# use local_gems <vendor>
+# Experimental: use gems local to project directory
+use_local_gems() {
   mkdir -p "$1" && pushd "$1" >/dev/null || return 1
   local ruby_engine ruby_version gem_dir
 
@@ -58,6 +66,10 @@ EOF
   export GEM_HOME="$gem_dir"
   export GEM_PATH="$gem_dir${GEM_PATH:+:}$GEM_PATH"
   export PATH="$gem_dir/bin${PATH:+:}$PATH"
+
+  # BUNDLE_BIN=$(direnv_layout_dir)/bin
+  # PATH_add "$GEM_HOME/bin"
+  # PATH_add "$BUNDLE_BIN"
 
   popd >/dev/null
 }

@@ -20,7 +20,7 @@ at_exit do
   defaults_file = File.expand_path('~/.snapshot.mylogin.cnf')
 
   date = parse_date(ARGV.shift)
-  database = "#{date}_04000#{config[:db_iteration]}_#{config[:db_name]}"
+  database = db_name(date, config)
 
   cmd = [
     'mysql',
@@ -45,7 +45,7 @@ def parse_date(date_str)
   when 'yesterday'
     Date.today - 1 # Day
   else
-    (Date.parse(date) rescue Date.today)
+    (Date.parse(date_str) rescue Date.today)
   end
 
   date.strftime('%Y%m%d')
@@ -81,3 +81,41 @@ def parse_config(args = ARGV)
     parser.parse!(args)
   end
 end
+
+def db_name(date, config)
+  if config[:ssh_name] == 'snapshot'
+    "#{date}_04000#{config[:db_iteration]}_themis_production"
+  else
+    "#{date}_themis_production_eu"
+  end
+end
+
+__END__
+
+mysql --defaults-file=/Users/timuruski/.snapshot.mylogin.cnf --no-auto-rehash --host=127.0.0.1 --port=3307 --prompt "SNAPSHOT> " 20170823_040002_themis_production
+
+#!/usr/bin/perl -w
+
+use strict;
+# use File::Path::Expand;
+
+
+my ($y, $m, $d) = (localtime)[5, 4, 3];
+my $date = sprintf "%d%02d%02d", $y + 1900, $m + 1, $d;
+my ($db, $ssh_name);
+my $config = "/Users/timuruski/.snapshot.mylogin.cnf";
+
+if ($ARGV[0] and $ARGV[0] eq "eu") {
+  $db = "${date}_themis_production_eu";
+  $ssh_name = "snapshot-eu";
+} else {
+  my $seconds = defined($ARGV[0]) ? $ARGV[0] : '1';
+  $db = "${date}_04000${seconds}_themis_production";
+  $ssh_name = "snapshot";
+}
+$db = "20170823_040002_themis_production";
+my $command = "mysql --defaults-file=$config --no-auto-rehash --host=127.0.0.1 --port=3307 --prompt \"SNAPSHOT> \" $db";
+
+system "ssh -fN $ssh_name";
+print "$command\n";
+exec $command or die "Exec failed: $!";

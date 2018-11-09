@@ -4,6 +4,9 @@
 .envrc
 .vagrant/
 doc/tags
+node_modules/
+node_modules-x/
 tmp/
 vendor/bundle/
+vendor/javascripts/
 vendor/ruby/

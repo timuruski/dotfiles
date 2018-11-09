@@ -27,18 +27,15 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
+" Plug 'typeintandem/vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 Plug 'vim-scripts/ag.vim'
-" Plug 'vim-utils/vim-man'
+Plug 'vim-utils/vim-man'
 Plug 'leafgarland/typescript-vim'
 
 call plug#end()
-
-" Semi-universal <ESC> alternatives
-inoremap jk <ESC>
-inoremap kj <ESC>
 
 " Quick access to vim config
 nnoremap <leader>ev :edit $MYVIMRC<cr>
@@ -122,7 +119,7 @@ set winheight=999
 " Disable backups when editing a temp file, usually because it's a
 " crontab file, and cron gets upset when a backup is written.
 autocmd BufRead /tmp/*		set nowritebackup
-autocmd FileType ruby setlocal norelativenumber nocursorline regexpengine=1
+" autocmd FileType ruby setlocal norelativenumber nocursorline regexpengine=1
 
 
 " MAPPINGS AND FUNCTIONS
@@ -271,27 +268,29 @@ let base16colorspace=256
 let &background=substitute(expand("$COLORSCHEME"), '\v.*(light|dark).*', '\1', '')
 colorscheme base16
 
-" map <leader>ga :Files app/client-src/apollo-app<cr>
-map <leader>gC :Files app/assets/stylesheets<cr>
-map <leader>gJ :Files app/assets/javascripts<cr>
-map <leader>gS :Files app/services<cr>
-map <leader>gc :Files app/controllers<cr>
-map <leader>gh :Files app/helpers<cr>
-map <leader>gl :Files lib<cr>
-map <leader>ge :Files extras<cr>
-map <leader>gm :Files app/models<cr>
-map <leader>gp :Files app/presenters<cr>
-map <leader>gs :Files spec<cr>
-map <leader>gv :Files app/views<cr>
+map <leader>ga :Files client-src/apollo-app<CR>
+map <leader>gc :Files app/controllers<CR>
+map <leader>gC :Files app/assets/stylesheets<CR>
+map <leader>ge :Files extras<CR>
+map <leader>gh :Files app/helpers<CR>
+map <leader>gj :Files client-src/apollo-app<CR>
+map <leader>gJ :Files app/assets/javascripts<CR>
+map <leader>gl :Files lib<CR>
+map <leader>gm :Files app/models<CR>
+map <leader>gp :Files app/presenters<CR>
+map <leader>gs :Files client-src/apollo-app<CR>
+" map <leader>gs :Files spec<CR>
+" map <leader>gS :Files app/services<CR>
+map <leader>gv :Files app/views<CR>
 
-map <leader>gM :topleft 100 :sview db/schema.rb<cr>
-map <leader>gg :topleft 100 :split Gemfile<cr>
-" map <leader>gt :CtrlPClearCache<cr>\|:CtrlPTag<cr>
-map <leader>gr :topleft :split config/routes.rb<cr>
-map <leader>gR :call ShowRoutes()<cr>
-map <leader>b :Buffers<cr>
-map <leader>f :Files<cr>
-map <leader>F :Files %%<cr>
+map <leader>gM :topleft 100 :sview db/schema.rb<CR>
+map <leader>gg :topleft 100 :split Gemfile<CR>
+" map <leader>gt :CtrlPClearCache<CR>\|:CtrlPTag<CR>
+map <leader>gr :topleft :split config/routes.rb<CR>
+map <leader>gR :call ShowRoutes()<CR>
+map <leader>b :Buffers<CR>
+map <leader>f :Files<CR>
+map <leader>F :Files %%<CR>
 
 let g:ctrlp_map = '<leader>f'
 let g:ctrlp_custom_ignore = {

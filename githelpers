@@ -22,10 +22,13 @@ show_git_head() {
 }
 
 pretty_git_log() {
+  # DEFAULT_PAGER="less -FSXR"
+  # pager="${GIT_PAGER:-$PAGER:-$default_pager}"
+
   git log --graph --abbrev-commit --date=relative --pretty="tformat:${FORMAT}" $* |
       # Replace (2 years ago) with (2 years)
       sed -Ee 's/(^[^<]*) ago)/\1)/' |
-      # Replace (2 years, 5 months) wiht (2 years)
+      # Replace (2 years, 5 months) with (2 years)
       sed -Ee 's/(^[^>]*), [[:digit:]]+ .*months?)/\1)/' |
       # Columnate based on } delimiter
       column -s '}' -t |

@@ -11,7 +11,7 @@ export PATH="$GOPATH/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
 [[ -d /usr/local/heroku ]] && PATH="/usr/local/heroku/bin:$PATH"
 
-export CDPATH="$CDPATH:$HOME/workspace"
+export CDPATH="$CDPATH:$HOME/workspace/clio:$HOME/workspace"
 
 # Editors
 export EDITOR="vim"
@@ -35,6 +35,7 @@ colorscheme "$HOME/.zsh/base16-shell/base16-ocean.light.sh"
 # Define functions and aliases
 alias vi="vim"
 alias ls="ls -lhG"
+alias tree="tree -I 'node_modules|vendor'"
 alias ql='qlmanage -p "$@" &> /dev/null'
 alias b='bundle exec'
 alias g='fg'
@@ -54,7 +55,7 @@ compdef _ws ws
 export HISTSIZE=100000
 export HISTFILE="$HOME/.history"
 export SAVEHIST=$HISTSIZE
-setopt HIST_IGNORE_DUPS HIST_IGNORE_SPACE
+setopt HIST_IGNORE_DUPS HIST_IGNORE_SPACE INC_APPEND_HISTORY
 
 # Datastore services
 source $HOME/.zsh/postgres.sh
@@ -73,4 +74,4 @@ for plugin in ~/.zsh/plugins/*.sh; do
 done
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-export PATH="/usr/local/opt/percona-server@5.6/bin:$PATH"
+# export PATH="/usr/local/opt/percona-server@5.6/bin:$PATH"
