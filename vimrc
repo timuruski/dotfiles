@@ -7,7 +7,8 @@ set nocompatible
 " Vimplug
 call plug#begin('~/.vim/plugged')
 
-Plug 'chriskempson/base16-vim'
+Plug 'andreypopp/vim-colors-plain'
+" Plug 'chriskempson/base16-vim'
 Plug 'csexton/trailertrash.vim'
 " Plug 'ctrlpvim/ctrlp.vim'
 Plug 'janko-m/vim-test'
@@ -185,7 +186,7 @@ let g:netrw_altv = 1
 " Airline
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
-let g:airline_theme = 'base16'
+let g:airline_theme = 'minimalist'
 let g:airline_mode_map = {
   \ 'n'  : 'N',
   \ 'i'  : 'I',
@@ -266,7 +267,7 @@ set colorcolumn=110
 set hlsearch
 let base16colorspace=256
 let &background=substitute(expand("$COLORSCHEME"), '\v.*(light|dark).*', '\1', '')
-colorscheme base16
+colorscheme plain
 
 map <leader>ga :Files client-src/apollo-app<CR>
 map <leader>gc :Files app/controllers<CR>
