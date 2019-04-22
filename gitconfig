@@ -1,6 +1,6 @@
 [user]
   name = Tim Uruski
-  email = github@tmu.pw
+  email = tim@uru.ski
 [github]
   user = timuruski
   token = !security 2>&1 >/dev/null find-generic-password -gs github.token | ruby -e 'print $1 if STDIN.gets =~ /^password: \\\"(.*)\\\"$/'
@@ -20,6 +20,7 @@
   diffc = diff --cached
   discard = checkout --patch
   deploy-msg = "!source ~/.githelpers && deploy_git_log"
+  evo = log --pretty=format:"[%h] %an %ad %s" --date=short --numstat
   ff = "!source ~/.githelpers && ffwd"
   ffx = merge --ff-only
   git = !git
@@ -40,6 +41,8 @@
   s = status -sb
   show-upstream = "rev-parse --abbrev-ref --symbolic-full-name @{u}"
   unstage = reset --patch
+	update = pull --ff-only
+	new-branch = checkout -b
 [core]
   excludesfile = /Users/timuruski/.gitignore_global
 [diff]

@@ -9,9 +9,18 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'csexton/trailertrash.vim'
-Plug 'chriskempson/base16-vim'
-" Plug 'ctrlpvim/ctrlp.vim'
+
+" Plug 'chriskempson/base16-vim', {'do': 'git checkout dict_fix'}
+" FIX for https://github.com/chriskempson/base16-vim/issues/197
+Plug 'danielwe/base16-vim'
+
+" Colorschemes
+Plug 'andreypopp/vim-colors-plain'
+" Plug 'pbrisbin/vim-colors-off'
+
+Plug 'dart-lang/dart-vim-plugin'
 Plug 'ElmCast/elm-vim', { 'for': 'elm' }
+Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'janko-m/vim-test'
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 Plug 'jakwings/vim-pony', { 'for': 'pony' }
@@ -40,7 +49,7 @@ Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 Plug 'vim-scripts/ag.vim'
 Plug 'vim-utils/vim-man'
 " Plug 'w0rp/ale'
-Plug 'zah/nim.vim'
+" Plug 'zah/nim.vim'
 
 call plug#end()
 
@@ -195,7 +204,7 @@ let g:netrw_altv = 1
 " Airline
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
-let g:airline_theme = 'base16'
+let g:airline_theme = 'minimalist'
 let g:airline_mode_map = {
   \ 'n'  : 'N',
   \ 'i'  : 'I',
@@ -254,17 +263,19 @@ function! s:RunCmd()
 endfunction
 
 " Visual style
-" set t_Co=256
+set t_Co=256
 set colorcolumn=96
 set hlsearch
+" colorscheme plain-cterm
+colorscheme plain
 
 " Toggle background
 nmap <F2> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 
-if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
-  source ~/.vimrc_background
-endif
+" if filereadable(expand("~/.vimrc_background"))
+"   let base16colorspace=256
+"   source ~/.vimrc_background
+" endif
 
 " Examine path
 command! Path :echo join(split(&path, ","), "\n")

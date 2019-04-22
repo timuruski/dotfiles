@@ -16,14 +16,6 @@
 #  use gemset rails
 
 function rails-new() {
-  dir=~/workspace/rails-new
-  # direnv exec $DIR rails new --skip-bundle --skip-coffee --skip-test $@
-  # direnv exec $DIR rails new $@
-
-  case "$1" in
-    -h|--help)
-      direnv exec $dir rails new $@;;
-    *)
-      direnv exec $dir rails new --skip-bundle --skip-coffee --skip-test $@;;
-  esac
+  local rails_dir=~/workspace/rails-new
+  direnv exec $rails_dir rails new $@
 }

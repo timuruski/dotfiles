@@ -42,7 +42,8 @@ use_gemset() {
 # use local_gems <vendor>
 # Experimental: use gems local to project directory
 use_local_gems() {
-  mkdir -p "$1" && pushd "$1" >/dev/null || return 1
+  local gem_root="${1:vendor}"
+  mkdir -p "$gem_root" && pushd "$gem_root" >/dev/null || return 1
   local ruby_engine ruby_version gem_dir
 
   eval "$(ruby - <<EOF
