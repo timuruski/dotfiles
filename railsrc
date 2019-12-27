@@ -1,1 +1,1 @@
---skip-bundle --skip-coffee --skip-spring --skip-test --skip-turbolinks
+--skip-bootsnap --skip-bundle --skip-coffee --skip-spring --skip-test --skip-turbolinks

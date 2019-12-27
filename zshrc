@@ -14,6 +14,8 @@ export PATH
 
 export CDPATH="$CDPATH:$HOME/workspace"
 
+export GTYPIST_PATH=$GTYPIST_PATH:$HOME/workspace/gtypist
+
 # Editors
 export EDITOR="vim"
 export GIT_EDITOR="vim"
@@ -31,21 +33,23 @@ bindkey '\C-x\C-e' edit-command-line
 export GREP_OPTIONS="--color"
 
 # Base-16 Shell
+# source "$HOME/.zsh/base16-shell/scripts/base16-default-light.sh"
 # source ~/.zsh/colorscheme.sh
 # colorscheme "$HOME/.zsh/base16-shell/base16-ocean.light.sh"
+# colorscheme "$HOME/.zsh/base16-shell/base16-default.light.sh"
 
-BASE16_SHELL=$HOME/.zsh/base16-shell/
-[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
-base16_default-light
+# BASE16_SHELL=$HOME/.zsh/base16-shell/
+# [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+# base16_default-light
 
-function invert-colors {
-  case "${BASE16_THEME}" in
-    default-light )
-      base16_default-dark;;
-    default-dark )
-      base16_default-light;;
-  esac
-}
+# function invert-colors {
+#   case "${BASE16_THEME}" in
+#     default-light )
+#       base16_default-dark;;
+#     default-dark )
+#       base16_default-light;;
+#   esac
+# }
 
 # Define functions and aliases
 alias ls="ls -lhG"
@@ -66,15 +70,6 @@ export HISTSIZE=100000
 export HISTFILE="$HOME/.history"
 export SAVEHIST=$HISTSIZE
 setopt HIST_IGNORE_DUPS HIST_IGNORE_SPACE
-
-# Customize prompt
-local cmd_status="%(?,%{$reset_color%},%{$fg[red]%})♥%{$reset_color%}"
-parse_git_branch () {
-  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/::\1/' -e '/::master/d'
-}
-
-PROMPT=' ${cmd_status} %{$fg[blue]%}%m%{$reset_color%}:%U%1~%u '
-RPROMPT='%{$fg[brblack]%}$(~/bin/git-cwd-info.rb)%{$reset_color%}'
 
 # Z
 [[ -f `brew --prefix`/etc/profile.d/z.sh ]] && . `brew --prefix`/etc/profile.d/z.sh

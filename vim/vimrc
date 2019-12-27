@@ -16,7 +16,7 @@ Plug 'danielwe/base16-vim'
 
 " Colorschemes
 Plug 'andreypopp/vim-colors-plain'
-" Plug 'pbrisbin/vim-colors-off'
+Plug 'pbrisbin/vim-colors-off'
 
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'ElmCast/elm-vim', { 'for': 'elm' }
@@ -24,9 +24,11 @@ Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'janko-m/vim-test'
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 Plug 'jakwings/vim-pony', { 'for': 'pony' }
-Plug 'jeroenbourgois/vim-actionscript'
-Plug 'junegunn/goyo.vim'
-Plug 'rhysd/vim-crystal'
+" Plug 'jeroenbourgois/vim-actionscript', { 'for': 'actioncript' }
+" Plug 'junegunn/goyo.vim'
+" Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+" Plug 'rhysd/vim-crystal'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 " Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-abolish'
@@ -48,7 +50,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 Plug 'vim-scripts/ag.vim'
 Plug 'vim-utils/vim-man'
-" Plug 'w0rp/ale'
+Plug 'w0rp/ale'
 " Plug 'zah/nim.vim'
 
 call plug#end()
@@ -218,6 +220,10 @@ let g:airline_mode_map = {
 let g:vimroom_background = 'white'
 let g:vimroom_sidebar_height = 0
 
+" vim-markdown
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_frontmatter = 1
+
 
 " QuickFix to args
 command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()
@@ -248,6 +254,7 @@ command! -nargs=0 RunRuby nnoremap <buffer> <enter> :w \| !clear; ruby % <CR>
 command! -nargs=0 RunMake nnoremap <buffer> <enter> :w \| make! <CR>
 command! -nargs=* RunMake nnoremap <buffer> <enter> :w \| make! <args> <CR>
 command! -nargs=0 RunTest nnoremap <enter> :w \| :TestFile <CR>
+command! -nargs=0 RunGo nnoremap <buffer> <enter> :w \| !clear; go run % <CR>
 command! -nargs=0 RunNone nunmap <enter>
 
 function! s:RunCmd()
@@ -267,10 +274,15 @@ set t_Co=256
 set colorcolumn=96
 set hlsearch
 " colorscheme plain-cterm
-colorscheme plain
+" colorscheme plain
+colorscheme off
 
 " Toggle background
 nmap <F2> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
+
+" Configure Ale
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 'never'
 
 " if filereadable(expand("~/.vimrc_background"))
 "   let base16colorspace=256

@@ -43,6 +43,7 @@ brew "fzf"
 brew "https://raw.github.com/postmodern/gem_home/master/homebrew/gem_home.rb", args: ["HEAD"]
 brew "gettext"
 brew "git"
+brew "charmbracelet/homebrew-tap/glow"
 brew "gnu-typist"
 brew "gnupg"
 brew "go"

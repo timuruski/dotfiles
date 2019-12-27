@@ -16,3 +16,5 @@ dirname_ () {
 
 # PS1="\e[2K\$(hostname_):\$(dirname_) \$(status) "
 PS1="\e[2K\e[33m\h\e[0m:\e[4m\W\e[0m \$(status) "
+
+export PATH="$HOME/.cargo/bin:$PATH"
