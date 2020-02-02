@@ -7,9 +7,6 @@ setopt prompt_subst
 # Setup paths
 PATH="$HOME/bin:$PATH"
 
-# export GOPATH="$HOME/go"
-# PATH="$GOPATH/bin:$PATH"
-
 export PATH
 
 export CDPATH="$CDPATH:$HOME/workspace"

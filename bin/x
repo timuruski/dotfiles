@@ -5,9 +5,10 @@
 #   path/to/foo.rb -> path/to/foo-x.rb
 #   path/to/foo-x.rb -> path/to/foo.rb
 #
-# NOTE: Suffix is appended to basename to preserve file-type.
+# TODO: Add an optional argument or ENV variable to specify the suffix
+# FIXME: Suffix is appended to basename to preserve file-type.
 
-require 'pathname'
+require "pathname"
 
 at_exit do
   ARGV.each do |path|
@@ -15,16 +16,16 @@ at_exit do
   end
 end
 
-def x (path)
-  basename = path.basename('.*').to_s.chomp('-x')
-  basename_with_x = basename + '-x'
+def x(path)
+  basename = path.basename(".*").to_s.chomp("-x")
+  basename_with_x = basename + "-x"
 
   f_path = Pathname.new File.join(path.dirname, basename + path.extname)
   x_path = Pathname.new File.join(path.dirname, basename_with_x + path.extname)
 
   if f_path.exist? && x_path.exist?
     warn "Warning: #{f_path} and #{basename_with_x} both exist, skipping..."
-    return
+    nil
   elsif x_path.exist?
     # puts "mv #{x_path} #{f_path}"
     File.rename(x_path, f_path)

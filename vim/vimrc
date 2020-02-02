@@ -50,6 +50,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 Plug 'vim-scripts/ag.vim'
 Plug 'vim-utils/vim-man'
+Plug 'vimwiki/vimwiki'
 Plug 'w0rp/ale'
 " Plug 'zah/nim.vim'
 
@@ -281,8 +282,11 @@ colorscheme off
 nmap <F2> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 
 " Configure Ale
+let g:ale_linters = {'ruby': ['standardrb']}
+let g:ale_fixers = {'ruby': ['standardrb']}
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 'never'
+let g:ale_fix_on_save = 1
 
 " if filereadable(expand("~/.vimrc_background"))
 "   let base16colorspace=256
