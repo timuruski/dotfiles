@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
 # -*- coding: utf-8 -*-
 
+$PROGRAM_NAME = "git-prompt"
+
 # Emits Git metadata for use in a Zsh prompt.
 #
 # AUTHOR:

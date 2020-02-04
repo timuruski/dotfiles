@@ -1,6 +1,8 @@
 #!/bin/bash
 set -euf -o pipefail
 
+export FZF_DEFAULT_COMMAND="fd --type=file --no-ignore --hidden --exclude=.git"
+
 if [[ $# -gt 0 ]]; then
   exec fzf --select-1 --query $1 | xargs -o vim
 else

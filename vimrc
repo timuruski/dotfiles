@@ -7,13 +7,10 @@ set nocompatible
 " Vimplug
 call plug#begin('~/.vim/plugged')
 
-Plug 'andreypopp/vim-colors-plain'
-" Plug 'chriskempson/base16-vim'
 Plug 'csexton/trailertrash.vim'
-" Plug 'ctrlpvim/ctrlp.vim'
 Plug 'janko-m/vim-test'
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
-Plug 'junegunn/goyo.vim'
+Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 Plug 'tpope/vim-abolish'
 " Plug 'tpope/vim-bundler', { 'for': 'ruby' }
 Plug 'tpope/vim-commentary'
@@ -21,20 +18,24 @@ Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-ragtag'
-" Plug 'tpope/vim-rake', { 'for': 'ruby' }
 " Plug 'tpope/vim-rails', { 'for': 'ruby' }
+" Plug 'tpope/vim-rake', { 'for': 'ruby' }
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
-" Plug 'typeintandem/vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-" Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 Plug 'vim-scripts/ag.vim'
 Plug 'vim-utils/vim-man'
-Plug 'leafgarland/typescript-vim'
+Plug 'vimwiki/vimwiki'
+" Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
+
+" Syntax
+Plug 'vim-syntastic/syntastic'
+" Plug 'w0rp/ale'
 
 call plug#end()
 
@@ -186,6 +187,7 @@ let g:netrw_altv = 1
 " Airline
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
+let g:airline#extensions#branch#enabled = 0
 let g:airline_theme = 'minimalist'
 let g:airline_mode_map = {
   \ 'n'  : 'N',
@@ -215,6 +217,8 @@ endfunction
 " Visual search
 xnoremap * :<C-u>call <SID>VSetSearch()<CR>/<C-R>=@/<CR><CR>
 xnoremap # :<C-u>call <SID>VSetSearch()<CR>?<C-R>=@/<CR><CR>
+" Count matches for word under cursor...?
+xnoremap <leader>* *<C-O>:%s///gn<CR>
 
 function! s:VSetSearch()
   let temp = @s
@@ -223,6 +227,15 @@ function! s:VSetSearch()
   let @s = temp
 endfunction
 
+" General purpose command to run when the <enter> key is pressed.
+" RunCmd! rake
+" RunCmd rake task
+" RunCmd ruby -Ilib %
+" RunTest
+
+
+" command! -bang RunCmd nnoremap <enter> call s:runcmd(<qargs>, <bang>)
+command! -nargs=+ RunRunCmd nnoremap <enter> :w \| !clear; <args> <CR>
 command! -nargs=1 RunCmd nnoremap <buffer> <enter> :w \| !clear; <args> % <CR>
 command! -nargs=+ RunCmd nnoremap <buffer> <enter> :w \| !clear; <args> <CR>
 command! -nargs=0 RunRuby nnoremap <buffer> <enter> :w \| !clear; ruby % <CR>
@@ -235,15 +248,17 @@ command! -nargs=0 RunTest nnoremap <buffer> <enter> :w \| :TestFile <CR>
 " command! RunTest nnoremap <buffer> <enter> call RunCmd() <CR>
 
 
-function! s:RunCmd()
+function! s:runcmd()
   " Command name
   " Command args
+  " Command bang
   " Buffer reference?
   " - write
   " - clear terminal
   " - execute command
   " - maybe press <enter>
-  echom "RunCmd"
+  echom "runcmd"
+  execute(":write")
 endfunction
 
 " FZF
@@ -263,11 +278,20 @@ let g:fzf_colors =
 
 " Visual style
 " set t_Co=256
-set colorcolumn=110
+set colorcolumn=100
 set hlsearch
 let base16colorspace=256
 let &background=substitute(expand("$COLORSCHEME"), '\v.*(light|dark).*', '\1', '')
 colorscheme plain
+
+" Syntax highlighting
+function! SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
+" command! -nargs=1 SynStack nnoremap <buffer> <enter> :w \| !clear; <args> % <CR>
 
 map <leader>ga :Files client-src/apollo-app<CR>
 map <leader>gc :Files app/controllers<CR>
@@ -279,7 +303,7 @@ map <leader>gJ :Files app/assets/javascripts<CR>
 map <leader>gl :Files lib<CR>
 map <leader>gm :Files app/models<CR>
 map <leader>gp :Files app/presenters<CR>
-map <leader>gs :Files client-src/apollo-app<CR>
+map <leader>gs :Files client-src<CR>
 " map <leader>gs :Files spec<CR>
 " map <leader>gS :Files app/services<CR>
 map <leader>gv :Files app/views<CR>
@@ -314,6 +338,22 @@ if exists("$EXTRA_VIM")
     exec "source ".path
   endfor
 endif
+
+" VimWiki
+let g:vimwiki_list = [{'path': '~/vimwiki/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
+
+" Syntastic
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" let g:syntastic_typescript_checkers = ['tslint', 'tsc']
+" let g:syntastic_typescript_checkers = ['tsuquyomi', 'tslint --type-check']
+
+" https://vim.fandom.com/wiki/Identify_the_syntax_highlighting_group_used_at_the_cursor
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 " Disable bracketed paste mode
 " https://groups.google.com/forum/#!searchin/vim_dev/%3CPasteStart%3E%7Csort:relevance/vim_dev/eP3GUBqzgGA/zpj0r4ztCgAJ

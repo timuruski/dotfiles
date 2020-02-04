@@ -3,5 +3,12 @@
 # hub pull-request -b clio:master --browse --file -
 
 git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD) && git log --format=%B -n 1 HEAD |\
-hub pull-request -b clio:master -F - |\
-xargs open
+hub pull-request -b clio:master --browse -F -
+# xargs open
+
+# Push branch to upstream
+# git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD) && |\
+# Read pull-request template into edit message
+# awk '{ print " " $0 }' .github/PULL_REQUEST_TEMPLATE.md > .git/PULLREQ_EDITMSG && |\
+# Open pull-request with hub
+# hub pull-request -b clio:master --browse

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+branch_name=$(git current-branch)
+if [[ $branch_name = "master" ]]; then
+  echo "Can't drop master!"
+  exit
+fi
+
+goto_branch=${1:-"master"}
+
+git checkout "$goto_branch"
+git branch -D "$branch_name"
