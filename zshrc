@@ -58,8 +58,8 @@ alias j='jobs'
 function fcd() { cd *$1* }
 
 # Workspace shortcut and completion
-function ws() { cd ~/workspace/$1; }
-function _ws() { _files -W ~/workspace -/; }
+# function ws() { cd ~/workspace/$1; }
+function _ws() { _files -W $HOME/workspace -/; }
 compdef _ws ws
 
 # History config
