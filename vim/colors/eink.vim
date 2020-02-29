@@ -16,7 +16,7 @@ let colors_name = "eink"
 if !has('gui_running')
   if &background == "light"
     hi Normal       cterm=NONE          ctermbg=white   ctermfg=235
-    hi SpecialKey   cterm=bold                          ctermfg=NONE
+    hi SpecialKey   cterm=NONE                          ctermfg=250
     hi NonText      cterm=NONE                          ctermfg=250
     hi IncSearch    cterm=reverse                       ctermfg=NONE
     hi Search       cterm=reverse                       ctermfg=NONE
@@ -52,7 +52,8 @@ if !has('gui_running')
     hi Identifier   cterm=NONE          ctermbg=NONE    ctermfg=NONE
     hi Statement    cterm=NONE          ctermbg=NONE    ctermfg=NONE
     hi Ignore       cterm=bold                          ctermfg=NONE
-    hi String       cterm=underline                     ctermfg=NONE
+    " hi String       cterm=underline                     ctermfg=NONE
+    hi String       cterm=NONE                          ctermfg=245
     hi ErrorMsg     cterm=reverse       ctermbg=15      ctermfg=9
     hi Error        cterm=reverse       ctermbg=15      ctermfg=9
     hi Todo         cterm=bold,standout ctermbg=0       ctermfg=11
@@ -60,8 +61,8 @@ if !has('gui_running')
     hi ColorColumn                                      ctermbg=255
   else
     hi Normal       cterm=NONE          ctermbg=234     ctermfg=250
-    hi SpecialKey   cterm=bold                          ctermfg=NONE
-    hi NonText      cterm=NONE                          ctermfg=250
+    hi SpecialKey   cterm=NONE                          ctermfg=255
+    hi NonText      cterm=NONE                          ctermfg=255
     hi IncSearch    cterm=reverse                       ctermfg=NONE
     hi Search       cterm=reverse                       ctermfg=NONE
     hi MoreMsg      cterm=bold                          ctermfg=NONE
