@@ -52,13 +52,24 @@ if !has('gui_running')
     hi Identifier   cterm=NONE          ctermbg=NONE    ctermfg=NONE
     hi Statement    cterm=NONE          ctermbg=NONE    ctermfg=NONE
     hi Ignore       cterm=bold                          ctermfg=NONE
-    " hi String       cterm=underline                     ctermfg=NONE
     hi String       cterm=NONE                          ctermfg=245
     hi ErrorMsg     cterm=reverse       ctermbg=15      ctermfg=9
     hi Error        cterm=reverse       ctermbg=15      ctermfg=9
     hi Todo         cterm=bold,standout ctermbg=0       ctermfg=11
     hi MatchParen   cterm=bold          ctermbg=250     ctermfg=NONE
-    hi ColorColumn                                      ctermbg=255
+    hi ColorColumn  cterm=NONE          ctermbg=255
+    hi SignColumn   cterm=NONE          ctermbg=254
+    hi CursorLine   cterm=NONE          ctermbg=255     ctermfg=NONE
+    hi CursorLineNr cterm=bold          ctermbg=255     ctermfg=NONE
+
+    " FZF syntax attrs
+
+    " Ale syntax attrs
+    hi ALEErrorSign   cterm=bold          ctermbg=250     ctermfg=NONE
+    hi ALEWarningSign cterm=bold          ctermbg=250     ctermfg=NONE
+
+    " Markdown syntax attrs
+    hi mkdInlineURL cterm=underline     ctermbg=254     ctermfg=NONE
   else
     hi Normal       cterm=NONE          ctermbg=234     ctermfg=250
     hi SpecialKey   cterm=NONE                          ctermfg=255
@@ -103,6 +114,9 @@ if !has('gui_running')
     hi Todo         cterm=bold,standout ctermbg=0       ctermfg=11
     hi MatchParen   cterm=bold          ctermbg=250     ctermfg=NONE
     hi ColorColumn                      ctermbg=255
+    hi ColorColumn  cterm=NONE          ctermbg=235
+    hi CursorLine   cterm=NONE          ctermbg=235     ctermfg=NONE
+    hi CursorLineNr cterm=bold          ctermbg=235     ctermfg=NONE
   endif
 else
   if &background == "light"
