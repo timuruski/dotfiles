@@ -1,109 +1,89 @@
-# This is dumped from the existing homebrew setup, it needs to be cleaned up...
+# tap "homebrew/dupes"
+# tap "homebrew/core"
+# tap "homebrew/php"
+# tap "homebrew/versions"
+# tap "homebrew/binary"
+# tap "homebrew/bundle"
+# tap "homebrew/services"
+# tap "caskroom/cask"
 
-tap "homebrew/dupes"
-tap "homebrew/core"
-tap "homebrew/php"
-tap "homebrew/versions"
-tap "homebrew/binary"
-tap "homebrew/bundle"
-tap "homebrew/services"
-tap "caskroom/cask"
-
-brew "apple-gcc42"
-brew "autoconf"
-brew "automake"
-brew "bats"
-brew "bdw-gc"
-brew "bison"
+# Manage Ruby versions
 brew "chruby"
-brew "libsigsegv"
-brew "readline"
-brew "clisp"
-brew "cloc"
-brew "clojure"
-brew "cmake"
-brew "composer"
-brew "gmp"
-brew "openssl"
-brew "libyaml"
-brew "libffi"
-brew "crystal-lang"
+
+# Per-project environment configuration
 brew "direnv"
-brew "elixir"
-brew "elm"
+
+# Utility to run arbitrary commands when a file changes
 brew "entr"
-brew "exercism"
+
+# Friendly version of find
 brew "fd"
-brew "lame"
-brew "xvid"
-brew "ffmpeg"
-brew "flac"
+
+# Fuzzy finder for command line
 brew "fzf"
-# brew install --HEAD https://raw.github.com/postmodern/gem_home/master/homebrew/gem_home.rb
-brew "https://raw.github.com/postmodern/gem_home/master/homebrew/gem_home.rb", args: ["HEAD"]
-brew "gettext"
+
+# Distributed source repository
 brew "git"
+
+# Pretty READMEs for the command line
 brew "charmbracelet/homebrew-tap/glow"
-brew "gnu-typist"
-brew "gnupg"
+
+# Go Programming language
 brew "go"
-brew "haskell-stack"
-brew "hub"
-brew "hugo"
-brew "icu4c"
-brew "imagemagick"
+
+# Janet Programming language
+# https://janet-lang.org
+brew "janet"
+
+# JSON formatting and filtering
 brew "jq"
-brew "kafka"
-# brew "leiningen"
-brew "libogg"
-brew "libpcl"
-brew "libsigc++"
-brew "libvorbis"
-brew "libxml2"
-brew "lighttpd"
-brew "llvm"
-brew "makedepend"
-brew "markdown"
-brew "sqlite"
-brew "mercurial"
-brew "minimal-racket"
-brew "mongodb"
-brew "mysql"
-brew "neovim"
-brew "nim"
-brew "nspr"
-brew "ocaml"
-brew "ossp-uuid"
-brew "tmux"
+
+# Next generation Vim
+brew "neovim" # ??
+
+# Multi-process runner built on tmux
 brew "overmind"
-brew "peco"
-brew "perl"
-brew "physfs"
-brew "pkg-config"
-brew "ponyc"
-brew "postgresql", restart_service: true
-brew "postgresql@9.6"
+
+# SQL Database server
+# brew "postgresql", restart_service: true # ??
+
+# Visualize process trees
 brew "pstree"
-brew "reattach-to-user-namespace"
-brew "redis"
-brew "rethinkdb"
-brew "ruby"
+
+# Fix for pbcopy/pbpaste in tmux and screen
+brew "reattach-to-user-namespace" # For tmux to work properly
+
+# Key/Value store service
+# brew "redis"
+
+# File search, faster than grep
+brew "ripgrep"
+
+# Install Ruby versions
 brew "ruby-install"
-brew "rust"
-brew "sdl"
-brew "sdl2"
-brew "sdl_image"
-brew "sdl_mixer", args: ["with-smpeg"]
-brew "sdl_ttf"
-brew "serveit"
-brew "the_silver_searcher"
-brew "theora"
+
+# Local SQL database
+# brew "sqlite" # ??
+
+brew "the_silver_searcher" # ??
+
+# Command line multiplexing
+brew "tmux"
+
+# Visualize directory trees
 brew "tree"
-# brew install --HEAD universal-ctags/universal-ctags/universal-ctags
-brew "https://raw.githubusercontent.com/universal-ctags/homebrew-universal-ctags/master/universal-ctags.rb", args: ["HEAD"]
-brew "unixodbc"
+
+# Best text editor ever
 brew "vim"
+
+# Download files from the web
 brew "wget"
-brew "yarn"
-brew "youtube-dl"
+
+# Javascript dependency hell
+brew "yarn" # ??
+
+# Download youtube videos or audio, requires extra dependencies
+# brew "youtube-dl" # ??
+
+# Jump between working directories
 brew "z"
