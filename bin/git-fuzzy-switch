@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+# Usage:
+# You can alias this to "git sw" for quick switching between branches, checking out remotes or fuzzy searching
+
+# Using a bare "-" in the if statement breaks.
+PREV="-"
+
+if [[ $# -eq 0 ]]; then
+  git branch --sort='-committerdate' | fzf --height=50% | xargs git checkout
+elif [[ -f ".git/refs/remotes/origin/${1}" ]]; then
+  git checkout $1
+elif [[ "${1}" = $PREV ]]; then
+  git checkout $PREV
+else
+  git branch --sort='-committerdate' | fzf --height=50% --exact --select-1 --query $1 | xargs git checkout
+fi
