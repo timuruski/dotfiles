@@ -18,8 +18,8 @@ if !has('gui_running')
     hi Normal       cterm=NONE          ctermbg=white   ctermfg=235
     hi SpecialKey   cterm=NONE                          ctermfg=250
     hi NonText      cterm=NONE                          ctermfg=250
-    hi IncSearch    cterm=reverse                       ctermfg=NONE
-    hi Search       cterm=reverse                       ctermfg=NONE
+    hi IncSearch    cterm=NONE          ctermbg=230     ctermfg=NONE
+    hi Search       cterm=NONE          ctermbg=230     ctermfg=NONE
     hi MoreMsg      cterm=bold                          ctermfg=NONE
     hi ModeMsg      cterm=bold                          ctermfg=NONE
     hi LineNr       cterm=NONE                          ctermfg=235
@@ -55,7 +55,7 @@ if !has('gui_running')
     hi String       cterm=NONE                          ctermfg=245
     hi ErrorMsg     cterm=reverse       ctermbg=15      ctermfg=9
     hi Error        cterm=reverse       ctermbg=15      ctermfg=9
-    hi Todo         cterm=bold,standout ctermbg=0       ctermfg=11
+    hi Todo         cterm=bold,standout ctermbg=250     ctermfg=NONE
     hi MatchParen   cterm=bold          ctermbg=250     ctermfg=NONE
     hi ColorColumn  cterm=NONE          ctermbg=255
     hi SignColumn   cterm=NONE          ctermbg=254
@@ -65,11 +65,17 @@ if !has('gui_running')
     " FZF syntax attrs
 
     " Ale syntax attrs
-    hi ALEErrorSign   cterm=bold          ctermbg=250     ctermfg=NONE
-    hi ALEWarningSign cterm=bold          ctermbg=250     ctermfg=NONE
+    hi ALEError        cterm=NONE          ctermbg=224     ctermfg=NONE
+    hi ALEErrorSign    cterm=bold          ctermbg=250     ctermfg=NONE
+    hi ALEInfo         cterm=NONE          ctermbg=224     ctermfg=NONE
+    hi ALEStyleError   cterm=NONE          ctermbg=224     ctermfg=NONE
+    hi ALEStyleWarning cterm=NONE          ctermbg=224     ctermfg=NONE
+    hi ALEWarning      cterm=NONE          ctermbg=224     ctermfg=NONE
+    hi ALEWarningSign  cterm=bold          ctermbg=250     ctermfg=NONE
 
-    " Markdown syntax attrs
-    hi mkdInlineURL cterm=underline     ctermbg=254     ctermfg=NONE
+    " Language-specific syntax attrs
+    hi mkdInlineURL         cterm=underline     ctermbg=254     ctermfg=NONE
+    hi rubyStringDelimiter  cterm=NONE
   else
     hi Normal       cterm=NONE          ctermbg=234     ctermfg=250
     hi SpecialKey   cterm=NONE                          ctermfg=255
