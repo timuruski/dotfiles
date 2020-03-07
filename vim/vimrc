@@ -17,6 +17,7 @@ Plug 'danielwe/base16-vim'
 " Colorschemes
 Plug 'andreypopp/vim-colors-plain'
 Plug 'pbrisbin/vim-colors-off'
+" Plug 'https://bitbucket.org/kisom/eink.vim.git'
 
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'ElmCast/elm-vim', { 'for': 'elm' }
@@ -25,12 +26,10 @@ Plug 'janko-m/vim-test'
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 Plug 'jakwings/vim-pony', { 'for': 'pony' }
 " Plug 'jeroenbourgois/vim-actionscript', { 'for': 'actioncript' }
-" Plug 'junegunn/goyo.vim'
 " Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
-" Plug 'rhysd/vim-crystal'
+Plug 'reasonml-editor/vim-reason-plus', { 'for': 'reason' }
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-" Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-bundler', { 'for': 'ruby' }
 Plug 'tpope/vim-commentary'
@@ -49,10 +48,13 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 Plug 'vim-scripts/ag.vim'
+Plug 'vim-scripts/SyntaxAttr.vim'
 Plug 'vim-utils/vim-man'
 Plug 'vimwiki/vimwiki'
-Plug 'w0rp/ale'
 " Plug 'zah/nim.vim'
+
+" Plug 'scrooloose/syntastic'
+Plug 'w0rp/ale'
 
 call plug#end()
 
@@ -276,7 +278,7 @@ set colorcolumn=96
 set hlsearch
 " colorscheme plain-cterm
 " colorscheme plain
-colorscheme off
+colorscheme eink
 
 " Toggle background
 nmap <F2> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
