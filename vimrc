@@ -34,8 +34,9 @@ Plug 'vimwiki/vimwiki'
 " Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 
 " Syntax
-Plug 'vim-syntastic/syntastic'
-" Plug 'w0rp/ale'
+Plug 'vim-scripts/SyntaxAttr.vim'
+" Plug 'vim-syntastic/syntastic'
+Plug 'w0rp/ale'
 
 call plug#end()
 
@@ -265,16 +266,16 @@ endfunction
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],
   \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
+  \ 'hl':      ['fg', 'CursorLine'],
   \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
   \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'PreProc'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
+  \ 'hl+':     ['fg', 'Normal'],
+  \ 'info':    ['fg', 'Normal'],
+  \ 'prompt':  ['fg', 'Normal'],
+  \ 'pointer': ['fg', 'Normal'],
+  \ 'marker':  ['fg', 'Normal'],
+  \ 'spinner': ['fg', 'Normal'],
+  \ 'header':  ['fg', 'Normal'] }
 
 " Visual style
 " set t_Co=256
@@ -282,7 +283,7 @@ set colorcolumn=100
 set hlsearch
 let base16colorspace=256
 let &background=substitute(expand("$COLORSCHEME"), '\v.*(light|dark).*', '\1', '')
-colorscheme plain
+colorscheme eink
 
 " Syntax highlighting
 function! SynStack()
@@ -293,20 +294,14 @@ function! SynStack()
 endfunc
 " command! -nargs=1 SynStack nnoremap <buffer> <enter> :w \| !clear; <args> % <CR>
 
-map <leader>ga :Files client-src/apollo-app<CR>
-map <leader>gc :Files app/controllers<CR>
-map <leader>gC :Files app/assets/stylesheets<CR>
-map <leader>ge :Files extras<CR>
-map <leader>gh :Files app/helpers<CR>
-map <leader>gj :Files client-src/apollo-app<CR>
-map <leader>gJ :Files app/assets/javascripts<CR>
-map <leader>gl :Files lib<CR>
-map <leader>gm :Files app/models<CR>
-map <leader>gp :Files app/presenters<CR>
-map <leader>gs :Files client-src<CR>
+map <leader>gc :Files components/manage/app/controllers<CR>
+map <leader>gC :Files components/manage/app/assets/stylesheets<CR>
+map <leader>gh :Files components/manage/app/helpers<CR>
+map <leader>gj :Files components/manage/client-src<CR>
+map <leader>gm :Files components/manage/app/models<CR>
 " map <leader>gs :Files spec<CR>
 " map <leader>gS :Files app/services<CR>
-map <leader>gv :Files app/views<CR>
+map <leader>gv :Files components/manage/app/views<CR>
 
 map <leader>gM :topleft 100 :sview db/schema.rb<CR>
 map <leader>gg :topleft 100 :split Gemfile<CR>
@@ -337,6 +332,15 @@ if exists("$EXTRA_VIM")
   for path in split($EXTRA_VIM, ':')
     exec "source ".path
   endfor
+endif
+
+" Configure Ale
+if exists('g:loaded_ale') && g:loaded_ale
+  " let g:ale_linters = {'ruby': ['standardrb']}
+  " let g:ale_fixers = {'ruby': ['standardrb']}
+  let g:ale_lint_on_save = 1
+  let g:ale_lint_on_text_changed = 'never'
+  let g:ale_fix_on_save = 1
 endif
 
 " VimWiki

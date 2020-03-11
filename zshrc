@@ -11,7 +11,7 @@ export PATH="$GOPATH/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
 [[ -d /usr/local/heroku ]] && PATH="/usr/local/heroku/bin:$PATH"
 
-export CDPATH="$CDPATH:$HOME/workspace/clio:$HOME/workspace"
+# export CDPATH="$CDPATH:$HOME/workspace/clio:$HOME/workspace"
 
 # Editors
 export EDITOR="vim"
@@ -36,12 +36,14 @@ bindkey '\C-x\C-e' edit-command-line
 alias vi="vim"
 alias ls="ls -lhG"
 alias tree="tree -I 'node_modules|vendor'"
-alias ql='qlmanage -p "$@" &> /dev/null'
-alias bx='bundle exec'
-alias g='fg'
-alias fgg='fg'
-alias obs='jobs'
-alias i='vi'
+alias ql="qlmanage -p "$@" &> /dev/null"
+alias bx="bundle exec"
+alias g="fg"
+alias fgg="fg"
+alias ffg="fg"
+alias it="git"
+alias obs="jobs"
+alias i="vi"
 # alias aag="ag --ignore spec --ignore test --ignore '*.spec.ts' --ignore '*.test.jsx'"
 # alias aag="ag --path-to-ignore ~/.rrg.ignore"
 # alias rrg="rg --glob '!spec' --glob '!test' --glob '!*.spec.ts' --glob '!*.test.jsx'"
@@ -56,15 +58,19 @@ function glow() {
   /usr/bin/env glow $@ --style=light --pager
 }
 
+function vv() {
+  # [1]  + suspended  vim
+  if jobs | grep -q "\bvim\b"; then
+    fg
+  else
+    vim
+  fi
+}
+
 alias show_path="ruby -e \"puts ENV['PATH'].split(':')\""
 function mcd() { mkdir -p $1 && cd $1 }
 function fcd() { cd *$1* }
 # function tag() {  }
-
-# Workspace shortcut and completion
-function ws() { cd ~/workspace/$1; }
-function _ws() { _files -W ~/workspace -/; }
-compdef _ws ws
 
 # History config
 export HISTSIZE=100000

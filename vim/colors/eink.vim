@@ -18,8 +18,8 @@ if !has('gui_running')
     hi Normal       cterm=NONE          ctermbg=white   ctermfg=235
     hi SpecialKey   cterm=NONE                          ctermfg=250
     hi NonText      cterm=NONE                          ctermfg=250
-    hi IncSearch    cterm=NONE          ctermbg=230     ctermfg=NONE
-    hi Search       cterm=NONE          ctermbg=230     ctermfg=NONE
+    hi IncSearch    cterm=NONE          ctermbg=228     ctermfg=NONE
+    hi Search       cterm=NONE          ctermbg=228     ctermfg=NONE
     hi MoreMsg      cterm=bold                          ctermfg=NONE
     hi ModeMsg      cterm=bold                          ctermfg=NONE
     hi LineNr       cterm=NONE                          ctermfg=235
@@ -52,10 +52,10 @@ if !has('gui_running')
     hi Identifier   cterm=NONE          ctermbg=NONE    ctermfg=NONE
     hi Statement    cterm=NONE          ctermbg=NONE    ctermfg=NONE
     hi Ignore       cterm=bold                          ctermfg=NONE
-    hi String       cterm=NONE                          ctermfg=245
+    hi String       cterm=NONE          ctermbg=NONE    ctermfg=245
     hi ErrorMsg     cterm=reverse       ctermbg=15      ctermfg=9
     hi Error        cterm=reverse       ctermbg=15      ctermfg=9
-    hi Todo         cterm=bold,standout ctermbg=250     ctermfg=NONE
+    hi Todo         cterm=bold          ctermbg=252     ctermfg=NONE
     hi MatchParen   cterm=bold          ctermbg=250     ctermfg=NONE
     hi ColorColumn  cterm=NONE          ctermbg=255
     hi SignColumn   cterm=NONE          ctermbg=254
