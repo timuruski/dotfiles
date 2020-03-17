@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# Make a WIP commit either from the files in the index or everything.
+
+if [[ $1 = "--index" ]]; then
+  shift
+else
+  git add --all
+fi
+
+git commit --no-verify -m "WIP $*"
