@@ -18,8 +18,8 @@ if !has('gui_running')
     hi Normal       cterm=NONE          ctermbg=white   ctermfg=235
     hi SpecialKey   cterm=NONE                          ctermfg=250
     hi NonText      cterm=NONE                          ctermfg=250
-    hi IncSearch    cterm=NONE          ctermbg=228     ctermfg=NONE
-    hi Search       cterm=NONE          ctermbg=228     ctermfg=NONE
+    hi IncSearch    cterm=NONE          ctermbg=228     ctermfg=235
+    hi Search       cterm=NONE          ctermbg=228     ctermfg=235
     hi MoreMsg      cterm=bold                          ctermfg=NONE
     hi ModeMsg      cterm=bold                          ctermfg=NONE
     hi LineNr       cterm=NONE                          ctermfg=235
@@ -47,15 +47,15 @@ if !has('gui_running')
     hi PreProc      cterm=None                          ctermfg=NONE
     hi Directive    cterm=NONE          ctermbg=NONE    ctermfg=NONE
     hi Conditional  cterm=NONE          ctermbg=NONE    ctermfg=NONE
-    hi Comment      cterm=bold          ctermbg=NONE    ctermfg=240
+    hi Comment      cterm=NONE          ctermbg=254     ctermfg=NONE
     hi Func         cterm=None          ctermbg=234     ctermfg=250
     hi Identifier   cterm=NONE          ctermbg=NONE    ctermfg=NONE
     hi Statement    cterm=NONE          ctermbg=NONE    ctermfg=NONE
     hi Ignore       cterm=bold                          ctermfg=NONE
-    hi String       cterm=NONE          ctermbg=NONE    ctermfg=245
+    hi String       cterm=bold          ctermbg=NONE    ctermfg=NONE
     hi ErrorMsg     cterm=reverse       ctermbg=15      ctermfg=9
     hi Error        cterm=reverse       ctermbg=15      ctermfg=9
-    hi Todo         cterm=bold          ctermbg=252     ctermfg=NONE
+    hi Todo         cterm=bold          ctermbg=253     ctermfg=NONE
     hi MatchParen   cterm=bold          ctermbg=250     ctermfg=NONE
     hi ColorColumn  cterm=NONE          ctermbg=255
     hi SignColumn   cterm=NONE          ctermbg=254
@@ -73,9 +73,23 @@ if !has('gui_running')
     hi ALEWarning      cterm=NONE          ctermbg=224     ctermfg=NONE
     hi ALEWarningSign  cterm=bold          ctermbg=250     ctermfg=NONE
 
+
+    " hi SyntasticErrorLine
+    " hi SyntasticWarningLine
+    " hi SyntasticStyleErrorLine
+    " hi SyntasticStyleWarningLine
+    hi SyntasticErrorSign        cterm=bold ctermbg=224 ctermfg=NONE
+    hi SyntasticWarningSign      cterm=bold ctermbg=224 ctermfg=NONE
+    hi SyntasticStyleErrorSign   cterm=bold ctermbg=224 ctermfg=NONE
+    hi SyntasticStyleWarningSign cterm=bold ctermbg=224 ctermfg=NONE
+
     " Language-specific syntax attrs
     hi mkdInlineURL         cterm=underline     ctermbg=254     ctermfg=NONE
-    hi rubyStringDelimiter  cterm=NONE
+
+    " Ruby-specific syntax attrs
+    hi link rubyStringDelimiter String
+    hi link rubyInterpolation String
+    hi link rubyInterpolationDelimiter String
   else
     hi Normal       cterm=NONE          ctermbg=234     ctermfg=250
     hi SpecialKey   cterm=NONE                          ctermfg=255
