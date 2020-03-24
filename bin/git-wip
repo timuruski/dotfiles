@@ -1,3 +1,10 @@
-set -e
-git add --update
-git commit --no-verify --message "WIP $*"
+#!/usr/bin/env bash
+
+# Make a WIP commit either from the files in the index or everything.
+
+if [[ $1 = "--all" ]]; then
+  shift
+  git add --all
+fi
+
+git commit --no-verify -m "WIP $*"
