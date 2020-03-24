@@ -37,7 +37,7 @@ if !has('gui_running')
     hi DiffChange   cterm=bold                          ctermfg=NONE
     hi DiffDelete   cterm=bold                          ctermfg=NONE
     hi DiffText     cterm=reverse                       ctermfg=NONE
-    hi Type         cterm=None          ctermbg=NONE    ctermfg=NONE
+    hi Type         cterm=bold          ctermbg=NONE    ctermfg=NONE
     hi Keyword      cterm=None          ctermbg=NONE    ctermfg=NONE
     hi Number       cterm=None          ctermbg=NONE    ctermfg=NONE
     hi Char         cterm=None          ctermbg=NONE    ctermfg=NONE
@@ -52,7 +52,7 @@ if !has('gui_running')
     hi Identifier   cterm=NONE          ctermbg=NONE    ctermfg=NONE
     hi Statement    cterm=NONE          ctermbg=NONE    ctermfg=NONE
     hi Ignore       cterm=bold                          ctermfg=NONE
-    hi String       cterm=bold          ctermbg=NONE    ctermfg=NONE
+    hi String       cterm=bold          ctermbg=NONE    ctermfg=238
     hi ErrorMsg     cterm=reverse       ctermbg=15      ctermfg=9
     hi Error        cterm=reverse       ctermbg=15      ctermfg=9
     hi Todo         cterm=bold          ctermbg=253     ctermfg=NONE
