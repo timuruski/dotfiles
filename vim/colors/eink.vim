@@ -3,6 +3,7 @@
 " act like t_Co=0 but use (256) color on just a few things
 "
 " NOTE Copied and modified from https://bitbucket.org/kisom/eink.vim
+" CTERM colors: https://jonasjacek.github.io/colors/
 " - Added String style because it's useful
 " - Added NonText style for listmode characters
 
@@ -18,8 +19,8 @@ if !has('gui_running')
     hi Normal       cterm=NONE          ctermbg=white   ctermfg=235
     hi SpecialKey   cterm=NONE                          ctermfg=250
     hi NonText      cterm=NONE                          ctermfg=250
-    hi IncSearch    cterm=NONE          ctermbg=228     ctermfg=235
-    hi Search       cterm=NONE          ctermbg=228     ctermfg=235
+    hi IncSearch    cterm=NONE          ctermbg=183     ctermfg=NONE
+    hi Search       cterm=NONE          ctermbg=183     ctermfg=NONE
     hi MoreMsg      cterm=bold                          ctermfg=NONE
     hi ModeMsg      cterm=bold                          ctermfg=NONE
     hi LineNr       cterm=NONE                          ctermfg=235
@@ -42,7 +43,7 @@ if !has('gui_running')
     hi Number       cterm=None          ctermbg=NONE    ctermfg=NONE
     hi Char         cterm=None          ctermbg=NONE    ctermfg=NONE
     hi Format       cterm=None          ctermbg=NONE    ctermfg=NONE
-    hi Special      cterm=underline     ctermbg=NONE    ctermfg=NONE
+    hi Special      cterm=NONE          ctermbg=NONE    ctermfg=NONE
     hi Constant     cterm=None          ctermbg=NONE    ctermfg=NONE
     hi PreProc      cterm=None                          ctermfg=NONE
     hi Directive    cterm=NONE          ctermbg=NONE    ctermfg=NONE
@@ -52,11 +53,11 @@ if !has('gui_running')
     hi Identifier   cterm=NONE          ctermbg=NONE    ctermfg=NONE
     hi Statement    cterm=NONE          ctermbg=NONE    ctermfg=NONE
     hi Ignore       cterm=bold                          ctermfg=NONE
-    hi String       cterm=bold          ctermbg=NONE    ctermfg=238
+    hi String       cterm=bold          ctermbg=NONE    ctermfg=239
     hi ErrorMsg     cterm=reverse       ctermbg=15      ctermfg=9
     hi Error        cterm=reverse       ctermbg=15      ctermfg=9
     hi Todo         cterm=bold          ctermbg=253     ctermfg=NONE
-    hi MatchParen   cterm=bold          ctermbg=250     ctermfg=NONE
+    hi MatchParen   cterm=bold          ctermbg=NONE    ctermfg=12
     hi ColorColumn  cterm=NONE          ctermbg=255
     hi SignColumn   cterm=NONE          ctermbg=254
     hi CursorLine   cterm=NONE          ctermbg=255     ctermfg=NONE
@@ -85,6 +86,10 @@ if !has('gui_running')
 
     " Language-specific syntax attrs
     hi mkdInlineURL         cterm=underline     ctermbg=254     ctermfg=NONE
+    hi rubyStringDelimiter  cterm=NONE
+    hi link shOption Normal
+    hi link Quote Normal
+    hi link htmlItalic Normal
 
     " Ruby-specific syntax attrs
     hi link rubyStringDelimiter String
