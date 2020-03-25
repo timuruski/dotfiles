@@ -3,6 +3,7 @@
 " act like t_Co=0 but use (256) color on just a few things
 "
 " NOTE Copied and modified from https://bitbucket.org/kisom/eink.vim
+" CTERM colors: https://jonasjacek.github.io/colors/
 " - Added String style because it's useful
 " - Added NonText style for listmode characters
 
@@ -18,8 +19,8 @@ if !has('gui_running')
     hi Normal       cterm=NONE          ctermbg=white   ctermfg=235
     hi SpecialKey   cterm=NONE                          ctermfg=250
     hi NonText      cterm=NONE                          ctermfg=250
-    hi IncSearch    cterm=reverse                       ctermfg=NONE
-    hi Search       cterm=reverse                       ctermfg=NONE
+    hi IncSearch    cterm=NONE          ctermbg=183     ctermfg=NONE
+    hi Search       cterm=NONE          ctermbg=183     ctermfg=NONE
     hi MoreMsg      cterm=bold                          ctermfg=NONE
     hi ModeMsg      cterm=bold                          ctermfg=NONE
     hi LineNr       cterm=NONE                          ctermfg=235
@@ -37,26 +38,26 @@ if !has('gui_running')
     hi DiffChange   cterm=bold                          ctermfg=NONE
     hi DiffDelete   cterm=bold                          ctermfg=NONE
     hi DiffText     cterm=reverse                       ctermfg=NONE
-    hi Type         cterm=None          ctermbg=NONE    ctermfg=NONE
+    hi Type         cterm=bold          ctermbg=NONE    ctermfg=NONE
     hi Keyword      cterm=None          ctermbg=NONE    ctermfg=NONE
     hi Number       cterm=None          ctermbg=NONE    ctermfg=NONE
     hi Char         cterm=None          ctermbg=NONE    ctermfg=NONE
     hi Format       cterm=None          ctermbg=NONE    ctermfg=NONE
-    hi Special      cterm=underline     ctermbg=NONE    ctermfg=NONE
+    hi Special      cterm=NONE          ctermbg=NONE    ctermfg=NONE
     hi Constant     cterm=None          ctermbg=NONE    ctermfg=NONE
     hi PreProc      cterm=None                          ctermfg=NONE
     hi Directive    cterm=NONE          ctermbg=NONE    ctermfg=NONE
     hi Conditional  cterm=NONE          ctermbg=NONE    ctermfg=NONE
-    hi Comment      cterm=bold          ctermbg=NONE    ctermfg=240
+    hi Comment      cterm=NONE          ctermbg=254     ctermfg=NONE
     hi Func         cterm=None          ctermbg=234     ctermfg=250
     hi Identifier   cterm=NONE          ctermbg=NONE    ctermfg=NONE
     hi Statement    cterm=NONE          ctermbg=NONE    ctermfg=NONE
     hi Ignore       cterm=bold                          ctermfg=NONE
-    hi String       cterm=NONE                          ctermfg=245
+    hi String       cterm=bold          ctermbg=NONE    ctermfg=239
     hi ErrorMsg     cterm=reverse       ctermbg=15      ctermfg=9
     hi Error        cterm=reverse       ctermbg=15      ctermfg=9
-    hi Todo         cterm=bold,standout ctermbg=0       ctermfg=11
-    hi MatchParen   cterm=bold          ctermbg=250     ctermfg=NONE
+    hi Todo         cterm=bold          ctermbg=253     ctermfg=NONE
+    hi MatchParen   cterm=bold          ctermbg=NONE    ctermfg=12
     hi ColorColumn  cterm=NONE          ctermbg=255
     hi SignColumn   cterm=NONE          ctermbg=254
     hi CursorLine   cterm=NONE          ctermbg=255     ctermfg=NONE
@@ -65,11 +66,35 @@ if !has('gui_running')
     " FZF syntax attrs
 
     " Ale syntax attrs
-    hi ALEErrorSign   cterm=bold          ctermbg=250     ctermfg=NONE
-    hi ALEWarningSign cterm=bold          ctermbg=250     ctermfg=NONE
+    hi ALEError        cterm=NONE          ctermbg=224     ctermfg=NONE
+    hi ALEErrorSign    cterm=bold          ctermbg=250     ctermfg=NONE
+    hi ALEInfo         cterm=NONE          ctermbg=224     ctermfg=NONE
+    hi ALEStyleError   cterm=NONE          ctermbg=224     ctermfg=NONE
+    hi ALEStyleWarning cterm=NONE          ctermbg=224     ctermfg=NONE
+    hi ALEWarning      cterm=NONE          ctermbg=224     ctermfg=NONE
+    hi ALEWarningSign  cterm=bold          ctermbg=250     ctermfg=NONE
 
-    " Markdown syntax attrs
-    hi mkdInlineURL cterm=underline     ctermbg=254     ctermfg=NONE
+
+    " hi SyntasticErrorLine
+    " hi SyntasticWarningLine
+    " hi SyntasticStyleErrorLine
+    " hi SyntasticStyleWarningLine
+    hi SyntasticErrorSign        cterm=bold ctermbg=224 ctermfg=NONE
+    hi SyntasticWarningSign      cterm=bold ctermbg=224 ctermfg=NONE
+    hi SyntasticStyleErrorSign   cterm=bold ctermbg=224 ctermfg=NONE
+    hi SyntasticStyleWarningSign cterm=bold ctermbg=224 ctermfg=NONE
+
+    " Language-specific syntax attrs
+    hi mkdInlineURL         cterm=underline     ctermbg=254     ctermfg=NONE
+    hi rubyStringDelimiter  cterm=NONE
+    hi link shOption Normal
+    hi link Quote Normal
+    hi link htmlItalic Normal
+
+    " Ruby-specific syntax attrs
+    hi link rubyStringDelimiter String
+    hi link rubyInterpolation String
+    hi link rubyInterpolationDelimiter String
   else
     hi Normal       cterm=NONE          ctermbg=234     ctermfg=250
     hi SpecialKey   cterm=NONE                          ctermfg=255
@@ -112,7 +137,7 @@ if !has('gui_running')
     hi ErrorMsg     cterm=reverse       ctermbg=15      ctermfg=9
     hi Error        cterm=reverse       ctermbg=15      ctermfg=9
     hi Todo         cterm=bold,standout ctermbg=0       ctermfg=11
-    hi MatchParen   cterm=bold          ctermbg=250     ctermfg=NONE
+    hi MatchParen   cterm=NONE          ctermbg=250     ctermfg=NONE
     hi ColorColumn                      ctermbg=255
     hi ColorColumn  cterm=NONE          ctermbg=235
     hi CursorLine   cterm=NONE          ctermbg=235     ctermfg=NONE
