@@ -38,6 +38,12 @@ brew "janet"
 # JSON formatting and filtering
 brew "jq"
 
+# Just command runner https://github.com/casey/just
+brew "just"
+
+# Kakoune, modal text editor https://kakoune.org
+brew "kakoune"
+
 # Next generation Vim
 brew "neovim" # ??
 
