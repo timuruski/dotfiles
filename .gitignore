@@ -1,4 +1,4 @@
-tmp/
-vim/plugged/
 .DS_Store
 .netrwhist
+tmp/
+vim/plugged/
