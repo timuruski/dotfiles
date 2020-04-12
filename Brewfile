@@ -28,6 +28,9 @@ brew "git"
 # Pretty READMEs for the command line
 brew "charmbracelet/homebrew-tap/glow"
 
+# Learn programming languages with Exercism
+brew "exercism"
+
 # Go Programming language
 brew "go"
 
