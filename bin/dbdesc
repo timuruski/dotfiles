@@ -10,12 +10,14 @@ require 'active_support/core_ext/string/inflections'
 
 env = ENV['RAILS_ENV'] || 'development'
 config = YAML.load(File.read('config/shards.yml'))[env]
-table_name = ARGV.first
-# model_file = "app/models/#{table_name.singularize}.rb"
-model_file = "components/manage/app/models/manage/#{table_name.singularize}.rb"
-database = File.read(model_file).match?(/CommonRecord/) ? "common" : "themis"
+model_name = ARGV.first
 
-puts "#{table_name} -> #{model_file} -> #{database}"
+# model_file = "app/models/#{table_name.singularize}.rb"
+model_file = "components/manage/app/models/manage/#{model_name.singularize}.rb"
+database = File.read(model_file).match?(/CommonRecord/) ? "common" : "themis"
+table_name = File.read(model_file).match(/self\.table_name = "(\w+)"/)&.[](1) || model_name
+
+puts "#{model_name} -> #{model_file} -> #{table_name} -> #{database}"
 
 database_name = config.find { |cfg| cfg['database'] =~ /#{database}/ }['database']
 
