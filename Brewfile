@@ -10,6 +10,9 @@
 # Manage Ruby versions
 brew "chruby"
 
+# Common Lisp
+brew "clisp"
+
 # Per-project environment configuration
 brew "direnv"
 
@@ -65,7 +68,7 @@ brew "reattach-to-user-namespace" # For tmux to work properly
 # Key/Value store service
 # brew "redis"
 
-# File search, faster than grep
+# File search, faster than ag
 brew "ripgrep"
 
 # Install Ruby versions
@@ -74,6 +77,7 @@ brew "ruby-install"
 # Local SQL database
 # brew "sqlite" # ??
 
+# File search, faster than grep
 brew "the_silver_searcher" # ??
 
 # Command line multiplexing
