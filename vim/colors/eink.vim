@@ -44,10 +44,11 @@ if &background == "light"
   hi Format       cterm=None          ctermbg=NONE    ctermfg=NONE
   hi Special      cterm=NONE          ctermbg=NONE    ctermfg=NONE
   hi Constant     cterm=None          ctermbg=NONE    ctermfg=NONE
+  " hi PreProc      cterm=italic        ctermbg=254     ctermfg=NONE
   hi PreProc      cterm=None                          ctermfg=NONE
   hi Directive    cterm=NONE          ctermbg=NONE    ctermfg=NONE
   hi Conditional  cterm=NONE          ctermbg=NONE    ctermfg=NONE
-  hi Comment      cterm=NONE          ctermbg=254     ctermfg=NONE
+  hi Comment      cterm=italic        ctermbg=254     ctermfg=NONE
   hi Func         cterm=None          ctermbg=234     ctermfg=250
   hi Identifier   cterm=NONE          ctermbg=NONE    ctermfg=NONE
   hi Statement    cterm=NONE          ctermbg=NONE    ctermfg=NONE
@@ -61,27 +62,26 @@ if &background == "light"
   hi SignColumn   cterm=NONE          ctermbg=254
   hi CursorLine   cterm=NONE          ctermbg=255     ctermfg=NONE
   hi CursorLineNr cterm=bold          ctermbg=255     ctermfg=NONE
+  hi Underlined   cterm=underline     ctermbg=254     ctermfg=NONE
 
   " FZF syntax attrs
 
   " Ale syntax attrs
-  hi ALEError        cterm=NONE          ctermbg=224     ctermfg=NONE
-  hi ALEErrorSign    cterm=bold          ctermbg=250     ctermfg=NONE
+  hi ALEError        cterm=NONE          ctermbg=254     ctermfg=205
+  hi ALEErrorSign    cterm=bold          ctermbg=254     ctermfg=205
   hi ALEInfo         cterm=NONE          ctermbg=224     ctermfg=NONE
-  hi ALEStyleError   cterm=NONE          ctermbg=224     ctermfg=NONE
-  hi ALEStyleWarning cterm=NONE          ctermbg=224     ctermfg=NONE
-  hi ALEWarning      cterm=NONE          ctermbg=224     ctermfg=NONE
-  hi ALEWarningSign  cterm=bold          ctermbg=250     ctermfg=NONE
+  hi ALEStyleError   cterm=NONE          ctermbg=254     ctermfg=NONE
+  hi ALEStyleWarning cterm=NONE          ctermbg=254     ctermfg=NONE
+  hi ALEWarning      cterm=NONE          ctermbg=254     ctermfg=NONE
+  hi ALEWarningSign  cterm=bold          ctermbg=254     ctermfg=NONE
 
+  " Syntastic attrs
+  hi SyntasticErrorSign        cterm=bold ctermbg=254 ctermfg=208
+  hi SyntasticWarningSign      cterm=bold ctermbg=254 ctermfg=208
+  hi SyntasticStyleErrorSign   cterm=bold ctermbg=254 ctermfg=NONE
+  hi SyntasticStyleWarningSign cterm=bold ctermbg=254 ctermfg=NONE
 
-  " hi SyntasticErrorLine
-  " hi SyntasticWarningLine
-  " hi SyntasticStyleErrorLine
-  " hi SyntasticStyleWarningLine
-  hi SyntasticErrorSign        cterm=bold ctermbg=224 ctermfg=NONE
-  hi SyntasticWarningSign      cterm=bold ctermbg=224 ctermfg=NONE
-  hi SyntasticStyleErrorSign   cterm=bold ctermbg=224 ctermfg=NONE
-  hi SyntasticStyleWarningSign cterm=bold ctermbg=224 ctermfg=NONE
+  hi UnwantedTrailerTrash      cterm=NONE ctermbg=218 ctermfg=NONE
 
   " Language-specific syntax attrs
   hi mkdInlineURL         cterm=underline     ctermbg=254     ctermfg=NONE
@@ -92,6 +92,7 @@ if &background == "light"
 
   " Ruby-specific syntax attrs
   hi link rubyStringDelimiter String
+  hi link rubyStringEscape String
   hi link rubyInterpolation String
   hi link rubyInterpolationDelimiter String
 else
