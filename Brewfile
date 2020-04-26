@@ -1,3 +1,6 @@
+# Manage homebrew overload.
+# https://github.com/Homebrew/homebrew-bundle
+
 # tap "homebrew/dupes"
 # tap "homebrew/core"
 # tap "homebrew/php"
@@ -57,7 +60,8 @@ brew "neovim" # ??
 brew "overmind"
 
 # SQL Database server
-# brew "postgresql", restart_service: true # ??
+# Busted, use Postgres.app instead
+# brew "postgresql", restart_service: true
 
 # Visualize process trees
 brew "pstree"
