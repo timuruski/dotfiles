@@ -1,6 +1,6 @@
 [user]
   name = Tim Uruski
-  email = tim@uru.ski
+  email = hey@tim.uru.ski
 [github]
   user = timuruski
   token = !security 2>&1 >/dev/null find-generic-password -gs github.token | ruby -e 'print $1 if STDIN.gets =~ /^password: \\\"(.*)\\\"$/'
