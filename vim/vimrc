@@ -15,21 +15,21 @@ Plug 'csexton/trailertrash.vim'
 Plug 'danielwe/base16-vim'
 
 " Colorschemes
-Plug 'andreypopp/vim-colors-plain'
-Plug 'pbrisbin/vim-colors-off'
+" Plug 'andreypopp/vim-colors-plain'
+" Plug 'pbrisbin/vim-colors-off'
 " Plug 'https://bitbucket.org/kisom/eink.vim.git'
 
-Plug 'dart-lang/dart-vim-plugin'
-Plug 'ElmCast/elm-vim', { 'for': 'elm' }
+Plug 'aliou/bats.vim'
+Plug 'dart-lang/dart-vim-plugin', { 'for': 'dart' }
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'janko-m/vim-test'
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
-Plug 'jakwings/vim-pony', { 'for': 'pony' }
 " Plug 'jeroenbourgois/vim-actionscript', { 'for': 'actioncript' }
-" Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
+Plug 'janet-lang/janet.vim'
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'reasonml-editor/vim-reason-plus', { 'for': 'reason' }
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'takac/vim-hardtime'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-bundler', { 'for': 'ruby' }
 Plug 'tpope/vim-commentary'
@@ -51,16 +51,14 @@ Plug 'vim-scripts/ag.vim'
 Plug 'vim-scripts/SyntaxAttr.vim'
 Plug 'vim-utils/vim-man'
 Plug 'vimwiki/vimwiki'
-" Plug 'zah/nim.vim'
+Plug 'wlangstroth/vim-racket'
 
-" Plug 'scrooloose/syntastic'
-Plug 'w0rp/ale'
+" Syntax checkers
+" Ale slows vim down a lot, use Syntastic instead.
+" Plug 'w0rp/ale'
+Plug 'scrooloose/syntastic'
 
 call plug#end()
-
-" Semi-universal <ESC> alternatives
-" inoremap jk <ESC>
-" inoremap kj <ESC>
 
 " Quick access to vim config
 nnoremap <leader>ev :edit $MYVIMRC<cr>
@@ -146,7 +144,6 @@ set winheight=999
 autocmd BufRead /tmp/*		set nowritebackup
 
 
-
 " MAPPINGS AND FUNCTIONS
 " ================================
 
@@ -158,6 +155,10 @@ imap <Nul> <Space>
 
 " Shortcut to directory of current file
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
+
+" Shortcut to type the lozenge character for Pollen
+" ◊	LZ	25CA	9674	LOZENGE
+digraph lz 9674
 
 " Open file in same directory as current file
 map <leader>e :edit %%
@@ -179,6 +180,10 @@ function!  InsertTabWrapper()
 endfunction
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 inoremap <s-tab> <c-n>
+
+" Start new undo sequence at each line.
+inoremap <CR> <C-]><C-G>u<CR>
+
 " *noremap here doesn't work because % is an expression
 " These interfere with <C-i> and jumps.
 " nmap <tab> %
@@ -206,27 +211,9 @@ map <leader>n :call RenameFile()<cr>
 let g:netrw_liststyle = 3
 let g:netrw_altv = 1
 
-" Airline
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
-let g:airline_theme = 'minimalist'
-let g:airline_mode_map = {
-  \ 'n'  : 'N',
-  \ 'i'  : 'I',
-  \ 'R'  : 'R',
-  \ 'v'  : 'V',
-  \ 'V'  : 'VL',
-  \ '' : 'VB',
-  \ 'c'  : 'C' }
-
-" Vimroom
-let g:vimroom_background = 'white'
-let g:vimroom_sidebar_height = 0
-
 " vim-markdown
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_frontmatter = 1
-
 
 " QuickFix to args
 command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()
@@ -254,6 +241,8 @@ command! -nargs=1 RunCmd nnoremap <buffer> <enter> :w \| !clear; <args> % <CR>
 command! -nargs=+ RunCmd nnoremap <buffer> <enter> :w \| !clear; <args> <CR>
 command! -nargs=+ RunRuby nnoremap <buffer> <enter> :w \| !clear; ruby <args> <CR>
 command! -nargs=0 RunRuby nnoremap <buffer> <enter> :w \| !clear; ruby % <CR>
+" command! -nargs=0 RunRacket nnoremap <buffer> <enter> :w \| !clear; racket % <CR>
+command! -nargs=* RunRacket nnoremap <buffer> <enter> :w \| !clear; racket % <args> <CR>
 command! -nargs=0 RunMake nnoremap <buffer> <enter> :w \| make! <CR>
 command! -nargs=* RunMake nnoremap <buffer> <enter> :w \| make! <args> <CR>
 command! -nargs=0 RunTest nnoremap <enter> :w \| :TestFile <CR>
@@ -273,22 +262,20 @@ function! s:RunCmd()
 endfunction
 
 " Visual style
+" Attempt to get 24-bit color and italics
+" https://medium.com/@dubistkomisch/how-to-actually-get-italics-and-true-colour-to-work-in-iterm-tmux-vim-9ebe55ebc2be
+" let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+" let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
+" set termguicolors
+
 set t_Co=256
 set colorcolumn=96
 set hlsearch
-" colorscheme plain-cterm
 " colorscheme plain
 colorscheme eink
 
 " Toggle background
 nmap <F2> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
-
-" Configure Ale
-let g:ale_linters = {'ruby': ['standardrb']}
-let g:ale_fixers = {'ruby': ['standardrb']}
-let g:ale_lint_on_save = 1
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_fix_on_save = 1
 
 " if filereadable(expand("~/.vimrc_background"))
 "   let base16colorspace=256
