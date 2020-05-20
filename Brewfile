@@ -16,6 +16,12 @@ brew "chruby"
 # Common Lisp
 brew "clisp"
 
+# Generate Dash docsets https://github.com/technosophos/dashing
+brew "dashing"
+
+# Deno https://deno.land/#installation
+brew "deno"
+
 # Per-project environment configuration
 brew "direnv"
 
@@ -32,13 +38,20 @@ brew "fzf"
 brew "git"
 
 # Pretty READMEs for the command line
-brew "charmbracelet/homebrew-tap/glow"
+# brew "charmbracelet/homebrew-tap/glow"
+brew "glow"
 
 # Learn programming languages with Exercism
 brew "exercism"
 
+# Gerbil Scheme https://cons.io/guide/#installation-on-macos
+brew "gerbil-scheme"
+
 # Go Programming language
 brew "go"
+
+# Process manager
+brew "hivemind"
 
 # Janet Programming language
 # https://janet-lang.org
@@ -56,8 +69,11 @@ brew "kakoune"
 # Next generation Vim
 brew "neovim" # ??
 
+# NodeJS, because everything needs it these days. >:(
+brew "nodejs"
+
 # Multi-process runner built on tmux
-brew "overmind"
+# brew "overmind"
 
 # SQL Database server
 # Busted, use Postgres.app instead
