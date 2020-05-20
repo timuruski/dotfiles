@@ -1,8 +1,10 @@
 # TODO Fallback if fzf isn't installed
 # function ws() { cd ~/workspace/$1; }
+# TODO Implement `ws -` -> cd ~/workspace
 
 workspace_dirs() {
-  fd --type directory --maxdepth 1 . "${workspace}" | sed -e "s;${workspace};;"
+  local workspace="${HOME}/workspace/"
+  fd --no-ignore-vcs --type directory --maxdepth 1 . "${workspace}" | sed -e "s;${workspace};;"
 }
 
 filter() {
@@ -10,7 +12,6 @@ filter() {
 }
 
 ws() {
-  local workspace="${HOME}/workspace/"
   if [[ $# -gt 0 ]]; then
     target=$(workspace_dirs | filter --exact --select-1 --query $1)
   else
