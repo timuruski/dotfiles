@@ -1,0 +1,6 @@
+#! /bin/sh
+
+set -e
+
+# path old-file old-hex old-mode new-file new-hex new-mode
+[ $# -eq 7 ] && /usr/local/bin/ksdiff --wait --diff "$2" "$5"

@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+require "zlib"
+puts Zlib::Inflate.inflate(ARGF.read)

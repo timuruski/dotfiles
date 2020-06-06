@@ -10,6 +10,9 @@
 # tap "homebrew/services"
 # tap "caskroom/cask"
 
+# Chicken Scheme https://call-cc.org
+brew "chicken"
+
 # Manage Ruby versions
 brew "chruby"
 
@@ -40,6 +43,9 @@ brew "git"
 # Pretty READMEs for the command line
 # brew "charmbracelet/homebrew-tap/glow"
 brew "glow"
+
+# Draw diagrams
+brew "graphviz"
 
 # Learn programming languages with Exercism
 brew "exercism"

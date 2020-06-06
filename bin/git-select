@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+if [[ $# -gt 0 ]]; then
+  git branch | fzf --exact --select-1 --query $1 | xargs git checkout
+else
+  git branch | fzf | xargs git checkout
+fi

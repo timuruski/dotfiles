@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+
+# USAGE use-rails .
+
+abort "USAGE $0 <DIR>" if ARGV.empty?
+
+dir = ARGV.shift
+
+FILES = {
+  ".ruby-version" => "ruby-2.5.3",
+  ".envrc" => <<~EOS,
+    use local_ruby
+    use gemset rails
+    use local_gems vendor
+  EOS
+}.transform_keys { |key| File.join(dir, key) }
+
+existing_files = FILES.keys.select { |f| File.exist?(f) }
+abort "#{ existing_files.join(', ') } already exist!" if existing_files.any?
+
+FILES.each do |path, template|
+  File.write(path, template)
+end
+
+system('direnv', 'allow', dir)
