@@ -26,6 +26,7 @@ Plug 'janko-m/vim-test'
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 " Plug 'jeroenbourgois/vim-actionscript', { 'for': 'actioncript' }
 Plug 'janet-lang/janet.vim'
+Plug 'jpalardy/vim-slime'
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'reasonml-editor/vim-reason-plus', { 'for': 'reason' }
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -215,6 +216,9 @@ let g:netrw_altv = 1
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_frontmatter = 1
 
+" vim-slime
+let g:slime_target = "vimterminal"
+
 " QuickFix to args
 command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()
 function! QuickfixFilenames()
@@ -224,6 +228,7 @@ function! QuickfixFilenames()
   endfor
   return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
 endfunction
+
 
 
 " Visual search
@@ -276,6 +281,7 @@ colorscheme eink
 
 " Toggle background
 nmap <F2> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
+
 
 " if filereadable(expand("~/.vimrc_background"))
 "   let base16colorspace=256

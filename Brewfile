@@ -78,6 +78,9 @@ brew "neovim" # ??
 # NodeJS, because everything needs it these days. >:(
 brew "nodejs"
 
+# Usenet client
+brew "nzbget"
+
 # Multi-process runner built on tmux
 # brew "overmind"
 

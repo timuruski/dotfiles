@@ -2,14 +2,18 @@
 
 at_exit do
   IGNORE = %w[
-    Brewfile
+    *.json
+    *.txt
+    Brewfile*
     direnvrc
     Gemfile*
+    new-install
     README.md
     Rakefile
     nvim/
     tmp/
     walk.sh
+    xterm-256color-italic.terminfo
     zlogin
   ]
 
