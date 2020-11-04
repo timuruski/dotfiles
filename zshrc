@@ -24,8 +24,8 @@ alias learnvim="/usr/bin/env vim -Nu ~/workspace/dotfiles/learn.vim"
 alias barevim="vim -Nu ~/.bare.vim"
 
 # fzf
-export FZF_DEFAULT_COMMAND='fd --type file --hidden --follow --exclude .git --color=always'
-export FZF_DEFAULT_OPTS="--ansi"
+export FZF_DEFAULT_COMMAND='fd --type file --hidden --follow --exclude .git --exclude .keep'
+export FZF_DEFAULT_OPTS="--ansi --no-color"
 
 autoload -U edit-command-line
 zle -N edit-command-line
