@@ -39,6 +39,7 @@
   r = !git --no-pager l -20
   ra = !git r --all
   s = status -sb
+  sw = fuzzy-switch
   show-upstream = "rev-parse --abbrev-ref --symbolic-full-name @{u}"
   unstage = reset --patch
 	update = pull --ff-only
@@ -50,3 +51,5 @@
 	default = simple
 [credential]
 	helper = osxkeychain
+[pull]
+	ff = only

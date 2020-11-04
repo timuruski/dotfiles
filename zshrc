@@ -3,13 +3,16 @@ autoload -U compinit && compinit
 autoload -U colors && colors
 setopt prompt_subst
 
-
 # Setup paths
 PATH="$HOME/bin:$PATH"
 
+# This doesn't work because of a quoting bug.
+# $(luarocks path --bin)
+PATH="$HOME/.luarocks/bin:$PATH"
+
 export PATH
 
-export CDPATH="$CDPATH:$HOME/workspace"
+# export CDPATH="$CDPATH:$HOME/workspace"
 
 export GTYPIST_PATH=$GTYPIST_PATH:$HOME/workspace/gtypist
 
@@ -17,7 +20,8 @@ export GTYPIST_PATH=$GTYPIST_PATH:$HOME/workspace/gtypist
 export EDITOR="vim"
 export GIT_EDITOR="vim"
 set -o emacs
-alias learnvim="/usr/bin/env vim -Nu ~/.learnvimrc"
+alias learnvim="/usr/bin/env vim -Nu ~/workspace/dotfiles/learn.vim"
+alias barevim="vim -Nu ~/.bare.vim"
 
 # fzf
 export FZF_DEFAULT_COMMAND='fd --type file --hidden --follow --exclude .git --color=always'

@@ -10,9 +10,6 @@
 # tap "homebrew/services"
 # tap "caskroom/cask"
 
-# Chicken Scheme https://call-cc.org
-brew "chicken"
-
 # Manage Ruby versions
 brew "chruby"
 
@@ -20,10 +17,10 @@ brew "chruby"
 brew "clisp"
 
 # Generate Dash docsets https://github.com/technosophos/dashing
-brew "dashing"
+# brew "dashing"
 
 # Deno https://deno.land/#installation
-brew "deno"
+# brew "deno"
 
 # Per-project environment configuration
 brew "direnv"
@@ -33,6 +30,9 @@ brew "entr"
 
 # Friendly version of find
 brew "fd"
+
+# Fennel language, lisp syntax for lua
+# brew "fennel"
 
 # Fuzzy finder for command line
 brew "fzf"
@@ -51,10 +51,13 @@ brew "graphviz"
 brew "exercism"
 
 # Gerbil Scheme https://cons.io/guide/#installation-on-macos
-brew "gerbil-scheme"
+# brew "gerbil-scheme"
 
 # Go Programming language
 brew "go"
+
+# Github Command Line (experimental)
+brew "gh"
 
 # Process manager
 brew "hivemind"
@@ -72,8 +75,17 @@ brew "just"
 # Kakoune, modal text editor https://kakoune.org
 brew "kakoune"
 
+# Love2d.org game toolkit
+cask "love"
+
+# Lua language and package manager
+brew "luarocks"
+
 # Next generation Vim
 brew "neovim" # ??
+
+# Nim language
+brew "nim"
 
 # NodeJS, because everything needs it these days. >:(
 brew "nodejs"
@@ -94,8 +106,8 @@ brew "pstree"
 # Fix for pbcopy/pbpaste in tmux and screen
 brew "reattach-to-user-namespace" # For tmux to work properly
 
-# Key/Value store service
-# brew "redis"
+# Key/Value store service (for stimulus-reflex)
+brew "redis"
 
 # File search, faster than ag
 brew "ripgrep"
@@ -129,3 +141,6 @@ brew "yarn" # ??
 
 # Jump between working directories
 brew "z"
+
+# Zig language
+# brew "zig"

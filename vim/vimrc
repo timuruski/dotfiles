@@ -20,6 +20,7 @@ Plug 'danielwe/base16-vim'
 " Plug 'https://bitbucket.org/kisom/eink.vim.git'
 
 Plug 'aliou/bats.vim'
+Plug 'bakpakin/fennel.vim'
 Plug 'dart-lang/dart-vim-plugin', { 'for': 'dart' }
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'janko-m/vim-test'
@@ -32,14 +33,14 @@ Plug 'reasonml-editor/vim-reason-plus', { 'for': 'reason' }
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'takac/vim-hardtime'
 Plug 'tpope/vim-abolish'
-Plug 'tpope/vim-bundler', { 'for': 'ruby' }
+" Plug 'tpope/vim-bundler', { 'for': 'ruby' }
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-ragtag'
-Plug 'tpope/vim-rake', { 'for': 'ruby' }
+" Plug 'tpope/vim-rake', { 'for': 'ruby' }
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
@@ -48,7 +49,8 @@ Plug 'tpope/vim-vinegar'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
-Plug 'vim-scripts/ag.vim'
+" Plug 'vim-scripts/ag.vim'
+Plug 'vim-scripts/nimrod.vim'
 Plug 'vim-scripts/SyntaxAttr.vim'
 Plug 'vim-utils/vim-man'
 Plug 'vimwiki/vimwiki'
@@ -149,7 +151,7 @@ autocmd BufRead /tmp/*		set nowritebackup
 " ================================
 
 " Disable ex mode until you know how to use it.
-nmap Q <Nop>
+" nmap Q <Nop>
 
 " Disable weird effect when Ctrl-Space is pressed in Insert mode.
 imap <Nul> <Space>
@@ -160,6 +162,7 @@ cnoremap %% <C-R>=expand('%:h').'/'<cr>
 " Shortcut to type the lozenge character for Pollen
 " ◊	LZ	25CA	9674	LOZENGE
 digraph lz 9674
+digraph -b 0x2011
 
 " Open file in same directory as current file
 map <leader>e :edit %%
@@ -252,7 +255,7 @@ command! -nargs=0 RunMake nnoremap <buffer> <enter> :w \| make! <CR>
 command! -nargs=* RunMake nnoremap <buffer> <enter> :w \| make! <args> <CR>
 command! -nargs=0 RunTest nnoremap <enter> :w \| :TestFile <CR>
 command! -nargs=0 RunGo nnoremap <buffer> <enter> :w \| !clear; go run % <CR>
-command! -nargs=0 RunNone nunmap <enter>
+command! -nargs=0 RunNone nunmap <buffer> <enter>
 
 function! s:RunCmd()
   " Command name

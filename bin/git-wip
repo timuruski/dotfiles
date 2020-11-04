@@ -2,9 +2,8 @@
 
 # Make a WIP commit either from the files in the index or everything.
 
-if [[ $1 = "--index" ]]; then
+if [[ $1 = "--all" ]]; then
   shift
-else
   git add --all
 fi
 
