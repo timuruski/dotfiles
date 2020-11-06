@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require "securerandom"
+
+print SecureRandom.uuid
+print "\n" if STDOUT.tty?

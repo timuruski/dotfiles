@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+
+begin
+  require "ulid"
+
+  print ULID.generate
+  print "\n" if STDOUT.tty?
+rescue LoadError
+  abort "Need to `gem install ulid` to generate a ULID`"
+end

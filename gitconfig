@@ -11,7 +11,6 @@
   whitespace = red reverse
 [alias]
   aa = add --all
-  amend = commit --amend
   au = add --update
   b = branch --sort='committerdate'
   c = commit

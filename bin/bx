@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# Runs bundle exec. This is a script instead of an alias because it can be used in Vim.
+
+exec bundle exec $@
