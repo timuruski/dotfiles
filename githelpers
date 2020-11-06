@@ -25,15 +25,15 @@ pretty_git_log() {
   # DEFAULT_PAGER="less -FSXR"
   # pager="${GIT_PAGER:-$PAGER:-$default_pager}"
 
-  git log --graph --abbrev-commit --date=relative --pretty="tformat:${FORMAT}" $* |
+  git --no-pager log --graph --abbrev-commit --date=relative --pretty="tformat:${FORMAT}" $* |
       # Replace (2 years ago) with (2 years)
       sed -Ee 's/(^[^<]*) ago)/\1)/' |
       # Replace (2 years, 5 months) with (2 years)
       sed -Ee 's/(^[^>]*), [[:digit:]]+ .*months?)/\1)/' |
       # Columnate based on } delimiter
-      column -s '}' -t |
+      column -s '}' -t
       # Page with colors, only when necessary, leave it on the screen
-      less -FSXR
+      # less --quit-if-one-screen -FSXR
 }
 
 deploy_git_log() {

@@ -13,7 +13,7 @@
   aa = add --all
   amend = commit --amend
   au = add --update
-  b = branch
+  b = branch --sort='committerdate'
   c = commit
   ci = "!source ~/.githelpers && fuzzy_checkout"
   conflicts = diff --name-only --diff-filter=U
@@ -33,6 +33,7 @@
   l = "!source ~/.githelpers && pretty_git_log"
   la = !git l --all
   ld = !git l --simplify-by-decoration
+  local-ignore = ignore-local
   lt = !git l --since=yesterday
   new-branch = switch --create
   oldest-ancestor = !zsh -c 'diff --old-line-format= --new-line-format= <(git rev-list --first-parent \"${1:-master}\") <(git rev-list --first-parent \"${2:-HEAD}\") | head -1' -
@@ -41,7 +42,7 @@
   pob = !source ~/.githelpers && push_origin
   pom = push origin master
   phm = push heroku master
-  r = !git --no-pager l -20
+  r = !git l -20
   ; r = !git --no-pager log --decorate --oneline --graph --max-count=20
   ra = !git r --all
   s = status -sb

@@ -7,4 +7,4 @@ if [[ $1 = "--all" ]]; then
   git add --all
 fi
 
-git commit --no-verify -m "WIP $*"
+git commit --no-verify --no-post-rewrite --message "WIP $*"

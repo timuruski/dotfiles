@@ -22,6 +22,7 @@ alias barevim="/usr/bin/env vim -Nu ~/.dotfiles/.minimal-vimrc"
 
 # FZF
 export FZF_DEFAULT_COMMAND='ag -g ""'
+export FZF_DEFAULT_OPTS="--no-color"
 
 autoload -U edit-command-line
 zle -N edit-command-line
@@ -38,32 +39,33 @@ alias ls="ls -lhG"
 alias tree="tree -I 'node_modules|vendor'"
 alias ql="qlmanage -p "$@" &> /dev/null"
 alias bx="bundle exec"
+alias dx="docker-compose exec"
 alias g="fg"
 alias fgg="fg"
 alias ffg="fg"
 alias it="git"
 alias obs="jobs"
 alias i="vi"
+
 # alias aag="ag --ignore spec --ignore test --ignore '*.spec.ts' --ignore '*.test.jsx'"
-# alias aag="ag --path-to-ignore ~/.rrg.ignore"
+# alias aag="ag --path-to-ignore ~/.rrgignore"
 # alias rrg="rg --glob '!spec' --glob '!test' --glob '!*.spec.ts' --glob '!*.test.jsx'"
 alias ag="rg"
-alias aag="rg --ignore-file ~/.rrg.ignore"
-alias rrg="rg --ignore-file ~/.rrg.ignore"
-alias jj="jrnl"
-alias jjj="jrnl -1 --edit"
-alias wiki="vim -c :VimwikiMakeDiaryNote"
+alias ag="rg --ignore-file ~/.rrgignore"
+alias rg="rg --ignore-file ~/.rrgignore"
+alias aag="\rg"
+alias rrg="\rg"
 
-function glow() {
-  /usr/bin/env glow $@ --style=light --pager
-}
+# function glow() {
+#   /usr/bin/env glow $@ --style=light --pager
+# }
 
 function vv() {
-  # [1]  + suspended  vim
-  if jobs | grep -q "\bvim\b"; then
+  # if [ $yes_vim -eq 0 ]; then
+  if jobs | egrep -q "\b(vv|vim?)\b"; then
     fg
   else
-    vim
+    vim $@
   fi
 }
 

@@ -1,6 +1,9 @@
 source /usr/local/opt/chruby/share/chruby/chruby.sh
 source /usr/local/opt/gem_home/share/gem_home/gem_home.sh
 
+PATH_add /usr/local/opt/openssl@1.1/bin
+
+
 # Project-specific Vim configuration, experimental
 add_extra_vimrc() {
   local extravim="$(find_up .vimrc)"

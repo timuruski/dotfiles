@@ -30,13 +30,12 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/ag.vim'
 Plug 'vim-utils/vim-man'
-Plug 'vimwiki/vimwiki'
 " Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 
 " Syntax
 Plug 'vim-scripts/SyntaxAttr.vim'
-" Plug 'vim-syntastic/syntastic'
-Plug 'w0rp/ale'
+Plug 'vim-syntastic/syntastic'
+" Plug 'w0rp/ale'
 
 call plug#end()
 
@@ -263,6 +262,7 @@ function! s:runcmd()
 endfunction
 
 " FZF
+let g:fzf_preview_window = ''
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],
   \ 'bg':      ['bg', 'Normal'],
@@ -276,6 +276,7 @@ let g:fzf_colors =
   \ 'marker':  ['fg', 'Normal'],
   \ 'spinner': ['fg', 'Normal'],
   \ 'header':  ['fg', 'Normal'] }
+
 
 " Visual style
 " set t_Co=256
@@ -294,20 +295,17 @@ function! SynStack()
 endfunc
 " command! -nargs=1 SynStack nnoremap <buffer> <enter> :w \| !clear; <args> % <CR>
 
-map <leader>gc :Files components/manage/app/controllers<CR>
-map <leader>gC :Files components/manage/app/assets/stylesheets<CR>
-map <leader>gh :Files components/manage/app/helpers<CR>
-map <leader>gj :Files components/manage/client-src<CR>
-map <leader>gm :Files components/manage/app/models<CR>
-" map <leader>gs :Files spec<CR>
-" map <leader>gS :Files app/services<CR>
-map <leader>gv :Files components/manage/app/views<CR>
+" Generic rails file search
+map <leader>gm :Files app/models<CR>
+map <leader>gv :Files app/views<CR>
+map <leader>gc :Files app/controllers<CR>
 
-map <leader>gM :topleft 100 :sview db/schema.rb<CR>
-map <leader>gg :topleft 100 :split Gemfile<CR>
-" map <leader>gt :CtrlPClearCache<CR>\|:CtrlPTag<CR>
-map <leader>gr :topleft :split config/routes.rb<CR>
-map <leader>gR :call ShowRoutes()<CR>
+" Componentized Rails file search
+map <leader>gj :Files components/manage/client-src<CR>
+map <leader>gM :Files components/manage/app/models<CR>
+map <leader>gV :Files components/manage/app/views<CR>
+map <leader>gC :Files components/manage/app/controllers<CR>
+
 map <leader>b :Buffers<CR>
 map <leader>f :Files<CR>
 map <leader>F :Files %%<CR>
@@ -342,10 +340,6 @@ if exists('g:loaded_ale') && g:loaded_ale
   let g:ale_lint_on_text_changed = 'never'
   let g:ale_fix_on_save = 1
 endif
-
-" VimWiki
-let g:vimwiki_list = [{'path': '~/vimwiki/',
-                      \ 'syntax': 'markdown', 'ext': '.md'}]
 
 " Syntastic
 let g:syntastic_check_on_open = 1
