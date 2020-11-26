@@ -1,0 +1,14 @@
+# Ignore "noisy" files with no linebreaks, etc.
+*.svg
+/log
+/public/appcues
+/public/outlook-plugin
+/spec/vcr_cassettes
+/vendor/cache*
+app-*.js
+client-src/common/ui/src/docs-app/documentation/development/styleGuide/styleGuide.md
+node_modules/
+public/appcues/widget-bundle.js
+public/outlook-plugin/
+vendor/
+zxcvbn.js

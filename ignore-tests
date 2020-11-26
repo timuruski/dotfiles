@@ -1,0 +1,8 @@
+# Ignore files related to tests
+spec/
+test/
+*_spec.rb
+*_test.rb
+*.spec.ts
+*.test.js
+*.test.jsx

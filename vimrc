@@ -277,6 +277,14 @@ let g:fzf_colors =
   \ 'spinner': ['fg', 'Normal'],
   \ 'header':  ['fg', 'Normal'] }
 
+command! -bang -nargs=* Rrg
+  \ call fzf#vim#grep(
+  \   'rg'.
+  \   ' --ignore-file='.expand('$HOME/.ignore').
+  \   ' --ignore-file='.expand('$HOME/.ignore-tests').
+  \   ' --column --line-number --no-heading --color=always --smart-case -- '.
+  \   shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview(), <bang>0)
 
 " Visual style
 " set t_Co=256

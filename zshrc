@@ -47,14 +47,8 @@ alias it="git"
 alias obs="jobs"
 alias i="vi"
 
-# alias aag="ag --ignore spec --ignore test --ignore '*.spec.ts' --ignore '*.test.jsx'"
-# alias aag="ag --path-to-ignore ~/.rrgignore"
-# alias rrg="rg --glob '!spec' --glob '!test' --glob '!*.spec.ts' --glob '!*.test.jsx'"
-alias ag="rg"
-alias ag="rg --ignore-file ~/.rrgignore"
-alias rg="rg --ignore-file ~/.rrgignore"
-alias aag="\rg"
-alias rrg="\rg"
+alias rrg="rg --ignore-file ~/.ignore --ignore-file ~/.ignore-tests"
+alias rgg="rg --ignore-file ~/.ignore --ignore-file ~/.ignore-tests"
 
 # function glow() {
 #   /usr/bin/env glow $@ --style=light --pager
