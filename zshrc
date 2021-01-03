@@ -16,6 +16,10 @@ export PATH
 
 export GTYPIST_PATH=$GTYPIST_PATH:$HOME/workspace/gtypist
 
+# Setup chruby
+source /usr/local/opt/chruby/share/chruby/chruby.sh
+chruby 2.7.2
+
 # Editors
 export EDITOR="vim"
 export GIT_EDITOR="vim"
