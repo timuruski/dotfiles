@@ -29,7 +29,6 @@ Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 Plug 'janet-lang/janet.vim'
 Plug 'jpalardy/vim-slime'
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-Plug 'reasonml-editor/vim-reason-plus', { 'for': 'reason' }
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'takac/vim-hardtime'
 Plug 'tpope/vim-abolish'
@@ -50,10 +49,10 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 " Plug 'vim-scripts/ag.vim'
-Plug 'vim-scripts/nimrod.vim'
+" Plug 'vim-scripts/nimrod.vim'
 Plug 'vim-scripts/SyntaxAttr.vim'
 Plug 'vim-utils/vim-man'
-Plug 'vimwiki/vimwiki'
+" Plug 'vimwiki/vimwiki'
 Plug 'wlangstroth/vim-racket'
 
 " Syntax checkers
