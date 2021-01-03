@@ -62,6 +62,9 @@ brew "gh"
 # Process manager
 brew "hivemind"
 
+# HTTP shell
+brew "httpie"
+
 # Janet Programming language
 # https://janet-lang.org
 brew "janet"
@@ -144,3 +147,6 @@ brew "z"
 
 # Zig language
 # brew "zig"
+
+# Zola static site generator: https://www.getzola.org
+brew "zola"
