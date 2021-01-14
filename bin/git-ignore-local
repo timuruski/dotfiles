@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# TODO Add usage instructions
+# TODO Handle a list of files
+# TODO Option to un-ignore a file
+
+# sed -i.bak -e "/${1}/d" .git/info/exclude
+
+if !(grep --quiet "${1}" .git/info/exclude); then
+  if [[ -f $1 ]]; then
+    echo "${1}" >> .git/info/exclude
+  else
+    echo "${1} does not exist"
+  fi
+fi

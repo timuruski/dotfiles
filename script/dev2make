@@ -1,0 +1,29 @@
+#!/usr/bin/env ruby
+
+require 'yaml'
+require 'erb'
+
+dev_yml = YAML.load(File.read("dev.yml"))
+
+template = ERB.new(<<~EOF, nil, "<>")
+<% dev_yml.each do |command, steps| %>
+<%= command %>:
+<% Array(steps).each do |step| %>
+\t<%= print_step step %>
+<% end %>
+<% end %>
+
+.PHONY: <%= dev_yml.keys.join(" ") %>
+EOF
+
+def print_step(step)
+  if step.start_with?("echo")
+    "@#{step}"
+  elsif step.start_with?("dev")
+    step.sub("dev", "make")
+  else
+    step
+  end
+end
+
+puts template.result

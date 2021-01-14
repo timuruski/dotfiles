@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require 'uri'
+
+url = URI.parse(ARGV.shift.to_s)
+exec('ssh', "-o UserKnownHostsFile=/dev/null", "turuski@#{url.host}")

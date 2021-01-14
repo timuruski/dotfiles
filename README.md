@@ -6,6 +6,9 @@ The installer script defines a list of paths to ignore, etc.
 
 `./install.rb`
 
+## Todo:
+- Install each bin separately instead of symlinking the bin directory
+
 
 ## Interesting plugins
 * [CtrlP](https://github.com/kien/ctrlp.vim) - Fuzzy file finder written in VimScript
@@ -21,3 +24,8 @@ The installer script defines a list of paths to ignore, etc.
 * [OS X defaults](https://github.com/mathiasbynens/dotfiles/blob/master/.osx)
 * [Autoenv](https://github.com/kennethreitz/autoenv)
 * [direnv](https://github.com/zimbatm/direnv)
+
+## Replaceing dotfile paths
+Originally I installed into ~/.dotfiles, but it's clunky, here's the transition.
+
+  ls -a | awk '/\.dotfiles/ { dotfile = $9; sub("^\.", "", dotfile); print "ln -fs ~/workspace/dotfiles/" dotfile " ~/." dotfile }'
