@@ -1,0 +1,113 @@
+#!/usr/bin/env ruby
+
+require "psych"
+require "pry"
+
+at_exit do
+  abort "Usage: #{$0} <pattern> [file...]" if ARGV.length < 1
+  Yay::Command.new(ARGV.shift, ARGF).run
+end
+
+module Yay
+  class Command
+    # Read search pattern from ARGV
+    # foo.bar.qux -> ["foo", "bar", "qux"]
+    # Match state is pattern length - 1
+    # When key foo is found, increment pointer
+    # When map ends, decrement pointer
+    # When pointer equals end state, print match
+    def initialize(search_pattern, input)
+
+      @search_pattern = search_pattern.split(".")
+      @input = input
+    end
+
+
+    def run
+      handler = Handler.new(@search_pattern)
+      parser = Psych::Parser.new(handler)
+      handler.parser = parser
+      parser.parse(@input)
+    end
+  end
+
+  class Handler < Psych::Handler
+    # States:
+    # a: null state
+    # b: get map key
+    # c: get map value
+    #
+    # a -> start_map -> b
+    # b -> scalar -> c (push key)
+    # b -> end_map -> b (pop key)
+    # c -> scalar -> b (push value, pop key)
+    # c -> start_map -> b (push map)
+    # c -> end_map -> b (pop key)
+
+    attr_accessor :parser
+
+    def initialize(search_pattern, *args)
+      @state = :a
+      @prev = nil
+      @keys = []
+
+      @search_pattern = search_pattern
+      @search_state = 0
+      @search_end_state = search_pattern.length - 1
+    end
+
+    def start_mapping(*args)
+      @prev = @state
+      case @state
+      when :a
+        @state = :b
+      when :c
+        @state = :b
+      else
+        fail
+      end
+
+      transition("start map")
+    end
+
+    def end_mapping
+      @prev = @state
+      case @state
+      when :b, :c
+        @state = :b
+        @keys.pop
+      else
+        fail
+      end
+
+      transition("end map")
+    end
+
+     def scalar(value, *args)
+       @prev = @state
+       case @state
+       when :b
+         # Key found
+         @state = :c
+         @keys << value
+         @search_state += 1 if @search_pattern[@search_state] == value
+       when :c
+         # Value found
+         @state = :b
+         if @search_state == @search_end_state
+           puts "#{@keys.join('.')}:#{parser.mark.line + 1}: #{value}" if @search_state == @search_end_state
+           @search_state -= 1
+         end
+         @keys.pop
+       else
+         fail
+       end
+
+       transition("scalar")
+     end
+
+     def transition(event)
+       # puts "#@prev -> (#{event}) -> #@state"
+     end
+  end
+end

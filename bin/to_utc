@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+require "time"
+
+utc_time = Time.parse(ARGV.join(" ") || gets).utc
+
+if STDOUT.tty?
+  puts utc_time
+else
+  print utc_time
+end
