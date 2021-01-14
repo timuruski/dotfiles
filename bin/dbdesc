@@ -5,11 +5,9 @@
 #
 abort "Usage #{$0} <table>" if ARGV.empty?
 
-require 'yaml'
 require 'active_support/core_ext/string/inflections'
+require 'yaml'
 
-env = ENV['RAILS_ENV'] || 'development'
-config = YAML.load(File.read('config/shards.yml'))[env]
 model_name = ARGV.first
 
 # model_file = "app/models/#{table_name.singularize}.rb"
@@ -18,13 +16,17 @@ database = File.read(model_file).match?(/CommonRecord/) ? "common" : "themis"
 table_name = File.read(model_file).match(/self\.table_name = "(\w+)"/)&.[](1) || model_name
 
 puts "#{model_name} -> #{model_file} -> #{table_name} -> #{database}"
-
-database_name = config.find { |cfg| cfg['database'] =~ /#{database}/ }['database']
-
 statement = "DESCRIBE #{table_name};"
+
+env = ENV['RAILS_ENV'] || 'development'
+config_file = YAML.load(File.read('config/shards.yml'))[env]
+db_config = config_file.find { |cfg| cfg['database'] =~ /#{database}/ }
+database_name = db_config['database']
+user_name = db_config['username']
 
 args = [
   database_name,
+  %Q(--user=#{user_name}),
   %Q(--execute=\"#{statement}\")
 ].join(" ")
 

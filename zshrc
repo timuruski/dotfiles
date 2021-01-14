@@ -12,6 +12,7 @@ export PATH="$HOME/bin:$PATH"
 [[ -d /usr/local/heroku ]] && PATH="/usr/local/heroku/bin:$PATH"
 
 # export CDPATH="$CDPATH:$HOME/workspace/clio:$HOME/workspace"
+export BUNDLE_TIMEOUT=30
 
 # Editors
 export EDITOR="vim"
@@ -34,18 +35,20 @@ bindkey '\C-x\C-e' edit-command-line
 # colorscheme "$HOME/.zsh/base16-shell/base16-default.light.sh"
 
 # Define functions and aliases
-alias vi="vim"
-alias ls="ls -lhG"
-alias tree="tree -I 'node_modules|vendor'"
-alias ql="qlmanage -p "$@" &> /dev/null"
 alias bx="bundle exec"
 alias dx="docker-compose exec"
-alias g="fg"
-alias fgg="fg"
 alias ffg="fg"
-alias it="git"
-alias obs="jobs"
+alias fgg="fg"
+alias g="fg"
 alias i="vi"
+alias it="git"
+alias ls="ls -lhG"
+alias obs="jobs"
+alias ql="qlmanage -p "$@" &> /dev/null"
+alias tree="tree -I 'node_modules|vendor'"
+alias untar="tar -xvf"
+alias vi="vim"
+alias xit="exit"
 
 alias rrg="rg --ignore-file ~/.ignore --ignore-file ~/.ignore-tests"
 alias rgg="rg --ignore-file ~/.ignore --ignore-file ~/.ignore-tests"
