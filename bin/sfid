@@ -1,0 +1,61 @@
+#!/usr/bin/env ruby
+
+# Split ID from URL
+# If ID is 18 chars, return original string
+# If ID is 15 chars, expand
+
+SUFFIX = ("A".."Z").to_a + ("0".."5").to_a
+PATTERN = /\A(?<prefix>http:\/\/.*\/)?(?<id>[a-zA-Z0-9]{15})\Z/
+
+# http://some.salesforce.com/a0V2G00000CWcoN -> a0V2G00000CWcoNUAT
+at_exit do
+  print ARGV.map { |str| convert(str) }.join(" ")
+end
+
+def convert(str)
+  if match = str.match(PATTERN)
+    # prefix, id = match.values_at(1,2)
+    prefix = match["prefix"].to_s
+    id = match["id"]
+
+    [prefix, id, suffix(id)].join
+  else
+    str
+  end
+end
+
+def suffix(id)
+  id.chars
+    .each_slice(5)
+    .map(&:reverse)
+    .map { |chars| chars.map{ |char| char[/[A-Z]/] ? "1" : "0" } }
+    .map(&:join)
+    .map { |chars| chars.to_i(2) }
+    .map { |index| SUFFIX[index] }
+    .join
+end
+
+__END__
+
+  if match.nil?
+    print query
+    exit 1
+  end
+
+  prefix, id = match.values_at(1,2)
+
+  # prefix = match["prefix"].to_s
+  # id = response.match_data["id"]
+  suffix = id.chars
+    .each_slice(5)
+    .map(&:reverse)
+    .map { |chars| chars.map{ |char| char[/[A-Z]/] ? "1" : "0" } }
+    .map(&:join)
+    .map { |chars| chars.to_i(2) }
+    .map { |index| SUFFIX[index] }
+    .join
+
+
+  print [prefix, id, suffix].join
+
+end

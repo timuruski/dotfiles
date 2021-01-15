@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+require 'yaml'
+
+db_config = YAML.load(File.open('config/database.yml'))
+env = db_config['development']
+
+user = "--user=#{env['username']}"
+password = "--password=#{env['password']}"
+
+exec 'mysql', env['database'], user, password

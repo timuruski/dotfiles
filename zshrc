@@ -50,8 +50,11 @@ alias untar="tar -xvf"
 alias vi="vim"
 alias xit="exit"
 
+# Ignore test files when searching
 alias rrg="rg --ignore-file ~/.ignore --ignore-file ~/.ignore-tests"
 alias rgg="rg --ignore-file ~/.ignore --ignore-file ~/.ignore-tests"
+alias ffd="fd --ignore-file ~/.ignore-tests"
+alias fdd="fd --ignore-file ~/.ignore-tests"
 
 # function glow() {
 #   /usr/bin/env glow $@ --style=light --pager

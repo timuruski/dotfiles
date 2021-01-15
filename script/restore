@@ -10,7 +10,7 @@ SOURCE=(
 )
 
 # TODO: Abort if not present
-DEST="${1:-/Volumes/Backup}"
+ORIGIN="${1:-/Volumes/Backup}"
 
 # -gloptrunc
 OPTS=(
@@ -21,7 +21,7 @@ OPTS=(
   --times
   --recursive
   --update
-  # --dry-run
+  --dry-run
   --checksum
   --verbose
 )

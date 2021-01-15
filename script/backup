@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# rsync work files to an external volume
+# https://serverfault.com/questions/25329/using-rsync-to-backup-to-an-external-drive#25398
+
+SOURCE=(
+  # "$HOME/.ssh"
+  "$HOME/workspace/clio"
+  # "$HOME/.rubies"
+  # "$HOME/workspace/dotfiles"
+  # "$HOME/workspace/sandbox"
+)
+
+# TODO: Abort if not present
+# DEST="${1:-/Volumes/Backup}"
+DEST="${1:timuru-new.local:~/}"
+
+# -gloptrunc
+OPTS=(
+  --group
+  --links
+  --owner
+  --perms
+  --times
+  --recursive
+  --update
+  # --dry-run
+  --checksum
+  --verbose
+)
+
+rsync ${OPTS[@]} ${SOURCE[@]} "$DEST"
