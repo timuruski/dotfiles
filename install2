@@ -2,12 +2,16 @@
 
 require_relative "./dotfiles"
 
-Dotfiles.install(dest: "tmp", dry_run: false) do
+Dotfiles.install do
   symlink "ackrc"
   symlink "bash_profile"
   symlink "bashrc"
-  # How many files in bin/* are even necessary?
+  symlink "bin/b", dot_prefix: false
+  symlink "bin/edit", dot_prefix: false
   symlink "bin/git-*", dot_prefix: false
+  symlink "bin/git_prompt.rb", dot_prefix: false
+  symlink "bin/pjson", dot_prefix: false
+  symlink "bin/x", dot_prefix: false
   symlink "direnvrc"
   symlink "gitconfig"
   symlink "githelpers"
@@ -15,7 +19,6 @@ Dotfiles.install(dest: "tmp", dry_run: false) do
   symlink "gvimrc"
   symlink "inputrc"
   symlink "irbrc"
-  symlink "new-install"
   symlink "psqlrc"
   symlink "railsrc"
   symlink "screenrc"

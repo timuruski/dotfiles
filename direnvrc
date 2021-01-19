@@ -1,14 +1,5 @@
 source /usr/local/opt/chruby/share/chruby/chruby.sh
 
-# Collection of utilities for using Ruby and Bundler without the need
-# to "bundle exec" every command in existence.
-#
-# Best results so far...
-# use local_ruby
-# use local_gems vendor
-#
-# $ bundle install --system
-
 # use local_ruby [ruby-version]
 # Load Ruby version from .ruby-version file
 use_local_ruby() {
@@ -24,43 +15,4 @@ use_local_ruby() {
   fi
 
   chruby $ver
-}
-
-# use gemset <name>
-# Add gemset to environment
-use_gemset() {
-  local dir="$HOME/.config/gemsets/$1"
-  if [[ -d $dir ]]; then
-    gem_home $dir
-  else
-    log_error "Unknown gemset $1"
-    exit 1
-  fi
-}
-
-# use local_gems <vendor>
-# Experimental: use gems local to project directory
-use_local_gems() {
-  local gem_root="${1:vendor}"
-  mkdir -p "$gem_root" && pushd "$gem_root" >/dev/null || return 1
-  local ruby_engine ruby_version gem_dir
-
-  eval "$(ruby - <<EOF
-puts "ruby_engine=#{defined?(RUBY_ENGINE) ? RUBY_ENGINE : 'ruby'};"
-puts "ruby_version=#{RUBY_VERSION};"
-EOF
-)"
-  gem_dir="$PWD/$ruby_engine/$ruby_version"
-
-  [[ "$GEM_HOME" == "$gem_dir" ]] && return
-
-  export GEM_HOME="$gem_dir"
-  export GEM_PATH="$gem_dir${GEM_PATH:+:}$GEM_PATH"
-  export PATH="$gem_dir/bin${PATH:+:}$PATH"
-
-  # BUNDLE_BIN=$(direnv_layout_dir)/bin
-  # PATH_add "$GEM_HOME/bin"
-  # PATH_add "$BUNDLE_BIN"
-
-  popd >/dev/null
 }
