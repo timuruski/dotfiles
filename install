@@ -3,26 +3,29 @@
 require_relative "./dotfiles"
 
 Dotfiles.install do
-  symlink "ackrc"
-  symlink "bash_profile"
-  symlink "bashrc"
-  symlink "bin/b", dot_prefix: false
-  symlink "bin/edit", dot_prefix: false
-  symlink "bin/git-*", dot_prefix: false
-  symlink "bin/git_prompt.rb", dot_prefix: false
-  symlink "bin/pjson", dot_prefix: false
-  symlink "bin/x", dot_prefix: false
-  symlink "direnvrc"
-  symlink "gitconfig"
-  symlink "githelpers"
-  symlink "gitignore_global"
-  symlink "gvimrc"
-  symlink "inputrc"
-  symlink "irbrc"
-  symlink "psqlrc"
-  symlink "railsrc"
-  symlink "screenrc"
-  symlink "tmux.conf"
-  symlink "zlogin"
-  symlink "zshrc"
+  dotfile "ackrc"
+  dotfile "bash_profile"
+  dotfile "bashrc"
+  symlink "bin/b"
+  symlink "bin/edit"
+  symlink "bin/git-*"
+  symlink "bin/git_prompt.rb"
+  symlink "bin/pjson"
+  symlink "bin/x"
+  dotfile "config/nvim" # TODO: Add dotfile to first entry in path
+  dotfile "direnvrc"
+  dotfile "gitconfig"
+  dotfile "githelpers"
+  dotfile "gitignore_global"
+  dotfile "gvimrc"
+  dotfile "inputrc"
+  dotfile "irbrc"
+  dotfile "psqlrc"
+  dotfile "railsrc"
+  dotfile "screenrc"
+  dotfile "tmux.conf"
+  dotfile "vim"
+  dotfile "zlogin"
+  dotfile "zsh"
+  dotfile "zshrc"
 end
