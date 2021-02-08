@@ -63,6 +63,7 @@ alias ql='qlmanage -p "$@" &> /dev/null'
 alias be='bundle exec'
 alias g='fg'
 alias j='jobs'
+alias bx="bundle exec"
 function fcd() { cd *$1* }
 
 # Workspace shortcut and completion
