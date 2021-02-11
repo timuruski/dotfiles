@@ -94,9 +94,6 @@ eval "$(direnv hook zsh)"
 # Nodenv
 eval "$(nodenv init -)"
 
-# thefuck https://github.com/nvbn/thefuck
-eval $(thefuck --alias ff)
-
 # Plugins
 for plugin in ~/.zsh/plugins/*.sh; do
   source "$plugin"
@@ -106,3 +103,6 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 # export PATH="/usr/local/opt/percona-server@5.6/bin:$PATH"
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+# dev tool https://github.com/clio/dev
+eval "$(dev _hook)"
