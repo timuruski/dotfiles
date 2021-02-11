@@ -3,30 +3,37 @@
 # rsync work files to an external volume
 # https://serverfault.com/questions/25329/using-rsync-to-backup-to-an-external-drive#25398
 
+if [[ $# < 1 ]]; then
+  echo "Usage: $0 <DEST> [RSYNC-OPTS]"
+  exit 1
+fi
+
 SOURCE=(
   # "$HOME/.ssh"
   "$HOME/workspace/clio"
-  # "$HOME/.rubies"
-  # "$HOME/workspace/dotfiles"
+  "$HOME/.rubies"
+  "$HOME/workspace/dotfiles"
   # "$HOME/workspace/sandbox"
 )
 
 # TODO: Abort if not present
 # DEST="${1:-/Volumes/Backup}"
-DEST="${1:timuru-new.local:~/}"
+# DEST="${1:timuru-new.local:~/}"
+DEST="$1"
+shift
 
 # -gloptrunc
 OPTS=(
+  --checksum
   --group
   --links
   --owner
   --perms
-  --times
   --recursive
+  --times
   --update
-  # --dry-run
-  --checksum
   --verbose
+  $@
 )
 
 rsync ${OPTS[@]} ${SOURCE[@]} "$DEST"

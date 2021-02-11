@@ -1,0 +1,8 @@
+update:
+  git pull
+
+start-docker:
+  APACHE_BACKEND_URL="http://host.docker.internal:3002" docker-compose up -d app-proxy mysql redis elasticsearch
+
+start: start-docker
+  overmind start

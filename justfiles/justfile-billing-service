@@ -1,0 +1,8 @@
+start: start-docker
+  overmind start
+
+start-docker:
+  docker-compose up -d db redis
+
+update:
+  git pull

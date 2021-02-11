@@ -1,0 +1,54 @@
+start:
+  #!/usr/bin/env bash
+  set -eo pipefail
+
+  docker-compose up -d
+
+  proc_list="${1:-rails,manage_webpack,resque}"
+  restart_list="resque,scheduler"
+
+  if [[ -r .overmind.sock ]]; then
+    overmind echo
+  else
+    # if [[ "${1}" = "-f" || "${1}" = "--foreground" ]]; then
+    #   overmind start -D -l "${proc_list}"
+    # else
+    #   overmind start -l "${proc_list}"
+    # fi
+
+    # OVERMIND_AUTO_RESTART="${restart_list}" overmind start -l "${proc_list}"
+    overmind start -l "${proc_list}"
+
+    if [[ $1 != "-d" ]]; then
+      sleep 0.5
+      $0
+    fi
+  fi
+
+stop:
+  #!/usr/bin/env bash
+  set -eo pipefail
+
+  overmind quit
+
+update:
+  #!/usr/bin/env ruby
+
+  system 'git pull'
+
+  _bundle_pid = Process.spawn('bundle install')
+  _yarn_pid = Process.spawn('cd components/manage; yarn --no-progress')
+  Process.waitall
+
+  setup_cmd = 'bundle exec rails elasticsearch:migrate db:migrate'
+  _dev_migrate_pid = Process.spawn(setup_cmd)
+  _test_migrate_pid = Process.spawn({'RAILS_ENV' => 'test'} ,setup_cmd)
+  Process.waitall
+
+testjs:
+  #!/usr/bin/env bash
+  cd components/manage
+  yarn test:admin
+
+dorp:
+  echo `printenv DORP`
