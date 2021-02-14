@@ -1,10 +1,21 @@
 #!/bin/bash
+#
+# Fuzzy find then edit a file
 set -euf -o pipefail
 
-export FZF_DEFAULT_COMMAND="fd --type=file --no-ignore --hidden --exclude=.git"
+EDITOR="${EDITOR:-vim}"
+FZF_OPTS="--border --exact --height=50% --no-info --reverse --select-1"
+
+files() {
+  if [[ -d ".git" ]]; then
+    git ls-tree -r master --name-only
+  else
+    fd --type=file
+  fi
+}
 
 if [[ $# -gt 0 ]]; then
-  exec fzf --select-1 --query $1 | xargs -o vim
+  files | fzf $FZF_OPTS --query $1 | exec xargs -o $EDITOR
 else
-  exec fzf --select-1 | xargs -o vim
+  files | fzf $FZF_OPTS | exec xargs -o $EDITOR
 fi
