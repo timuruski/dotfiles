@@ -1,7 +1,14 @@
 source /usr/local/opt/chruby/share/chruby/chruby.sh
 
+PATH_add /usr/local/opt/imagemagick@6/bin
 PATH_add /usr/local/opt/openssl@1.1/bin
+PATH_add /usr/local/opt/percona-server@5.6/bin
+
+# Install Bundler dependencies from Artifactory repo
 export BUNDLE_CLIO__JFROG__IO=tim.uruski%40clio.com:AKCp5bC1kCXi135WD8evFbAkmPGEFRHmBf2QxsypEjUWewQVBXDgUrD43S9ctX5CPKwGPqTfg
+
+# Install rmagick with Bundler
+export PKG_CONFIG_PATH="/usr/local/opt/imagemagick@6/lib/pkgconfig"
 
 # Use locally defined Ruby version if available
 use_ruby() {
@@ -26,4 +33,3 @@ add_extra_vimrc() {
     path_add EXTRA_VIM $extravim
   fi
 }
-

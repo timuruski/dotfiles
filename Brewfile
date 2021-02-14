@@ -64,4 +64,4 @@ brew "stripe/stripe-cli/stripe"
 # MySQL via Percona
 # brew "djocker/common/percona-server@5.6"
 # brew "homebrew/versions/percona-server55" # mysql
-# brew "percona-server@5.6" # mysql
+brew "percona-server@5.6" # mysql
