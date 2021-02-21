@@ -47,17 +47,21 @@ module Dotfiles
       symlink(pattern, dot_prefix: true)
     end
 
-    def symlink(pattern, dot_prefix: false)
+    def symlink!(pattern, dot_prefix: false)
       Dir.glob(pattern).each do |filename|
-        src_path = File.expand_path(filename, @src_dir)
-        if dot_prefix
-          dest_path = File.expand_path("." + filename, @dest_dir)
-        else
-          dest_path = File.expand_path(filename, @dest_dir)
-        end
-
-        @links << Symlink.create(src_path, dest_path, dot_prefix: dot_prefix)
+        symlink(filename, dot_prefix: dot_prefix)
       end
+    end
+
+    def symlink(filename, dot_prefix: false)
+      src_path = File.expand_path(filename, @src_dir)
+      if dot_prefix
+        dest_path = File.expand_path("." + filename, @dest_dir)
+      else
+        dest_path = File.expand_path(filename, @dest_dir)
+      end
+
+      @links << Symlink.create(src_path, dest_path, dot_prefix: dot_prefix)
     end
   end
 

@@ -8,11 +8,12 @@ Dotfiles.install do
   dotfile "bashrc"
   symlink "bin/b"
   symlink "bin/edit"
-  symlink "bin/git-*"
+  symlink! "bin/git-*"
   symlink "bin/git_prompt.rb"
   symlink "bin/pjson"
   symlink "bin/x"
-  dotfile "config/nvim" # TODO: Add dotfile to first entry in path
+  dotfile "config/nvim"
+  dotfile "config/zsh"
   dotfile "direnvrc"
   dotfile "gitconfig"
   dotfile "githelpers"
@@ -25,7 +26,5 @@ Dotfiles.install do
   dotfile "screenrc"
   dotfile "tmux.conf"
   dotfile "vim"
-  dotfile "zlogin"
-  dotfile "zsh"
-  dotfile "zshrc"
+  dotfile "zshenv"
 end
