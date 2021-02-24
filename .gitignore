@@ -1,7 +1,13 @@
 .DS_Store
 .netrwhist
+
+# Installed by iterm
+bin/imgcat
+
 config/gh
 config/zsh/.zcompdump
 config/zsh/.zsh_history
 tmp/
+
+# Churns when vim-plug updates
 vim/plugged/
