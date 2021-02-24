@@ -1,5 +1,21 @@
 source /usr/local/opt/chruby/share/chruby/chruby.sh
 
+# Use specified Ruby or locally defined version.
+use_ruby() {
+  local version="$1"
+
+  if [[ -z $version && -e .ruby-version ]]; then
+    version=$(cat .ruby-version)
+  fi
+
+  if [[ -z $version ]]; then
+    log_error "No Ruby version specified"
+  else
+    chruby $version
+  fi
+}
+
+# DEPRECATED
 # use local_ruby [ruby-version]
 # Load Ruby version from .ruby-version file
 use_local_ruby() {
