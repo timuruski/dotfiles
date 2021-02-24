@@ -3,7 +3,6 @@ autoload -U compinit && compinit
 autoload -U colors && colors
 setopt prompt_subst
 
-
 # Setup paths
 export GOPATH="$HOME/workspace/go"
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
@@ -18,8 +17,6 @@ export BUNDLE_TIMEOUT=30
 export EDITOR="vim"
 export GIT_EDITOR="vim"
 set -o emacs
-alias learnvim="/usr/bin/env vim -Nu ~/.learnvimrc"
-alias barevim="/usr/bin/env vim -Nu ~/.dotfiles/.minimal-vimrc"
 
 # FZF
 export FZF_DEFAULT_COMMAND='ag -g ""'
@@ -36,7 +33,7 @@ bindkey '\C-x\C-e' edit-command-line
 
 # Define functions and aliases
 alias bx="bundle exec"
-alias dx="docker-compose exec"
+alias dx="docker-compose"
 alias ffg="fg"
 alias fgg="fg"
 alias g="fg"
@@ -55,10 +52,6 @@ alias rrg="rg --ignore-file ~/.ignore --ignore-file ~/.ignore-tests"
 alias rgg="rg --ignore-file ~/.ignore --ignore-file ~/.ignore-tests"
 alias ffd="fd --ignore-file ~/.ignore-tests"
 alias fdd="fd --ignore-file ~/.ignore-tests"
-
-# function glow() {
-#   /usr/bin/env glow $@ --style=light --pager
-# }
 
 function vv() {
   # if [ $yes_vim -eq 0 ]; then
@@ -106,3 +99,6 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 # dev tool https://github.com/clio/dev
 eval "$(dev _hook)"
+
+# Remove rbenv from PATH, because chruby is better.
+export PATH=$(printenv PATH | sed -e "s|$HOME/\.rbenv/shims:||g")
