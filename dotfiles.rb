@@ -43,8 +43,8 @@ module Dotfiles
       end
     end
 
-    def dotfile(pattern)
-      symlink(pattern, dot_prefix: true)
+    def dotfile(pattern, to: nil)
+      symlink(pattern, dot_prefix: true, to: to)
     end
 
     def symlink!(pattern, dot_prefix: false)
@@ -53,24 +53,19 @@ module Dotfiles
       end
     end
 
-    def symlink(filename, dot_prefix: false)
-      src_path = File.expand_path(filename, @src_dir)
-      if dot_prefix
-        dest_path = File.expand_path("." + filename, @dest_dir)
-      else
-        dest_path = File.expand_path(filename, @dest_dir)
-      end
+    def symlink(filename, dot_prefix: false, to: nil)
+      dest = to || filename
+      dest = "." + dest if dot_prefix
 
-      @links << Symlink.create(src_path, dest_path, dot_prefix: dot_prefix)
+      src_path = File.expand_path(filename, @src_dir)
+      dest_path = File.expand_path(dest, @dest_dir)
+
+      @links << Symlink.new(src_path, dest_path)
     end
   end
 
   class Symlink
     attr_reader :src_path, :dest_path
-
-    def self.create(src_path, dest_path, dot_prefix: true)
-      new(src_path, dest_path)
-    end
 
     def initialize(src_path, dest_path)
       @src_path = src_path
