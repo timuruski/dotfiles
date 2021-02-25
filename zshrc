@@ -34,6 +34,7 @@ bindkey '\C-x\C-e' edit-command-line
 # Define functions and aliases
 alias bx="bundle exec"
 alias dx="docker-compose"
+alias dxx="docker-compose exec"
 alias ffg="fg"
 alias fgg="fg"
 alias g="fg"

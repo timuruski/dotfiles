@@ -1,6 +1,4 @@
-#!/usr/bin/env ruby
-
-require_relative "./dotfiles"
+#!/usr/bin/env ruby -r ./dotfiles
 
 Dotfiles.install do
   # dotfile "ackrc"
