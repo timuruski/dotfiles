@@ -1,7 +1,6 @@
-#!/usr/bin/env ruby
+#!/usr/bin/env ruby -r ./dotfiles
 
-require_relative "./dotfiles"
-
+# TODO Automatically run install at_exit
 Dotfiles.install do
   dotfile "ackrc"
   dotfile "bash_profile"
