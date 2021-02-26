@@ -8,7 +8,7 @@ FZF_OPTS="--border --exact --height=50% --no-info --reverse --select-1"
 
 files() {
   if [[ -d ".git" ]]; then
-    git ls-tree -r master --name-only
+    git ls-tree -r head --name-only
   else
     fd --type=file
   fi
