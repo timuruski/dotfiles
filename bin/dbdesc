@@ -5,8 +5,8 @@
 #
 abort "Usage #{$0} <table>" if ARGV.empty?
 
-require 'active_support/core_ext/string/inflections'
-require 'yaml'
+require "active_support/core_ext/string/inflections"
+require "yaml"
 
 model_name = ARGV.first
 
@@ -16,18 +16,19 @@ database = File.read(model_file).match?(/CommonRecord/) ? "common" : "themis"
 table_name = File.read(model_file).match(/self\.table_name = "(\w+)"/)&.[](1) || model_name
 
 puts "#{model_name} -> #{model_file} -> #{table_name} -> #{database}"
-statement = "DESCRIBE #{table_name};"
 
-env = ENV['RAILS_ENV'] || 'development'
-config_file = YAML.load(File.read('config/shards.yml'))[env]
-db_config = config_file.find { |cfg| cfg['database'] =~ /#{database}/ }
-database_name = db_config['database']
-user_name = db_config['username']
+env = ENV["RAILS_ENV"] || "development"
+config_file = YAML.load(File.read("config/shards.yml"))[env]
+db_config = config_file.find { |cfg| cfg["database"] =~ /#{database}/ }
 
 args = [
-  database_name,
-  %Q(--user=#{user_name}),
-  %Q(--execute=\"#{statement}\")
+  "--host=#{db_config["host"]}",
+  "--port=#{db_config["port"]}",
+  "--password=#{db_config["password"]}",
+  "--user=#{db_config["username"]}",
+  "--execute=\"DESCRIBE #{table_name};\"",
+  db_config["database"],
 ].join(" ")
 
+# puts "mysql #{args}"
 exec "mysql #{args}"
