@@ -31,29 +31,6 @@ bindkey '\C-x\C-e' edit-command-line
 # source ~/.zsh/colorscheme.sh
 # colorscheme "$HOME/.zsh/base16-shell/base16-default.light.sh"
 
-# Define functions and aliases
-alias bx="bundle exec"
-alias dx="docker-compose"
-alias dxx="docker-compose exec"
-alias ffg="fg"
-alias fgg="fg"
-alias g="fg"
-alias i="vi"
-alias it="git"
-alias ls="ls -lhG"
-alias obs="jobs"
-alias ql="qlmanage -p "$@" &> /dev/null"
-alias tree="tree -I 'node_modules|vendor'"
-alias untar="tar -xvf"
-alias vi="vim"
-alias xit="exit"
-
-# Ignore test files when searching
-alias rrg="rg --ignore-file ~/.ignore --ignore-file ~/.ignore-tests"
-alias rgg="rg --ignore-file ~/.ignore --ignore-file ~/.ignore-tests"
-alias ffd="fd --ignore-file ~/.ignore-tests"
-alias fdd="fd --ignore-file ~/.ignore-tests"
-
 function vv() {
   # if [ $yes_vim -eq 0 ]; then
   if jobs | egrep -q "\b(vv|vim?)\b"; then
