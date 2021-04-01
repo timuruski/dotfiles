@@ -48,7 +48,7 @@ update:
 testjs:
   #!/usr/bin/env bash
   cd components/manage
-  yarn test:admin
+  yarn test:main
 
 dorp:
   echo `printenv DORP`
