@@ -1,5 +1,6 @@
 alfred/
 tmp/
+tmux-*.log
 vim/plugged/
 .DS_Store
 .netrwhist

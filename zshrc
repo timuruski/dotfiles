@@ -8,7 +8,6 @@ export GOPATH="$HOME/workspace/go"
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 export PATH="$GOPATH/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
-[[ -d /usr/local/heroku ]] && PATH="/usr/local/heroku/bin:$PATH"
 
 # export CDPATH="$CDPATH:$HOME/workspace/clio:$HOME/workspace"
 export BUNDLE_TIMEOUT=30
@@ -18,32 +17,9 @@ export EDITOR="vim"
 export GIT_EDITOR="vim"
 set -o emacs
 
-# FZF
-export FZF_DEFAULT_COMMAND='ag -g ""'
-export FZF_DEFAULT_OPTS="--no-color"
-
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '\C-x\C-e' edit-command-line
-
-# REPLACED by iTerm 2 color system
-# Base-16 Shell
-# source ~/.zsh/colorscheme.sh
-# colorscheme "$HOME/.zsh/base16-shell/base16-default.light.sh"
-
-function vv() {
-  # if [ $yes_vim -eq 0 ]; then
-  if jobs | egrep -q "\b(vv|vim?)\b"; then
-    fg
-  else
-    vim $@
-  fi
-}
-
-alias show_path="ruby -e \"puts ENV['PATH'].split(':')\""
-function mcd() { mkdir -p $1 && cd $1 }
-function fcd() { cd *$1* }
-# function tag() {  }
 
 # History config
 export HISTSIZE=100000
@@ -51,21 +27,21 @@ export HISTFILE="$HOME/.history"
 export SAVEHIST=$HISTSIZE
 setopt HIST_IGNORE_DUPS HIST_IGNORE_SPACE INC_APPEND_HISTORY
 
-# Datastore services
-source $HOME/.zsh/postgres.sh
-source $HOME/.zsh/mongo.sh
-source $HOME/.zsh/redis.sh
+# FZF
+export FZF_DEFAULT_COMMAND='ag -g ""'
+export FZF_DEFAULT_OPTS="--no-color"
+
+# dev tool https://github.com/clio/dev
+# This adds stuff that needs extra configuration, so it's first.
+eval "$(dev _hook)"
 
 # Z
 [[ -f `brew --prefix`/etc/profile.d/z.sh ]] && . `brew --prefix`/etc/profile.d/z.sh
 
-# Direnv
-eval "$(direnv hook zsh)"
-
 # Nodenv
 eval "$(nodenv init -)"
 
-# Plugins
+# Load plugins
 for plugin in ~/.zsh/plugins/*.sh; do
   source "$plugin"
 done
@@ -75,8 +51,11 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
-# dev tool https://github.com/clio/dev
-eval "$(dev _hook)"
-
 # Remove rbenv from PATH, because chruby is better.
 export PATH=$(printenv PATH | sed -e "s|$HOME/\.rbenv/shims:||g")
+
+# Load ENV, this is also handled by direnv...
+# [[ -f ~/.env ]] && source ~/.env
+
+# Direnv
+eval "$(direnv hook zsh)"
