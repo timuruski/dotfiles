@@ -14,6 +14,7 @@
   b = branch
   c = commit
   co = checkout
+  current-branch = branch --show-current
   d = diff -M
   dc = diff --cached
   ds = diff --stat

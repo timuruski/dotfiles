@@ -44,7 +44,8 @@ deploy_git_log() {
 current_branch() {
   # The --short was introduced in 1.7.9, this might be more portable.
   # git symbolic-ref -q HEAD | sed -e 's|^refs/heads/||'
-  git symbolic-ref --short --quiet HEAD
+  # git symbolic-ref --short --quiet HEAD
+  git branch --show-current
 }
 
 ffwd() {
