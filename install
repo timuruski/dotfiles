@@ -7,7 +7,7 @@ Dotfiles.install do
   dotfile "bashrc"
   symlink "bin/b"
   symlink "bin/edit"
-  symlink! "bin/git-*"
+  symlink_each "bin/git-*"
   symlink "bin/git_prompt.rb"
   symlink "bin/pjson"
   symlink "bin/x"
