@@ -115,6 +115,8 @@ set wildmenu
 set wildmode=longest,list
 set wildignore=*.otf,*.eot*.woff,*.ttf,*/.gem/*,*/vendor/*,*/tmp/*
 
+" Neovim guesses the background color
+set background=light
 
 " Text formatting
 syntax on

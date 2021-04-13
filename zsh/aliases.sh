@@ -12,3 +12,4 @@ alias g='fg'
 alias j='jobs'
 alias ls="ls -lhG"
 alias ql='qlmanage -p "$@" &> /dev/null'
+alias vi="nvim"
