@@ -12,6 +12,7 @@ Dotfiles.install do
   symlink "bin/pjson"
   symlink "bin/x"
   dotfile "direnvrc"
+  dotfile "gemrc"
   dotfile "gitconfig"
   dotfile "githelpers"
   dotfile "gitignore_global"
