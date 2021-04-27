@@ -1,2 +1,3 @@
---
-no-document: true
+---
+install: --no-document
+update: --no-document
