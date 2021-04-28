@@ -8,7 +8,7 @@ abort "Usage #{$0} <table>" if ARGV.empty?
 require "active_support/core_ext/string/inflections"
 require "yaml"
 
-model_name = ARGV.first
+model_name = ARGV.last
 
 # model_file = "app/models/#{table_name.singularize}.rb"
 model_file = "components/manage/app/models/manage/#{model_name.singularize}.rb"
@@ -21,12 +21,19 @@ env = ENV["RAILS_ENV"] || "development"
 config_file = YAML.load(File.read("config/shards.yml"))[env]
 db_config = config_file.find { |cfg| cfg["database"] =~ /#{database}/ }
 
+# TODO Implement opt-parsing
+if ARGV.include?("--index")
+  query = "SHOW INDEXES FROM #{table_name};"
+else
+  query = "DESCRIBE #{table_name};"
+end
+
 args = [
   "--host=#{db_config["host"]}",
   "--port=#{db_config["port"]}",
   "--password=#{db_config["password"]}",
   "--user=#{db_config["username"]}",
-  "--execute=\"DESCRIBE #{table_name};\"",
+  "--execute=\"#{query}\"",
   db_config["database"],
 ].join(" ")
 
