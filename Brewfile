@@ -61,6 +61,10 @@ brew "stripe/stripe-cli/stripe"
 # brew "pkg-config"
 # brew "qt"
 
+# For Gosu game engine
+# https://github.com/gosu/gosu/wiki/Getting-Started-on-OS-X
+brew "sdl2"
+
 # MySQL via Percona
 # brew "djocker/common/percona-server@5.6"
 # brew "homebrew/versions/percona-server55" # mysql
