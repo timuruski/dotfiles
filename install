@@ -8,7 +8,7 @@ Dotfiles.install do
   symlink "bin/dbdesc"
   symlink "bin/edit"
   symlink "bin/edit2"
-  symlink "bin/git-*"
+  symlink_each "bin/git-*"
   symlink "bin/git_prompt.rb"
   symlink "bin/pjson"
   symlink "bin/rspec-loop"

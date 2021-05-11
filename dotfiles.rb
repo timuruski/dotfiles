@@ -47,7 +47,7 @@ module Dotfiles
       symlink(pattern, dot_prefix: true, to: to)
     end
 
-    def symlink!(pattern, dot_prefix: false)
+    def symlink_each(pattern, dot_prefix: false)
       Dir.glob(pattern).each do |filename|
         symlink(filename, dot_prefix: dot_prefix)
       end
