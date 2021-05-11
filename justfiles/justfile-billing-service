@@ -6,5 +6,6 @@ start-docker:
 
 update:
   git pull
-  # if git-diff orig_head includes db/migrate
-  # bundle exec rails db:migrate
+  if git diff --numstat orig_head | grep -q db/migrate; then \
+    bundle exec rails db:migrate; \
+  fi
