@@ -1,0 +1,100 @@
+#!/usr/bin/env ruby
+require "optparse"
+
+at_exit do
+  Pfil.new(ARGV).run
+rescue Interrupt
+  exit 130
+rescue Errno::EPIPE
+  exit 74
+end
+
+# Usage:
+#   input | #{$0} | output
+#   git status --porcelain | #{$0} --preview='head -5' | xargs rm
+
+class Pfil
+  BOLD = "\e[1m"
+  RESET = "\e[0m"
+
+  def initialize(args)
+    # Print interactively without writing to STDOUT
+    # TODO Fail if TTY is missing
+    @tty = File.new("/dev/tty", "w+")
+
+    OptionParser.new do |opt|
+      opt.banner = <<~EOS
+        #{$0} - Interactive line filter
+      EOS
+
+      opt.on_tail("-p=COMMAND", "--preview=COMMAND", "Preview command") do |command|
+        @preview_command = command
+      end
+    end.parse!
+  end
+
+  def run
+    selection = []
+    select_all = false
+
+    STDIN.each_line do |line|
+      if select_all
+        selection << line
+        next
+      end
+
+      # @tty.puts ""
+      @tty.print line_with_preview(line)
+      @tty.print bold("Select line [y/n/q/a/d/?] ")
+      resp = @tty.gets.chomp.downcase
+
+      case resp
+      when "y"
+        selection << line
+      when "n"
+        next
+      when "q"
+        exit
+      when "a"
+        selection << line
+        select_all = true
+        next
+      when "d"
+        break
+      else
+        @tty.puts <<~EOS
+          y - select line
+          n - skip line
+          q - quit; skip all lines
+          a - select remaining lines (?)
+          d - skip remaining lines
+          ? - print help
+        EOS
+        redo
+      end
+    end
+
+    @tty.puts "---" if STDOUT.tty?
+
+    selection.each do |line|
+      STDOUT.puts line
+    end
+  end
+
+  # TODO Make this more robust
+  def line_with_preview(line)
+    return line if @preview_command.nil?
+
+    if @preview_command["{}"]
+      preview = %x(#{@preview_command.sub("{}", line)})
+    else
+      preview = %x(#{@preview_command + " " + line})
+    end
+
+    bold(line) + preview
+  end
+
+  def bold(str)
+    BOLD + str + RESET
+  end
+end
