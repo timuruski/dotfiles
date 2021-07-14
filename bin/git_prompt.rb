@@ -14,10 +14,6 @@ $PROGRAM_NAME = "git-prompt"
 
 # The methods that get called more than once are memoized.
 
-def git_repo_path
-  @git_repo_path ||= `git rev-parse --git-dir 2>/dev/null`.strip
-end
-
 def in_git_repo
   !git_repo_path.empty? &&
   git_repo_path != '~' &&
@@ -25,8 +21,14 @@ def in_git_repo
 end
 
 def git_branch
-  branch_name = `git rev-parse --abbrev-ref HEAD 2>/dev/null`.chomp
-  "%B#{branch_name}%b"
+  # branch_name = `git rev-parse --abbrev-ref HEAD 2>/dev/null`.chomp
+  branch_name = `git branch --show-current 2>/dev/null`.chomp
+
+  if branch_name != ""
+    "%B#{branch_name}%b"
+  else
+    "%F{red}%Bdetached%f%b"
+  end
 end
 
 def git_commit_sha
@@ -47,6 +49,10 @@ def git_mode
   if mode
     "%F{red}%B" + mode.to_s + "%f%b"
   end
+end
+
+def git_repo_path
+  @git_repo_path ||= `git rev-parse --git-dir 2>/dev/null`.strip
 end
 
 if in_git_repo
