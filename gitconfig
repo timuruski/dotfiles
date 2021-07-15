@@ -16,6 +16,7 @@
   c = commit
   ci = "!source ~/.githelpers && fuzzy_checkout"
   conflicts = diff --name-only --diff-filter=U
+  # current-branch = branch --show-current
   d = diff -M
   dc = diff --cached
   ds = diff --stat
@@ -37,10 +38,8 @@
   new-branch = switch --create
   oldest-ancestor = !zsh -c 'diff --old-line-format= --new-line-format= <(git rev-list --first-parent \"${1:-master}\") <(git rev-list --first-parent \"${2:-HEAD}\") | head -1' -
   p = add --patch
-  po = push origin
-  pob = !source ~/.githelpers && push_origin
-  pom = push origin master
-  phm = push heroku master
+  pp = !"git status --porcelain | awk '/\\?\\?/ { print $2 }' | pfil | xargs git add"
+  push-upstream = !"git push --set-upstream origin $(git branch --show-current)"
   r = !git l -20
   ; r = !git --no-pager log --decorate --oneline --graph --max-count=20
   ra = !git r --all
