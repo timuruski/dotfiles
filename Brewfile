@@ -75,6 +75,10 @@ brew "jq"
 # Just command runner https://github.com/casey/just
 brew "just"
 
+# Dependency for RMagick
+brew "imagemagick"
+# brew "pkg-config"
+
 # Kakoune, modal text editor https://kakoune.org
 brew "kakoune"
 
@@ -118,6 +122,9 @@ brew "ripgrep"
 # Install Ruby versions
 brew "ruby-install"
 
+# SDL dependency for Gosu
+brew "sdl2"
+
 # Local SQL database
 # brew "sqlite" # ??
 
@@ -149,4 +156,4 @@ brew "z"
 # brew "zig"
 
 # Zola static site generator: https://www.getzola.org
-brew "zola"
+# brew "zola"
