@@ -1,14 +1,23 @@
 # Ignore "noisy" files with no linebreaks, etc.
 *.svg
 /log
+/components/manage/app/javascripts/modernizr.js
 /public/appcues
+/public/javascripts/tinymce
 /public/outlook-plugin
 /spec/vcr_cassettes
 /vendor/cache*
 app-*.js
+*.sql
 client-src/common/ui/src/docs-app/documentation/development/styleGuide/styleGuide.md
+config/sample_bill_data.json
 node_modules/
 public/appcues/widget-bundle.js
 public/outlook-plugin/
 vendor/
 zxcvbn.js
+stripeFonts.js
+
+# Grow junk
+components/grow/yarn.lock
+components/grow/app/views/grow/layouts/pdf.html.erb

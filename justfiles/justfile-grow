@@ -1,4 +1,7 @@
-update:
+set dotenv-load := false
+
+alias update := pull
+pull:
   git pull
 
 start-docker:

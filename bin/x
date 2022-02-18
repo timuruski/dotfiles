@@ -17,9 +17,9 @@ at_exit do
   end
 end
 
-def x (path)
+def x(path)
   basename = path.basename('.*').to_s.chomp('-x')
-  basename_with_x = basename + '-x'
+  basename_with_x = "x-" + basename
 
   f_path = Pathname.new File.join(path.dirname, basename + path.extname)
   x_path = Pathname.new File.join(path.dirname, basename_with_x + path.extname)

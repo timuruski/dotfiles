@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# This is a little script to re-run RSpec until it fails. It keeps track of the number of iterations, so you
+# can check if a candidate fix for a transient failure does better than the number of iterations required to
+# reproduce the failure. This is useful for transient failures due to timestamps, which aren't order
+# dependent, so the seed value isn't guaranteed to reproduce.
+#
+# USAGE:
+# bin/rspec-loop <any args you'd pass to rspec>
+
+let iteration=1
+
+while bundle exec rspec --format=progress --no-profile $@; do
+  echo "Iteration: ${iteration}"
+  iteration=$((iteration + 1))
+done

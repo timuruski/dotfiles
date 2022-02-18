@@ -2,9 +2,9 @@
 
 # Make a WIP commit either from the files in the index or everything.
 
-if [[ $1 = "--all" ]]; then
+if [[ $1 = "--all" || $1 = "-a" ]]; then
   shift
-  git add --all
+  git add --update
 fi
 
 git commit --no-verify --no-post-rewrite --message "WIP $*"

@@ -1,3 +1,9 @@
+set dotenv-load := false
+
+alias attach := connect
+connect process='rails':
+  -overmind connect {{process}}
+
 start:
   #!/usr/bin/env bash
   set -eo pipefail
@@ -31,7 +37,8 @@ stop:
 
   overmind quit
 
-update:
+alias update := pull
+pull:
   #!/usr/bin/env ruby
 
   system 'git pull'

@@ -14,6 +14,7 @@
   au = add --update
   b = branch --sort='committerdate'
   c = commit
+  conflict = "!git status --porcelain | awk '/^U/ { print $2 }'"
   ci = "!source ~/.githelpers && fuzzy_checkout"
   conflicts = diff --name-only --diff-filter=U
   # current-branch = branch --show-current

@@ -1,11 +1,17 @@
+set dotenv-load := true
+
 start: start-docker
   overmind start
 
 start-docker:
   docker-compose up -d db redis
 
+alias attach := connect
+connect process='api':
+  -docker attach billing-service_{{process}}_1
+
+alias pull := update
 update:
   git pull
-  if git diff --numstat orig_head | grep -q db/migrate; then \
-    bundle exec rails db:migrate; \
-  fi
+  if git diff --numstat orig_head | grep -q Gemfile.lock; then bundle install; fi
+  if git diff --numstat orig_head | grep -q db/migrate; then bundle exec rails db:migrate; fi

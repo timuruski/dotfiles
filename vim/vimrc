@@ -36,6 +36,7 @@ Plug 'vim-utils/vim-man'
 Plug 'vim-scripts/SyntaxAttr.vim'
 Plug 'vim-syntastic/syntastic'
 " Plug 'w0rp/ale'
+" Plug 'dense-analysis/ale'
 
 call plug#end()
 
@@ -213,6 +214,8 @@ function! QuickfixFilenames()
   return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
 endfunction
 
+" Format Ruby with Standard
+command! -nargs=0 FmtRuby w \| !standardrb --fix % <CR>
 
 " Visual search
 xnoremap * :<C-u>call <SID>VSetSearch()<CR>/<C-R>=@/<CR><CR>
@@ -236,6 +239,7 @@ endfunction
 
 " command! -bang RunCmd nnoremap <enter> call s:runcmd(<qargs>, <bang>)
 command! -nargs=+ RunRunCmd nnoremap <enter> :w \| !clear; <args> <CR>
+command! -nargs=+ RunRunRuby nnoremap <leader>r :w \| !clear; ruby <args> <CR>
 command! -nargs=1 RunCmd nnoremap <buffer> <enter> :w \| !clear; <args> % <CR>
 command! -nargs=+ RunCmd nnoremap <buffer> <enter> :w \| !clear; <args> <CR>
 command! -nargs=0 RunRuby nnoremap <buffer> <enter> :w \| !clear; ruby % <CR>
@@ -246,7 +250,6 @@ command! -nargs=0 WriteCmd nnoremap <buffer> <enter> :w <args> <CR>
 command! -nargs=0 RunTest nnoremap <buffer> <enter> :w \| :TestFile <CR>
 " command! -nargs=0 RunTest! nnoremap <enter> :w \| :TestFile <CR>
 " command! RunTest nnoremap <buffer> <enter> call RunCmd() <CR>
-
 
 function! s:runcmd()
   " Command name
@@ -260,6 +263,9 @@ function! s:runcmd()
   echom "runcmd"
   execute(":write")
 endfunction
+
+" Run Rubocop
+command! -nargs=0 Rubocop !bundle exec rubocop % <CR>
 
 " FZF
 let g:fzf_preview_window = ''
@@ -286,12 +292,21 @@ command! -bang -nargs=* Rrg
   \   shellescape(<q-args>), 1,
   \   fzf#vim#with_preview(), <bang>0)
 
+command! -bang -nargs=* FilesIgnoreTests
+  \ call fzf#vim#grep(
+  \   'fd'.
+  \   ' --ignore-file='.expand('$HOME/.ignore').
+  \   ' --ignore-file='.expand('$HOME/.ignore-tests').
+  \   ' --type=file'.
+  \   ' '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview(), <bang>0)
+
 " Visual style
 " set t_Co=256
 set colorcolumn=100
 set hlsearch
 let base16colorspace=256
-let &background=substitute(expand("$COLORSCHEME"), '\v.*(light|dark).*', '\1', '')
+" let &background=substitute(expand("$COLORSCHEME"), '\v.*(light|dark).*', '\1', '')
 colorscheme eink
 
 " Syntax highlighting
@@ -304,19 +319,19 @@ endfunc
 " command! -nargs=1 SynStack nnoremap <buffer> <enter> :w \| !clear; <args> % <CR>
 
 " Generic rails file search
-map <leader>gm :Files app/models<CR>
-map <leader>gv :Files app/views<CR>
-map <leader>gc :Files app/controllers<CR>
+nnoremap <leader>gm :Files app/models<CR>
+nnoremap <leader>gv :Files app/views<CR>
+nnoremap <leader>gc :Files app/controllers<CR>
 
 " Componentized Rails file search
-map <leader>gj :Files components/manage/client-src<CR>
-map <leader>gM :Files components/manage/app/models<CR>
-map <leader>gV :Files components/manage/app/views<CR>
-map <leader>gC :Files components/manage/app/controllers<CR>
+nnoremap map <leader>gj :Files components/manage/client-src<CR>
+nnoremap map <leader>gM :Files components/manage/app/models<CR>
+nnoremap map <leader>gV :Files components/manage/app/views<CR>
+nnoremap map <leader>gC :Files components/manage/app/controllers<CR>
 
-map <leader>b :Buffers<CR>
-map <leader>f :Files<CR>
-map <leader>F :Files %%<CR>
+nnoremap <leader>b :Buffers<CR>
+nnoremap <leader>f :Files<CR>
+nnoremap <leader>F :FilesIgnoreTests<CR>
 
 let g:ctrlp_map = '<leader>f'
 let g:ctrlp_custom_ignore = {
@@ -344,14 +359,19 @@ endif
 if exists('g:loaded_ale') && g:loaded_ale
   " let g:ale_linters = {'ruby': ['standardrb']}
   " let g:ale_fixers = {'ruby': ['standardrb']}
-  let g:ale_lint_on_save = 1
-  let g:ale_lint_on_text_changed = 'never'
-  let g:ale_fix_on_save = 1
+  " let g:ale_fix_on_save = 1
+  " let g:ale_lint_on_save = 1
+  " let g:ale_lint_on_text_changed = 'never'
+
+  " https://github.com/testdouble/standard/wiki/IDE:-vim#vim-ruby
+  let g:ruby_indent_assignment_style = 'variable'
 endif
 
-" Syntastic
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+" Configure Syntastic
+if exists('g:loaded_syntastic_plugin')
+  let g:syntastic_check_on_open = 1
+  let g:syntastic_check_on_wq = 0
+endif
 
 " let g:syntastic_typescript_checkers = ['tslint', 'tsc']
 " let g:syntastic_typescript_checkers = ['tsuquyomi', 'tslint --type-check']

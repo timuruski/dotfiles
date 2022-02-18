@@ -86,6 +86,7 @@ if &background == "light"
   " Language-specific syntax attrs
   hi mkdInlineURL         cterm=underline     ctermbg=254     ctermfg=NONE
   hi rubyStringDelimiter  cterm=NONE
+  hi link markdownError Normal
   hi link shOption Normal
   hi link Quote Normal
   hi link htmlItalic Normal

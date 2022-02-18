@@ -55,7 +55,7 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH=$(printenv PATH | sed -e "s|$HOME/\.rbenv/shims:||g")
 
 # Load ENV, this is also handled by direnv...
-# [[ -f ~/.env ]] && source ~/.env
+[[ -f ~/.env ]] && source ~/.env
 
 # Direnv
 eval "$(direnv hook zsh)"

@@ -6,20 +6,28 @@
 abort "Usage #{$0} <table>" if ARGV.empty?
 
 require "active_support/core_ext/string/inflections"
+require "erb"
 require "yaml"
 
 model_name = ARGV.last
 
-# model_file = "app/models/#{table_name.singularize}.rb"
-model_file = "components/manage/app/models/manage/#{model_name.singularize}.rb"
+model_file = [
+  "app/models/#{model_name.singularize}.rb",
+  "components/manage/app/models/manage/#{model_name.singularize}.rb"
+].find { |p| File.exist?(p) }
+
 database = File.read(model_file).match?(/CommonRecord/) ? "common" : "themis"
 table_name = File.read(model_file).match(/self\.table_name = "(\w+)"/)&.[](1) || model_name
 
 puts "#{model_name} -> #{model_file} -> #{table_name} -> #{database}"
 
 env = ENV["RAILS_ENV"] || "development"
+
+# config_file_paths = ["config/database.yml", "config/shards.yml"]
+
 config_file = YAML.load(File.read("config/shards.yml"))[env]
 db_config = config_file.find { |cfg| cfg["database"] =~ /#{database}/ }
+# db_config = YAML.load(File.read("config/database.yml"))[env]
 
 # TODO Implement opt-parsing
 if ARGV.include?("--index")
@@ -37,5 +45,5 @@ args = [
   db_config["database"],
 ].join(" ")
 
-# puts "mysql #{args}"
-exec "mysql #{args}"
+puts "mysql #{args}"
+# exec "mysql #{args}"
