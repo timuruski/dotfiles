@@ -4,6 +4,7 @@ alias barevim="vim -Nu ~/.bare.vim"
 
 # Define functions and aliases
 alias ag='ag --path-to-ignore ~/.ignore'
+alias b='battery-info'
 alias be='bundle exec'
 alias bx="bundle exec"
 alias dx="docker compose"
