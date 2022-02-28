@@ -1,1 +1,1 @@
---skip-bootsnap --skip-coffee --skip-spring --skip-test
+--skip-bootsnap --skip-test

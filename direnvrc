@@ -8,10 +8,11 @@ use_ruby() {
     version=$(cat .ruby-version)
   fi
 
-  if [[ -z $version ]]; then
-    log_error "No Ruby version specified"
-  else
+  if [[ -n $version ]]; then
     chruby $version
+  else
+    log_error "No Ruby version specified"
+    chruby system
   fi
 }
 
