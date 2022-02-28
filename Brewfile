@@ -25,6 +25,9 @@ brew "clisp"
 # Per-project environment configuration
 brew "direnv"
 
+# https://passingcuriosity.com/2013/dnsmasq-dev-osx/
+brew "dnsmasq"
+
 # Utility to run arbitrary commands when a file changes
 brew "entr"
 
@@ -110,6 +113,9 @@ brew "nzbget"
 # Visualize process trees
 brew "pstree"
 
+# Racket for going through SICP
+cask "racket"
+
 # Fix for pbcopy/pbpaste in tmux and screen
 brew "reattach-to-user-namespace" # For tmux to work properly
 
@@ -147,7 +153,7 @@ brew "wget"
 brew "yarn" # ??
 
 # Download youtube videos or audio, requires extra dependencies
-# brew "youtube-dl" # ??
+brew "youtube-dl"
 
 # Jump between working directories
 brew "z"
