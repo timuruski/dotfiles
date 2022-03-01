@@ -87,9 +87,13 @@ brew "vim"
 brew "z"
 
 # TMDB stuff
-
-# For compression
-brew "snappy"
+# ==========
 
 # Image processing
 brew "libvips"
+
+# MySQL for miscellaneous
+brew "mysql"
+
+# For compression
+brew "snappy"
