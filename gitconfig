@@ -46,7 +46,7 @@
 	update = pull --ff-only
 	new-branch = checkout -b
 [core]
-  excludesfile = /Users/timuruski/.gitignore_global
+  excludesfile = "~/.gitignore_global"
 [diff]
 [push]
 	default = simple
