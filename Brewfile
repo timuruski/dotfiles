@@ -57,7 +57,7 @@ brew "pstree"
 brew "reattach-to-user-namespace" # For tmux to work properly
 
 # Key/Value store service (for stimulus-reflex)
-# brew "redis"
+brew "redis"
 
 # File search, faster than ag
 brew "ripgrep"
@@ -85,3 +85,11 @@ brew "vim"
 
 # Jump between working directories
 brew "z"
+
+# TMDB stuff
+
+# For compression
+brew "snappy"
+
+# Image processing
+brew "libvips"
