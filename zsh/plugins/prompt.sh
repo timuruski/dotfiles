@@ -32,4 +32,4 @@ git_commit_sha () {
 # PROMPT=" %{\$fg[blue]%}%m%{\$reset_color%}:%U%1~\$(~/bin/git-cwd-info.rb)%{\$reset_color%} \${cmd_status} "
 
 # PROMPT=" %F{blue}%m%f %U%1~\$($HOME/bin/git_prompt.rb)%u $ "
-PROMPT=" %U%1~\$($HOME/bin/git_prompt.rb)%u $ "
+PROMPT=" %U%1~\$(/usr/bin/env ruby $HOME/bin/git_prompt.rb)%u $ "

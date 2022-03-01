@@ -18,6 +18,8 @@ Dotfiles.install do
   dotfile "githelpers"
   dotfile "gitignore_global"
   dotfile "gvimrc"
+  dotfile "ignore"
+  dotfile "ignore-tests"
   dotfile "inputrc"
   dotfile "irbrc"
   dotfile "nvim", to: "config/nvim"

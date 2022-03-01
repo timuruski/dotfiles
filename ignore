@@ -1,0 +1,6 @@
+# Ignore "noisy" files with no linebreaks, etc.
+*.svg
+*.sql
+/log
+node_modules/
+vendor/
