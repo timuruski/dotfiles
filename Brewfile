@@ -89,6 +89,9 @@ brew "z"
 # TMDB stuff
 # ==========
 
+# Count lines of code
+brew "cloc"
+
 # Image processing
 brew "libvips"
 
