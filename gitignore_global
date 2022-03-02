@@ -2,7 +2,9 @@
 .bundle/
 .direnv/
 .envrc
+.rgignore
 .vagrant/
 doc/tags
 tmp/
 vendor/bundle/
+zzz/
