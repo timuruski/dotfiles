@@ -5,6 +5,7 @@
 bin/imgcat
 
 zsh/.zcompdump
+zsh/.zhistory
 zsh/.zsh_history
 tmp/
 
