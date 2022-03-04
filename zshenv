@@ -17,6 +17,7 @@ export GREP_OPTIONS="--color"
 # This doesn't work because of a quoting bug.
 # $(luarocks path --bin)
 PATH="$HOME/.luarocks/bin:$PATH"
+PATH="$HOME/Library/Python/3.9/bin:$PATH"
 export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 
 # Editor

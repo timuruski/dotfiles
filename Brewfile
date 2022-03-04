@@ -92,11 +92,33 @@ brew "z"
 # Count lines of code
 brew "cloc"
 
+# tmdb-api-lua dependencies
+brew "cmake"
+
+# tmdb-api-lua dependency
+brew "gd"
+
 # Image processing
 brew "libvips"
 
+# tmdb-api-lua dependencies
+brew "luajit"
+
+# tmdb-api-lua dependencies
+brew "mongo-c"
+
 # MySQL for miscellaneous
 brew "mysql"
+
+# tmdb-api-lua dependencies
+brew "nettle"
+
+# tmdb-api-lua dependencies
+brew "openssl@3"
+brew "openssl@1.1"
+
+# tmdb-api-lua dependencies
+brew "python@3"
 
 # For compression
 brew "snappy"
