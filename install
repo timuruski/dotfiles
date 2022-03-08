@@ -12,6 +12,7 @@ Dotfiles.install do
   symlink "bin/pfil"
   # symlink "bin/pjson"
   symlink "bin/x"
+  symlink "bin/yay"
   dotfile "direnvrc"
   dotfile "gemrc"
   dotfile "gitconfig"
