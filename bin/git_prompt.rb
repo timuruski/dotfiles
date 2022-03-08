@@ -11,6 +11,10 @@
 #    Geoffrey Grosenbach http://peepcode.com
 
 # The methods that get called more than once are memoized.
+#
+
+# Prevent terminal from hanging if prompt catches ctrl-z.
+trap "SIGTSTP", "EXIT"
 
 def git_repo_path
   @git_repo_path ||= `git rev-parse --git-dir 2>/dev/null`.strip
