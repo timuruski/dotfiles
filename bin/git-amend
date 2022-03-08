@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+if [[ $1 = "-e" || $1 = "--edit" ]]; then
+  git commit --amend
+else
+  git commit --amend --no-edit
+fi
