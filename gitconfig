@@ -32,14 +32,16 @@
   la = !git l --all
   ld = !git l --simplify-by-decoration
   lt = !git l --since=yesterday
+  new-branch = switch --create
   noff = merge --no-ff
   p = add --patch
   po = push origin
   pob = !source ~/.githelpers && push_origin
   pom = push origin master
+  push-upstream = !"git push --set-upstream origin $(git branch --show-current)"
   r = !git --no-pager l -20
   ra = !git r --all
-  s = status -sb
+  s = status --short --branch
   sw = fuzzy-switch
   show-upstream = "rev-parse --abbrev-ref --symbolic-full-name @{u}"
   unstage = reset --patch
