@@ -4,6 +4,7 @@
 .envrc
 .rgignore
 .vagrant/
+config/master.key
 doc/tags
 tmp/
 vendor/bundle/

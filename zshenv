@@ -27,6 +27,7 @@ export GIT_EDITOR="nvim"
 # Vim
 export VIMCONFIG=~/.config/nvim
 export VIMDATA=~/.local/share/nvim
+export THOR_MERGE=vimdiff
 
 # fzf https://github.com/junegunn/fzf
 export FZF_DEFAULT_COMMAND='fd --type file --hidden --follow --exclude .git --exclude .keep'

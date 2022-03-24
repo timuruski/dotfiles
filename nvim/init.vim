@@ -12,6 +12,8 @@ set guicursor=a:block-blinkon50
 set inccommand=nosplit
 
 " Break out of insert mode for terminal views, for vim-test.
-if has('nvim')
-  tmap <C-o> <C-\><C-n>
-endif
+let test#strategy = "neovim"
+let g:test#neovim#start_normal = 1
+let g:test#basic#start_normal = 1
+
+tmap <C-o> <C-\><C-n>
