@@ -41,6 +41,10 @@ brew "just"
 # brew "imagemagick"
 # brew "pkg-config"
 
+# MongoDB community edition
+tap "mongodb/brew"
+brew "mongodb-community@5.0"
+
 # Next generation Vim
 brew "neovim"
 
