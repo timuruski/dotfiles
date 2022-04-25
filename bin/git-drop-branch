@@ -1,12 +1,16 @@
 #!/bin/bash
 
+# Prioritize main over master, use xargs to trim whitespace
+default_branch="$(git branch | grep main | xargs)"
+default_branch="${default_branch:-master}"
+
 branch_name=$(git current-branch)
-if [[ $branch_name = "master" || $branch_name = "main" ]]; then
+if [[ $branch_name = $default_branch ]]; then
   echo "Can't drop $branch_name!"
   exit
 fi
 
-goto_branch=${1:-"master"}
+goto_branch=${1:-$default_branch}
 
 git checkout "$goto_branch"
 git branch -D "$branch_name"
