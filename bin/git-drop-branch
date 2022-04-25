@@ -1,8 +1,8 @@
 #!/bin/bash
 
 branch_name=$(git current-branch)
-if [[ $branch_name = "master" ]]; then
-  echo "Can't drop master!"
+if [[ $branch_name = "master" || $branch_name = "main" ]]; then
+  echo "Can't drop $branch_name!"
   exit
 fi
 

@@ -28,6 +28,10 @@ brew "git"
 # Github Command Line (experimental)
 brew "gh"
 
+# Helix editor https://helix-editor.com
+tap "helix-editor/helix"
+brew "helix"
+
 # Process manager
 # brew "hivemind"
 
@@ -74,6 +78,7 @@ brew "the_silver_searcher"
 
 # Command line multiplexing
 brew "tmux"
+brew "tmuxinator"
 
 # Visualize directory trees
 brew "tree"
