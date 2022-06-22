@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -euf -o pipefail
+
+if ( pbpaste | grep -Eq '\[[0-9]+_AdministratorAccess\]' ); then
+  pbpaste | sed -E 's/\[[0-9]+_AdministratorAccess]/[default]/' > ~/.aws/credentials
+  cd ~/workspace/tmdb-web
+  make refresh
+else
+  echo "Refresh failed! No credentials found in clipboard."
+  exit 1
+fi
