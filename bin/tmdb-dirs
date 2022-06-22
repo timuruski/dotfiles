@@ -1,5 +1,6 @@
 #!/bin/bash
 IGNORE=(
+  "tmdb-elasticsearch"
   "tmdb-emailer"
   "tmdb-web-translations"
 )

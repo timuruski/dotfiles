@@ -27,3 +27,7 @@ alias fdd="fd --ignore-file ~/.ignore --ignore-file ~/.ignore-tests"
 alias ffd="fd --ignore-file ~/.ignore --ignore-file ~/.ignore-tests"
 alias fddd="fd --ignore-file ~/.ignore --ignore-file ~/.just-tests"
 alias fffd="fd --ignore-file ~/.ignore --ignore-file ~/.just-tests"
+
+# Local bundler stuff
+alias lbundle="bundler config --local local true"
+alias rbundle="bundle config unset local"

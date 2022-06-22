@@ -6,3 +6,6 @@ test/
 *.spec.ts
 *.test.js
 *.test.jsx
+*Test.java
+*Tests.java
+*.feature
