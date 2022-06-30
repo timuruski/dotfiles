@@ -9,3 +9,8 @@ test/
 *Test.java
 *Tests.java
 *.feature
+
+# Ignore documentation
+README
+*.md
+*.rdoc
