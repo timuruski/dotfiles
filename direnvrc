@@ -2,15 +2,18 @@ source /usr/local/opt/chruby/share/chruby/chruby.sh
 
 # Use specified Ruby or locally defined version.
 # Usage: use ruby -> uses the Ruby version defined in .ruby-version
+#        use ruby --local -> uses the Ruby version defined in .ruby-version
 #        use ruby 2.7.0 ->  uses the specified Ruby version
 use_ruby() {
   local version="$1"
 
-  if [[ -z $version && -r .ruby-version ]]; then
+  if [[ ($version == "--local" || -z $version) && -r .ruby-version ]]
+  then
     version=$(cat .ruby-version)
   fi
 
-  if [[ -n $version ]]; then
+  if [[ -n $version ]]
+  then
     chruby $version
   else
     log_error "No Ruby version specified"
