@@ -17,6 +17,7 @@ export GREP_OPTIONS="--color"
 # This doesn't work because of a quoting bug.
 # $(luarocks path --bin)
 PATH="$HOME/.luarocks/bin:$PATH"
+PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 
 # Editor
@@ -35,3 +36,4 @@ export FZF_DEFAULT_OPTS="--ansi --no-color"
 export HISTFILE="$ZDOTDIR/.zhistory"
 export HISTSIZE=10000
 export SAVEHIST=10000
+. "$HOME/.cargo/env"

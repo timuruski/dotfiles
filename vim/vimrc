@@ -29,6 +29,7 @@ Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 Plug 'janet-lang/janet.vim'
 Plug 'jpalardy/vim-slime'
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'takac/vim-hardtime'
 Plug 'tpope/vim-abolish'

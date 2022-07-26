@@ -11,6 +11,11 @@ setopt HIST_IGNORE_DUPS HIST_IGNORE_SPACE
 source /usr/local/opt/chruby/share/chruby/chruby.sh
 chruby 3.0
 
+# Completions
+fpath=($ZDOTDIR $fpath)
+autoload -Uz compinit
+compinit -u
+
 # fzf
 autoload -U edit-command-line
 zle -N edit-command-line

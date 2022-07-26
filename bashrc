@@ -55,3 +55,4 @@ if [[ -e /usr/local/opt/chruby/share/chruby/chruby.sh ]]; then
 fi
 
 #EOF .bashrc
+. "$HOME/.cargo/env"

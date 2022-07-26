@@ -91,6 +91,9 @@ cask "love"
 # Lua language and package manager
 brew "luarocks"
 
+tap "mongodb/brew"
+brew "mongodb-community@5.0"
+
 # Next generation Vim
 brew "neovim" # ??
 
