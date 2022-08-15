@@ -21,6 +21,10 @@ map <leader>gS :Files app/services<cr>
 map <leader>gC :Files app/assets/stylesheets<cr>
 map <leader>gJ :Files app/assets/javascripts<cr>
 
+" Implement Rrg
+" Implement Route finder for Sinatra app
+" Implement conflict list
+
 " Customize fzf colors to match your color scheme
 " let g:fzf_colors =
 " \ { 'fg':      ['fg', 'Normal'],
@@ -35,3 +39,16 @@ map <leader>gJ :Files app/assets/javascripts<cr>
 "   \ 'marker':  ['fg', 'Keyword'],
 "   \ 'spinner': ['fg', 'Label'],
 "   \ 'header':  ['fg', 'Comment'] }
+function! s:find_route(refresh = 0)
+  if a:refresh
+    exec 'bin/routes > tmp/routes.txt'
+  endif
+
+  call fzf#vim#grep('cat tmp/routes.txt', 1)
+endfunction
+
+command! FindRoute call s:find_route()
+nnoremap <leader>r :FindRoute<cr>
+" nnoremap <leader>r :call s:find_route()<cr>
+"
+command! Conflicts call fzf#run(fzf#wrap({'source': 'git status --short | awk "/(AA|UU)/ { print \$2 }"'}))

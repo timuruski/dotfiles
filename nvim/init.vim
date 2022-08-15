@@ -3,6 +3,7 @@ let &packpath = &runtimepath
 source ~/.vim/vimrc
 
 " Somethimg in neovim is remapping Y to y$ :shrug:
+nmap Y <nop>
 nunmap Y
 
 " Use block cursor for everything.
