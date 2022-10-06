@@ -4,9 +4,11 @@
 # Installed by iterm
 bin/imgcat
 
-zsh/.zcompdump
-zsh/.zsh_history
 tmp/
+zsh/.zcompdump
+zsh/.zhistory
+zsh/.zsh_history
 
 # Churns when vim-plug updates
+vim/autoload/plug.vim.old
 vim/plugged/
