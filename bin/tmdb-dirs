@@ -4,4 +4,6 @@ IGNORE=(
   "tmdb-emailer"
   "tmdb-web-translations"
 )
-fd tmdb- --full-path --maxdepth=1 --type=d  $HOME/workspace | grep -v $IGNORE
+
+fd tmdb- --full-path --maxdepth=1 --type=d --exclude $IGNORE --color=never $HOME/workspace |\
+  grep -v -e tmdb-elasticsearch -e tmdb-emailer -e tmdb-web-translations

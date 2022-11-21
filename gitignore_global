@@ -6,6 +6,7 @@
 .vagrant/
 config/master.key
 doc/tags
+lefthook.yml
 tmp/
 vendor/bundle/
 zzz/

@@ -1,4 +1,10 @@
 source /usr/local/opt/chruby/share/chruby/chruby.sh
+source /usr/local/opt/chruby/share/chruby/auto.sh
+
+# if [[ -n $RUBY_VERSION ]]
+# then
+#   chruby $RUBY_VERSION
+# fi
 
 # Use specified Ruby or locally defined version.
 # Usage: use ruby -> uses the Ruby version defined in .ruby-version

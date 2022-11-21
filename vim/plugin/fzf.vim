@@ -44,7 +44,8 @@ function! s:find_route(refresh = 0)
     exec 'bin/routes > tmp/routes.txt'
   endif
 
-  call fzf#vim#grep('cat tmp/routes.txt', 1)
+  call fzf#vim#grep('cat tmp/routes.txt', 0)
+  " call fzf#vim#grep('cat tmp/routes.txt', 0, fzf#vim#with_preview())
 endfunction
 
 command! FindRoute call s:find_route()
@@ -52,3 +53,4 @@ nnoremap <leader>r :FindRoute<cr>
 " nnoremap <leader>r :call s:find_route()<cr>
 "
 command! Conflicts call fzf#run(fzf#wrap({'source': 'git status --short | awk "/(AA|UU)/ { print \$2 }"'}))
+" command! Rrg call fzf#run(fzf#wrap({'s

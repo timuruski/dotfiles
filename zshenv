@@ -21,6 +21,9 @@ PATH="$HOME/bin:$PATH"
 # $(luarocks path --bin)
 PATH="$HOME/.luarocks/bin:$PATH"
 
+# Postgres
+PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
+
 # PATH="$HOME/Library/Python/3.9/bin:$PATH"
 
 # Editor

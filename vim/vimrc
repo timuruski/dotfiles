@@ -22,9 +22,13 @@ Plug 'danielwe/base16-vim'
 Plug 'aliou/bats.vim'
 Plug 'bakpakin/fennel.vim'
 Plug 'dart-lang/dart-vim-plugin', { 'for': 'dart' }
+Plug 'editorconfig/editorconfig-vim'
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'janko-m/vim-test'
-Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
+" Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
+Plug 'jremmen/vim-ripgrep'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 " Plug 'jeroenbourgois/vim-actionscript', { 'for': 'actioncript' }
 Plug 'janet-lang/janet.vim'
 Plug 'jpalardy/vim-slime'
@@ -213,8 +217,9 @@ map <leader>n :call RenameFile()<cr>
 " ================================
 
 " Netrw
-let g:netrw_liststyle = 3
 let g:netrw_altv = 1
+let g:netrw_liststyle = 3
+let g:netrw_fastbrowse = 0
 
 " vim-markdown
 let g:vim_markdown_folding_disabled = 1
@@ -275,6 +280,9 @@ endfunction
 " let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
 " set termguicolors
 
+" Map escape sequence for returning to normal mode in terminal
+" tnoremap <Esc> <C-\><C-n>
+
 set t_Co=256
 set colorcolumn=96
 set hlsearch
@@ -289,6 +297,10 @@ nmap <F2> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 "   let base16colorspace=256
 "   source ~/.vimrc_background
 " endif
+
+" Add ERB wrappers to surround.vim
+let g:surround_45 = "<% \r %>"
+let g:surround_61 = "<%= \r %>"
 
 " Examine path
 command! Path :echo join(split(&path, ","), "\n")
