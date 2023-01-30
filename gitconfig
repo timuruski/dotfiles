@@ -11,8 +11,7 @@
   aa = add --all
   amend = commit --amend
   au = add --update
-  b = branch
-  br = branch --sort='-committerdate'
+  b = branch --sort='-committerdate'
   c = commit
   co = checkout
   current-branch = branch --show-current

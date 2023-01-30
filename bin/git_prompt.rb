@@ -36,13 +36,13 @@ def git_commit_sha
 end
 
 def git_mode
-  if File.exists?(File.join(git_repo_path, 'BISECT_LOG'))
+  if File.exist?(File.join(git_repo_path, 'BISECT_LOG'))
     mode = "bisect"
-  elsif File.exists?(File.join(git_repo_path, 'MERGE_HEAD'))
+  elsif File.exist?(File.join(git_repo_path, 'MERGE_HEAD'))
     mode = "merge"
-  elsif File.exists?(File.join(git_repo_path, 'CHERRY_PICK_HEAD'))
+  elsif File.exist?(File.join(git_repo_path, 'CHERRY_PICK_HEAD'))
     mode = "cherry-pick"
-  elsif %w[rebase rebase-apply rebase-merge ../.dotest].any? {|d| File.exists?(File.join(git_repo_path, d)) }
+  elsif %w[rebase rebase-apply rebase-merge ../.dotest].any? {|d| File.exist?(File.join(git_repo_path, d)) }
     mode = "rebase"
   end
 

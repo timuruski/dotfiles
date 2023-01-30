@@ -26,7 +26,7 @@ brew "git"
 # brew "graphviz"
 
 # Github Command Line (experimental)
-brew "gh"
+# brew "gh"
 
 # Helix editor https://helix-editor.com
 tap "helix-editor/helix"
@@ -56,7 +56,7 @@ brew "neovim"
 # brew "nodejs"
 
 # Multi-process runner built on tmux
-# brew "overmind"
+brew "overmind"
 
 # Visualize process trees
 brew "pstree"

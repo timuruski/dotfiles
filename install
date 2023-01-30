@@ -34,4 +34,5 @@ Dotfiles.install do
   dotfile "vim"
   dotfile "zshenv"
   dotfile "zsh", to: "config/zsh"
+  dotfile "zsh/zshrc", to: "zshrc"
 end

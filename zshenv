@@ -13,6 +13,10 @@ export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export GREP_OPTIONS="--color"
 
 # export GTYPIST_PATH=$GTYPIST_PATH:$HOME/workspace/gtypist
+if [ -f /etc/profile ]; then
+  PATH=""
+  source /etc/profile
+fi
 
 # Promote ~/bin
 PATH="$HOME/bin:$PATH"

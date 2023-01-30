@@ -48,7 +48,12 @@ function! s:find_route(refresh = 0)
   " call fzf#vim#grep('cat tmp/routes.txt', 0, fzf#vim#with_preview())
 endfunction
 
+function! s:refresh_routes()
+  exec 'bin/routes > tmp/routes.txt'
+endfunction
+
 command! FindRoute call s:find_route()
+command! RefreshRoutes call s:refresh_routes()
 nnoremap <leader>r :FindRoute<cr>
 " nnoremap <leader>r :call s:find_route()<cr>
 "

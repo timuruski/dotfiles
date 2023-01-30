@@ -1,9 +1,9 @@
 #!/bin/bash
-IGNORE=(
-  "tmdb-elasticsearch"
-  "tmdb-emailer"
-  "tmdb-web-translations"
+EXCLUDE=(
+  "--exclude tmdb-elasticsearch"
+  "--exclude tmdb-emailer"
+  "--exclude tmdb-payments"
+  "--exclude tmdb-web-translations"
 )
 
-fd tmdb- --full-path --maxdepth=1 --type=d --exclude $IGNORE --color=never $HOME/workspace |\
-  grep -v -e tmdb-elasticsearch -e tmdb-emailer -e tmdb-web-translations
+fd tmdb- --full-path --maxdepth=1 --type=d --color=never ${EXCLUDE[@]} $HOME/workspace
