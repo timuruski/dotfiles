@@ -1,0 +1,4 @@
+theme = "eink"
+
+[editor]
+line-number = "relative"
