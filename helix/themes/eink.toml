@@ -1,0 +1,37 @@
+# eink theme ripped from my Vim config
+# Copied and modified from https://bitbucket.org/kisom/eink.vim
+# https://www.ditig.com/256-colors-cheat-sheet
+
+"comment" = { bg = "grey_89", modifiers = ["italic"] }
+# "function" = { bg = "grey_11", fg = "grey_74" }
+"string" = { fg = "grey_30", modifiers = ["bold"] }
+"type" = { modifiers = ["bold"] }
+
+"ui.background" = { bg = "white" }
+"ui.background.separator" = { bg = "white" }
+"ui.cursor" = { fg = "white", bg = "plum_2", modifiers = ["bold"] }
+"ui.cursor.select" = { fg = "white", bg = "plum_2", modifiers = ["bold"] }
+"ui.cursor.primary" = { fg = "white", bg = "plum_2", modifiers = ["bold"] }
+"ui.cursor.match" = { fg = "plum_2", modifiers = ["bold"] }
+"ui.linenr" = { fg = "grey_15" }
+"ui.linenr.selected" = { fg = "black", modifiers = ["bold"] }
+"ui.selection" = { modifiers = ["reversed"] }
+"ui.statusline" = { fg = "grey_85", bg = "grey_15", modifiers = ["bold"] }
+"ui.statusline.inactive" = { fg = "grey_15", bg = "grey_85", modifiers = ["dim"] }
+"ui.text" = "grey_15"
+
+[palette]
+# https://www.ditig.com/256-colors-cheat-sheet
+black = "#000000" # cterm0
+red = "#FF0000"   # cterm9
+blue = "#0000FF"  # cterm12
+white = "#FFFFFF" # cterm15
+plum_2 = "#d7afff" # cterm183
+misty_rose_1 = "#FFD7D7" # cterm224
+grey_11 = "#1C1C1C" # cterm234
+grey_15 = "#262626" # cterm235
+grey_30 = "#4E4E4E" # cterm239
+grey_74 = "#BCBCBC" # cterm250
+grey_85 = "#DADADA" # cterm253
+grey_89 = "#E4E4E4" # cterm254
+grey_93 = "#EEEEEE" # cterm255
