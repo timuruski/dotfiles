@@ -14,7 +14,7 @@
 brew "chruby"
 
 # Common Lisp
-brew "clisp"
+# brew "clisp"
 
 # Generate Dash docsets https://github.com/technosophos/dashing
 # brew "dashing"
@@ -26,7 +26,7 @@ brew "clisp"
 brew "direnv"
 
 # https://passingcuriosity.com/2013/dnsmasq-dev-osx/
-brew "dnsmasq"
+# brew "dnsmasq"
 
 # Utility to run arbitrary commands when a file changes
 brew "entr"
@@ -45,10 +45,10 @@ brew "git"
 
 # Pretty READMEs for the command line
 # brew "charmbracelet/homebrew-tap/glow"
-brew "glow"
+# brew "glow"
 
 # Draw diagrams
-brew "graphviz"
+# brew "graphviz"
 
 # Learn programming languages with Exercism
 brew "exercism"
@@ -60,17 +60,21 @@ brew "exercism"
 brew "go"
 
 # Github Command Line (experimental)
-brew "gh"
+# brew "gh"
+
+# Helix editor
+# https://helix-editor.com
+brew "helix"
 
 # Process manager
 brew "hivemind"
 
 # HTTP shell
-brew "httpie"
+# brew "httpie"
 
 # Janet Programming language
 # https://janet-lang.org
-brew "janet"
+# brew "janet"
 
 # JSON formatting and filtering
 brew "jq"
@@ -79,26 +83,26 @@ brew "jq"
 brew "just"
 
 # Dependency for RMagick
-brew "imagemagick"
+# brew "imagemagick"
 # brew "pkg-config"
 
 # Kakoune, modal text editor https://kakoune.org
-brew "kakoune"
+# brew "kakoune"
 
 # Love2d.org game toolkit
-cask "love"
+# cask "love"
 
 # Lua language and package manager
-brew "luarocks"
+# brew "luarocks"
 
-tap "mongodb/brew"
-brew "mongodb-community@5.0"
+# tap "mongodb/brew"
+# brew "mongodb-community@5.0"
 
 # Next generation Vim
 brew "neovim" # ??
 
 # Nim language
-brew "nim"
+# brew "nim"
 
 # NodeJS, because everything needs it these days. >:(
 brew "nodejs"
@@ -117,13 +121,13 @@ brew "nzbget"
 brew "pstree"
 
 # Racket for going through SICP
-cask "racket"
+# cask "racket"
 
 # Fix for pbcopy/pbpaste in tmux and screen
 brew "reattach-to-user-namespace" # For tmux to work properly
 
 # Key/Value store service (for stimulus-reflex)
-brew "redis"
+# brew "redis"
 
 # File search, faster than ag
 brew "ripgrep"
@@ -132,13 +136,13 @@ brew "ripgrep"
 brew "ruby-install"
 
 # SDL dependency for Gosu
-brew "sdl2"
+# brew "sdl2"
 
 # Local SQL database
 # brew "sqlite" # ??
 
 # File search, faster than grep
-brew "the_silver_searcher" # ??
+# brew "the_silver_searcher" # ??
 
 # Command line multiplexing
 brew "tmux"
