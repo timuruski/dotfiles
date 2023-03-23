@@ -9,6 +9,9 @@ nunmap Y
 " Use block cursor for everything.
 set guicursor=a:block-blinkon50
 
+" Disable mouse junk
+set mouse=
+
 " Highlight matches for substitution
 set inccommand=nosplit
 

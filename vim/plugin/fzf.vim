@@ -3,27 +3,46 @@
 " FZF_DEFAULT_COMMAND='fd --type file --hidden --follow --exclude .git --exclude .keep'
 " FZF_DEFAULT_OPTS="--ansi --no-color"
 
+" Default :Files command colorizes everything, disable it.
 command! -bang -nargs=? -complete=dir Files
       \call fzf#vim#files(<q-args>, {'options': ['--no-color']}, <bang>0)
 
-map <leader>b :Buffers<cr>
-map <leader>f :Files<cr>
-map <leader>F :Files %%<cr>
-map <leader>l :Lines<cr>
+" Fuzzy find git merge files with conflicts.
+" TODO Create a quick fix list for the actual conflict markers.
+command! GitConflicts call fzf#run(fzf#wrap({'source': 'git status --short | awk "/(AA|UU)/ { print \$2 }"'}))
 
-map <leader>gm :Files app/models<cr>
-map <leader>gv :Files app/views<cr>
-map <leader>gc :Files app/controllers<cr>
-map <leader>gh :Files app/helpers<cr>
-map <leader>gs :Files app/serializers<cr>
-map <leader>gp :Files app/presenters<cr>
-map <leader>gS :Files app/services<cr>
-map <leader>gC :Files app/assets/stylesheets<cr>
-map <leader>gJ :Files app/assets/javascripts<cr>
+nnoremap <leader>b :Buffers<cr>
+nnoremap <leader>f :Files<cr>
+nnoremap <leader>F :FilesWithoutTests<cr>
+nnoremap <leader>g :Files %%<cr>
+nnoremap <leader>r :Routes<cr>
+nnoremap <leader>R :Routes!<cr>
 
-" Implement Rrg
-" Implement Route finder for Sinatra app
-" Implement conflict list
+
+" Fuzzy find just implementation files.
+" Note fzf#vim#grep expects a line number, so this doesn't work properly.
+function! s:files_without_tests()
+  " fd --ignore-file ~/.ignore --ignore-file ~/.ignore-tests
+  " let dot_ignore = expand('~/.ignore')
+  " let dot_ignore_tests = expand('~/.ignore-tests')
+  " call fzf#vim#grep('fd --ignore-file ' . dot_ignore . ' --ignore-file ' . dot_ignore_tests, 0, fzf#vim#with_preview())
+  " call fzf#vim#grep('fd --ignore-file ~/.ignore --ignore-file ~/.ignore-tests', 0, fzf#vim#with_preview())
+  call fzf#run({'source': 'fd --ignore-file ~/.ignore --ignore-file ~/.ignore-tests', 'sink': 'e'})
+endfunction
+
+command! FilesWithoutTests call s:files_without_tests()
+
+" Routes finder for TMDB codebase.
+function! s:routes(refresh = 0)
+  if a:refresh
+    silent exec "!bin/routes 2>/dev/null > tmp/routes.txt"
+  endif
+
+  " call fzf#vim#grep('cat tmp/routes.txt', 0)
+  call fzf#vim#grep('cat tmp/routes.txt', 0, fzf#vim#with_preview())
+endfunction
+
+command! -bang Routes call s:routes(<bang>0)
 
 " Customize fzf colors to match your color scheme
 " let g:fzf_colors =
@@ -39,23 +58,3 @@ map <leader>gJ :Files app/assets/javascripts<cr>
 "   \ 'marker':  ['fg', 'Keyword'],
 "   \ 'spinner': ['fg', 'Label'],
 "   \ 'header':  ['fg', 'Comment'] }
-function! s:find_route(refresh = 0)
-  if a:refresh
-    exec 'bin/routes > tmp/routes.txt'
-  endif
-
-  call fzf#vim#grep('cat tmp/routes.txt', 0)
-  " call fzf#vim#grep('cat tmp/routes.txt', 0, fzf#vim#with_preview())
-endfunction
-
-function! s:refresh_routes()
-  exec 'bin/routes > tmp/routes.txt'
-endfunction
-
-command! FindRoute call s:find_route()
-command! RefreshRoutes call s:refresh_routes()
-nnoremap <leader>r :FindRoute<cr>
-" nnoremap <leader>r :call s:find_route()<cr>
-"
-command! Conflicts call fzf#run(fzf#wrap({'source': 'git status --short | awk "/(AA|UU)/ { print \$2 }"'}))
-" command! Rrg call fzf#run(fzf#wrap({'s
