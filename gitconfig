@@ -11,7 +11,7 @@
   aa = add --all
   amend = commit --amend
   au = add --update
-  b = branch
+  b = branch --sort='-committerdate'
   c = commit
   co = checkout
   current-branch = branch --show-current
@@ -32,6 +32,7 @@
   la = !git l --all
   ld = !git l --simplify-by-decoration
   lt = !git l --since=yesterday
+  new-branch = switch --create
   noff = merge --no-ff
   p = add --patch
   po = push origin
@@ -39,14 +40,14 @@
   pom = push origin master
   r = !git --no-pager l -20
   ra = !git r --all
-  s = status -sb
+  s = status --short --branch
   sw = fuzzy-switch
   show-upstream = "rev-parse --abbrev-ref --symbolic-full-name @{u}"
   unstage = reset --patch
 	update = pull --ff-only
 	new-branch = checkout -b
 [core]
-  excludesfile = /Users/timuruski/.gitignore_global
+  excludesfile = "~/.gitignore_global"
 [diff]
 [push]
 	default = simple
