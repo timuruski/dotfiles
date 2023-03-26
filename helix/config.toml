@@ -2,3 +2,16 @@ theme = "eink"
 
 [editor]
 line-number = "relative"
+auto-pairs = false
+
+[editor.whitespace.render]
+newline = "all"
+space = "none"
+tab = "all"
+
+[editor.whitespace.characters]
+newline = "¬"
+space = "·"
+tab = "▸"
+tabpad = "·"
+# ▸\ set listchars=tab:"▸\ ",eol:¬,trail:·

@@ -12,11 +12,12 @@
 "ui.cursor" = { fg = "white", bg = "plum_2", modifiers = ["bold"] }
 "ui.cursor.select" = { fg = "white", bg = "plum_2", modifiers = ["bold"] }
 "ui.cursor.primary" = { fg = "white", bg = "plum_2", modifiers = ["bold"] }
-"ui.cursor.match" = { fg = "plum_2", modifiers = ["bold"] }
+"ui.cursor.match" = { modifiers = ["bold"] }
 "ui.linenr" = { fg = "grey_15" }
 "ui.linenr.selected" = { fg = "black", modifiers = ["bold"] }
-"ui.selection" = { modifiers = ["reversed"] }
-"ui.statusline" = { fg = "white", bg = "purple_4", modifiers = ["bold"] }
+# "ui.selection" = { fg = "purple_4", bg = "plum_2" }
+"ui.selection" = { fg = "purple_4", bg = "plum_2" }
+"ui.statusline" = { fg = "purple_4", bg = "plum_2", modifiers = ["bold"] }
 "ui.statusline.inactive" = { fg = "wgrey", bg = "grey_93" }
 "ui.text" = "grey_15"
 
@@ -26,9 +27,12 @@ black = "#000000" # cterm0
 red = "#FF0000"   # cterm9
 blue = "#0000FF"  # cterm12
 white = "#FFFFFF" # cterm15
-purple_4 = "#5F00AF" # cterm55
+purple_4 = "#5F0087" # cterm54
 grey_37 = "#5F5F5F" # cterm59
-medium_purple_2 = "#AF5FFF" # cterm135
+purple_2 = "#AF00FF" # cterm129
+medium_purple_3  = "#AF5FFF" # cterm135
+medium_purple_2  = "#AF87D7" # cterm140
+medium_purple_1  = "#AF87FF" # cterm141
 plum_2 = "#d7afff" # cterm183
 misty_rose_1 = "#FFD7D7" # cterm224
 grey_11 = "#1C1C1C" # cterm234
