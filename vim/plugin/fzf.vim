@@ -11,23 +11,18 @@ command! -bang -nargs=? -complete=dir Files
 " TODO Create a quick fix list for the actual conflict markers.
 command! GitConflicts call fzf#run(fzf#wrap({'source': 'git status --short | awk "/(AA|UU)/ { print \$2 }"'}))
 
-nnoremap <leader>b :Buffers<cr>
-nnoremap <leader>f :Files<cr>
-nnoremap <leader>F :FilesWithoutTests<cr>
-nnoremap <leader>g :Files %%<cr>
-nnoremap <leader>r :Routes<cr>
-nnoremap <leader>R :Routes!<cr>
-
+map <leader>b :Buffers<cr>
+map <leader>f :Files<cr>
+map <leader>F :FilesWithoutTests<cr>
+map <leader>g :Files %%<cr>
+map <leader>r :Routes<cr>
+map <leader>R :Routes!<cr>
 
 " Fuzzy find just implementation files.
-" Note fzf#vim#grep expects a line number, so this doesn't work properly.
+" ffd is an alias, which fzf#run doesn't handle.
 function! s:files_without_tests()
-  " fd --ignore-file ~/.ignore --ignore-file ~/.ignore-tests
-  " let dot_ignore = expand('~/.ignore')
-  " let dot_ignore_tests = expand('~/.ignore-tests')
-  " call fzf#vim#grep('fd --ignore-file ' . dot_ignore . ' --ignore-file ' . dot_ignore_tests, 0, fzf#vim#with_preview())
-  " call fzf#vim#grep('fd --ignore-file ~/.ignore --ignore-file ~/.ignore-tests', 0, fzf#vim#with_preview())
-  call fzf#run({'source': 'fd --ignore-file ~/.ignore --ignore-file ~/.ignore-tests', 'sink': 'e'})
+  let ffd_cmd = 'fd --type file --ignore-file ~/.ignore --ignore-file ~/.ignore-tests'
+  call fzf#run(fzf#vim#with_preview(fzf#wrap({'source': ffd_cmd, 'sink': 'e'})))
 endfunction
 
 command! FilesWithoutTests call s:files_without_tests()
