@@ -7,31 +7,14 @@ set nocompatible
 " Vimplug
 call plug#begin('~/.vim/plugged')
 
-Plug 'AndrewRadev/splitjoin.vim'
+" Basic Vim plugins
 Plug 'csexton/trailertrash.vim'
-
-" Plug 'chriskempson/base16-vim', {'do': 'git checkout dict_fix'}
-" FIX for https://github.com/chriskempson/base16-vim/issues/197
-Plug 'danielwe/base16-vim'
-
-" Colorschemes
-" Plug 'andreypopp/vim-colors-plain'
-" Plug 'pbrisbin/vim-colors-off'
-" Plug 'https://bitbucket.org/kisom/eink.vim.git'
-
-Plug 'aliou/bats.vim'
-Plug 'bakpakin/fennel.vim'
-Plug 'dart-lang/dart-vim-plugin', { 'for': 'dart' }
-Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'janko-m/vim-test'
+Plug 'jremmen/vim-ripgrep'
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
-" Plug 'jeroenbourgois/vim-actionscript', { 'for': 'actioncript' }
-Plug 'janet-lang/janet.vim'
-Plug 'jpalardy/vim-slime'
-Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+" Plug 'jpalardy/vim-slime'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'takac/vim-hardtime'
+" Plug 'takac/vim-hardtime'
 Plug 'tpope/vim-abolish'
 " Plug 'tpope/vim-bundler', { 'for': 'ruby' }
 Plug 'tpope/vim-commentary'
@@ -40,7 +23,6 @@ Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-ragtag'
-" Plug 'tpope/vim-rake', { 'for': 'ruby' }
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
@@ -48,18 +30,28 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 " Plug 'vim-scripts/ag.vim'
-" Plug 'vim-scripts/nimrod.vim'
 Plug 'vim-scripts/SyntaxAttr.vim'
 Plug 'vim-utils/vim-man'
-" Plug 'vimwiki/vimwiki'
-Plug 'wlangstroth/vim-racket'
 
 " Syntax checkers
 " Ale slows vim down a lot, use Syntastic instead.
 " Plug 'w0rp/ale'
 Plug 'scrooloose/syntastic'
+
+" Language specific plugins
+" Plug 'aliou/bats.vim'
+" Plug 'bakpakin/fennel.vim'
+" Plug 'dart-lang/dart-vim-plugin', { 'for': 'dart' }
+" Plug 'fatih/vim-go', { 'for': 'go' }
+" Plug 'jeroenbourgois/vim-actionscript', { 'for': 'actioncript' }
+" Plug 'janet-lang/janet.vim'
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+" Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+" Plug 'tpope/vim-rake', { 'for': 'ruby' }
+Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
+" Plug 'vim-scripts/nimrod.vim'
+" Plug 'wlangstroth/vim-racket'
 
 call plug#end()
 

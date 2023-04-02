@@ -53,14 +53,19 @@ if &background == "light"
   hi Statement    cterm=NONE          ctermbg=NONE    ctermfg=NONE
   hi Ignore       cterm=bold                          ctermfg=NONE
   hi String       cterm=bold          ctermbg=NONE    ctermfg=239
-  hi ErrorMsg     cterm=reverse       ctermbg=15      ctermfg=9
-  hi Error        cterm=reverse       ctermbg=15      ctermfg=9
+  hi ErrorMsg     cterm=undercurl     ctermbg=NONE    ctermfg=9
+  hi Error        cterm=undercurl     ctermbg=NONE    ctermfg=9
+  " hi ErrorMsg     cterm=reverse       ctermbg=15      ctermfg=9
+  " hi Error        cterm=reverse       ctermbg=15      ctermfg=9
   hi Todo         cterm=bold          ctermbg=253     ctermfg=NONE
   hi MatchParen   cterm=bold          ctermbg=NONE    ctermfg=12
   hi ColorColumn  cterm=NONE          ctermbg=255
   hi SignColumn   cterm=NONE          ctermbg=254
   hi CursorLine   cterm=NONE          ctermbg=255     ctermfg=NONE
   hi CursorLineNr cterm=bold          ctermbg=255     ctermfg=NONE
+
+  " TrailerTrash attrs
+  hi UnwantedTrailerTrash cterm=NONE ctermbg=254 ctermfg=NONE
 
   " FZF syntax attrs
 
