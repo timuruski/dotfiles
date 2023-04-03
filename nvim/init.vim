@@ -6,6 +6,9 @@ source ~/.vim/vimrc
 nmap Y <nop>
 nunmap Y
 
+" Skip ;2u when shift key is sticky.
+tnoremap <S-Space> <space>
+
 " Use block cursor for everything.
 set guicursor=a:block-blinkon50
 
