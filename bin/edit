@@ -6,12 +6,17 @@ set -euf -o pipefail
 EDITOR="${EDITOR:-vim}"
 FZF_OPTS="--border --exact --height=50% --no-info --reverse --select-1"
 
-files() {
+# This is less useful than it seems.
+git_files() {
   if [[ -d ".git" ]]; then
     git ls-tree -r head --name-only
   else
     fd --type=file
   fi
+}
+
+files() {
+  fd --type=file --ignore-file ~/.ignore
 }
 
 if [[ $# -gt 0 ]]; then

@@ -19,6 +19,8 @@ Dotfiles.install do
   dotfile "gitignore_global"
   dotfile "gvimrc"
   dotfile "helix", to: "config/helix"
+  dotfile "ignore"
+  dotfile "ignore-tests"
   dotfile "inputrc"
   dotfile "irbrc"
   dotfile "nvim", to: "config/nvim"
