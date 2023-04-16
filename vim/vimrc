@@ -12,9 +12,7 @@ Plug 'csexton/trailertrash.vim'
 Plug 'janko-m/vim-test'
 Plug 'jremmen/vim-ripgrep'
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
-" Plug 'jpalardy/vim-slime'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-" Plug 'takac/vim-hardtime'
 Plug 'tpope/vim-abolish'
 " Plug 'tpope/vim-bundler', { 'for': 'ruby' }
 Plug 'tpope/vim-commentary'
@@ -30,14 +28,14 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-" Plug 'vim-scripts/ag.vim'
 Plug 'vim-scripts/SyntaxAttr.vim'
-Plug 'vim-utils/vim-man'
 
-" Syntax checkers
+" LSP and syntax stuff
 " Ale slows vim down a lot, use Syntastic instead.
 " Plug 'w0rp/ale'
 Plug 'scrooloose/syntastic'
+Plug 'neovim/nvim-lspconfig'
+" Plug 'williamboman/mason.nvim', { 'do': ':MasonUpdate' }
 
 " Language specific plugins
 " Plug 'aliou/bats.vim'
@@ -128,9 +126,9 @@ set textwidth=96
 " We have to have a winheight bigger than we want to set winminheight. But if
 " we set winheight to be huge before winminheight, the winminheight set will
 " fail.
-set winheight=5
-set winminheight=5
-set winheight=999
+" set winheight=5
+" set winminheight=5
+" set winheight=999
 
 
 " AUTOCOMMANDS
@@ -143,9 +141,6 @@ autocmd BufRead /tmp/*		set nowritebackup
 
 " MAPPINGS AND FUNCTIONS
 " ================================
-
-" Disable ex mode until you know how to use it.
-" nmap Q <Nop>
 
 " Disable weird effect when Ctrl-Space is pressed in Insert mode.
 imap <Nul> <Space>

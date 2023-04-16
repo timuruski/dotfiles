@@ -78,6 +78,16 @@ if &background == "light"
   hi ALEWarning      cterm=NONE          ctermbg=224     ctermfg=NONE
   hi ALEWarningSign  cterm=bold          ctermbg=250     ctermfg=NONE
 
+  " LSP syntax attrs
+  " https://neovim.io/doc/user/lsp#lsp-highlight
+  hi LspReferenceText  cterm=NONE       ctermbg=NONE     ctermfg=245
+  hi LspReferenceRead  cterm=NONE       ctermbg=NONE     ctermfg=245
+  hi LspReferenceWrite cterm=NONE       ctermbg=NONE     ctermfg=245
+  hi DiagnosticError   cterm=NONE       ctermbg=NONE     ctermfg=245
+  hi DiagnosticHint    cterm=NONE       ctermbg=NONE     ctermfg=245
+  hi DiagnosticInfo    cterm=NONE       ctermbg=NONE     ctermfg=245
+  hi DiagnosticOK      cterm=NONE       ctermbg=NONE     ctermfg=245
+  hi DiagnosticWarn    cterm=NONE       ctermbg=NONE     ctermfg=245
 
   " hi SyntasticErrorLine
   " hi SyntasticWarningLine

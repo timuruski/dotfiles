@@ -20,4 +20,5 @@ let test#strategy = "neovim"
 let g:test#neovim#start_normal = 1
 let g:test#basic#start_normal = 1
 
-tmap <C-o> <C-\><C-n>
+" This breaks FZF integration.
+" tnoremap <Esc> <C-\><C-n>
