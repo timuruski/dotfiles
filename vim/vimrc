@@ -9,41 +9,20 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'csexton/trailertrash.vim'
-
-" Plug 'chriskempson/base16-vim', {'do': 'git checkout dict_fix'}
-" FIX for https://github.com/chriskempson/base16-vim/issues/197
-Plug 'danielwe/base16-vim'
-
-" Colorschemes
-" Plug 'andreypopp/vim-colors-plain'
-" Plug 'pbrisbin/vim-colors-off'
-" Plug 'https://bitbucket.org/kisom/eink.vim.git'
-
-Plug 'aliou/bats.vim'
-Plug 'bakpakin/fennel.vim'
-Plug 'dart-lang/dart-vim-plugin', { 'for': 'dart' }
 Plug 'editorconfig/editorconfig-vim'
-Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'janko-m/vim-test'
-" Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 Plug 'jremmen/vim-ripgrep'
+" Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-" Plug 'jeroenbourgois/vim-actionscript', { 'for': 'actioncript' }
-Plug 'janet-lang/janet.vim'
-Plug 'jpalardy/vim-slime'
-Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'takac/vim-hardtime'
 Plug 'tpope/vim-abolish'
-" Plug 'tpope/vim-bundler', { 'for': 'ruby' }
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-ragtag'
-" Plug 'tpope/vim-rake', { 'for': 'ruby' }
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
@@ -51,17 +30,15 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
-" Plug 'vim-scripts/ag.vim'
-" Plug 'vim-scripts/nimrod.vim'
 Plug 'vim-scripts/SyntaxAttr.vim'
-Plug 'vim-utils/vim-man'
-" Plug 'vimwiki/vimwiki'
-Plug 'wlangstroth/vim-racket'
 
-" Syntax checkers
-" Ale slows vim down a lot, use Syntastic instead.
-" Plug 'w0rp/ale'
+" Language specific bundles
+" Plug 'tpope/vim-bundler', { 'for': 'ruby' }
+" Plug 'tpope/vim-rake', { 'for': 'ruby' }
+Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
+
+" LSP and syntax checkers
+Plug 'neovim/nvim-lspconfig'
 Plug 'scrooloose/syntastic'
 
 call plug#end()
