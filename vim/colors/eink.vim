@@ -60,7 +60,7 @@ if &background == "light"
   hi Todo         cterm=bold          ctermbg=253     ctermfg=NONE
   hi MatchParen   cterm=bold          ctermbg=NONE    ctermfg=12
   hi ColorColumn  cterm=NONE          ctermbg=255
-  hi SignColumn   cterm=NONE          ctermbg=254
+  hi SignColumn   cterm=NONE          ctermbg=NONE
   hi CursorLine   cterm=NONE          ctermbg=255     ctermfg=NONE
   hi CursorLineNr cterm=bold          ctermbg=255     ctermfg=NONE
 
@@ -88,6 +88,12 @@ if &background == "light"
   hi DiagnosticInfo    cterm=NONE       ctermbg=NONE     ctermfg=245
   hi DiagnosticOK      cterm=NONE       ctermbg=NONE     ctermfg=245
   hi DiagnosticWarn    cterm=NONE       ctermbg=NONE     ctermfg=245
+
+  hi DiagnosticUnderlineError cterm=NONE
+  hi DiagnosticUnderlineWarn  cterm=NONE
+  hi DiagnosticUnderlineInfo  cterm=NONE
+  hi DiagnosticUnderlineHint  cterm=NONE
+  hi DiagnosticUnderlineOk    cterm=NONE
 
   " hi SyntasticErrorLine
   " hi SyntasticWarningLine
