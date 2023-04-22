@@ -9,7 +9,7 @@ setopt HIST_IGNORE_DUPS HIST_IGNORE_SPACE
 
 # Setup chruby
 source /usr/local/opt/chruby/share/chruby/chruby.sh
-chruby 3.1
+chruby 3.2.2
 
 # Completions
 fpath=($ZDOTDIR $fpath)
