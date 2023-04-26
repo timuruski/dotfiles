@@ -30,6 +30,7 @@ Dotfiles.install do
   dotfile "nvim", to: "config/nvim"
   # dotfile "psqlrc"
   dotfile "railsrc"
+  dotfile "rubocop.yml"
   # dotfile "screenrc"
   dotfile "tmux.conf"
   dotfile "vim"

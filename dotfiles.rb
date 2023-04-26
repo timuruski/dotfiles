@@ -73,6 +73,8 @@ module Dotfiles
     end
 
     def install
+      return if missing?
+
       FileUtils.mkdir_p(File.dirname(@dest_path))
       FileUtils.symlink(@src_path, @dest_path) unless installed? || conflict?
     end
@@ -97,7 +99,13 @@ module Dotfiles
         "x"
       elsif conflict?
         "?"
+      elsif missing?
+        "!"
       end
+    end
+
+    def missing?
+      !File.exist?(@src_path)
     end
 
     def installed?
