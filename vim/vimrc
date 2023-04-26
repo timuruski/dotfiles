@@ -87,8 +87,6 @@ set list
 set listchars=tab:▸\ ,eol:¬,trail:·
 set matchtime=2
 set modelines=0
-set relativenumber
-set number
 set ruler
 set showmatch
 set smartcase
@@ -127,6 +125,11 @@ set winheight=999
 " Disable backups when editing a temp file, usually because it's a
 " crontab file, and cron gets upset when a backup is written.
 autocmd BufRead /tmp/*		set nowritebackup
+
+" Use relative numbering except Insert mode
+set number
+autocmd InsertEnter * :set norelativenumber
+autocmd InsertLeave * :set relativenumber
 
 
 " MAPPINGS AND FUNCTIONS
