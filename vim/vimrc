@@ -127,6 +127,7 @@ set winheight=999
 autocmd BufRead /tmp/*		set nowritebackup
 
 " Use relative numbering except Insert mode
+set number
 set relativenumber
 autocmd InsertEnter * :set norelativenumber
 autocmd InsertLeave * :set relativenumber
