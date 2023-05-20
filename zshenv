@@ -14,11 +14,16 @@ export GREP_OPTIONS="--color"
 
 # export GTYPIST_PATH=$GTYPIST_PATH:$HOME/workspace/gtypist
 
+# Playdate SDK
+export PLAYDATE_SDK_PATH="/Users/timuruski/Developer/PlaydateSDK"
+
 # This doesn't work because of a quoting bug.
 # $(luarocks path --bin)
 PATH="$HOME/.luarocks/bin:$PATH"
 PATH="$HOME/.cargo/bin:$PATH"
-export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+PATH="${PLAYDATE_SDK_PATH}/bin:$PATH"
+PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+export PATH
 
 # Editor
 export EDITOR="nvim"

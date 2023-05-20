@@ -13,4 +13,5 @@ alias j='jobs'
 alias ls="ls -lhG"
 alias ql='qlmanage -p "$@" &> /dev/null'
 alias scheme="racket -l sicp --repl"
+alias tic80="/Applications/tic80.app/Contents/MacOS/tic80"
 alias vi="nvim"

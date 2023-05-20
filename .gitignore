@@ -8,6 +8,7 @@ tmp/
 zsh/.zcompdump
 zsh/.zhistory
 zsh/.zsh_history
+zsh/.zsh_sessions/
 
 # Churns when vim-plug updates
 vim/autoload/plug.vim.old

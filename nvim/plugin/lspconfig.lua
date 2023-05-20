@@ -1,7 +1,6 @@
 local lspconfig = require('lspconfig')
 
 lspconfig.standardrb.setup {}
-lspconfig.solargraph.setup {}
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -40,3 +39,5 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end, opts)
   end,
 })
+
+require('toggle_lsp_diagnostics').init()
