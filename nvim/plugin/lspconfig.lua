@@ -1,6 +1,5 @@
 local lspconfig = require('lspconfig')
 
-lspconfig.standardrb.setup {}
 lspconfig.solargraph.setup {}
 
 -- Global mappings.

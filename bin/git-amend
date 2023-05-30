@@ -1,7 +1,16 @@
 #!/usr/bin/env bash
 
-if [[ $1 = "-e" || $1 = "--edit" ]]; then
-  git commit --amend
-else
-  git commit --amend --no-edit
-fi
+# if [[ $1 = "-e" || $1 = "-E" || $1 = "--edit" ]]; then
+#   git commit --amend
+# else
+#   git commit --amend --no-edit
+# fi
+
+case "$1" in
+  -e|-E|--edit)
+    git commit --amend
+    ;;
+  "")
+    git commit --amend --no-edit
+    ;;
+esac

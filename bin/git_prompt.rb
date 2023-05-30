@@ -14,7 +14,7 @@
 #
 
 # Prevent terminal from hanging if prompt catches ctrl-z.
-trap "SIGTSTP", "EXIT"
+Signal.trap("TSTP", "EXIT")
 
 def git_repo_path
   @git_repo_path ||= `git rev-parse --git-dir 2>/dev/null`.strip
