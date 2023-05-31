@@ -67,19 +67,27 @@ if &background == "light"
   " TrailerTrash attrs
   hi UnwantedTrailerTrash cterm=NONE ctermbg=254 ctermfg=NONE
 
-  " FZF syntax attrs
-
-  " Ale syntax attrs
-  hi ALEError        cterm=NONE          ctermbg=224     ctermfg=NONE
-  hi ALEErrorSign    cterm=bold          ctermbg=250     ctermfg=NONE
-  hi ALEInfo         cterm=NONE          ctermbg=224     ctermfg=NONE
-  hi ALEStyleError   cterm=NONE          ctermbg=224     ctermfg=NONE
-  hi ALEStyleWarning cterm=NONE          ctermbg=224     ctermfg=NONE
-  hi ALEWarning      cterm=NONE          ctermbg=224     ctermfg=NONE
-  hi ALEWarningSign  cterm=bold          ctermbg=250     ctermfg=NONE
+  " Popup Menus
+  hi Pmenu           ctermbg=230 ctermfg=0
+  hi PmenuSel        ctermbg=229 ctermfg=0
+  " hi PmenuSbar      ctermbg=248 guibg=Grey
+  " hi PmenuThumb     ctermbg=0 guibg=Black
 
   " LSP syntax attrs
   " https://neovim.io/doc/user/lsp#lsp-highlight
+  " LspReferenceText xxx ctermfg=245
+  " LspReferenceRead xxx ctermfg=245
+  " LspReferenceWrite xxx ctermfg=245
+  " LspInfoList    xxx links to Function
+  " LspInfoTip     xxx links to Comment
+  " LspInfoBorder  xxx links to Label
+  " LspInfoFiletype xxx links to Type
+  " LspInfoTitle   xxx links to Title
+  " LspInfoFiletypeList xxx cleared
+  " LspInfoListList xxx cleared
+  hi LspInfoTip        cterm=BOLD       ctermbg=229
+  hi LspInfoFiletype   cterm=NONE       ctermbg=230
+  hi LspInfoFiletypeList   cterm=NONE       ctermbg=230
   hi LspReferenceText  cterm=NONE       ctermbg=NONE     ctermfg=245
   hi LspReferenceRead  cterm=NONE       ctermbg=NONE     ctermfg=245
   hi LspReferenceWrite cterm=NONE       ctermbg=NONE     ctermfg=245
@@ -94,6 +102,15 @@ if &background == "light"
   hi DiagnosticUnderlineInfo  cterm=NONE
   hi DiagnosticUnderlineHint  cterm=NONE
   hi DiagnosticUnderlineOk    cterm=NONE
+
+  " Ale syntax attrs
+  hi ALEError        cterm=NONE          ctermbg=224     ctermfg=NONE
+  hi ALEErrorSign    cterm=bold          ctermbg=250     ctermfg=NONE
+  hi ALEInfo         cterm=NONE          ctermbg=224     ctermfg=NONE
+  hi ALEStyleError   cterm=NONE          ctermbg=224     ctermfg=NONE
+  hi ALEStyleWarning cterm=NONE          ctermbg=224     ctermfg=NONE
+  hi ALEWarning      cterm=NONE          ctermbg=224     ctermfg=NONE
+  hi ALEWarningSign  cterm=bold          ctermbg=250     ctermfg=NONE
 
   " hi SyntasticErrorLine
   " hi SyntasticWarningLine
