@@ -6,6 +6,9 @@ source ~/.vim/vimrc
 nmap Y <nop>
 nunmap Y
 
+" Ignore jumping to ctag definition, it collides with <c-[> too easily.
+nnoremap <C-]> <nop>
+
 " Skip ;2u when shift key is sticky.
 tnoremap <S-Space> <space>
 
