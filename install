@@ -13,6 +13,7 @@ Dotfiles.install do
   symlink "bin/pfil"
   # symlink "bin/pjson"
   symlink "bin/refresh_aws"
+  symlink "bin/tally"
   symlink "bin/tmdb-dirs"
   symlink "bin/x"
   symlink "bin/yay"

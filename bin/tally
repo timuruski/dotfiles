@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+
+result = {}
+
+ARGF.each_line do |line|
+  line.chomp!
+  result[line] ||= 0
+  result[line] += 1
+end
+
+result
+  .sort_by { |_, count| count }
+  .reverse
+  .each do |line, count|
+  puts "#{count} #{line}"
+end
