@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# This toggles assume-unchanged flag on Gemfile.lock when it's churning because of platforms.
+# https://git-scm.com/docs/git-update-index#_using_assume_unchanged_bit
+if $(git ls-files -v | grep -q "h Gemfile.lock"); then
+  git update-index --no-assume-unchanged -- Gemfile.lock
+else
+  git update-index --assume-unchanged -- Gemfile.lock
+fi
