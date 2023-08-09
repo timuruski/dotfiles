@@ -208,7 +208,7 @@ let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_frontmatter = 1
 
 " vim-slime
-let g:slime_target = "vimterminal"
+" let g:slime_target = "vimterminal"
 
 " QuickFix to args
 command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()

@@ -66,6 +66,7 @@ if &background == "light"
 
   " TrailerTrash attrs
   hi UnwantedTrailerTrash cterm=NONE ctermbg=254 ctermfg=NONE
+  hi markdownError NONE
 
   " Popup Menus
   hi Pmenu           ctermbg=230 ctermfg=0
@@ -88,14 +89,14 @@ if &background == "light"
   hi LspInfoTip        cterm=BOLD       ctermbg=229
   hi LspInfoFiletype   cterm=NONE       ctermbg=230
   hi LspInfoFiletypeList   cterm=NONE       ctermbg=230
-  hi LspReferenceText  cterm=NONE       ctermbg=NONE     ctermfg=245
-  hi LspReferenceRead  cterm=NONE       ctermbg=NONE     ctermfg=245
-  hi LspReferenceWrite cterm=NONE       ctermbg=NONE     ctermfg=245
-  hi DiagnosticError   cterm=NONE       ctermbg=NONE     ctermfg=245
-  hi DiagnosticHint    cterm=NONE       ctermbg=NONE     ctermfg=245
-  hi DiagnosticInfo    cterm=NONE       ctermbg=NONE     ctermfg=245
-  hi DiagnosticOK      cterm=NONE       ctermbg=NONE     ctermfg=245
-  hi DiagnosticWarn    cterm=NONE       ctermbg=NONE     ctermfg=245
+  hi LspReferenceText  cterm=NONE       ctermbg=NONE     ctermfg=250
+  hi LspReferenceRead  cterm=NONE       ctermbg=NONE     ctermfg=250
+  hi LspReferenceWrite cterm=NONE       ctermbg=NONE     ctermfg=250
+  hi DiagnosticError   cterm=NONE       ctermbg=NONE     ctermfg=250
+  hi DiagnosticHint    cterm=NONE       ctermbg=NONE     ctermfg=250
+  hi DiagnosticInfo    cterm=NONE       ctermbg=NONE     ctermfg=250
+  hi DiagnosticOK      cterm=NONE       ctermbg=NONE     ctermfg=250
+  hi DiagnosticWarn    cterm=NONE       ctermbg=NONE     ctermfg=250
 
   hi DiagnosticUnderlineError cterm=NONE
   hi DiagnosticUnderlineWarn  cterm=NONE
