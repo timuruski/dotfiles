@@ -39,6 +39,22 @@ endfunction
 
 command! -bang Routes call s:routes(<bang>0)
 
+" Failed examples
+function! s:failed_examples()
+  let cmd = 'grep failed spec/examples.txt | sed -E "s/\[.*//" | sort -u'
+  call fzf#run(fzf#vim#with_preview(fzf#wrap({'source': cmd, 'sink': 'e'})))
+endfunction
+
+command! FailedExamples call s:failed_examples()
+
+" Failed examples args list
+function! s:failed_examples()
+  let cmd = 'grep failed spec/examples.txt | sed -E "s/\[.*//" | sort -u'
+  call fzf#run(fzf#vim#with_preview(fzf#wrap({'source': cmd, 'sink': 'e'})))
+endfunction
+
+command! FailedExamples call s:failed_examples()
+
 " Customize fzf colors to match your color scheme
 " let g:fzf_colors =
 " \ { 'fg':      ['fg', 'Normal'],

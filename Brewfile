@@ -4,6 +4,9 @@
 # Manage Ruby versions
 brew "chruby"
 
+# Dictionary server
+brew "dict"
+
 # Per-project environment configuration
 brew "direnv"
 

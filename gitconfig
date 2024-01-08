@@ -44,6 +44,7 @@
   s = status --short --branch
   sw = fuzzy-switch
   show-upstream = "rev-parse --abbrev-ref --symbolic-full-name @{u}"
+  tidy = "checkout Gemfile.lock"
   unstage = reset --patch
 	update = pull --ff-only
 	new-branch = checkout -b
