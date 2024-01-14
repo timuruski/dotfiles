@@ -3,8 +3,8 @@ alias learnvim="/usr/bin/env vim -Nu ~/workspace/dotfiles/learn.vim"
 alias barevim="vim -Nu ~/.bare.vim"
 
 # Define functions and aliases
-alias ag='ag --path-to-ignore ~/.ignore'
-alias be='bundle exec'
+alias ag="ag --path-to-ignore ~/.ignore"
+alias b="battery-info"
 alias bx="bundle exec"
 alias dx="docker compose"
 alias fd="fd --color=never"
