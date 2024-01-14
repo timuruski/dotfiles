@@ -80,14 +80,14 @@ if &background == "light"
 
   " LSP syntax attrs
   " https://neovim.io/doc/user/lsp#lsp-highlight
-  hi LspReferenceText  cterm=NONE       ctermbg=NONE     ctermfg=245
-  hi LspReferenceRead  cterm=NONE       ctermbg=NONE     ctermfg=245
-  hi LspReferenceWrite cterm=NONE       ctermbg=NONE     ctermfg=245
-  hi DiagnosticError   cterm=NONE       ctermbg=NONE     ctermfg=245
-  hi DiagnosticHint    cterm=NONE       ctermbg=NONE     ctermfg=245
-  hi DiagnosticInfo    cterm=NONE       ctermbg=NONE     ctermfg=245
-  hi DiagnosticOK      cterm=NONE       ctermbg=NONE     ctermfg=245
-  hi DiagnosticWarn    cterm=NONE       ctermbg=NONE     ctermfg=245
+  hi LspReferenceText  cterm=NONE       ctermbg=NONE     ctermfg=250
+  hi LspReferenceRead  cterm=NONE       ctermbg=NONE     ctermfg=250
+  hi LspReferenceWrite cterm=NONE       ctermbg=NONE     ctermfg=250
+  hi DiagnosticError   cterm=NONE       ctermbg=NONE     ctermfg=250
+  hi DiagnosticHint    cterm=NONE       ctermbg=NONE     ctermfg=250
+  hi DiagnosticInfo    cterm=NONE       ctermbg=NONE     ctermfg=250
+  hi DiagnosticOK      cterm=NONE       ctermbg=NONE     ctermfg=250
+  hi DiagnosticWarn    cterm=NONE       ctermbg=NONE     ctermfg=250
 
   " hi SyntasticErrorLine
   " hi SyntasticWarningLine
