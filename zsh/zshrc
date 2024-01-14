@@ -9,38 +9,40 @@ setopt HIST_IGNORE_DUPS HIST_IGNORE_SPACE
 
 # Setup chruby
 source /usr/local/opt/chruby/share/chruby/chruby.sh
-chruby 3.2.2
+# chruby 3.2.2
 
 # Completions
 fpath=($ZDOTDIR $fpath)
 autoload -Uz compinit
-compinit -u
+# Speed up compinit
+# https://registerspill.thorstenball.com/p/how-fast-is-your-shell
+# https://github.com/mrnugget/dotfiles/commit/89b6b8213d4dc15e5cb7612792a6e33de1d963c7
+if [ $(date +'%j') != $(/usr/bin/stat -f '%Sm' -t '%j' ${ZDOTDIR:-$HOME}/.zcompdump) ]; then
+  compinit
+else
+  compinit -C
+fi
 
 # fzf
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '\C-x\C-e' edit-command-line
 
-function fcd() { cd *$1* }
-
 # Workspace shortcut and completion
 # function ws() { cd ~/workspace/$1; }
-function _ws() { _files -W $HOME/workspace -/; }
-compdef _ws ws
+# function _ws() { _files -W $HOME/workspace -/; }
+# compdef _ws ws
 
 
 # Z jump around https://github.com/rupa/z
-[[ -f `brew --prefix`/etc/profile.d/z.sh ]] && . `brew --prefix`/etc/profile.d/z.sh
+# brew --prefix /usr/local
+[[ -e /usr/local/etc/profile.d/z.sh ]] && . /usr/local/etc/profile.d/z.sh
 
 # Direnv https://direnv.net
 eval "$(direnv hook zsh)"
 
 # Iterm2 integration
-if [[ $ITERM_SESSION_ID ]]; then
-  # source ~/.zsh/iterm2.sh
-  source "$ZDOTDIR/iterm2.sh"
-fi
-
+test $ITERM_SESSION_ID && source "$ZDOTDIR/iterm2.sh"
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # Plugins
