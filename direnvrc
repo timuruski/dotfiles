@@ -12,7 +12,7 @@ use_ruby() {
     version=$(cat .ruby-version)
   fi
 
-  if [[ -n $version ]]
+  if [[ -n $version && $version != "--local" ]]
   then
     chruby $version
   else
