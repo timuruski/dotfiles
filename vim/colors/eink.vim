@@ -15,11 +15,12 @@ endif
 let colors_name = "eink"
 
 if &background == "light"
-  hi Normal       cterm=NONE          ctermbg=white   ctermfg=235
+  hi Normal       cterm=NONE          ctermbg=15      ctermfg=235 guibg=White
   hi SpecialKey   cterm=NONE                          ctermfg=250
   hi NonText      cterm=NONE                          ctermfg=250
-  hi IncSearch    cterm=NONE          ctermbg=183     ctermfg=NONE
-  hi Search       cterm=NONE          ctermbg=183     ctermfg=NONE
+  hi IncSearch    cterm=NONE          ctermbg=183     ctermfg=NONE guifg=NONE guibg=#D7AFFF
+  hi Search       cterm=NONE          ctermbg=183     ctermfg=NONE guifg=NONE guibg=#ffd7ff
+  hi CurSearch    cterm=NONE          ctermbg=183     ctermfg=NONE guifg=NONE guibg=#D7AFFF
   hi MoreMsg      cterm=bold                          ctermfg=NONE
   hi ModeMsg      cterm=bold                          ctermfg=NONE
   hi LineNr       cterm=NONE                          ctermfg=235
@@ -59,9 +60,9 @@ if &background == "light"
   " hi Error        cterm=reverse       ctermbg=15      ctermfg=9
   hi Todo         cterm=bold          ctermbg=253     ctermfg=NONE
   hi MatchParen   cterm=bold          ctermbg=NONE    ctermfg=12
-  hi ColorColumn  cterm=NONE          ctermbg=255
+  hi ColorColumn  cterm=NONE          ctermbg=255     ctermfg=NONE guifg=NONE guibg=#F8F8F8
   hi SignColumn   cterm=NONE          ctermbg=254
-  hi CursorLine   cterm=NONE          ctermbg=255     ctermfg=NONE
+  hi CursorLine   cterm=NONE          ctermbg=255     ctermfg=NONE guifg=NONE guibg=#F8F8F8
   hi CursorLineNr cterm=bold          ctermbg=255     ctermfg=NONE
 
   " TrailerTrash attrs
@@ -152,7 +153,6 @@ else
   hi Error        cterm=reverse       ctermbg=15      ctermfg=9
   hi Todo         cterm=bold,standout ctermbg=0       ctermfg=11
   hi MatchParen   cterm=NONE          ctermbg=250     ctermfg=NONE
-  hi ColorColumn                      ctermbg=255
   hi ColorColumn  cterm=NONE          ctermbg=235
   hi CursorLine   cterm=NONE          ctermbg=235     ctermfg=NONE
   hi CursorLineNr cterm=bold          ctermbg=235     ctermfg=NONE
