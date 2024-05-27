@@ -43,26 +43,26 @@ if &background == "light"
   hi Number       cterm=None          ctermbg=NONE    ctermfg=NONE
   hi Char         cterm=None          ctermbg=NONE    ctermfg=NONE
   hi Format       cterm=None          ctermbg=NONE    ctermfg=NONE
-  hi Special      cterm=NONE          ctermbg=NONE    ctermfg=NONE
+  hi Special      cterm=NONE          ctermbg=NONE    ctermfg=NONE guifg=fg
   hi Constant     cterm=None          ctermbg=NONE    ctermfg=NONE
   hi PreProc      cterm=None                          ctermfg=NONE
   hi Directive    cterm=NONE          ctermbg=NONE    ctermfg=NONE
   hi Conditional  cterm=NONE          ctermbg=NONE    ctermfg=NONE
   hi Comment      cterm=italic        ctermbg=254     ctermfg=NONE
-  hi Func         cterm=None          ctermbg=234     ctermfg=250
+  hi Function     cterm=None          ctermbg=234     ctermfg=250 guifg=fg
   hi Identifier   cterm=NONE          ctermbg=NONE    ctermfg=NONE
-  hi Statement    cterm=NONE          ctermbg=NONE    ctermfg=NONE
+  hi Statement    cterm=NONE          ctermbg=NONE    ctermfg=NONE gui=NONE
   hi Ignore       cterm=bold                          ctermfg=NONE
-  hi String       cterm=bold          ctermbg=NONE    ctermfg=239
+  hi String       cterm=bold          ctermbg=NONE    ctermfg=239 guifg=fg
   hi ErrorMsg     cterm=undercurl     ctermbg=NONE    ctermfg=9
   hi Error        cterm=undercurl     ctermbg=NONE    ctermfg=9
   " hi ErrorMsg     cterm=reverse       ctermbg=15      ctermfg=9
   " hi Error        cterm=reverse       ctermbg=15      ctermfg=9
   hi Todo         cterm=bold          ctermbg=253     ctermfg=NONE
   hi MatchParen   cterm=bold          ctermbg=NONE    ctermfg=12
-  hi ColorColumn  cterm=NONE          ctermbg=255     ctermfg=NONE guifg=NONE guibg=#F8F8F8
+  hi ColorColumn  cterm=NONE          ctermbg=255     ctermfg=NONE guifg=NONE guibg=WhiteSmoke
   hi SignColumn   cterm=NONE          ctermbg=254
-  hi CursorLine   cterm=NONE          ctermbg=255     ctermfg=NONE guifg=NONE guibg=#F8F8F8
+  hi CursorLine   cterm=NONE          ctermbg=255     ctermfg=NONE guifg=NONE guibg=WhiteSmoke
   hi CursorLineNr cterm=bold          ctermbg=255     ctermfg=NONE
 
   " TrailerTrash attrs
@@ -144,7 +144,7 @@ else
   hi Directive    cterm=NONE          ctermbg=NONE    ctermfg=NONE
   hi Conditional  cterm=NONE          ctermbg=NONE    ctermfg=NONE
   hi Comment      cterm=italic        ctermbg=NONE    ctermfg=245
-  hi Func         cterm=None          ctermbg=234     ctermfg=250
+  hi Function     cterm=None          ctermbg=234     ctermfg=250
   hi Identifier   cterm=NONE          ctermbg=NONE    ctermfg=NONE
   hi Statement    cterm=NONE          ctermbg=NONE    ctermfg=NONE
   hi Ignore       cterm=bold                          ctermfg=NONE

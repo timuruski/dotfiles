@@ -288,3 +288,9 @@ nmap <F2> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 
 " Examine path
 command! Path :echo join(split(&path, ","), "\n")
+
+" Show syntax group for hilighting
+function! SynGroup()
+  let l:s = synID(line('.'), col('.'), 1)
+  echo synIDattr(l:s, 'name') . ' -> ' . synIDattr(synIDtrans(l:s), 'name')
+endfun
