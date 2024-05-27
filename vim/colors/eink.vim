@@ -38,7 +38,7 @@ if &background == "light"
   hi DiffChange   cterm=bold                          ctermfg=NONE
   hi DiffDelete   cterm=bold                          ctermfg=NONE
   hi DiffText     cterm=reverse                       ctermfg=NONE
-  hi Type         cterm=bold          ctermbg=NONE    ctermfg=NONE
+  hi Type         cterm=bold          ctermbg=NONE    ctermfg=NONE gui=bold guibg=NONE
   hi Keyword      cterm=None          ctermbg=NONE    ctermfg=NONE
   hi Number       cterm=None          ctermbg=NONE    ctermfg=NONE
   hi Char         cterm=None          ctermbg=NONE    ctermfg=NONE
@@ -48,18 +48,18 @@ if &background == "light"
   hi PreProc      cterm=None                          ctermfg=NONE
   hi Directive    cterm=NONE          ctermbg=NONE    ctermfg=NONE
   hi Conditional  cterm=NONE          ctermbg=NONE    ctermfg=NONE
-  hi Comment      cterm=italic        ctermbg=254     ctermfg=NONE
+  hi Comment      cterm=italic        ctermbg=254     ctermfg=NONE gui=italic guibg=#e4e4e4
   hi Function     cterm=None          ctermbg=234     ctermfg=250 guifg=fg
   hi Identifier   cterm=NONE          ctermbg=NONE    ctermfg=NONE
   hi Statement    cterm=NONE          ctermbg=NONE    ctermfg=NONE gui=NONE
-  hi Ignore       cterm=bold                          ctermfg=NONE
-  hi String       cterm=bold          ctermbg=NONE    ctermfg=239 guifg=fg
+  hi Ignore       cterm=bold                          ctermfg=NONE gui=bold
+  hi String       cterm=bold          ctermbg=NONE    ctermfg=239 guifg=fg gui=bold
   hi ErrorMsg     cterm=undercurl     ctermbg=NONE    ctermfg=9
   hi Error        cterm=undercurl     ctermbg=NONE    ctermfg=9
   " hi ErrorMsg     cterm=reverse       ctermbg=15      ctermfg=9
   " hi Error        cterm=reverse       ctermbg=15      ctermfg=9
-  hi Todo         cterm=bold          ctermbg=253     ctermfg=NONE
-  hi MatchParen   cterm=bold          ctermbg=NONE    ctermfg=12
+  hi Todo         cterm=bold          ctermbg=253     ctermfg=NONE gui=bold
+  hi MatchParen   cterm=bold          ctermbg=NONE    ctermfg=12 gui=bold
   hi ColorColumn  cterm=NONE          ctermbg=255     ctermfg=NONE guifg=NONE guibg=WhiteSmoke
   hi SignColumn   cterm=NONE          ctermbg=254
   hi CursorLine   cterm=NONE          ctermbg=255     ctermfg=NONE guifg=NONE guibg=WhiteSmoke
@@ -104,7 +104,9 @@ if &background == "light"
   hi rubyStringDelimiter  cterm=NONE
   hi link shOption Normal
   hi link Quote Normal
+  hi link htmlArg Normal
   hi link htmlItalic Normal
+  hi link htmlString Normal
 
   " Ruby-specific syntax attrs
   hi link rubyStringDelimiter String
