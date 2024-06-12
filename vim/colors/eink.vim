@@ -50,7 +50,7 @@ if &background == "light"
   hi Conditional  cterm=NONE          ctermbg=NONE    ctermfg=NONE
   hi Comment      cterm=italic        ctermbg=254     ctermfg=NONE gui=italic guibg=#e4e4e4
   hi Function     cterm=None          ctermbg=234     ctermfg=250 guifg=fg
-  hi Identifier   cterm=NONE          ctermbg=NONE    ctermfg=NONE
+  hi Identifier   cterm=NONE          ctermbg=NONE    ctermfg=NONE guifg=fg
   hi Statement    cterm=NONE          ctermbg=NONE    ctermfg=NONE gui=NONE
   hi Ignore       cterm=bold                          ctermfg=NONE gui=bold
   hi String       cterm=bold          ctermbg=NONE    ctermfg=239 guifg=fg gui=bold
@@ -58,7 +58,7 @@ if &background == "light"
   hi Error        cterm=undercurl     ctermbg=NONE    ctermfg=9
   " hi ErrorMsg     cterm=reverse       ctermbg=15      ctermfg=9
   " hi Error        cterm=reverse       ctermbg=15      ctermfg=9
-  hi Todo         cterm=bold          ctermbg=253     ctermfg=NONE gui=bold
+  hi Todo         cterm=bold          ctermbg=253     ctermfg=NONE gui=bold guibg=#e4e4e4
   hi MatchParen   cterm=bold          ctermbg=NONE    ctermfg=12 gui=bold
   hi ColorColumn  cterm=NONE          ctermbg=255     ctermfg=NONE guifg=NONE guibg=WhiteSmoke
   hi SignColumn   cterm=NONE          ctermbg=254
