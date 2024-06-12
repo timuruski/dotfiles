@@ -38,3 +38,5 @@ alias fffd="fd --ignore-file ~/.ignore --ignore-file ~/.just-tests"
 # alias rbundle="unset BUNDLE_GEMFILE"
 # alias lbundle="export BUNDLE_GEMFILE=Gemfile.local && bundle config gemfile Gemfile.local"
 # alias rbundle="unset BUNDLE_GEMFILE && bundle config unset gemfile"
+
+alias rebase_gemfile="git reset Gemfile.lock && git checkout Gemfile.lock && bundle"

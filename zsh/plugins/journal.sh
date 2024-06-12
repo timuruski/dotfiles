@@ -6,7 +6,10 @@
 export notedir="$HOME/workspace/journal"
 
 function journal(){
-  vi $notedir/$(gdate +%Y-%m-%d -d "$*").md
+  # TODO: Add date header for new files.
+  local filepath="$notedir/$(gdate +%Y-%m-%d -d "$*").md"
+  # Use zed.dev to 
+  zed $filepath
 }
 
 alias j=journal

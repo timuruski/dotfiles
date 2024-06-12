@@ -7,6 +7,9 @@ setopt prompt_subst
 setopt emacs
 setopt HIST_IGNORE_DUPS HIST_IGNORE_SPACE INC_APPEND_HISTORY
 
+# https://martinheinz.dev/blog/110
+HISTORY_IGNORE="(ls|cd|pwd|exit|cd)*"
+
 # export HISTTIMEFORMAT="[%F %T] "
 # setopt EXTENDED_HISTORY
 
