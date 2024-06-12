@@ -15,11 +15,12 @@ endif
 let colors_name = "eink"
 
 if &background == "light"
-  hi Normal       cterm=NONE          ctermbg=white   ctermfg=235
+  hi Normal       cterm=NONE          ctermbg=15      ctermfg=235 guibg=White
   hi SpecialKey   cterm=NONE                          ctermfg=250
   hi NonText      cterm=NONE                          ctermfg=250
-  hi IncSearch    cterm=NONE          ctermbg=183     ctermfg=NONE
-  hi Search       cterm=NONE          ctermbg=183     ctermfg=NONE
+  hi IncSearch    cterm=NONE          ctermbg=183     ctermfg=NONE guifg=NONE guibg=#D7AFFF
+  hi Search       cterm=NONE          ctermbg=183     ctermfg=NONE guifg=NONE guibg=#ffd7ff
+  hi CurSearch    cterm=NONE          ctermbg=183     ctermfg=NONE guifg=NONE guibg=#D7AFFF
   hi MoreMsg      cterm=bold                          ctermfg=NONE
   hi ModeMsg      cterm=bold                          ctermfg=NONE
   hi LineNr       cterm=NONE                          ctermfg=235
@@ -37,72 +38,37 @@ if &background == "light"
   hi DiffChange   cterm=bold                          ctermfg=NONE
   hi DiffDelete   cterm=bold                          ctermfg=NONE
   hi DiffText     cterm=reverse                       ctermfg=NONE
-  hi Type         cterm=bold          ctermbg=NONE    ctermfg=NONE
+  hi Type         cterm=bold          ctermbg=NONE    ctermfg=NONE gui=bold guibg=NONE
   hi Keyword      cterm=None          ctermbg=NONE    ctermfg=NONE
   hi Number       cterm=None          ctermbg=NONE    ctermfg=NONE
   hi Char         cterm=None          ctermbg=NONE    ctermfg=NONE
   hi Format       cterm=None          ctermbg=NONE    ctermfg=NONE
-  hi Special      cterm=NONE          ctermbg=NONE    ctermfg=NONE
+  hi Special      cterm=NONE          ctermbg=NONE    ctermfg=NONE guifg=fg
   hi Constant     cterm=None          ctermbg=NONE    ctermfg=NONE
   hi PreProc      cterm=None                          ctermfg=NONE
   hi Directive    cterm=NONE          ctermbg=NONE    ctermfg=NONE
   hi Conditional  cterm=NONE          ctermbg=NONE    ctermfg=NONE
-  hi Comment      cterm=italic        ctermbg=254     ctermfg=NONE
-  hi Func         cterm=None          ctermbg=234     ctermfg=250
-  hi Identifier   cterm=NONE          ctermbg=NONE    ctermfg=NONE
-  hi Statement    cterm=NONE          ctermbg=NONE    ctermfg=NONE
-  hi Ignore       cterm=bold                          ctermfg=NONE
-  hi String       cterm=bold          ctermbg=NONE    ctermfg=239
+  hi Comment      cterm=italic        ctermbg=254     ctermfg=NONE gui=italic guibg=#e4e4e4
+  hi Function     cterm=None          ctermbg=234     ctermfg=250 guifg=fg
+  hi Identifier   cterm=NONE          ctermbg=NONE    ctermfg=NONE guifg=fg
+  hi Statement    cterm=NONE          ctermbg=NONE    ctermfg=NONE gui=NONE
+  hi Ignore       cterm=bold                          ctermfg=NONE gui=bold
+  hi String       cterm=bold          ctermbg=NONE    ctermfg=239 guifg=fg gui=bold
   hi ErrorMsg     cterm=undercurl     ctermbg=NONE    ctermfg=9
   hi Error        cterm=undercurl     ctermbg=NONE    ctermfg=9
   " hi ErrorMsg     cterm=reverse       ctermbg=15      ctermfg=9
   " hi Error        cterm=reverse       ctermbg=15      ctermfg=9
-  hi Todo         cterm=bold          ctermbg=253     ctermfg=NONE
-  hi MatchParen   cterm=bold          ctermbg=NONE    ctermfg=12
-  hi ColorColumn  cterm=NONE          ctermbg=255
-  hi SignColumn   cterm=NONE          ctermbg=NONE
-  hi CursorLine   cterm=NONE          ctermbg=255     ctermfg=NONE
+  hi Todo         cterm=bold          ctermbg=253     ctermfg=NONE gui=bold guibg=#e4e4e4
+  hi MatchParen   cterm=bold          ctermbg=NONE    ctermfg=12 gui=bold
+  hi ColorColumn  cterm=NONE          ctermbg=255     ctermfg=NONE guifg=NONE guibg=WhiteSmoke
+  hi SignColumn   cterm=NONE          ctermbg=254
+  hi CursorLine   cterm=NONE          ctermbg=255     ctermfg=NONE guifg=NONE guibg=WhiteSmoke
   hi CursorLineNr cterm=bold          ctermbg=255     ctermfg=NONE
 
   " TrailerTrash attrs
   hi UnwantedTrailerTrash cterm=NONE ctermbg=254 ctermfg=NONE
-  hi markdownError NONE
 
-  " Popup Menus
-  hi Pmenu           ctermbg=230 ctermfg=0
-  hi PmenuSel        ctermbg=229 ctermfg=0
-  " hi PmenuSbar      ctermbg=248 guibg=Grey
-  " hi PmenuThumb     ctermbg=0 guibg=Black
-
-  " LSP syntax attrs
-  " https://neovim.io/doc/user/lsp#lsp-highlight
-  " LspReferenceText xxx ctermfg=245
-  " LspReferenceRead xxx ctermfg=245
-  " LspReferenceWrite xxx ctermfg=245
-  " LspInfoList    xxx links to Function
-  " LspInfoTip     xxx links to Comment
-  " LspInfoBorder  xxx links to Label
-  " LspInfoFiletype xxx links to Type
-  " LspInfoTitle   xxx links to Title
-  " LspInfoFiletypeList xxx cleared
-  " LspInfoListList xxx cleared
-  hi LspInfoTip        cterm=BOLD       ctermbg=229
-  hi LspInfoFiletype   cterm=NONE       ctermbg=230
-  hi LspInfoFiletypeList   cterm=NONE       ctermbg=230
-  hi LspReferenceText  cterm=NONE       ctermbg=NONE     ctermfg=250
-  hi LspReferenceRead  cterm=NONE       ctermbg=NONE     ctermfg=250
-  hi LspReferenceWrite cterm=NONE       ctermbg=NONE     ctermfg=250
-  hi DiagnosticError   cterm=NONE       ctermbg=NONE     ctermfg=250
-  hi DiagnosticHint    cterm=NONE       ctermbg=NONE     ctermfg=250
-  hi DiagnosticInfo    cterm=NONE       ctermbg=NONE     ctermfg=250
-  hi DiagnosticOK      cterm=NONE       ctermbg=NONE     ctermfg=250
-  hi DiagnosticWarn    cterm=NONE       ctermbg=NONE     ctermfg=250
-
-  hi DiagnosticUnderlineError cterm=NONE
-  hi DiagnosticUnderlineWarn  cterm=NONE
-  hi DiagnosticUnderlineInfo  cterm=NONE
-  hi DiagnosticUnderlineHint  cterm=NONE
-  hi DiagnosticUnderlineOk    cterm=NONE
+  " FZF syntax attrs
 
   " Ale syntax attrs
   hi ALEError        cterm=NONE          ctermbg=224     ctermfg=NONE
@@ -112,6 +78,17 @@ if &background == "light"
   hi ALEStyleWarning cterm=NONE          ctermbg=224     ctermfg=NONE
   hi ALEWarning      cterm=NONE          ctermbg=224     ctermfg=NONE
   hi ALEWarningSign  cterm=bold          ctermbg=250     ctermfg=NONE
+
+  " LSP syntax attrs
+  " https://neovim.io/doc/user/lsp#lsp-highlight
+  hi LspReferenceText  cterm=NONE       ctermbg=NONE     ctermfg=250
+  hi LspReferenceRead  cterm=NONE       ctermbg=NONE     ctermfg=250
+  hi LspReferenceWrite cterm=NONE       ctermbg=NONE     ctermfg=250
+  hi DiagnosticError   cterm=NONE       ctermbg=NONE     ctermfg=250
+  hi DiagnosticHint    cterm=NONE       ctermbg=NONE     ctermfg=250
+  hi DiagnosticInfo    cterm=NONE       ctermbg=NONE     ctermfg=250
+  hi DiagnosticOK      cterm=NONE       ctermbg=NONE     ctermfg=250
+  hi DiagnosticWarn    cterm=NONE       ctermbg=NONE     ctermfg=250
 
   " hi SyntasticErrorLine
   " hi SyntasticWarningLine
@@ -127,7 +104,9 @@ if &background == "light"
   hi rubyStringDelimiter  cterm=NONE
   hi link shOption Normal
   hi link Quote Normal
+  hi link htmlArg Normal
   hi link htmlItalic Normal
+  hi link htmlString Normal
 
   " Ruby-specific syntax attrs
   hi link rubyStringDelimiter String
@@ -167,7 +146,7 @@ else
   hi Directive    cterm=NONE          ctermbg=NONE    ctermfg=NONE
   hi Conditional  cterm=NONE          ctermbg=NONE    ctermfg=NONE
   hi Comment      cterm=italic        ctermbg=NONE    ctermfg=245
-  hi Func         cterm=None          ctermbg=234     ctermfg=250
+  hi Function     cterm=None          ctermbg=234     ctermfg=250
   hi Identifier   cterm=NONE          ctermbg=NONE    ctermfg=NONE
   hi Statement    cterm=NONE          ctermbg=NONE    ctermfg=NONE
   hi Ignore       cterm=bold                          ctermfg=NONE
@@ -176,7 +155,6 @@ else
   hi Error        cterm=reverse       ctermbg=15      ctermfg=9
   hi Todo         cterm=bold,standout ctermbg=0       ctermfg=11
   hi MatchParen   cterm=NONE          ctermbg=250     ctermfg=NONE
-  hi ColorColumn                      ctermbg=255
   hi ColorColumn  cterm=NONE          ctermbg=235
   hi CursorLine   cterm=NONE          ctermbg=235     ctermfg=NONE
   hi CursorLineNr cterm=bold          ctermbg=235     ctermfg=NONE
