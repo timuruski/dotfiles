@@ -99,6 +99,9 @@ brew "mysql"
 # tmdb-api-lua dependencies
 brew "nettle"
 
+# Webhoo tunnels for Braintree
+cask "ngrok/ngrok/ngrok"
+
 # tmdb-api-lua dependencies
 brew "openssl@3"
 brew "openssl@1.1"

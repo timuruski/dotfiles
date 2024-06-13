@@ -2619,6 +2619,12 @@
         "options": {
           "full_name": "racket"
         }
+      },
+      "ngrok": {
+        "version": "3.10.1,8RiZrogbZ8F,a",
+        "options": {
+          "full_name": "ngrok/ngrok/ngrok"
+        }
       }
     }
   },
