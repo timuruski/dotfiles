@@ -1,7 +1,0 @@
-#!/bin/bash
-
-emojicodec=/usr/local/bin/emojicodec
-emojicode=/usr/local/bin/emojicode
-target="${1%.emoji*}"
-
-emojicodec "$target.emojic" && emojicode "$target.emojib"

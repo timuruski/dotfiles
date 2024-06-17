@@ -81,14 +81,25 @@ if &background == "light"
 
   " LSP syntax attrs
   " https://neovim.io/doc/user/lsp#lsp-highlight
-  hi LspReferenceText  cterm=NONE       ctermbg=NONE     ctermfg=250
-  hi LspReferenceRead  cterm=NONE       ctermbg=NONE     ctermfg=250
-  hi LspReferenceWrite cterm=NONE       ctermbg=NONE     ctermfg=250
-  hi DiagnosticError   cterm=NONE       ctermbg=NONE     ctermfg=250
-  hi DiagnosticHint    cterm=NONE       ctermbg=NONE     ctermfg=250
-  hi DiagnosticInfo    cterm=NONE       ctermbg=NONE     ctermfg=250
-  hi DiagnosticOK      cterm=NONE       ctermbg=NONE     ctermfg=250
-  hi DiagnosticWarn    cterm=NONE       ctermbg=NONE     ctermfg=250
+  hi LspReferenceText  cterm=NONE       ctermbg=NONE     ctermfg=250 guifg=#bcbcbc
+  hi LspReferenceRead  cterm=NONE       ctermbg=NONE     ctermfg=250 guifg=#bcbcbc
+  hi LspReferenceWrite cterm=NONE       ctermbg=NONE     ctermfg=250 guifg=#bcbcbc
+  hi DiagnosticError   cterm=NONE       ctermbg=NONE     ctermfg=250 guifg=#bcbcbc
+  hi DiagnosticHint    cterm=NONE       ctermbg=NONE     ctermfg=250 guifg=#bcbcbc
+  hi DiagnosticInfo    cterm=NONE       ctermbg=NONE     ctermfg=250 guifg=#bcbcbc
+  hi DiagnosticOK      cterm=NONE       ctermbg=NONE     ctermfg=250 guifg=#bcbcbc
+  hi DiagnosticWarn    cterm=NONE       ctermbg=NONE     ctermfg=250 guifg=#bcbcbc
+
+  " DiagnosticError xxx ctermfg=250 guifg=NvimDarkRed
+  " DiagnosticWarn xxx ctermfg=250 guifg=NvimDarkYellow
+  " DiagnosticInfo xxx ctermfg=250 guifg=NvimDarkCyan
+  " DiagnosticHint xxx ctermfg=250 guifg=NvimDarkBlue
+  " DiagnosticOk   xxx ctermfg=250 guifg=NvimDarkGreen
+  " DiagnosticUnderlineError xxx cterm=underline gui=underline guisp=NvimDarkRed
+  " DiagnosticUnderlineWarn xxx cterm=underline gui=underline guisp=NvimDarkYellow
+  " DiagnosticUnderlineInfo xxx cterm=underline gui=underline guisp=NvimDarkCyan
+  " DiagnosticUnderlineHint xxx cterm=underline gui=underline guisp=NvimDarkBlue
+  " DiagnosticUnderlineOk
 
   " hi SyntasticErrorLine
   " hi SyntasticWarningLine
@@ -150,7 +161,7 @@ else
   hi Identifier   cterm=NONE          ctermbg=NONE    ctermfg=NONE
   hi Statement    cterm=NONE          ctermbg=NONE    ctermfg=NONE
   hi Ignore       cterm=bold                          ctermfg=NONE
-  hi String       cterm=underline                     ctermfg=NONE
+  hi String       cterm=bold                     ctermfg=NONE
   hi ErrorMsg     cterm=reverse       ctermbg=15      ctermfg=9
   hi Error        cterm=reverse       ctermbg=15      ctermfg=9
   hi Todo         cterm=bold,standout ctermbg=0       ctermfg=11

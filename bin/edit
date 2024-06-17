@@ -4,7 +4,7 @@
 set -euf -o pipefail
 
 EDITOR="${EDITOR:-vim}"
-FZF_OPTS="--border --height=50% --no-info --reverse --select-1"
+FZF_OPTS="--border --height=50% --no-info --reverse --scheme=path --select-1"
 
 # This is less useful than it seems.
 git_files() {

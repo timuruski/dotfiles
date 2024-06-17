@@ -1,7 +1,10 @@
 #!/bin/bash
 EXCLUDE=(
+  "--exclude tmdb-data"
+  "--exclude tmdb-docs"
   "--exclude tmdb-elasticsearch"
   "--exclude tmdb-emailer"
+  "--exclude tmdb-keywords"
   "--exclude tmdb-payments"
   "--exclude tmdb-web-translations"
 )
