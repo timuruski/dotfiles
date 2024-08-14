@@ -121,8 +121,9 @@ if &background == "light"
 
   " Ruby-specific syntax attrs
   hi link rubyStringDelimiter String
-  hi link rubyInterpolation String
+  " hi link rubyInterpolation Normal
   hi link rubyInterpolationDelimiter String
+  hi link rubyMagicComment Comment
 else
   hi Normal       cterm=NONE          ctermbg=234     ctermfg=250
   hi SpecialKey   cterm=NONE                          ctermfg=255

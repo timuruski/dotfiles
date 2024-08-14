@@ -13,6 +13,7 @@ alias ql="qlmanage -p "$@" &> /dev/null"
 alias vi="nvim"
 
 # Aliases to make up for escape key twitch
+alias e="edit"
 alias dit="edit"
 alias g="fg"
 alias it="git"

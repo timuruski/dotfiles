@@ -231,6 +231,9 @@ function! s:VSetSearch()
   let @s = temp
 endfunction
 
+" Quickfix Git conflicts list
+command! GitConflicts cexpr system('git status --short | sed -nE "s/(AA|UU) (.+)/\2/p" | xargs grep -Hn "<<<" ${}') | copen
+
 command! -nargs=1 RunCmd nnoremap <buffer> <enter> :w \| !clear; <args> % <CR>
 command! -nargs=+ RunCmd nnoremap <buffer> <enter> :w \| !clear; <args> <CR>
 command! -nargs=+ RunRuby nnoremap <buffer> <enter> :w \| !clear; ruby <args> <CR>
@@ -286,3 +289,9 @@ let g:surround_61 = "<%= \r %>"
 
 " Examine path
 command! Path :echo join(split(&path, ","), "\n")
+
+" Show syntax group for hilighting
+function! SynGroup()
+  let l:s = synID(line('.'), col('.'), 1)
+  echo synIDattr(l:s, 'name') . ' -> ' . synIDattr(synIDtrans(l:s), 'name')
+endfun
