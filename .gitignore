@@ -11,5 +11,6 @@ zsh/.zsh_history
 zsh/.zsh_sessions/
 
 # Churns when vim-plug updates
+vim/autoload/plug.vim
 vim/autoload/plug.vim.old
 vim/plugged/
