@@ -11,7 +11,7 @@ brew "coreutils"
 brew "direnv"
 
 # Utility to run arbitrary commands when a file changes
-# brew "entr"
+brew "entr"
 
 # Friendly version of find
 brew "fd"

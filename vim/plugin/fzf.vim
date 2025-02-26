@@ -13,6 +13,7 @@ map <leader>F :FilesWithoutTests<cr>
 map <leader>g :Files %%<cr>
 map <leader>r :Routes<cr>
 map <leader>R :Routes!<cr>
+map <leader>E :FailedExamples<cr>
 
 " Fuzzy find just implementation files.
 " ffd is an alias, which fzf#run doesn't handle.
@@ -41,7 +42,7 @@ function! s:failed_examples()
   call fzf#run(fzf#vim#with_preview(fzf#wrap({'source': cmd, 'sink': 'e'})))
 endfunction
 
-command! FailedExamples call s:failed_examples()
+" command! FailedExamples call s:failed_examples()
 
 " Failed examples args list
 function! s:failed_examples()

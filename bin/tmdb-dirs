@@ -4,6 +4,7 @@ EXCLUDE=(
   "--exclude tmdb-docs"
   "--exclude tmdb-elasticsearch"
   "--exclude tmdb-emailer"
+  "--exclude tmdb-entitlements"
   "--exclude tmdb-keywords"
   "--exclude tmdb-payments"
   "--exclude tmdb-web-translations"

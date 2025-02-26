@@ -7,6 +7,8 @@ function lbundle {
   bundle config gemfile Gemfile.local
   if [ $# -gt 0 ]; then
     bundle $@
+  # else
+  #   bundle
   fi
 }
 
@@ -15,5 +17,7 @@ function rbundle {
   bundle config unset gemfile
   if [ $# -gt 0 ]; then
     bundle $@
+  # else
+  #   bundle
   fi
 }

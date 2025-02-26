@@ -59,7 +59,7 @@ if &background == "light"
   " hi ErrorMsg     cterm=reverse       ctermbg=15      ctermfg=9
   " hi Error        cterm=reverse       ctermbg=15      ctermfg=9
   hi Todo         cterm=bold          ctermbg=253     ctermfg=NONE gui=bold guibg=#e4e4e4
-  hi MatchParen   cterm=bold          ctermbg=NONE    ctermfg=12 gui=bold
+  hi MatchParen   cterm=bold          ctermbg=NONE    ctermfg=12 gui=bold guifg=White guibg=#909090
   hi ColorColumn  cterm=NONE          ctermbg=255     ctermfg=NONE guifg=NONE guibg=WhiteSmoke
   hi SignColumn   cterm=NONE          ctermbg=254
   hi CursorLine   cterm=NONE          ctermbg=255     ctermfg=NONE guifg=NONE guibg=WhiteSmoke
