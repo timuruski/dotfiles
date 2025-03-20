@@ -20,5 +20,10 @@ let test#strategy = "neovim"
 let g:test#neovim#start_normal = 1
 let g:test#basic#start_normal = 1
 
+" Copilot
+let g:copilot_filetypes = {
+      \ 'md': v:false,
+      \ }
+
 " This breaks FZF integration.
 " tnoremap <Esc> <C-\><C-n>

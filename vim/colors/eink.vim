@@ -15,7 +15,7 @@ endif
 let colors_name = "eink"
 
 if &background == "light"
-  hi Normal       cterm=NONE          ctermbg=15      ctermfg=235 guibg=White
+  hi Normal       cterm=NONE          ctermbg=15      ctermfg=235 guibg=#F0F0F0
   hi SpecialKey   cterm=NONE                          ctermfg=250
   hi NonText      cterm=NONE                          ctermfg=250
   hi IncSearch    cterm=NONE          ctermbg=183     ctermfg=NONE guifg=NONE guibg=#D7AFFF
@@ -54,15 +54,15 @@ if &background == "light"
   hi Statement    cterm=NONE          ctermbg=NONE    ctermfg=NONE gui=NONE
   hi Ignore       cterm=bold                          ctermfg=NONE gui=bold
   hi String       cterm=bold          ctermbg=NONE    ctermfg=239 guifg=fg gui=bold
-  hi ErrorMsg     cterm=undercurl     ctermbg=NONE    ctermfg=9
-  hi Error        cterm=undercurl     ctermbg=NONE    ctermfg=9
+  hi ErrorMsg     cterm=undercurl     ctermbg=NONE    ctermfg=9 gui=undercurl
+  hi Error        cterm=undercurl     ctermbg=NONE    ctermfg=9 gui=undercurl
   " hi ErrorMsg     cterm=reverse       ctermbg=15      ctermfg=9
   " hi Error        cterm=reverse       ctermbg=15      ctermfg=9
   hi Todo         cterm=bold          ctermbg=253     ctermfg=NONE gui=bold guibg=#e4e4e4
   hi MatchParen   cterm=bold          ctermbg=NONE    ctermfg=12 gui=bold
-  hi ColorColumn  cterm=NONE          ctermbg=255     ctermfg=NONE guifg=NONE guibg=WhiteSmoke
+  hi ColorColumn  cterm=NONE          ctermbg=255     ctermfg=NONE guifg=NONE guibg=#E8E8E8
   hi SignColumn   cterm=NONE          ctermbg=254
-  hi CursorLine   cterm=NONE          ctermbg=255     ctermfg=NONE guifg=NONE guibg=WhiteSmoke
+  hi CursorLine   cterm=NONE          ctermbg=255     ctermfg=NONE guifg=NONE guibg=#E8E8E8
   hi CursorLineNr cterm=bold          ctermbg=255     ctermfg=NONE
 
   " TrailerTrash attrs
@@ -84,7 +84,7 @@ if &background == "light"
   hi LspReferenceText  cterm=NONE       ctermbg=NONE     ctermfg=250
   hi LspReferenceRead  cterm=NONE       ctermbg=NONE     ctermfg=250
   hi LspReferenceWrite cterm=NONE       ctermbg=NONE     ctermfg=250
-  hi DiagnosticError   cterm=NONE       ctermbg=NONE     ctermfg=250
+  hi DiagnosticError   cterm=NONE       ctermbg=NONE     ctermfg=250     guifg=NONE     guibg=#E4E4E4
   hi DiagnosticHint    cterm=NONE       ctermbg=NONE     ctermfg=250
   hi DiagnosticInfo    cterm=NONE       ctermbg=NONE     ctermfg=250
   hi DiagnosticOK      cterm=NONE       ctermbg=NONE     ctermfg=250

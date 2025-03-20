@@ -7,10 +7,6 @@
 command! -bang -nargs=? -complete=dir Files
       \call fzf#vim#files(<q-args>, {'options': ['--no-color']}, <bang>0)
 
-" Fuzzy find git merge files with conflicts.
-" TODO Create a quick fix list for the actual conflict markers.
-command! GitConflicts call fzf#run(fzf#wrap({'source': 'git status --short | awk "/(AA|UU)/ { print \$2 }"'}))
-
 map <leader>b :Buffers<cr>
 map <leader>f :Files<cr>
 map <leader>F :FilesWithoutTests<cr>
