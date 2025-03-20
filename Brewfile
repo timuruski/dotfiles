@@ -39,7 +39,8 @@ brew "jq"
 brew "neovim"
 
 # NodeJS, because everything needs it these days. >:(
-# brew "nodejs"
+brew "node"
+# brew "nodenv"
 
 # Multi-process runner built on tmux
 brew "overmind"
@@ -104,7 +105,6 @@ cask "ngrok/ngrok/ngrok"
 
 # tmdb-api-lua dependencies
 brew "openssl@3"
-brew "openssl@1.1"
 
 # tmdb-api-lua dependencies
 brew "python@3"

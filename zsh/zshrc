@@ -7,6 +7,9 @@ setopt prompt_subst
 setopt emacs
 setopt HIST_IGNORE_DUPS HIST_IGNORE_SPACE INC_APPEND_HISTORY
 
+# Setup homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # https://martinheinz.dev/blog/110
 HISTORY_IGNORE="(ls|cd|pwd|exit|cd)*"
 
@@ -14,8 +17,9 @@ HISTORY_IGNORE="(ls|cd|pwd|exit|cd)*"
 # setopt EXTENDED_HISTORY
 
 # Setup chruby
-source /usr/local/opt/chruby/share/chruby/chruby.sh
-chruby 3.2.0
+source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
+source /opt/homebrew/opt/chruby/share/chruby/auto.sh
+chruby 3.4.2
 
 # fzf
 autoload -U edit-command-line

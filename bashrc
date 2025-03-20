@@ -50,8 +50,8 @@ alias ls="ls -lh"
 
 export RACK_ENV='development'
 
-if [[ -e /usr/local/opt/chruby/share/chruby/chruby.sh ]]; then
-  source /usr/local/opt/chruby/share/chruby/chruby.sh
+if [[ -e /opt/homebrew/opt/chruby/share/chruby/chruby.sh ]]; then
+  source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
 fi
 
 #EOF .bashrc

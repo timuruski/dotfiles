@@ -28,7 +28,7 @@ Plug 'bakpakin/fennel.vim'
 Plug 'dart-lang/dart-vim-plugin', { 'for': 'dart' }
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'janko-m/vim-test'
-Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
+Plug '/opt/homebrew/opt/fzf' | Plug 'junegunn/fzf.vim'
 " Plug 'jeroenbourgois/vim-actionscript', { 'for': 'actioncript' }
 Plug 'janet-lang/janet.vim'
 Plug 'jpalardy/vim-slime'
