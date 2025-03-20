@@ -10,17 +10,11 @@
 # tap "homebrew/services"
 # tap "caskroom/cask"
 
+# UTILITIES
+# ---------
+
 # Manage Ruby versions
 brew "chruby"
-
-# Common Lisp
-# brew "clisp"
-
-# Generate Dash docsets https://github.com/technosophos/dashing
-# brew "dashing"
-
-# Deno https://deno.land/#installation
-# brew "deno"
 
 # Per-project environment configuration
 brew "direnv"
@@ -29,13 +23,10 @@ brew "direnv"
 # brew "dnsmasq"
 
 # Utility to run arbitrary commands when a file changes
-brew "entr"
+# brew "entr"
 
 # Friendly version of find
 brew "fd"
-
-# Fennel language, lisp syntax for lua
-# brew "fennel"
 
 # Fuzzy finder for command line
 brew "fzf"
@@ -43,44 +34,27 @@ brew "fzf"
 # Distributed source repository
 brew "git"
 
-# Pretty READMEs for the command line
-# brew "charmbracelet/homebrew-tap/glow"
-# brew "glow"
-
 # Draw diagrams
 # brew "graphviz"
 
 # Learn programming languages with Exercism
 brew "exercism"
 
-# Gerbil Scheme https://cons.io/guide/#installation-on-macos
-# brew "gerbil-scheme"
-
-# Go Programming language
-brew "go"
-
-# Github Command Line (experimental)
-# brew "gh"
-
 # Helix editor
 # https://helix-editor.com
-brew "helix"
+# brew "helix"
 
 # Process manager
 brew "hivemind"
 
-# HTTP shell
-# brew "httpie"
-
-# Janet Programming language
-# https://janet-lang.org
-# brew "janet"
-
 # JSON formatting and filtering
 brew "jq"
 
+# Jupyter Notebook for deep learning
+brew "jupyterlab"
+
 # Just command runner https://github.com/casey/just
-brew "just"
+# brew "just"
 
 # Dependency for RMagick
 # brew "imagemagick"
@@ -92,20 +66,13 @@ brew "just"
 # Love2d.org game toolkit
 # cask "love"
 
-# Lua language and package manager
-# brew "luarocks"
-
+# MongoDB, for work research.
 # tap "mongodb/brew"
-# brew "mongodb-community@5.0"
+# brew "mongodb-community"
+brew "mongosh"
 
 # Next generation Vim
-brew "neovim" # ??
-
-# Nim language
-# brew "nim"
-
-# NodeJS, because everything needs it these days. >:(
-brew "nodejs"
+brew "neovim"
 
 # Usenet client
 brew "nzbget"
@@ -120,14 +87,11 @@ brew "nzbget"
 # Visualize process trees
 brew "pstree"
 
-# Racket for going through SICP
-# cask "racket"
-
 # Fix for pbcopy/pbpaste in tmux and screen
-brew "reattach-to-user-namespace" # For tmux to work properly
+brew "reattach-to-user-namespace"
 
 # Key/Value store service (for stimulus-reflex)
-# brew "redis"
+brew "redis"
 
 # File search, faster than ag
 brew "ripgrep"
@@ -139,10 +103,7 @@ brew "ruby-install"
 # brew "sdl2"
 
 # Local SQL database
-# brew "sqlite" # ??
-
-# File search, faster than grep
-# brew "the_silver_searcher" # ??
+brew "sqlite"
 
 # Command line multiplexing
 brew "tmux"
@@ -156,17 +117,57 @@ brew "vim"
 # Download files from the web
 brew "wget"
 
-# Javascript dependency hell
-brew "yarn" # ??
-
 # Download youtube videos or audio, requires extra dependencies
-brew "youtube-dl"
+# brew "youtube-dl"
 
 # Jump between working directories
 brew "z"
 
+# LANGUAGES
+# ---------
+
+# Common Lisp
+# brew "clisp"
+
+# Deno https://deno.land/#installation
+# brew "deno"
+
+# Fennel language, lisp syntax for lua
+# brew "fennel"
+
+# Gerbil Scheme https://cons.io/guide/#installation-on-macos
+# brew "gerbil-scheme"
+
+# Gleam language https://gleam.run
+# brew "gleam"
+
+# Go Programming language
+brew "go"
+
+# Janet Programming language
+# https://janet-lang.org
+# brew "janet"
+
+# Lua language and package manager
+# brew "luarocks"
+
+# Nim language
+# brew "nim"
+
+# NodeJS, because everything needs it these days. >:(
+brew "nodejs"
+
+# Numpy for deep learning
+brew "numpy"
+
+# Racket for going through SICP
+# cask "racket"
+
+# Javascript dependency hell
+brew "yarn"
+
+# zbar for reading barcodes
+# brew "zbar"
+
 # Zig language
 # brew "zig"
-
-# Zola static site generator: https://www.getzola.org
-# brew "zola"
