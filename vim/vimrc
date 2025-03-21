@@ -249,6 +249,9 @@ command! -nargs=0 RunTest nnoremap <enter> :w \| :TestFile <CR>
 command! -nargs=0 RunGo nnoremap <buffer> <enter> :w \| !clear; go run % <CR>
 command! -nargs=0 RunNone nunmap <buffer> <enter>
 
+command! -range Unlet <line1>,<line2>s/let(:\(\w\+\)) { \(.\+\) }/\1 = \2/
+command! -range Relet <line1>,<line2>s/\(\w\+\) = \(.\+\)/let(:\1) { \2 }/
+
 function! s:RunCmd()
   " Command name
   " Command args
