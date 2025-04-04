@@ -12,7 +12,7 @@ map <leader>f :Files<cr>
 map <leader>F :FilesWithoutTests<cr>
 map <leader>g :Files %%<cr>
 map <leader>r :Routes<cr>
-map <leader>R :Routes!<cr>
+map <leader>R :Routes expand("%")<cr>
 map <leader>E :FailedExamples<cr>
 
 " Fuzzy find just implementation files.
@@ -25,16 +25,22 @@ endfunction
 command! FilesWithoutTests call s:files_without_tests()
 
 " Routes finder for TMDB codebase.
-function! s:routes(refresh = 0)
-  if a:refresh
-    silent exec "!bin/routes 2>/dev/null > tmp/routes.txt"
+function! s:routes(prefix = "")
+  if a:prefix == ""
+    let l:cmd = "cat tmp/routes.txt"
+  else
+    let l:cmd = "grep " .. a:prefix .. " tmp/routes.txt"
   endif
 
-  " call fzf#vim#grep('cat tmp/routes.txt', 0)
-  call fzf#vim#grep('cat tmp/routes.txt', 0, fzf#vim#with_preview())
+  call fzf#vim#grep(l:cmd, 0, fzf#vim#with_preview())
 endfunction
 
-command! -bang Routes call s:routes(<bang>0)
+function! s:refresh_routes()
+  silent exec "!bin/routes 2>/dev/null > tmp/routes.txt"
+endfunction
+
+command! -nargs=? Routes call s:routes(<args>)
+command! RefreshRoutes call s:refresh_routes()
 
 " Failed examples
 function! s:failed_examples()
