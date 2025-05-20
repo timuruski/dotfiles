@@ -111,3 +111,6 @@ brew "python@3"
 
 # For compression
 brew "snappy"
+
+# https://github.com/jeffreytse/zsh-vi-mode
+brew "zsh-vi-mode"
