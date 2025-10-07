@@ -1,35 +1,42 @@
-# Customize prompt
-# local cmd_status="%(?,%{$reset_color%},%{$fg[red]%})⑀%{$reset_color%}"
+# Add git metadata to the prompt.
 
-git_repo_path () {
-  git rev-parse --git-dir 2>/dev/null
+function git_repo_path {
+  if [[ $# -eq 0 ]]; then
+    git rev-parse --path-format=absolute --git-dir 2>/dev/null
+  else
+    git rev-parse --path-format=absolute --git-path "$@" 2>/dev/null
+  fi
 }
 
-git_branch_name () {
+function git_branch {
   git rev-parse --abbrev-ref HEAD 2>/dev/null
 }
 
-git_commit_sha () {
+function git_commit_sha {
   git rev-parse --short HEAD 2>/dev/null
 }
 
-# git_prompt () {
-#   echo $(git_branch_name) $(git_commit_sha) $(git_mode)
-#   [git_branch_name, git_commit_sha, rebasing_etc].compact.join(":")
-# }
+function git_mode {
+  if [[ -f $(git_repo_path "BISECT_LOG") ]]; then
+    echo "bisect"
+  elif [[ -f $(git_repo_path "MERGE_HEAD") ]]; then
+    echo "merge"
+  elif [[ -f $(git_repo_path "CHERRY_PICK_HEAD") ]]; then
+    echo "cherry-pick"
+  elif [[ -e $(git_repo_path "rebase") || -e $(git_repo_path "rebase-apply") || -e $(git_repo_path "rebase-merge") || -f $(git_repo_path "../.dotest") ]]; then
+    echo "rebase"
+  fi
+}
 
-# Original prompt
-# PROMPT=" \${cmd_status} %{\$fg[blue]%}%m%{\$reset_color%}:%U%1~%u "
-# RPROMPT='%{$fg[brblack]%}$(~/bin/git-cwd-info.rb)%{$reset_color%}'
+# TODO: Trim string when git mode is empty.
+function git_prompt {
+  if [[ -n $(git_repo_path) ]]; then
+    echo -n "" "%B$(git_branch)%b" $(git_commit_sha)
 
-# Experimental split line prompt:
-# PROMPT=" %{\$fg[blue]%}%m%{\$reset_color%}:%U%1~%u:%{\$fg[brblack]%}:\$(~/bin/git-cwd-info.rb)%{\$reset_color%}
-#  \${cmd_status} "
-# PROMPT=" %{\$fg[blue]%}%m%{\$reset_color%}:%U%1~\$(~/bin/git-cwd-info.rb)%{\$reset_color%}
-#  \${cmd_status} "
+    if [[ -n $(git_mode) ]]; then
+      echo -n " %F{red}%B$(git_mode)%f%b"
+    fi
+  fi
+}
 
-# One-line prompt...
-# PROMPT=" %{\$fg[blue]%}%m%{\$reset_color%}:%U%1~\$(~/bin/git-cwd-info.rb)%{\$reset_color%} \${cmd_status} "
-
-# PROMPT=" %F{blue}%m%f %U%1~\$($HOME/bin/git_prompt.rb)%u $ "
-PROMPT=" %U%1~\$(/usr/bin/env ruby $HOME/bin/git_prompt.rb)%u $ "
+PROMPT=" %U%1~\$(git_prompt)%u $ "
