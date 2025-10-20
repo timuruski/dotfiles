@@ -47,6 +47,9 @@ brew "exercism"
 # Process manager
 brew "hivemind"
 
+# Experimental VCS (https://steveklabnik.github.io/jujutsu-tutorial)
+brew "jj"
+
 # JSON formatting and filtering
 brew "jq"
 

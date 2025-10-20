@@ -23,6 +23,7 @@ PATH="$HOME/.luarocks/bin:$PATH"
 PATH="$HOME/.cargo/bin:$PATH"
 PATH="${PLAYDATE_SDK_PATH}/bin:$PATH"
 PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+PATH="$HOME/.docker/bin:$PATH"
 export PATH
 
 # Editor
