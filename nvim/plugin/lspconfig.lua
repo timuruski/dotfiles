@@ -1,14 +1,8 @@
-local lspconfig = require('lspconfig')
-
--- lspconfig.standardrb.setup {}
-lspconfig.rust_analyzer.setup {
-  -- Server-specific settings. See `:help lspconfig-setup`
-  -- settings = {
-  --   ['rust-analyzer'] = {},
-  -- },
-}
-lspconfig.ts_ls.setup {}
-lspconfig.zls.setup {}
+-- see :help lspconfig-nvim-0.11
+-- vim.lsp.config("standardrb", {})
+vim.lsp.config("rust_analyzer", {})
+vim.lsp.config("ts_ls", {})
+vim.lsp.config("zls", {})
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
