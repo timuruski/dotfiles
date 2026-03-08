@@ -42,7 +42,7 @@ brew "exercism"
 
 # Helix editor
 # https://helix-editor.com
-# brew "helix"
+brew "helix"
 
 # Process manager
 brew "hivemind"
@@ -54,7 +54,7 @@ brew "jj"
 brew "jq"
 
 # Jupyter Notebook for deep learning
-brew "jupyterlab"
+# brew "jupyterlab"
 
 # Just command runner https://github.com/casey/just
 # brew "just"
@@ -72,7 +72,7 @@ brew "jupyterlab"
 # MongoDB, for work research.
 # tap "mongodb/brew"
 # brew "mongodb-community"
-brew "mongosh"
+# brew "mongosh"
 
 # Next generation Vim
 brew "neovim"
@@ -142,7 +142,7 @@ brew "z"
 # brew "gerbil-scheme"
 
 # Gleam language https://gleam.run
-# brew "gleam"
+brew "gleam"
 
 # Go Programming language
 brew "go"
@@ -161,7 +161,7 @@ brew "go"
 brew "nodejs"
 
 # Numpy for deep learning
-brew "numpy"
+# brew "numpy"
 
 # Racket for going through SICP
 # cask "racket"
