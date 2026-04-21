@@ -13,7 +13,8 @@ map <leader>F :FilesWithoutTests<cr>
 map <leader>g :Files %%<cr>
 map <leader>r :Routes<cr>
 map <leader>R :Routes expand("%")<cr>
-map <leader>E :FailedExamples<cr>
+" map <leader>E :FailedExamples<cr>
+map <leader>E :ListExamples expand("%")<cr>
 
 " Fuzzy find just implementation files.
 " ffd is an alias, which fzf#run doesn't handle.
@@ -32,7 +33,8 @@ function! s:routes(prefix = "")
     let l:cmd = "grep " .. a:prefix .. " tmp/routes.txt"
   endif
 
-  call fzf#vim#grep(l:cmd, 0, fzf#vim#with_preview())
+  " call fzf#vim#grep(l:cmd, 0, fzf#vim#with_preview())
+  call fzf#vim#grep(l:cmd, 0, fzf#vim#with_preview({'options': ['--nth=2..']}))
 endfunction
 
 function! s:refresh_routes()
@@ -42,6 +44,13 @@ endfunction
 command! -nargs=? Routes call s:routes(<args>)
 command! RefreshRoutes call s:refresh_routes()
 
+function! s:translations(locale = "en-US")
+  let l:cmd = "ya -p '' ~/workspace/tmdb-web-translations/locales/" .. a:locale .. ".yml"
+  call fzf#vim#grep(l:cmd, 0, fzf#vim#with_preview())
+endfunction
+
+command! Translations call s:translations()
+
 " Failed examples
 function! s:failed_examples()
   let cmd = 'grep failed spec/examples.txt | sed -E "s/\[.*//" | sort -u'
@@ -49,6 +58,17 @@ function! s:failed_examples()
 endfunction
 
 " command! FailedExamples call s:failed_examples()
+
+function! s:list_examples(path)
+  let l:ripgrep = 'rg --with-filename --line-number "(it|example|specify|describe|context) \""'
+  let l:cmd = l:ripgrep .. " " .. a:path
+  " let l:awk = "awk '/(it|example|specify|describe|context) \\\"/ { print FILENAME \":\" NR $0 }'"
+  " let l:cmd = l:awk .. " " .. a:path
+
+  call fzf#vim#grep(l:cmd, 0, fzf#vim#with_preview({'options': ['--nth=2..']}))
+endfunction
+
+command! -nargs=1 ListExamples call s:list_examples(<args>)
 
 " Failed examples args list
 function! s:failed_examples()
