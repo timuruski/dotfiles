@@ -1,6 +1,15 @@
-local lspconfig = require('lspconfig')
+require('lspconfig')
+-- vim.lsp.enable('herb_ls')
 
-lspconfig.ruby_lsp.setup {}
+vim.lsp.config('ruby_lsp', {
+  enabledFeatures = {
+    onTypeFormatting = false,
+    diagnostics = false
+  }
+})
+
+-- vim.lsp.enable('ruby_lsp')
+-- lspconfig.ruby_lsp.setup {}
 -- lspconfig.solargraph.setup {}
 
 -- Global mappings.

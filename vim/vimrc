@@ -119,6 +119,11 @@ set winheight=5
 set winminheight=5
 set winheight=999
 
+" TODO: Make a mode for using vertical splits to look at multiple parts of a long file.
+" set winwidth=10
+" set winminwidth=10
+" set winwidth=999
+
 
 " AUTOCOMMANDS
 " ================================
@@ -233,9 +238,12 @@ endfunction
 
 " Quickfix Git conflicts list
 command! GitConflicts cexpr system('git status --short | sed -nE "s/(AA|UU) (.+)/\2/p" | xargs grep -Hn "<<<" ${}') | copen
+command! -nargs=* Qfix cexpr system(<args>) | copen
 
 " let cmd = 'grep failed spec/examples.txt | sed -E "s/\[.*//" | sort -u'
 " command! FailedExamples cexpr system('grep failed spec/examples.txt | sed -E "s/\[.*//" | sort -u') | copen
+
+command! -nargs=* Ruby !ruby % <args><CR>
 
 command! -nargs=1 RunCmd nnoremap <buffer> <enter> :w \| !clear; <args> % <CR>
 command! -nargs=+ RunCmd nnoremap <buffer> <enter> :w \| !clear; <args> <CR>
@@ -276,8 +284,8 @@ endfunction
 
 set t_Co=256
 set colorcolumn=96
+set cursorline
 set hlsearch
-" colorscheme plain
 colorscheme eink
 
 " Toggle background

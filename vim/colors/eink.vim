@@ -39,28 +39,28 @@ if &background == "light"
   hi DiffDelete   cterm=bold                          ctermfg=NONE
   hi DiffText     cterm=reverse                       ctermfg=NONE
   hi Type         cterm=bold          ctermbg=NONE    ctermfg=NONE gui=bold guibg=NONE
-  hi Keyword      cterm=None          ctermbg=NONE    ctermfg=NONE
-  hi Number       cterm=None          ctermbg=NONE    ctermfg=NONE
-  hi Char         cterm=None          ctermbg=NONE    ctermfg=NONE
-  hi Format       cterm=None          ctermbg=NONE    ctermfg=NONE
+  hi Keyword      cterm=NONE          ctermbg=NONE    ctermfg=NONE
+  hi Number       cterm=NONE          ctermbg=NONE    ctermfg=NONE
+  hi Char         cterm=NONE          ctermbg=NONE    ctermfg=NONE
+  hi Format       cterm=NONE          ctermbg=NONE    ctermfg=NONE
   hi Special      cterm=NONE          ctermbg=NONE    ctermfg=NONE guifg=fg
-  hi Constant     cterm=None          ctermbg=NONE    ctermfg=NONE
-  hi PreProc      cterm=None                          ctermfg=NONE
+  hi Constant     cterm=NONE          ctermbg=NONE    ctermfg=NONE
+  hi PreProc      cterm=NONE                          ctermfg=NONE
   hi Directive    cterm=NONE          ctermbg=NONE    ctermfg=NONE
   hi Conditional  cterm=NONE          ctermbg=NONE    ctermfg=NONE
   hi Comment      cterm=italic        ctermbg=254     ctermfg=NONE gui=italic guibg=#e4e4e4
-  hi Function     cterm=None          ctermbg=234     ctermfg=250 guifg=fg
+  hi Function     cterm=NONE          ctermbg=234     ctermfg=250 guifg=fg
   hi Identifier   cterm=NONE          ctermbg=NONE    ctermfg=NONE guifg=fg
   hi Statement    cterm=NONE          ctermbg=NONE    ctermfg=NONE gui=NONE
   hi Ignore       cterm=bold                          ctermfg=NONE gui=bold
-  hi String       cterm=bold          ctermbg=NONE    ctermfg=239 guifg=fg gui=bold
+  hi String       cterm=bold          ctermbg=NONE    ctermfg=239 guifg=fg gui=NONE
   hi ErrorMsg     cterm=undercurl     ctermbg=NONE    ctermfg=9 gui=undercurl
   hi Error        cterm=undercurl     ctermbg=NONE    ctermfg=9 gui=undercurl
   " hi ErrorMsg     cterm=reverse       ctermbg=15      ctermfg=9
   " hi Error        cterm=reverse       ctermbg=15      ctermfg=9
   hi Todo         cterm=bold          ctermbg=253     ctermfg=NONE gui=bold guibg=#e4e4e4
   hi ColorColumn  cterm=NONE          ctermbg=255     ctermfg=NONE guifg=NONE guibg=#E8E8E8
-  hi MatchParen   cterm=bold          ctermbg=NONE    ctermfg=12 gui=bold guifg=White guibg=#909090
+  hi MatchParen   cterm=NONE          ctermbg=NONE    guifg=#cc0000 guibg=NONE
   hi SignColumn   cterm=NONE          ctermbg=254
   hi CursorLine   cterm=NONE          ctermbg=255     ctermfg=NONE guifg=NONE guibg=#E8E8E8
   hi CursorLineNr cterm=bold          ctermbg=255     ctermfg=NONE
@@ -84,7 +84,7 @@ if &background == "light"
   hi LspReferenceText  cterm=NONE       ctermbg=NONE     ctermfg=250
   hi LspReferenceRead  cterm=NONE       ctermbg=NONE     ctermfg=250
   hi LspReferenceWrite cterm=NONE       ctermbg=NONE     ctermfg=250
-  hi DiagnosticError   cterm=NONE       ctermbg=NONE     ctermfg=250     guifg=NONE     guibg=#E4E4E4
+  hi DiagnosticError   cterm=NONE       ctermbg=NONE     ctermfg=250     guifg=fg     guibg=#E4E4E4
   hi DiagnosticHint    cterm=NONE       ctermbg=NONE     ctermfg=250
   hi DiagnosticInfo    cterm=NONE       ctermbg=NONE     ctermfg=250
   hi DiagnosticOK      cterm=NONE       ctermbg=NONE     ctermfg=250
@@ -135,18 +135,18 @@ else
   hi DiffChange   cterm=bold                          ctermfg=NONE
   hi DiffDelete   cterm=bold                          ctermfg=NONE
   hi DiffText     cterm=reverse                       ctermfg=NONE
-  hi Type         cterm=None          ctermbg=NONE    ctermfg=NONE
-  hi Keyword      cterm=None          ctermbg=NONE    ctermfg=NONE
-  hi Number       cterm=None          ctermbg=NONE    ctermfg=NONE
-  hi Char         cterm=None          ctermbg=NONE    ctermfg=NONE
-  hi Format       cterm=None          ctermbg=NONE    ctermfg=NONE
+  hi Type         cterm=NONE          ctermbg=NONE    ctermfg=NONE
+  hi Keyword      cterm=NONE          ctermbg=NONE    ctermfg=NONE
+  hi Number       cterm=NONE          ctermbg=NONE    ctermfg=NONE
+  hi Char         cterm=NONE          ctermbg=NONE    ctermfg=NONE
+  hi Format       cterm=NONE          ctermbg=NONE    ctermfg=NONE
   hi Special      cterm=underline     ctermbg=NONE    ctermfg=NONE
-  hi Constant     cterm=None          ctermbg=NONE    ctermfg=NONE
-  hi PreProc      cterm=None                          ctermfg=NONE
+  hi Constant     cterm=NONE          ctermbg=NONE    ctermfg=NONE
+  hi PreProc      cterm=NONE                          ctermfg=NONE
   hi Directive    cterm=NONE          ctermbg=NONE    ctermfg=NONE
   hi Conditional  cterm=NONE          ctermbg=NONE    ctermfg=NONE
   hi Comment      cterm=italic        ctermbg=NONE    ctermfg=245
-  hi Function     cterm=None          ctermbg=234     ctermfg=250
+  hi Function     cterm=NONE          ctermbg=234     ctermfg=250
   hi Identifier   cterm=NONE          ctermbg=NONE    ctermfg=NONE
   hi Statement    cterm=NONE          ctermbg=NONE    ctermfg=NONE
   hi Ignore       cterm=bold                          ctermfg=NONE
