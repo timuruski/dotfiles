@@ -1,11 +1,13 @@
 # Ignore files related to tests
 spec/
 test/
+__tests__/
 *_spec.rb
 *_test.rb
-*.spec.ts
-*.test.js
-*.test.jsx
+*.spec.{js,jsx,ts,tsx}
+*.test.{js,jsx,ts,tsx}
+*-test.{js,jsx,ts,tsx}
+
 *Test.java
 *Tests.java
 *.feature

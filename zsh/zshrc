@@ -17,9 +17,13 @@ HISTORY_IGNORE="(ls|cd|pwd|exit|cd)*"
 # setopt EXTENDED_HISTORY
 
 # Setup chruby
-source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
-source /opt/homebrew/opt/chruby/share/chruby/auto.sh
-chruby 3.4.2
+# source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
+# source /opt/homebrew/opt/chruby/share/chruby/auto.sh
+# chruby 3.4.4
+
+# Setup rbenv instead
+eval "$(rbenv init - --no-rehash zsh)"
+# rbenv global ruby-3.4.4
 
 # fzf
 autoload -U edit-command-line
@@ -50,6 +54,9 @@ fi
 # source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# Move thise into direnv if possible.
+eval "$(/Users/tim.uruski/.local/bin/mise activate zsh)"
 
 # Plugins
 source "$ZDOTDIR/aliases.sh"

@@ -7,6 +7,9 @@ brew "chruby"
 # GNU compatible commands, eg. gdate
 brew "coreutils"
 
+# https://difftastic.wilfred.me.uk/
+brew "difftastic"
+
 # Per-project environment configuration
 brew "direnv"
 
@@ -16,17 +19,26 @@ brew "entr"
 # Friendly version of find
 brew "fd"
 
+# fx https://fx.wtf/install
+brew "fx"
+
 # Fuzzy finder for command line
 brew "fzf"
 
 # Distributed source repository
 brew "git"
 
+# https://docs.github.com/en/copilot/concepts/agents/copilot-cli/about-copilot-cli
+brew "copilot-cli"
+
 # Draw diagrams
 # brew "graphviz"
 
 # Process manager
 # brew "hivemind"
+
+# Janet scripting language
+brew "janet"
 
 # JSON formatting and filtering
 brew "jq"
@@ -48,6 +60,9 @@ brew "overmind"
 # Visualize process trees
 brew "pstree"
 
+# https://github.com/rbenv/rbenv
+brew "rbenv"
+
 # Fix for pbcopy/pbpaste in tmux and screen
 brew "reattach-to-user-namespace" # For tmux to work properly
 
@@ -56,6 +71,9 @@ brew "ripgrep"
 
 # Install Ruby versions (rbenv)
 brew "ruby-build"
+
+# https://github.com/fables-tales/rubyfmt
+brew "rubyfmt"
 
 # Install Ruby versions
 brew "ruby-install"
@@ -111,6 +129,12 @@ brew "python@3"
 
 # For compression
 brew "snappy"
+
+# https://alexpasmantier.github.io/television/
+brew "television"
+
+# YAML Formatting
+brew "yamlfmt"
 
 # https://github.com/jeffreytse/zsh-vi-mode
 brew "zsh-vi-mode"

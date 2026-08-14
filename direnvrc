@@ -1,10 +1,5 @@
-source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
-source /opt/homebrew/opt/chruby/share/chruby/auto.sh
-
-# if [[ -n $RUBY_VERSION ]]
-# then
-#   chruby $RUBY_VERSION
-# fi
+# source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
+# source /opt/homebrew/opt/chruby/share/chruby/auto.sh
 
 # Use specified Ruby or locally defined version.
 # Usage: use ruby -> uses the Ruby version defined in .ruby-version
@@ -20,27 +15,11 @@ use_ruby() {
 
   if [[ -n $version ]]
   then
-    chruby $version
+    # chruby $version
+    rbenv shell $version
   else
     log_error "No Ruby version specified"
-    chruby system
+    # chruby system
+    rbenv shell --unset
   fi
-}
-
-# DEPRECATED
-# use local_ruby [ruby-version]
-# Load Ruby version from .ruby-version file
-use_local_ruby() {
-  local ver
-
-  if [[ -f .ruby-version ]]; then
-    ver=$(cat .ruby-version)
-  fi
-
-  if [[ -z $ver ]]; then
-    log_error "No local ruby defined in .ruby-version"
-    exit 1
-  fi
-
-  chruby $ver
 }

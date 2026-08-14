@@ -4,9 +4,11 @@
 .envrc
 .rgignore
 .vagrant/
+.zed/
 config/master.key
 doc/tags
 lefthook.yml
+node_modules/
 tmp/
 vendor/bundle/
 zzz/
