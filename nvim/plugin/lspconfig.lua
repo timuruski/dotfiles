@@ -4,12 +4,11 @@ require('lspconfig')
 vim.lsp.config('ruby_lsp', {
   enabledFeatures = {
     onTypeFormatting = false,
-    diagnostics = false
+    diagnostics = true
   }
 })
 
--- vim.lsp.enable('ruby_lsp')
--- lspconfig.ruby_lsp.setup {}
+vim.lsp.enable('ruby_lsp')
 -- lspconfig.solargraph.setup {}
 
 -- Global mappings.

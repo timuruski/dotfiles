@@ -11,6 +11,18 @@ nmap <silent> t<C-s> :TestSuite<CR>
 nmap <silent> t<C-l> :TestLast<CR>
 nmap <silent> t<C-g> :TestVisit<CR>
 
+" Search for nearest package.json
+" This is because the directory for tmdb-mobile is weird.
+function! NearestPackageJsonRoot() abort
+  let l:dir = expand('%:p:h')
+  while l:dir !=# '/' && !filereadable(l:dir . '/package.json')
+    let l:dir = fnamemodify(l:dir, ':h')
+  endwhile
+  return l:dir !=# '/' ? l:dir : getcwd()
+endfunction
+
+let test#project_root = function("NearestPackageJsonRoot")
+
 " Support for Racket tests
-let test#racket#rackunit#executable = 'raco test'
-let test#racket#rackunit#file_pattern = '\v^(test.*|.*-test).rkt$'
+" let test#racket#rackunit#executable = 'raco test'
+" let test#racket#rackunit#file_pattern = '\v^(test.*|.*-test).rkt$'
